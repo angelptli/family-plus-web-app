@@ -11,14 +11,15 @@
     <title>Family+</title>
   </head>
   <body>
-    
+
+    <!-- Place website navigation bar here -->
+    {% include 'footer_header/navbar.html' %}
+
     <!--
     ==============================================================
-    Above this block is the website header/navbar.
-    This is used in other HTML files to wrap around page content.
-
+    Above the block content tag is the website header and navbar.
     !! Do not put anything in between this block in base.html !! -->
-    <br><br>
+
     {% block content %}
     {% endblock %}
 
