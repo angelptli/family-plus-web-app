@@ -49,12 +49,14 @@
       
       <!-- Users not logged in and non-users only see the Sign Up and Login buttons. -->
       {% else %}
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'home' %}">Sign Up</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'home' %}">Login</a>
-        </li>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">Login</a>
+          </li>
+        </ul>
       {% endif %}
 
     </div>
