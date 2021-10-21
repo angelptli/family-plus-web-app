@@ -1,6 +1,6 @@
 # Family Plus Web App
 
-Basic set up for running a Django website:
+Basic set up for running a Django server locally:
 
 Django version 3.0+ is compatible with Python version 3.6+. See [requirements.txt](requirements.txt).
 
@@ -15,3 +15,10 @@ $ pip install python-decouple
 ```
 
 Place your SECRET_KEY and DEBUG values in the **.env** file. The **.env** should be placed in the same directory as manage.py. See [.env.example](family_plus/.env.example).
+
+**Run the Django server in the directory that has manage.py:**
+```
+$ python manage.py runserver
+```
+
+On a web browser, the website should running when you enter localhost:8000.
