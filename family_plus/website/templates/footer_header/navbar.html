@@ -41,7 +41,7 @@
 
               <!-- Links to Settings page and logout button shown for all logged in users. -->
               <a class="dropdown-item" href="{% url 'home' %}">Settings</a>
-              <a class="dropdown-item" href="{% url 'home' %}">Logout</a>
+              <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
 
             </div>
           </li>
@@ -54,7 +54,7 @@
             <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'home' %}">Login</a>
+            <a class="nav-link" href="{% url 'login' %}">Login</a>
           </li>
         </ul>
       {% endif %}

@@ -2,21 +2,21 @@
 
 <!-- Page title -->
 {% block title %}
-Family+ | Sign Up
+Family+ | Login
 {% endblock %}
 
 {% block content %}
 <br>
-<h1>Join Now!</h1>
+<h1>Login</h1>
 <br>
 
 <!-- Django form -->
 <div class="form-group">
-    <form method="POST" enctype="multipart/form-data">
+  <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     <button class="btn btn-secondary">
-      Sign Up
+      Login
     </button>
   </form>
 </div>
