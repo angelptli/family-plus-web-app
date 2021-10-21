@@ -14,4 +14,4 @@ $ pip install django
 $ pip install python-decouple
 ```
 
-Place your SECRET_KEY and DEBUG values in the **.env** file. The **.env** should be placed in the root directory (the same directory as manage.py). See [.env.example](.env.example).
+Place your SECRET_KEY and DEBUG values in the **.env** file. The **.env** should be placed in the same directory as manage.py. See [.env.example](family_plus/.env.example).
