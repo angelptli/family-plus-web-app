@@ -14,11 +14,11 @@ $ pip install django
 $ pip install python-decouple
 ```
 
-Place your SECRET_KEY and DEBUG values in the **.env** file. The **.env** should be placed in the same directory as manage.py. See [.env.example](family_plus/.env.example).
+Place your SECRET_KEY and DEBUG values (without the quotation marks and whitespace) in the **.env** file. The **.env** should be placed in the same directory as manage.py. See [.env.example](family_plus/.env.example).
 
 **Run the Django server in the directory that has manage.py:**
 ```
 $ python manage.py runserver
 ```
 
-On a web browser, the website should running when you enter localhost:8000.
+On a web browser, the website should run when you enter localhost:8000.
