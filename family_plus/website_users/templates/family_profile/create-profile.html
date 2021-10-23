@@ -1,0 +1,30 @@
+{% extends 'footer_header/base.html' %}
+
+{% block title %}
+  Family Profile Set Up
+{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+  <h1>Family Profile Set Up</h1>
+  <br/><br/>
+
+  <div class="form-group">
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.media}}
+      {{ form.as_p }}
+      <button class="btn btn-primary">Create Profile Page</button>
+      <a href="{% url 'home' %}" class="btn btn-secondary">
+        Cancel
+      </a>
+      <br/><br/>
+    </form>
+  </div>
+
+{% else%}
+  You must be logged in to visit this page
+{% endif %}
+
+{% endblock %}

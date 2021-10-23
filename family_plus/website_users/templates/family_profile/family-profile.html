@@ -1,0 +1,61 @@
+{% extends 'footer_header/base.html' %}
+{% load static %}
+
+{% block content %}
+<br>
+
+
+{% if user.is_authenticated %}
+  <a href="{% url 'edit-family-profile' user.familyprofile.id %}">
+    Edit Profile
+  </a>
+
+  <div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-2">
+        {% if page_user.profile_pic %}
+          <img src="{{ page_user.profile_pic.url }}" class="card-img">
+        {% else %}
+          <img src="{% static 'website/images/default_profile_img/default2.jpg' %}" class="card-img" title="Default Profile Picture">
+        {% endif %} 
+      </div>
+      <div class="col-md-10">
+        <div class="card-body">
+          <h1 class="card-title">
+            {{ page_user.user.last_name }} Family
+          </h1>
+          <p class="card-text">
+            <h3>Family bio</h3>
+            {{ page_user.family_bio }}
+            <br>
+            <h3>Contact Info</h3>
+            {{ page_user.contact_info }}
+            <br>
+            <h3>Hobbies & Activities</h3>
+            {{ page_user.hobbies }}
+            <br>
+            <h3>Interests</h3>
+            {{ page_user.interests }}
+            <br>
+            <h3>Locations</h3>
+            {{ page_user.locations }}
+            <br>
+            <h3>Availability</h3>
+            {{ page_user.schedule }}
+            <br>
+            <h3>Languages</h3>
+            {{ page_user.languages }}
+            <br>
+            <h3>Family Members</h3>
+            {{ page_user.family_members }}
+            <br>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% else %}
+  You must be logged in to visit this page
+{% endif %}
+
+{% endblock %}

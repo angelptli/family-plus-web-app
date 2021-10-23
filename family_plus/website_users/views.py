@@ -1,10 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.views import generic
+from django.views.generic import DetailView, CreateView
 from django.urls import reverse_lazy
-from django.contrib.auth.forms import PasswordChangeForm
+# from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
 from .forms import AccountSettingsForm, RegisterForm, PasswordChangingForm
-
+from .forms import ProfilePageForm
+from website.models import FamilyProfile
 
 class UserRegisterView(generic.CreateView):
 
@@ -23,7 +25,7 @@ class UserRegisterView(generic.CreateView):
     success_url = reverse_lazy('login')
 
 
-class AccountSettingsView(generic.CreateView):
+class AccountSettingsView(generic.UpdateView):
 
     """Create edit profile view for users to edit the info on their profile
     page. The success_url redirects the user to their profile page after a
@@ -58,3 +60,40 @@ class PasswordsChangeView(PasswordChangeView):
 def password_success(request):
     """Allows user to be redirected to a password changed success page."""
     return render(request, 'registration/password-success.html')
+
+
+class CreateProfileView(CreateView):
+    model = FamilyProfile
+    form_class = ProfilePageForm
+    template_name = "family_profile/create-profile.html"
+    # fields = '__all__'
+
+    def form_valid(self, form):
+        # Make user info available to the user filling out the form
+        # so that saving the form will save to the correct user
+        form.instance.user = self.request.user
+
+        return super().form_valid(form)
+
+
+class FamilyProfilePageView(DetailView):
+    model = FamilyProfile
+    template_name = 'family_profile/family-profile.html'
+
+    def get_context_data(self, *args, **kwargs):
+        # users = FamilyProfile.objects.all()
+        page_user = get_object_or_404(FamilyProfile, id=self.kwargs['pk'])
+
+        context = super(FamilyProfilePageView, self).get_context_data(*args, **kwargs)
+        context["page_user"] = page_user
+
+        return context
+
+
+class EditProfilePageView(generic.UpdateView):
+    model = FamilyProfile
+    template_name = 'family_profile/edit-family-profile.html'
+    success_url = reverse_lazy('home')
+    fields = ['profile_pic', 'family_bio', 'contact_info', 'hobbies',
+              'interests', 'locations', 'schedule', 'languages',
+              'family_members']

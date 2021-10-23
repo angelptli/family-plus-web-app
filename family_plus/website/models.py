@@ -1,5 +1,6 @@
 from django.db import models
-# from django.contrib.auth.models import User
+from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 # class FamilyPlusUser(models.Model):
@@ -16,3 +17,23 @@ from django.db import models
 #         :rtype: self objects
 #         """
 #         return self.first_name + ' ' + self.last_name
+
+
+class FamilyProfile(models.Model):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    profile_pic = models.ImageField(null=True, blank=True,
+                                    upload_to="images/profile")
+    family_bio = models.TextField(null=True, blank=True)
+    contact_info = models.TextField(null=True, blank=True)
+    hobbies = models.TextField(null=True, blank=True)
+    interests = models.TextField(null=True, blank=True)
+    locations = models.TextField(null=True, blank=True)
+    schedule = models.TextField(null=True, blank=True)
+    languages = models.TextField(null=True, blank=True)
+    family_members = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return str(self.user)
+
+    def get_absolute_url(self):
+        return reverse('home')

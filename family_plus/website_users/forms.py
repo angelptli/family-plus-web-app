@@ -2,6 +2,7 @@ from django.contrib.auth.forms import PasswordChangeForm, UserChangeForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
+from website.models import FamilyProfile
 
 
 class RegisterForm(UserCreationForm):
@@ -68,34 +69,13 @@ class AccountSettingsForm(UserChangeForm):
                                  widget=forms.TextInput(attrs={
                                      'class': 'form-control'}))
 
-    last_login = forms.CharField(max_length=100,
-                                 widget=forms.TextInput(attrs={
-                                     'class': 'form-control'}))
-
-    is_superuser = forms.CharField(max_length=100,
-                                 widget=forms.CheckboxInput(attrs={
-                                     'class': 'form-check'}))
-
-    is_staff = forms.CharField(max_length=100,
-                                 widget=forms.CheckboxInput(attrs={
-                                     'class': 'form-check'}))
-
-    is_active = forms.CharField(max_length=100,
-                                 widget=forms.CheckboxInput(attrs={
-                                     'class': 'form-check'}))
-
-    date_joined = forms.CharField(max_length=100,
-                                 widget=forms.TextInput(attrs={
-                                     'class': 'form-control'}))
-
     class Meta:
 
         """Specify the fields to include in the register form."""
 
         model = User
         fields = ('username', 'first_name', 'last_name', 'email',
-                  'password', 'last_login', 'is_superuser',
-                  'is_staff', 'is_active')
+                  'password')
         
 
 class PasswordChangingForm(PasswordChangeForm):
@@ -117,3 +97,23 @@ class PasswordChangingForm(PasswordChangeForm):
     class Meta:
         model = User
         fields = ('old_password', 'new_password1', 'new_password2')
+
+
+class ProfilePageForm(forms.ModelForm):
+    class Meta:
+        model = FamilyProfile
+        fields = ('family_bio', 'contact_info', 'hobbies', 'interests',
+                  'locations', 'schedule', 'languages', 'family_members',
+                  'profile_pic')
+
+        widgets = {
+            'family_bio': forms.Textarea(attrs={'class': 'form-control'}),
+            'contact_info': forms.Textarea(attrs={'class': 'form-control'}),
+            'hobbies': forms.Textarea(attrs={'class': 'form-control'}),
+            'interests': forms.Textarea(attrs={'class': 'form-control'}),
+            'locations': forms.Textarea(attrs={'class': 'form-control'}),
+            'schedule': forms.Textarea(attrs={'class': 'form-control'}),
+            'languages': forms.Textarea(attrs={'class': 'form-control'}),
+            'family_members': forms.Textarea(attrs={'class': 'form-control'}),
+            # 'profile_pic': forms.ImageField(attrs={'class': 'form-control'}),
+        }

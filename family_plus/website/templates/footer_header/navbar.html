@@ -29,12 +29,13 @@
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
               <!-- Links to Profile page if profile is already set up. -->
-              {% if user.profile.id %}
-                <a class="dropdown-item" href="{% url 'home' %}">Profile</a>
+              {% if user.familyprofile.id %}
+                <a class="dropdown-item" href="{% url 'family-profile' user.familyprofile.id %}">Profile</a>
 
               <!-- Else links to Profile (Set Up) page. -->
               {% else %}
-                <a class="dropdown-item" href="{% url 'home' %}">Profile (Set up)</a>
+                <!-- <a class="dropdown-item" href=""{% url 'home' %}">Profile</a> -->
+                <a class="dropdown-item" href="{% url 'create-profile' %}">Profile (Set up)</a>
               {% endif %}
 
               <!-- Links to Settings page and logout button shown for all logged in users. -->
