@@ -12,8 +12,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
       
       <!-- Logged in users have a dropdown menu with their family name displayed and
       links that go to the Profile and Settings page and also the Logout button. -->
@@ -32,21 +31,20 @@
               <!-- Links to Profile page if profile is already set up. -->
               {% if user.profile.id %}
                 <a class="dropdown-item" href="{% url 'home' %}">Profile</a>
-                <a class="dropdown-item" href="{% url 'home' %}">Profile Settings</a>
 
               <!-- Else links to Profile (Set Up) page. -->
-              {% else %}  
+              {% else %}
                 <a class="dropdown-item" href="{% url 'home' %}">Profile (Set up)</a>
               {% endif %}
 
               <!-- Links to Settings page and logout button shown for all logged in users. -->
-              <a class="dropdown-item" href="{% url 'home' %}">Settings</a>
+              <a class="dropdown-item" href="{% url 'account-settings' %}">Settings</a>
               <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
 
             </div>
           </li>
         </ul>
-      
+
       <!-- Users not logged in and non-users only see the Sign Up and Login buttons. -->
       {% else %}
         <ul class="navbar-nav ms-auto">
