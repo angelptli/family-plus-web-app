@@ -2,12 +2,12 @@
 
 <!-- Page title -->
 {% block title %}
-Family+ | Edit Profile
+Family+ | Account Settings
 {% endblock %}
 
 {% block content %}
 <br>
-<h1>Edit Profile</h1>
+<h1>Account Settings</h1>
 <br>
 
 <!-- Django form -->
@@ -15,10 +15,13 @@ Family+ | Edit Profile
     <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
-    <button class="btn btn-secondary">
+    <button class="btn btn-primary">
       Save
     </button>
+    <a href="{% url 'home' %}" class="btn btn-secondary">
+      Cancel
+    </a>
+    <br><br>
   </form>
 </div>
-
 {% endblock %}
