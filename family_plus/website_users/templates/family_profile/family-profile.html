@@ -6,49 +6,72 @@
 
 
 {% if user.is_authenticated %}
-  <a href="{% url 'edit-family-profile' user.familyprofile.id %}">
-    Edit Profile
-  </a>
+  <!-- Only show the Edit Profile button on user's own family profile. -->
+  {% if user.id == page_user.id %}
+    <a href="{% url 'edit-family-profile' user.familyprofile.id %}">
+      Edit Profile
+    </a>
+  {% endif %}
 
   <div class="card mb-3">
     <div class="row g-0">
       <div class="col-md-2">
         {% if page_user.profile_pic %}
-          <img src="{{ page_user.profile_pic.url }}" class="card-img">
+          <img src="{{ page_user.profile_pic.url }}" class="card-img rounded-circle">
         {% else %}
-          <img src="{% static 'website/images/default_profile_img/default2.jpg' %}" class="card-img" title="Default Profile Picture">
+          <img src="{% static 'website/images/default_profile_img/default1.jpg' %}" class="card-img" title="Default Profile Picture">
         {% endif %} 
       </div>
       <div class="col-md-10">
         <div class="card-body">
+          <br>
           <h1 class="card-title">
             {{ page_user.user.last_name }} Family
           </h1>
+          <br><br>
           <p class="card-text">
             <h3>Family bio</h3>
             {{ page_user.family_bio }}
-            <br>
+            <br><br>
+
             <h3>Contact Info</h3>
-            {{ page_user.contact_info }}
-            <br>
-            <h3>Hobbies & Activities</h3>
-            {{ page_user.hobbies }}
-            <br>
-            <h3>Interests</h3>
-            {{ page_user.interests }}
-            <br>
-            <h3>Locations</h3>
-            {{ page_user.locations }}
-            <br>
-            <h3>Availability</h3>
-            {{ page_user.schedule }}
-            <br>
-            <h3>Languages</h3>
-            {{ page_user.languages }}
-            <br>
+            {% if page_user.contact_info %}
+              {{ page_user.contact_info }}
+            {% else %}
+              The {{ page_user.user.last_name }} Family has not filled out this info.
+            {% endif %}            
+            <br><br>
+
+            <!-- Only display these fields if filled out -->
+            {% if page_user.hobbies %}
+              <h3>Hobbies & Activities</h3>
+              {{ page_user.hobbies }}<br><br>
+            {% endif %}
+            
+            {% if page_user.interests %}
+              <h3>Interests</h3>
+              {{ page_user.interests }}<br><br>
+            {% endif %}
+            
+            {% if page_user.locations %}
+              <h3>Locations</h3>
+              {{ page_user.locations }}<br><br>
+            {% endif %}
+            
+            {% if page_user.schedule %}
+              <h3>Availability</h3>
+              {{ page_user.schedule }}<br><br>
+            {% endif %}
+            
+            {% if page_user.languages %}
+              <h3>Languages</h3>
+              {{ page_user.languages }}<br><br>
+            {% endif %}
+            
+
             <h3>Family Members</h3>
             {{ page_user.family_members }}
-            <br>
+            <br><br>
           </p>
         </div>
       </div>
