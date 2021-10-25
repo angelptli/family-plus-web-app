@@ -15,10 +15,10 @@ Family+ | Sign Up
     <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
-    <button class="btn btn-secondary">
+    <button class="btn btn-primary">
       Sign Up
     </button>
-    <a href="{% url 'home' %}" class="btn btn-primary">
+    <a href="{% url 'home' %}" class="btn btn-secondary">
       Cancel
     </a>
     <br/><br/>

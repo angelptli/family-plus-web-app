@@ -41,9 +41,9 @@ class MyUserManager(BaseUserManager):
         return user
 
 
-def get_profile_image_filepath(self):
+def get_profile_image_filepath(self, filename):
     """Save user uploaded profile images to the media folder."""
-    return f'profile_images/{self.pk}/{"profile_image.png"}'
+    return 'profile_images/' + str(self.pk) + '/profile_image.png'
 
 
 def get_default_profile_image():
@@ -84,7 +84,7 @@ class CustomUserModel(AbstractBaseUser):
 
     def get_profile_image_filename(self):
         """Rename user uploaded profile images to profile_image.png"""
-        return str(self.profile_image)[str(self.profile_image).index(f'profile_images/{self.pk}/'):]
+        return str(self.profile_image)[str(self.profile_image).index('profile_images/' + str(self.pk) + "/"):]
 
     def has_perm(self, perm, obj=None):
         """Used to specify admin permissions for admin users."""

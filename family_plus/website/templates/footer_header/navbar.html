@@ -22,7 +22,11 @@
 
             <!-- Greets by family name -->
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              My {{ user.family_name }} Family
+              {% if user.familyprofile.family_name %}
+                My {{ user.familyprofile.family_name }} Family
+              {% else %}
+                My (Set Up Nickname) Family
+              {% endif %}
             </a>
 
             <!-- Dropdown menu items below -->

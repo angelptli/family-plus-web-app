@@ -16,13 +16,21 @@
   <div class="card mb-3">
     <div class="row g-0">
       <div class="col-md-2">
-        <img src="{{ page_user.profile_image.url }}" class="card-img rounded-circle">
+        {% if page_user.profile_image.url %}
+          <img src="{{ page_user.profile_image.url }}" class="card-img rounded-circle">
+        {% else %}
+          <img src="{% static 'website/images/default_profile_img/default2.jpg' %}" class="card-img rounded-circle">
+        {% endif %}
       </div>
       <div class="col-md-10">
         <div class="card-body">
           <br>
           <h1 class="card-title">
-            {{ page_user.user.last_name }} Family
+            {% if page_user.family_name %}
+              {{ page_user.family_name }} Family
+            {% else %}
+              (Set Up Nickname) Family
+            {% endif %}
           </h1>
           <br><br>
           <p class="card-text">
@@ -34,8 +42,12 @@
             {% if page_user.contact_info %}
               {{ page_user.contact_info }}
             {% else %}
-              The {{ page_user.user.last_name }} Family has not filled out this info.
-            {% endif %}            
+              {% if page_user.user.family_name %}
+                The {{ page_user.user.family_name }} Family has not filled out this info.
+              {% else %}
+                This family has not filled out this info.
+              {% endif %}
+            {% endif %}          
             <br><br>
 
             <!-- Only display these fields if filled out -->

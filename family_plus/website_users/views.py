@@ -94,6 +94,6 @@ class EditProfilePageView(generic.UpdateView):
     model = FamilyProfile
     template_name = 'family_profile/edit-family-profile.html'
     success_url = reverse_lazy('home')
-    fields = ['profile_image', 'family_bio', 'contact_info', 'hobbies',
-              'interests', 'locations', 'schedule', 'languages',
+    fields = ['family_name', 'profile_image', 'family_bio', 'contact_info',
+              'hobbies', 'interests', 'locations', 'schedule', 'languages',
               'family_members']

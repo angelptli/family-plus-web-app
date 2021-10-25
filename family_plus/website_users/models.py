@@ -1,13 +1,16 @@
 from django.db import models
 from django.conf import settings
+from custom_user_model.models import get_profile_image_filepath
 from django.urls import reverse
+
 
 
 class FamilyProfile(models.Model):
     user           = models.OneToOneField(settings.AUTH_USER_MODEL, null=True,
                                           on_delete=models.CASCADE)
     family_name    = models.TextField(max_length=30, null=False, blank=False)
-    profile_image  = models.ImageField(max_length=255, null=True, blank=True)
+    profile_image  = models.ImageField(max_length=255, null=True, blank=True,
+                                       upload_to=get_profile_image_filepath)
     family_bio     = models.TextField(null=True, blank=True)
     contact_info   = models.TextField(null=True, blank=True)
     hobbies        = models.TextField(null=True, blank=True)
