@@ -84,7 +84,8 @@ class CustomUserModel(AbstractBaseUser):
 
     def get_profile_image_filename(self):
         """Rename user uploaded profile images to profile_image.png"""
-        return str(self.profile_image)[str(self.profile_image).index('profile_images/' + str(self.pk) + "/"):]
+        return str(self.profile_image)[str(self.profile_image).index(
+            'profile_images/' + str(self.pk) + "/"):]
 
     def has_perm(self, perm, obj=None):
         """Used to specify admin permissions for admin users."""
