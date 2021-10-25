@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.views import PasswordChangeView
 from .forms import AccountSettingsForm, RegisterForm, PasswordChangingForm
 from .forms import ProfilePageForm
-from website.models import FamilyProfile
+from .models import FamilyProfile
 
 class UserRegisterView(generic.CreateView):
 
@@ -94,6 +94,6 @@ class EditProfilePageView(generic.UpdateView):
     model = FamilyProfile
     template_name = 'family_profile/edit-family-profile.html'
     success_url = reverse_lazy('home')
-    fields = ['profile_pic', 'family_bio', 'contact_info', 'hobbies',
+    fields = ['profile_image', 'family_bio', 'contact_info', 'hobbies',
               'interests', 'locations', 'schedule', 'languages',
               'family_members']

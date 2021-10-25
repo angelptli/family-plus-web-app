@@ -29,18 +29,26 @@ DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = []
 
+# Custom user model that allows logging in with email
+AUTH_USER_MODEL = "custom_user_model.CustomUserModel"
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.AllowAllUsersModelBackend',
+    'custom_user_model.backends.CaseInsensitiveModelBackend'
+)
 
 # Application definition
 
 INSTALLED_APPS = [
+    'website',
+    'website_users',
+    'custom_user_model',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'website',
-    'website_users',
 ]
 
 MIDDLEWARE = [

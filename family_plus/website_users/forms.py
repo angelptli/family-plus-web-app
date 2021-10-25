@@ -1,9 +1,8 @@
+from custom_user_model.models import CustomUserModel
 from django.contrib.auth.forms import PasswordChangeForm, UserChangeForm
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
 from django import forms
-from website.models import FamilyProfile
-
+from .models import FamilyProfile
 
 class RegisterForm(UserCreationForm):
 
@@ -17,23 +16,15 @@ class RegisterForm(UserCreationForm):
     # owner and instructor of Codemy.com.
     
     email = forms.EmailField(widget=forms.EmailInput(attrs={
-                             'class': 'form-control'}))
-
-    first_name = forms.CharField(max_length=100,
-                                 widget=forms.TextInput(attrs={
-                                     'class': 'form-control'}))
-
-    last_name = forms.CharField(max_length=100,
-                                widget=forms.TextInput(attrs={
-                                    'class': 'form-control'}))
+                             'class': 'form-control',
+                             'placeholder': 'email@example.com'}))
 
     class Meta:
 
         """Specify the fields to include in the register form."""
 
-        model = User
-        fields = ('username', 'first_name', 'last_name',
-                  'email', 'password1', 'password2')
+        model = CustomUserModel
+        fields = ('email', 'username', 'password1', 'password2')
         
     def __init__(self, *args, **kwargs):
         """Apply bootstrap form control to the remaining fields."""
@@ -49,22 +40,6 @@ class AccountSettingsForm(UserChangeForm):
     settings.
     """
 
-    # Credit: https://youtu.be/Nxgi4qF6i1Q
-    # Learned how to customize and connect additional form fields
-    # for a edit profile form from this video tutorial by John Elder,
-    # owner and instructor of Codemy.com.
-    
-    email = forms.EmailField(widget=forms.EmailInput(attrs={
-                             'class': 'form-control'}))
-
-    first_name = forms.CharField(max_length=100,
-                                 widget=forms.TextInput(attrs={
-                                     'class': 'form-control'}))
-
-    last_name = forms.CharField(max_length=100,
-                                widget=forms.TextInput(attrs={
-                                    'class': 'form-control'}))
-
     username = forms.CharField(max_length=100,
                                  widget=forms.TextInput(attrs={
                                      'class': 'form-control'}))
@@ -73,13 +48,14 @@ class AccountSettingsForm(UserChangeForm):
 
         """Specify the fields to include in the register form."""
 
-        model = User
-        fields = ('username', 'first_name', 'last_name', 'email',
-                  'password')
+        model = CustomUserModel
+        fields = ('username', 'password')
         
 
 class PasswordChangingForm(PasswordChangeForm):
-    # Define the fields to include in the sign up form
+    
+    """Define the fields to include in the sign up form."""
+    
     old_password = forms.CharField(widget=forms.PasswordInput(attrs={
                                    'class': 'form-control',
                                    'type': 'password'}))
@@ -95,18 +71,29 @@ class PasswordChangingForm(PasswordChangeForm):
                                         'type': 'password'}))
 
     class Meta:
-        model = User
+        model = CustomUserModel
         fields = ('old_password', 'new_password1', 'new_password2')
 
 
 class ProfilePageForm(forms.ModelForm):
+
+    """Define the fields to incude in the profile page form."""
+
+    family_name = forms.CharField(max_length=30,
+                                  widget=forms.TextInput(attrs={
+                                      'class': 'form-control',
+                                      'placeholder': 'What is a nickname for your family?'}))
+
     class Meta:
         model = FamilyProfile
-        fields = ('family_bio', 'contact_info', 'hobbies', 'interests',
-                  'locations', 'schedule', 'languages', 'family_members',
-                  'profile_pic')
+        fields = ('family_name', 'family_bio', 'contact_info', 'hobbies',
+                  'interests', 'locations', 'schedule', 'languages',
+                  'family_members', 'profile_image')
 
+        # Apply bootstrap styling (form-control) to the text boxes of
+        # these fields
         widgets = {
+            'family_name': forms.TextInput(attrs={'class': 'form-control'}),
             'family_bio': forms.Textarea(attrs={'class': 'form-control'}),
             'contact_info': forms.Textarea(attrs={'class': 'form-control'}),
             'hobbies': forms.Textarea(attrs={'class': 'form-control'}),
@@ -115,5 +102,5 @@ class ProfilePageForm(forms.ModelForm):
             'schedule': forms.Textarea(attrs={'class': 'form-control'}),
             'languages': forms.Textarea(attrs={'class': 'form-control'}),
             'family_members': forms.Textarea(attrs={'class': 'form-control'}),
-            # 'profile_pic': forms.ImageField(attrs={'class': 'form-control'}),
+            # 'profile_image': forms.ImageField(attrs={'class': 'form-control'}),
         }
