@@ -21,9 +21,19 @@ $ pip install pillow
 
 Place your SECRET_KEY and DEBUG values (without the quotation marks and whitespace) in the **.env** file. The **.env** should be placed in the same directory as manage.py. See [.env.example](family_plus/.env.example).
 
-**Run the Django server in the directory that has manage.py:**
+**In the directory that has manage.py, make migrations and mirgrate the
+Django models to create the website's SQLite databases:**
+```
+$ python manage.py makemigrations
+```
+```
+$ python manage.py migrate
+```
+
+**Now you can locally run the Django server:**
 ```
 $ python manage.py runserver
 ```
 
-On a web browser, the website should run when you enter localhost:8000.
+On a web browser, the website should run when you enter localhost:8000. You'll
+be at the website's home page.
