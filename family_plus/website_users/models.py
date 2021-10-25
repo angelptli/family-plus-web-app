@@ -22,7 +22,7 @@ class FamilyProfile(models.Model):
 
     def __str__(self):
         """Label users by their username."""
-        return self.username
+        return self.user
 
     def get_absolute_url(self):
         return reverse('home')
