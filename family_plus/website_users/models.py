@@ -4,7 +4,6 @@ from custom_user_model.models import get_profile_image_filepath
 from django.urls import reverse
 
 
-
 class FamilyProfile(models.Model):
     user           = models.OneToOneField(settings.AUTH_USER_MODEL, null=True,
                                           on_delete=models.CASCADE)
@@ -22,7 +21,7 @@ class FamilyProfile(models.Model):
 
     def __str__(self):
         """Label users by their username."""
-        return self.user
+        return self.user.username
 
     def get_absolute_url(self):
         return reverse('home')

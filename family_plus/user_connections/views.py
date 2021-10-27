@@ -2,6 +2,7 @@ from django.conf import settings
 from django.http import HttpResponse
 from django.shortcuts import render
 from custom_user_model.models import CustomUserModel
+from website_users.models import FamilyProfile
 from .connect_status import ConnectStatus
 from .models import ConnectionsList, ConnectRequest
 
@@ -53,7 +54,6 @@ def connections_view(request, *args, **kwargs):
         return render(request, "family_profile/family-profile.html", context)
 
 
-
 def search_page_view(request, *args, **kwargs):
     context = {}
 
@@ -68,6 +68,28 @@ def search_page_view(request, *args, **kwargs):
 def search_names_view(request, *args, **kwargs):
     """This view is for searching family names and @usernames specifically."""
     context = {}
+    search_results = ""
+    has_three_chars = True
+
+    if request.method == "POST":
+        searched = request.POST.get('searched')
+
+        if len(searched) < 3:
+            has_three_chars = False
+
+        context['searched'] = searched
+        context['has_three_chars'] = has_three_chars
+        
+        if len(searched) > 0:
+            search_results = FamilyProfile.objects.filter(
+                    family_name__icontains=searched)
+        
+        context['search_results'] = search_results
+
+        return render(request, "results/search-name.html", context)
+    else:
+        context['search_results'] = search_results
+        return render(request, "results/search-name.html", context)
 
     # # GET requests are executed when a user enters text into the search bar
     # # and presses the enter key button or clicks the search icon button
@@ -89,5 +111,3 @@ def search_names_view(request, *args, **kwargs):
     #         name_results.append((name, False))
 
     #     context['name_results'] = name_results
-
-    return render(request, "results/search-name.html", context)

@@ -32,7 +32,7 @@
             <!-- Greets by family name -->
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               {% if user.familyprofile.family_name %}
-                My {{ user.familyprofile.family_name }} Family
+                My {{ user.familyprofile.family_name|title }} Family
               {% else %}
                 My (Set Up Nickname) Family
               {% endif %}

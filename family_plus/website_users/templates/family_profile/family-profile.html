@@ -27,7 +27,7 @@
           <br>
           <h1 class="card-title">
             {% if page_user.family_name %}
-              {{ page_user.family_name }} Family
+              {{ page_user.family_name|title }} Family
             {% else %}
               (Set Up Nickname) Family
             {% endif %}

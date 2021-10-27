@@ -46,11 +46,6 @@ def get_profile_image_filepath(self, filename):
     return 'profile_images/' + str(self.pk) + '/profile_image.png'
 
 
-def get_default_profile_image():
-    """Designate path to default profile image."""
-    return "website/images/default_profile_img/default1.jpg"
-
-
 class CustomUserModel(AbstractBaseUser):
 
     """Customize a user model for overriding Django's default User model."""
@@ -65,8 +60,7 @@ class CustomUserModel(AbstractBaseUser):
     is_superuser  = models.BooleanField(default=False)
     profile_image = models.ImageField(max_length=255,
                                       upload_to=get_profile_image_filepath,
-                                      null=True, blank=True,
-                                      default=get_default_profile_image)
+                                      null=True, blank=True)
 
     # Apply the user manager to the custom model
     objects = MyUserManager()
