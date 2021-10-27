@@ -92,10 +92,8 @@ class FamilyProfilePageView(DetailView):
 
 class EditProfilePageView(generic.UpdateView):
     model = FamilyProfile
+    form_class = ProfilePageForm
     template_name = 'family_profile/edit-family-profile.html'
-    fields = ['family_name', 'profile_image', 'family_bio', 'contact_info',
-              'hobbies', 'interests', 'locations', 'schedule', 'languages',
-              'family_members']
 
     def get_success_url(self):
         return reverse_lazy('family-profile', kwargs={'pk': self.object.pk})

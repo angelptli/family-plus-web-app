@@ -3,6 +3,8 @@ from django.contrib.auth.forms import PasswordChangeForm, UserChangeForm
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from .models import FamilyProfile
+import string
+
 
 class RegisterForm(UserCreationForm):
 
@@ -10,10 +12,9 @@ class RegisterForm(UserCreationForm):
     fields in the register form.
     """
 
-    # Credit: https://youtu.be/TBGRYkzXiTg
+    # Inspired by: https://youtu.be/TBGRYkzXiTg
     # Learned how to customize and connect additional form fields
-    # for the register form from this video tutorial by John Elder,
-    # owner and instructor of Codemy.com.
+    # for the register form from this video tutorial.
     
     email = forms.EmailField(widget=forms.EmailInput(attrs={
                              'class': 'form-control',
@@ -25,7 +26,25 @@ class RegisterForm(UserCreationForm):
 
         model = CustomUserModel
         fields = ('email', 'username', 'password1', 'password2')
-        
+    
+    def clean(self):
+        """Validate username input and return cleaned data."""
+        cleaned_data = super(RegisterForm, self).clean()
+        username = cleaned_data.get("username")
+
+        # Raise error if username contains space
+        if username.isspace():
+            raise forms.ValidationError(
+                "Username can only contain the following: a-z A-Z 0-9 _")
+
+        # Raise error if username contains special characters
+        special_chars = set(string.punctuation.replace("_", ""))
+        if any(char in special_chars for char in username):
+            raise forms.ValidationError(
+                "Username can only contain the following: a-z A-Z 0-9 _")
+
+        return cleaned_data
+
     def __init__(self, *args, **kwargs):
         """Apply bootstrap form control to the remaining fields."""
         super(RegisterForm, self).__init__(*args, **kwargs)
@@ -79,7 +98,7 @@ class ProfilePageForm(forms.ModelForm):
 
     """Define the fields to incude in the profile page form."""
 
-    family_name = forms.CharField(max_length=30,
+    family_name = forms.CharField(max_length=15,
                                   widget=forms.TextInput(attrs={
                                       'class': 'form-control',
                                       'placeholder': 'What is a nickname for your family?'}))
