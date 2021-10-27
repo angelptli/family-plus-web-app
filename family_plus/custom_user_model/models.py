@@ -1,4 +1,4 @@
-# Custom User Model designed by CodingWithMith
+# Custom User Model designed by CodingWithMitch
 # Link to tutorial: https://youtu.be/SFarxlTzVX4
 # With this custom user model, I can set users to log in with emails as
 # opposed to Django's User model default, which is log in with username.

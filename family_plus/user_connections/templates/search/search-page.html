@@ -1,0 +1,22 @@
+{% extends 'footer_header/base.html' %}
+
+{% block content %}
+
+<br><br>
+<h1>Welcome</h1>
+
+Search by username or family name
+
+<form class="d-flex" method=POST action="{% url 'search-name' %}">
+  {% csrf_token %}
+  <div class="input-group">
+    <input class="form-control me-2" type="search" placeholder="e.g. username, pizza family" aria-label="Search"
+      name="searched">
+
+    <button class="btn btn-outline-secondary" type="submit">
+      Search
+    </button>
+  </div>
+</form>
+
+{% endblock %}

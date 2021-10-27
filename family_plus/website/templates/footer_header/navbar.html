@@ -13,6 +13,15 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <!-- Direct to Search page -->
+      {% if user.is_authenticated %}
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'search-page' %}">Search</a>
+          </li>
+        </ul>
+      {% endif %}
       
       <!-- Logged in users have a dropdown menu with their family name displayed and
       links that go to the Profile and Settings page and also the Logout button. -->

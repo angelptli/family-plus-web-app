@@ -51,3 +51,43 @@ def connections_view(request, *args, **kwargs):
         context['BASE_URL'] = settings.BASE_URL  # localhost:8000 url
 
         return render(request, "family_profile/family-profile.html", context)
+
+
+
+def search_page_view(request, *args, **kwargs):
+    context = {}
+
+    if request.method == "POST":
+        searched = request.POST.get('searched')
+        context['searched'] = searched
+        return render(request, "search/search-page.html", context)
+    else:
+        return render(request, "search/search-page.html", context)
+
+
+def search_names_view(request, *args, **kwargs):
+    """This view is for searching family names and @usernames specifically."""
+    context = {}
+
+    # # GET requests are executed when a user enters text into the search bar
+    # # and presses the enter key button or clicks the search icon button
+    # if request.method == "GET":
+    #     search_query = request.GET.get("q")
+
+    #     # If user enters at least one character in the search box return a
+    #     # query set of users who have emails and/or usernames that contain
+    #     # the search text
+    #     if len(search_query) > 0:
+    #         search_results = CustomUserModel.objects.filter(
+    #             email__icontains=search_query).filter(
+    #                 username__icontains=search_query).distinct()
+
+    #     # Connection status
+    #     # user = request.user
+    #     name_results = []
+    #     for name in search_results:
+    #         name_results.append((name, False))
+
+    #     context['name_results'] = name_results
+
+    return render(request, "results/search-name.html", context)
