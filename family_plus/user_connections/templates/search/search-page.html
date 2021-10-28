@@ -30,7 +30,7 @@ Search | Family+
         </form>
       </div>
 
-      <div>
+      <!-- <div>
         Search by family name
 
         <form class="d-flex" method=POST action="{% url 'search-family' %}">
@@ -42,8 +42,28 @@ Search | Family+
             <button type="submit" class="btn btn-outline-secondary"><span class="bi-search"></span></button>
           </div>
         </form>
+      </div> -->
+
+      <!-- Search box for searching byfamily name -->
+      <div>
+        Search by family name
+        <form class="search-bar mt-sm-2 mr-2" method=GET action="{% url 'search-family' %}">
+          <div class="input-group">
+            <input class="form-control me-2" type="text" placeholder="E.g. enter 'pizza' to search 'pizza family'"
+              aria-label="Search" name="familyq" id="id_familyq">
+
+            <button type="submit" class="btn btn-outline-secondary"><span class="bi-search"></span></button>
+          </div>
+        </form>
       </div>
+
     </center>
   </section>
+
+  <!-- Credit for javascript magic: https://www.youtube.com/watch?v=YlMxfqcw77s -->
+  <script type="text/javascript">
+    document.getElementById("id_familyq").value = "{{ query }}"
+  </script>
+
 </body>
 {% endblock %}
