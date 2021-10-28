@@ -5,31 +5,31 @@
 {% endblock %}
 
 {% block content %}
+<body style="background-color: #f0f2f5;">
+  {% if user.is_authenticated %}
+    {% if user.id == familyprofile.user.id %}
+      <h1>Edit Family Profile</h1>
+      <br/><br/>
 
-{% if user.is_authenticated %}
-  {% if user.id == familyprofile.user.id %}
-    <h1>Edit Family Profile</h1>
-    <br/><br/>
+      <div class="form-group">
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button class="btn btn-primary">
+            Update
+          </button>
+          <a href="{% url 'family-profile' user.familyprofile.id %}" class="btn btn-secondary">
+            Cancel
+          </a><br/><br/>
+        </form>
+      </div>
 
-    <div class="form-group">
-      <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-primary">
-          Update
-        </button>
-        <a href="{% url 'family-profile' user.familyprofile.id %}" class="btn btn-secondary">
-          Cancel
-        </a><br/><br/>
-      </form>
-    </div>
+    {% else %}
+      You are not the correct user to edit this page
+    {% endif %}
 
   {% else %}
-    You are not the correct user to edit this page
+    You must be logged in to edit settings
   {% endif %}
-
-{% else %}
-  You must be logged in to edit settings
-{% endif %}
-
+</body>
 {% endblock %}

@@ -17,11 +17,11 @@ from django.urls import path
 from .views import (
     connections_view,
     search_page_view,
-    search_names_view,
+    search_family_view,
 )
 
 urlpatterns = [
     path('<int:user_id>/', connections_view, name="connections-view"),
     path('search/', search_page_view, name="search-page"),
-    path('names/search_results/', search_names_view, name="search-name"),
+    path('families/search_results/', search_family_view, name="search-family"),
 ]

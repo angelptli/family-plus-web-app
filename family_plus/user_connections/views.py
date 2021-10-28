@@ -65,7 +65,7 @@ def search_page_view(request, *args, **kwargs):
         return render(request, "search/search-page.html", context)
 
 
-def search_names_view(request, *args, **kwargs):
+def search_family_view(request, *args, **kwargs):
     """This view is for searching family names and @usernames specifically."""
     context = {}
     search_results = ""
@@ -86,13 +86,13 @@ def search_names_view(request, *args, **kwargs):
         
         context['search_results'] = search_results
 
-        return render(request, "results/search-name.html", context)
+        return render(request, "results/search-family.html", context)
     else:
         context['search_results'] = search_results
-        return render(request, "results/search-name.html", context)
+        return render(request, "results/search-family.html", context)
 
-    # # GET requests are executed when a user enters text into the search bar
-    # # and presses the enter key button or clicks the search icon button
+    # # This is code that might be used for adding connections to users'
+    # # connection lists - YET TO BE MADE.
     # if request.method == "GET":
     #     search_query = request.GET.get("q")
 
