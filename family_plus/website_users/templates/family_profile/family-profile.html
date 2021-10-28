@@ -1,6 +1,10 @@
 {% extends 'footer_header/base.html' %}
 {% load static %}
 
+{% block title %}
+  {{ page_user.family_name|title }} Family | Family+
+{% endblock %}
+
 {% block content %}
 
 <body style="background-color: #f0f2f5;">
