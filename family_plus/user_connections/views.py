@@ -105,6 +105,7 @@ def search_family_view(request, *args, **kwargs):
     context = {}
     search_results = ""
     has_three_chars = True
+    results_empty = False
 
     if request.method == "POST":
         searched_family = request.POST.get('search_family')
@@ -118,8 +119,11 @@ def search_family_view(request, *args, **kwargs):
         if len(searched_family) > 0:
             search_results = FamilyProfile.objects.filter(
                     family_name__icontains=searched_family)
+        else:
+            results_empty = True
         
         context['search_results'] = search_results
+        context['results_empty'] = results_empty
 
         return render(request, "results/search-family.html", context)
     else:

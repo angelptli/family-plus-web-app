@@ -12,12 +12,12 @@
       <div class="container" class="mx-auto">
 
         <!-- If text was entered in the search box display the results-->
-        {% if searched_family != "" and has_three_chars %}
+        {% if search_results and searched_family and has_three_chars %}
 
           <br><h1>Results</h1>
           <h4>You searched for "{{ searched_family }}"</h4>
           <a href="{% url 'search-page' %}">Search again</a><br>
-          
+
           <!-- The resulting family profiles. Results only include those that have
           set up at least a family nickname. -->
           <div class="row">
@@ -42,9 +42,9 @@
           {% endfor %}
           </div>
         {% else %}
-          <!-- Place no-results.html content -->
           {% include 'results/no-results.html' %}
         {% endif %}
+
       </div>
     </center>
   </section>
