@@ -5,23 +5,28 @@
 {% endblock %}
 
 {% block content %}
-<br>
-<h1>Join Now!</h1>
-<br>
 
-<!-- Django form -->
-<div class="form-group">
-    <form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button class="btn btn-primary">
-      Sign Up
-    </button>
-    <a href="{% url 'home' %}" class="btn btn-secondary">
-      Cancel
-    </a>
-    <br/><br/>
-  </form>
-</div>
+<body>
+  <section>
+    <br>
+    <h1>Join Now!</h1>
+    <br>
+
+    <!-- Django form -->
+    <div class="form-group">
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary">
+          Sign Up
+        </button>
+        <a href="{% url 'home' %}" class="btn btn-secondary">
+          Cancel
+        </a>
+        <br /><br />
+      </form>
+    </div>
+  </section>
+</body>
 
 {% endblock %}
