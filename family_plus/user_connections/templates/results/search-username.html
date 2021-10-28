@@ -12,10 +12,9 @@
       <div class="container" class="mx-auto">
 
         <!-- If text was entered in the search box display the results-->
-        {% if searched_family != "" and has_three_chars %}
-
+        {% if searched_username and has_three_chars %}
           <br><h1>Results</h1>
-          <h4>You searched for "{{ searched_family }}"</h4>
+          <h4>You searched for "{{ searched_username }}"</h4>
           <a href="{% url 'search-page' %}">Search again</a><br>
           
           <!-- The resulting family profiles. Results only include those that have
@@ -24,16 +23,16 @@
             {% for family in search_results %}
               {% if family.family_name != "" %}
                 <div class="col">
-                  {% if family.profile_image %}
-                    <a href="{% url 'family-profile' family.id %}">
-                      <img src="{{ family.profile_image.url }}" class="card-img rounded-circle"> 
+                  {% if family.familyprofile.profile_image %}
+                    <a href="{% url 'family-profile' family.familyprofile.id %}">
+                      <img src="{{ family.familyprofile.profile_image.url }}" class="card-img rounded-circle"> 
                     </a>
                   {% else %}
-                    <a href="{% url 'family-profile' family.id %}">
+                    <a href="{% url 'family-profile' family.familyprofile.id %}">
                       <img src="{% static 'website/images/default_profile_img/default2.jpg' %}" class="card-img rounded-circle">
                     </a>
                   {% endif %}
-                  <h4>{{ family.family_name|title }} Family</h4><br>
+                  <h4>{{ family.familyprofile.family_name|title }} Family</h4><br>
                 </div>
                 {% if forloop.counter0 != 0 and forloop.counter0|divisibleby:2 == 0 %}
                   <div class="w-100"></div>

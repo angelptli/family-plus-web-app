@@ -18,10 +18,12 @@ from .views import (
     connections_view,
     search_page_view,
     search_family_view,
+    search_username_view,
 )
 
 urlpatterns = [
     path('<int:user_id>/', connections_view, name="connections-view"),
     path('search/', search_page_view, name="search-page"),
     path('families/search_results/', search_family_view, name="search-family"),
+    path('users/search_results/', search_username_view, name="search-username"),
 ]

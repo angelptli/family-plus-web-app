@@ -1,35 +1,49 @@
 {% extends 'footer_header/base.html' %}
 
 {% block title %}
-  Search | Family+
+Search | Family+
 {% endblock %}
 
 {% block content %}
 
 <body style="background-color: #f0f2f5;">
-  <div class="container">
-    <br><br>
-    <h1>Search for New Connections!</h1>
-    <br>
-  </div>
-
-  <div>
-    Search
-  </div>
-
-  <div>
-    Search by family name
-
-    <form class="d-flex" method=POST action="{% url 'search-family' %}">
-      {% csrf_token %}
-      <div class="input-group">
-        <input class="form-control me-2" type="search" placeholder="Example: type 'pizza' to find the 'pizza family'"
-          aria-label="Search" name="searched">
-
-        <button type="submit" class="btn btn-outline-secondary"><span class="bi-search"></span></button>
+  <section>
+    <center>
+      <div class="container">
+        <br><br>
+        <h1>Search for New Connections!</h1>
+        <br>
       </div>
-    </form>
-  </div>
 
+      <h2>More Options...</h2>
+      <div>
+        Search by username
+
+        <form class="d-flex" method=POST action="{% url 'search-username' %}">
+          {% csrf_token %}
+          <div class="input-group">
+            <input class="form-control me-2" type="search" placeholder="E.g. 'chip_munk123''" aria-label="Search"
+              name="search_user">
+
+            <button type="submit" class="btn btn-outline-secondary"><span class="bi-search"></span></button>
+          </div>
+        </form>
+      </div>
+
+      <div>
+        Search by family name
+
+        <form class="d-flex" method=POST action="{% url 'search-family' %}">
+          {% csrf_token %}
+          <div class="input-group">
+            <input class="form-control me-2" type="search" placeholder="E.g. enter 'pizza' to search 'pizza family'"
+              aria-label="Search" name="search_family">
+
+            <button type="submit" class="btn btn-outline-secondary"><span class="bi-search"></span></button>
+          </div>
+        </form>
+      </div>
+    </center>
+  </section>
 </body>
 {% endblock %}
