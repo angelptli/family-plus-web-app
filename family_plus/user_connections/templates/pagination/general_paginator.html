@@ -1,0 +1,49 @@
+<!--
+  Include this general paginator code in a HTML template you want to paginate.
+  The HTML template's view must pass in the following context variables:
+
+    query: The search made by the user
+    q: The name of the parameter
+
+  Example that was used in search_family_view():
+
+    query = request.GET.get('familyq', '')
+    q = "familyq"
+    context['query'] = str(query)
+    context['q'] = q
+-->
+
+<!-- Credit for link tag logic: https://www.youtube.com/watch?v=YlMxfqcw77s -->
+<div class="d-flex flex-column m-auto pagination mt-5">
+  <nav aria-label="Page navigation">
+    <ul class="pagination pg-grey justify-content-center">
+      {% if search_results.has_previous %}
+        <li class="page-item">
+          <li class="page-item"><a class="page-link" href="?{% if query %}{{ q }}={{query}}&{% endif %}page=1">&laquo; First</a></li>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="?{% if query %}{{ q }}={{query}}&{% endif %}page={{ search_results.previous_page_number }}">
+            Previous
+          </a>
+        </li>
+      {% endif %}
+
+      {% for i in search_results.paginator.page_range %}
+        {% if search_results.number == i %}
+          <li class="page-item active"><a class="page-link">{{ i }}</a></li>
+        {% else %}
+          <li class="page-item" ><a class="page-link" href="?{% if query %}{{ q }}={{query}}&{% endif %}page={{ i }}">{{ i }}</a></li>
+        {% endif %}
+      {% endfor %}
+
+      {% if search_results.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?{% if query %}{{ q }}={{query}}&{% endif %}page={{ search_results.next_page_number }}">Next</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link"  href="?{% if query %}{{ q }}={{query}}&{% endif %}page={{ search_results.paginator.num_pages }}">Last &raquo;</a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>

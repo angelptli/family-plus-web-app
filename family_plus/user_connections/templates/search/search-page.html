@@ -16,41 +16,26 @@ Search | Family+
       </div>
 
       <h2>More Options...</h2>
-      <div>
-        Search by username
 
-        <form class="d-flex" method=POST action="{% url 'search-username' %}">
-          {% csrf_token %}
+      <div>
+        Search by family name
+        <form class="search-bar mt-sm-2 mr-2" method=GET action="{% url 'search-family' %}">
           <div class="input-group">
-            <input class="form-control me-2" type="search" placeholder="E.g. 'chip_munk123''" aria-label="Search"
-              name="search_user">
+            <input class="form-control me-2" type="text" placeholder="E.g. enter 'pizza' to search 'pizza family'"
+              aria-label="Search" name="familynameq" id="id_familynameq">
 
             <button type="submit" class="btn btn-outline-secondary"><span class="bi-search"></span></button>
           </div>
         </form>
       </div>
 
-      <!-- <div>
-        Search by family name
-
-        <form class="d-flex" method=POST action="{% url 'search-family' %}">
-          {% csrf_token %}
-          <div class="input-group">
-            <input class="form-control me-2" type="search" placeholder="E.g. enter 'pizza' to search 'pizza family'"
-              aria-label="Search" name="search_family">
-
-            <button type="submit" class="btn btn-outline-secondary"><span class="bi-search"></span></button>
-          </div>
-        </form>
-      </div> -->
-
-      <!-- Search box for searching byfamily name -->
       <div>
-        Search by family name
-        <form class="search-bar mt-sm-2 mr-2" method=GET action="{% url 'search-family' %}">
+        Search by username
+
+        <form class="search-bar mt-sm-2 mr-2" method=GET action="{% url 'search-username' %}">
           <div class="input-group">
-            <input class="form-control me-2" type="text" placeholder="E.g. enter 'pizza' to search 'pizza family'"
-              aria-label="Search" name="familyq" id="id_familyq">
+            <input class="form-control me-2" type="text" placeholder="E.g. 'chip_munk123''" aria-label="Search"
+              aria-label="Search" name="usernameq" id="id_usernameq">
 
             <button type="submit" class="btn btn-outline-secondary"><span class="bi-search"></span></button>
           </div>
@@ -62,8 +47,10 @@ Search | Family+
 
   <!-- Credit for javascript magic: https://www.youtube.com/watch?v=YlMxfqcw77s -->
   <script type="text/javascript">
-    document.getElementById("id_familyq").value = "{{ query }}"
+    document.getElementById("id_familynameq").value = "{{ query }}"
+    document.getElementById("id_usernameq").value = "{{ query }}"
   </script>
+
 
 </body>
 {% endblock %}
