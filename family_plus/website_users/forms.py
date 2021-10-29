@@ -29,7 +29,7 @@ class RegisterForm(UserCreationForm):
         model = CustomUserModel
         fields = ('email', 'username', 'password1', 'password2',
                   'family_relation_status', 'is_adult')
-    
+
     def clean(self):
         """Validate username input and return cleaned data."""
         cleaned_data = super(RegisterForm, self).clean()

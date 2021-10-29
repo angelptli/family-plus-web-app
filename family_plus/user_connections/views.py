@@ -13,7 +13,7 @@ from website_users.models import FamilyProfile
 # Imported filter functions
 from .queryset_filters import (
     get_family_queryset,
-    get_username_queryset
+    get_username_queryset,
 )
 
 # from .connect_status import ConnectStatus
@@ -69,26 +69,26 @@ def connections_view(request, *args, **kwargs):
 
         return render(request, "family_profile/family-profile.html", context)
 
-    # # This is code that might be used for adding connections to users'
-    # # connection lists - YET TO BE MADE.
-    # if request.method == "GET":
-    #     search_query = request.GET.get("q")
+    # This is code that might be used for adding connections to users'
+    # connection lists - YET TO BE MADE.
+    if request.method == "GET":
+        search_query = request.GET.get("q")
 
-    #     # If user enters at least one character in the search box return a
-    #     # query set of users who have emails and/or usernames that contain
-    #     # the search text
-    #     if len(search_query) > 0:
-    #         search_results = CustomUserModel.objects.filter(
-    #             email__icontains=search_query).filter(
-    #                 username__icontains=search_query).distinct()
+        # If user enters at least one character in the search box return a
+        # query set of users who have emails and/or usernames that contain
+        # the search text
+        if len(search_query) > 0:
+            search_results = CustomUserModel.objects.filter(
+                email__icontains=search_query).filter(
+                    username__icontains=search_query).distinct()
 
-    #     # Connection status
-    #     # user = request.user
-    #     name_results = []
-    #     for name in search_results:
-    #         name_results.append((name, False))
+        # Connection status
+        # user = request.user
+        name_results = []
+        for name in search_results:
+            name_results.append((name, False))
 
-    #     context['name_results'] = name_results
+        context['name_results'] = name_results
 
 
 def search_page_view(request, *args, **kwargs):

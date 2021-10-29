@@ -18,6 +18,7 @@ class FamilyProfile(models.Model):
     schedule       = models.TextField(null=True, blank=True)
     languages      = models.TextField(null=True, blank=True)
     family_members = models.TextField(null=True, blank=True)
+    has_setup      = models.BooleanField(default=False)
 
     def __str__(self):
         """Label users by their username."""
@@ -25,3 +26,9 @@ class FamilyProfile(models.Model):
 
     def get_absolute_url(self):
         return reverse('home')
+
+    def has_family_profile(self):
+        """Used for verifying that the user has set up a family profile."""
+        if self.familyprofile.family_name != "":
+            self.familyprofile.has_setup = True
+            self.familyprofile.save()

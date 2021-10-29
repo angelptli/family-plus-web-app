@@ -41,29 +41,29 @@ class ConnectionsList(models.Model):
         if other_user in self.connections.all():
             self.connections.remove(other_user)
 
-    def cut_ties(self, removee):
-        """[summary]
+    # def cut_ties(self, removee):
+    #     """[summary]
 
-        :param removee: [description]
-        :type removee: [type]
-        """
-        # User removing the removee
-        connection_remover = self
+    #     :param removee: [description]
+    #     :type removee: [type]
+    #     """
+    #     # User removing the removee
+    #     connection_remover = self
 
-        # Remove the removee from the remover's connection list
-        connection_list_remover = remove_connection(removee)
+    #     # Remove the removee from the remover's connection list
+    #     connection_list_remover = remove_connection(removee)
 
-        # Remove the remover from the removee's connection list
-        connection_list = ConnectionsList.objects.get(user=removee)
-        connection_list.remove_connection(self.user)
+    #     # Remove the remover from the removee's connection list
+    #     connection_list = ConnectionsList.objects.get(user=removee)
+    #     connection_list.remove_connection(self.user)
 
-    def is_mutual_connection(self, connection):
-        """Checks if the connection is mutual and both users are
-        in each other's connection list.
-        """
-        if connection in self.connections.all():
-            return True
-        return False
+    # def is_mutual_connection(self, connection):
+    #     """Checks if the connection is mutual and both users are
+    #     in each other's connection list.
+    #     """
+    #     if connection in self.connections.all():
+    #         return True
+    #     return False
 
 
 class ConnectRequest(models.Model):

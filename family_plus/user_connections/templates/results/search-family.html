@@ -11,11 +11,11 @@
     <center>
       <div class="container" class="mx-auto">
 
+        <br><h1>Results</h1>
+        <h4>You searched for "{{ query }}"</h4>
+
         <!-- If text was entered in the search box display the results-->
         {% if search_results and query %}
-
-          <br><h1>Results</h1>
-          <h4>You searched for "{{ query }}"</h4>
           <a href="{% url 'search-page' %}">Search again</a><br>
 
           <!-- The resulting family profiles. Results only include those that have

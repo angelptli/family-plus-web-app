@@ -68,13 +68,15 @@ class CreateProfileView(CreateView):
     model = FamilyProfile
     form_class = ProfilePageForm
     template_name = "family_profile/create-profile.html"
-    # fields = '__all__'
-
+    
     def form_valid(self, form):
         # Make user info available to the user filling out the form
         # so that saving the form will save to the correct user
         form.instance.user = self.request.user
 
+        # Change family profile set up status to true
+        FamilyProfile.has_family_profile(self.request.user)
+    
         return super().form_valid(form)
 
 
