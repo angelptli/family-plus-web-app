@@ -8,8 +8,8 @@ class CustomAdmin(UserAdmin):
     """Custom admin set up for the custom user model."""
 
     list_display = ('email', 'username', 'date_joined', 'last_login',
-                    'is_admin', 'is_staff')
-    search_fields = ('email', 'usermame')
+                    'is_admin', 'is_staff', 'family_relation_status')
+    search_fields = ('email', 'usermame', 'family_relation_status')
     readonly_fields = ('id', 'date_joined', 'last_login')
 
     # Turn off filters
