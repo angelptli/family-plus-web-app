@@ -20,12 +20,15 @@ class RegisterForm(UserCreationForm):
                              'class': 'form-control',
                              'placeholder': 'email@example.com'}))
 
+    is_adult = forms.BooleanField(label="I confirm that I am 18 years old or over")
+    
     class Meta:
 
         """Specify the fields to include in the register form."""
 
         model = CustomUserModel
-        fields = ('email', 'username', 'password1', 'password2')
+        fields = ('email', 'username', 'password1', 'password2',
+                  'family_relation_status', 'is_adult')
     
     def clean(self):
         """Validate username input and return cleaned data."""

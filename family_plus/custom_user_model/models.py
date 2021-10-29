@@ -1,10 +1,32 @@
-# Custom User Model designed by CodingWithMitch
-# Link to tutorial: https://youtu.be/SFarxlTzVX4
-# With this custom user model, I can set users to log in with emails as
-# opposed to Django's User model default, which is log in with username.
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
+
+class Country(models.Model):
+    
+    """Contains the names of countries that users can select."""
+
+    name = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.name
+
+
+class City(models.Model):
+    
+    """Contains the names of countries that users can select."""
+
+    country = models.ForeignKey(Country, on_delete=models.CASCADE)
+    name = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.name
+
+
+# User model, user manager, and function below credits and inspired by
+# CodingWithMitch. Tutorial link: https://youtu.be/SFarxlTzVX4
+# With this custom user model, I can set users to log in with emails as
+# opposed to Django's User model default, which is log in with username.
 
 class MyUserManager(BaseUserManager):
 
@@ -61,6 +83,28 @@ class CustomUserModel(AbstractBaseUser):
     profile_image = models.ImageField(max_length=255,
                                       upload_to=get_profile_image_filepath,
                                       null=True, blank=True)
+
+    # Family relation status choices
+    PARENT = "Parent"
+    GUARDIAN = "Guardian"
+    RELATIVE = "Relative"
+    OTHER = "Other"
+        
+    FAMILY_RELATION_STATUS = [
+        (PARENT, "Parent"),
+        (GUARDIAN, "Guardian"),
+        (RELATIVE, "Relative"),
+        (OTHER, "Other")
+    ]
+
+    # Age verification, family relation status, and location of the user
+    # making the account
+    is_adult = models.BooleanField(default=False)
+    family_relation_status = models.CharField(max_length=20,
+        choices=FAMILY_RELATION_STATUS,
+        default="Parent")
+    country = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
+    city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True)
 
     # Apply the user manager to the custom model
     objects = MyUserManager()

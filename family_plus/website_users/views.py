@@ -1,12 +1,14 @@
 from django.shortcuts import get_object_or_404, render
 from django.views import generic
-from django.views.generic import DetailView, CreateView
+from django.views.generic import CreateView, DetailView, ListView, UpdateView
 from django.urls import reverse_lazy
 # from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
 from .forms import AccountSettingsForm, RegisterForm, PasswordChangingForm
 from .forms import ProfilePageForm
 from .models import FamilyProfile
+from django.conf import settings
+
 
 class UserRegisterView(generic.CreateView):
 
@@ -97,3 +99,18 @@ class EditProfilePageView(generic.UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('family-profile', kwargs={'pk': self.object.pk})
+
+
+# class FamilyMemberListView(ListView):
+#     model = settings.AUTH_USER_MODEL
+#     context_object_name = "family_members"
+
+
+# class FamilyMemberCreateView(CreateView):
+#     model = settings.AUTH_USER_MODEL
+#     fields = ('username', 'birthdate', 'country', 'city')
+
+
+# class FamilyMemberUpdateView(UpdateView):
+#     model = settings.AUTH_USER_MODEL
+#     context_object_name = "family_members"
