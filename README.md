@@ -36,4 +36,4 @@ $ python manage.py runserver
 ```
 
 On a web browser, the website should run when you enter localhost:8000. You'll
-be at the website's home page.
+be at the website's welcome page.
