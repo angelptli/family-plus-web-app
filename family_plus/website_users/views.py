@@ -1,7 +1,8 @@
+from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.views import generic
 from django.views.generic import CreateView, DetailView, ListView, UpdateView
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 # from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
 from .forms import AccountSettingsForm, RegisterForm, PasswordChangingForm
@@ -91,7 +92,33 @@ class FamilyProfilePageView(DetailView):
         context = super(FamilyProfilePageView, self).get_context_data(*args, **kwargs)
         context["page_user"] = page_user
 
+        # if self.request.POST.get('toggle_hide_on'):
+        #     FamilyProfile.hide_profile(self.request.user, "toggle_on")
+        # elif self.request.POST.get('toggle_hide_off'):
+        #     FamilyProfile.hide_profile("toggle_off")
+
         return context
+
+
+def toggle_hide_profile(request, pk):
+    """Users can click a button on their family profile to toggle the
+    visibility of their profile to other  will toggle the hide_profile status to True.
+    """
+    submit_on = request.POST.get('toggle_hide_on', None)
+    submit_off = request.POST.get('toggle_hide_off', None)
+
+    profile_obj = FamilyProfile.objects.get(id=pk)
+
+
+    if submit_on:
+        # FamilyProfile.hide_profile(request.user, "toggle_on")
+        profile_obj.hidden = True
+    elif submit_off:
+        # FamilyProfile.hide_profile(request.user, "toggle_off")
+        profile_obj.hidden = False
+   
+    return HttpResponseRedirect(reverse('toggle-profile', args=[str(pk)]))
+    # return HttpResponseRedirect(reverse('family-profile', args=[str(request.user.id)]))
 
 
 class EditProfilePageView(generic.UpdateView):
@@ -102,6 +129,20 @@ class EditProfilePageView(generic.UpdateView):
     def get_success_url(self):
         return reverse_lazy('family-profile', kwargs={'pk': self.object.pk})
 
+
+# def unhide_family_profile(request, *args, **kwargs):
+#     """Users who click the "Ready To Connect" button on their family
+#     profile will toggle the hide_profile status to False.
+#     """
+#     context = {}
+
+#     if request.method == "POST":
+#         turn_hide_off = request.POST.get('turn_hide_off', None)
+
+#         if turn_hide_off:
+#             FamilyProfile.hide_profile("toggle_off")
+
+#     return HttpResponseRedirect(reverse('family-profile'))
 
 # class FamilyMemberListView(ListView):
 #     model = settings.AUTH_USER_MODEL

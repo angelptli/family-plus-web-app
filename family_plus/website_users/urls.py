@@ -16,17 +16,26 @@ Including another URLconf
 # from django.contrib.auth import views as auth_views
 # from django.contrib.auth.forms import UserChangeForm
 from django.urls import path
-from .views import AccountSettingsView, UserRegisterView,PasswordsChangeView
-from .views import FamilyProfilePageView, EditProfilePageView, CreateProfileView
-from . import views
+from .views import (
+    AccountSettingsView,
+    UserRegisterView,
+    PasswordsChangeView,
+    FamilyProfilePageView,
+    EditProfilePageView,
+    CreateProfileView,
+    password_success,
+    toggle_hide_profile
+)
 
 urlpatterns = [
     path('register/', UserRegisterView.as_view(), name='register'),
     path('account_settings/', AccountSettingsView.as_view(), name='account-settings'),
     # path('password/', auth_views.PasswordChangeView.as_view(template_name='registration/change-password.html')),
     path('password/', PasswordsChangeView.as_view(template_name='registration/change-password.html')),
-    path('password_success', views.password_success, name='password-success'),
+    path('password_success', password_success, name='password-success'),
     path('<int:pk>/family_profile/', FamilyProfilePageView.as_view(), name='family-profile'),
     path('<int:pk>/edit_family_profile/', EditProfilePageView.as_view(), name='edit-family-profile'),
     path('create_profile/', CreateProfileView.as_view(), name='create-profile'),
+    path('create_profile/', CreateProfileView.as_view(), name='create-profile'),
+    path('toggled/<int:pk>/', toggle_hide_profile, name='toggle-profile'),
 ]

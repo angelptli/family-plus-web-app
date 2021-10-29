@@ -1,0 +1,16 @@
+{% load static %}
+<!-- Eventually will only show the family profile pic and name, but that
+     requires customizing the family profile first. -->
+<body>
+  <section style="padding-top:350px;">
+    <center>
+      <div>
+        <p>
+          Oops, the {{ page_user.family_name|title }} Family is not ready to connect.<br>
+          Come back later to check...
+        </p>
+        <a href="javascript:history.back()">Return to Search</a>
+      </div>
+    </center>
+  </section>
+</body>

@@ -19,6 +19,7 @@ class FamilyProfile(models.Model):
     languages      = models.TextField(null=True, blank=True)
     family_members = models.TextField(null=True, blank=True)
     has_setup      = models.BooleanField(default=False)
+    hidden         = models.BooleanField(default=False)
 
     def __str__(self):
         """Label users by their username."""
@@ -32,3 +33,19 @@ class FamilyProfile(models.Model):
         if self.familyprofile.family_name != "":
             self.familyprofile.has_setup = True
             self.familyprofile.save()
+
+    def hide_profile(self, action):
+        """Used for toggling hidden status on or off.
+
+        Default is set to False. Pass in "toggle_on" to save as True or
+        "toggle_off" to save as False. Users toggled on (True) won't show up
+        in search results nor can they send or receive connect requests.
+        """
+        if action == "toggle_on":
+            self.familyprofile.hidden = True
+            self.familyprofile.save()
+            return True
+        elif action == "toggle_off":
+            self.familyprofile.hidden = False
+            self.familyprofile.save()
+            return False
