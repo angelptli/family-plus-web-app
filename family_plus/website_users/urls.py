@@ -37,5 +37,5 @@ urlpatterns = [
     path('<int:pk>/edit_family_profile/', EditProfilePageView.as_view(), name='edit-family-profile'),
     path('create_profile/', CreateProfileView.as_view(), name='create-profile'),
     path('create_profile/', CreateProfileView.as_view(), name='create-profile'),
-    path('toggled/<int:pk>/', toggle_hide_profile, name='toggle-profile'),
+    path('toggle/<int:pk>', toggle_hide_profile, name='toggle-profile'),
 ]

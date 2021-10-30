@@ -82,20 +82,40 @@ class CreateProfileView(CreateView):
 
 
 class FamilyProfilePageView(DetailView):
+    
+    """This view displays the family profiles of users."""
+
+    # Credit: https://www.youtube.com/watch?v=dwgIi8dspa4
+    # Learned how to create a profile page view.
+
     model = FamilyProfile
     template_name = 'family_profile/family-profile.html'
 
     def get_context_data(self, *args, **kwargs):
-        # users = FamilyProfile.objects.all()
+        """Add to the context dictionary the family profile id of the
+        profile being visited, the hidden status of the profile number,
+        and a toggler variable `hidden`.
+        """
         page_user = get_object_or_404(FamilyProfile, id=self.kwargs['pk'])
-
         context = super(FamilyProfilePageView, self).get_context_data(*args, **kwargs)
-        context["page_user"] = page_user
+        
+        # Website statistics of how many families are not ready to connect
+        profile_page = get_object_or_404(FamilyProfile, id=self.kwargs['pk'])
+        is_hidden = profile_page.profile_hidden()  # 1 for hidden, 0 elsewise
 
-        # if self.request.POST.get('toggle_hide_on'):
-        #     FamilyProfile.hide_profile(self.request.user, "toggle_on")
-        # elif self.request.POST.get('toggle_hide_off'):
-        #     FamilyProfile.hide_profile("toggle_off")
+        profile_hidden = False  # toggler
+        if profile_page.hidden.filter(id=self.request.user.id).exists():
+            profile_hidden = True
+
+        # Determine whether the profile being viewed is hidden
+        view_hidden = False
+        if FamilyProfile.objects.filter(hidden__username=page_user).exists():
+            view_hidden = True
+
+        context["page_user"] = page_user
+        context["is_hidden"] = is_hidden
+        context['profile_hidden'] = profile_hidden
+        context['view_hidden'] = view_hidden
 
         return context
 
@@ -104,21 +124,22 @@ def toggle_hide_profile(request, pk):
     """Users can click a button on their family profile to toggle the
     visibility of their profile to other  will toggle the hide_profile status to True.
     """
-    submit_on = request.POST.get('toggle_hide_on', None)
-    submit_off = request.POST.get('toggle_hide_off', None)
 
-    profile_obj = FamilyProfile.objects.get(id=pk)
+    # Credit: https://www.youtube.com/watch?v=dwgIi8dspa4
+    # Learned how to define states for a toggle on/off button for hiding
+    # family profiles from other users.
 
+    profile_page = get_object_or_404(FamilyProfile, id=request.POST.get('profile_id'))
 
-    if submit_on:
-        # FamilyProfile.hide_profile(request.user, "toggle_on")
-        profile_obj.hidden = True
-    elif submit_off:
-        # FamilyProfile.hide_profile(request.user, "toggle_off")
-        profile_obj.hidden = False
-   
-    return HttpResponseRedirect(reverse('toggle-profile', args=[str(pk)]))
-    # return HttpResponseRedirect(reverse('family-profile', args=[str(request.user.id)]))
+    profile_hidden = False
+    if profile_page.hidden.filter(id=request.user.id).exists():
+        profile_page.hidden.remove(request.user)
+        profile_hidden = False
+    else:
+        profile_page.hidden.add(request.user)
+        profile_hidden = True
+
+    return HttpResponseRedirect(reverse('family-profile', args=[str(pk)]))
 
 
 class EditProfilePageView(generic.UpdateView):
@@ -129,20 +150,6 @@ class EditProfilePageView(generic.UpdateView):
     def get_success_url(self):
         return reverse_lazy('family-profile', kwargs={'pk': self.object.pk})
 
-
-# def unhide_family_profile(request, *args, **kwargs):
-#     """Users who click the "Ready To Connect" button on their family
-#     profile will toggle the hide_profile status to False.
-#     """
-#     context = {}
-
-#     if request.method == "POST":
-#         turn_hide_off = request.POST.get('turn_hide_off', None)
-
-#         if turn_hide_off:
-#             FamilyProfile.hide_profile("toggle_off")
-
-#     return HttpResponseRedirect(reverse('family-profile'))
 
 # class FamilyMemberListView(ListView):
 #     model = settings.AUTH_USER_MODEL

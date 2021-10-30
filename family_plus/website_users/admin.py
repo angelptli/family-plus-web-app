@@ -13,7 +13,6 @@ class CustomProfileAdmin(UserAdmin):
         'id',
         'user',
         'has_setup',
-        'hidden',
         'family_name',
         'profile_image',
         'family_bio',

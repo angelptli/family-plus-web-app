@@ -2,11 +2,11 @@
 {% load static %}
 
 {% block title %}
-{% if page_user.hidden != True %}
-{{ page_user.family_name|title }} Family | Family+
-{% else %}
-Page Not Found | Family+
-{% endif %}
+  {% if page_user.hidden != True %}
+    {{ page_user.family_name|title }} Family | Family+
+  {% else %}
+    Page Not Found | Family+
+  {% endif %}
 {% endblock %}
 
 {% block content %}
@@ -14,8 +14,6 @@ Page Not Found | Family+
 <body style="background-color: #f0f2f5;">
   <section>
     {% if user.is_authenticated %}
-      {{ user.familyprofile.hidden }}
-      {{ user.pk }}
       <div class="container-fluid">
         <div class="row">
           <!-- Only show the Edit Profile button and Hide Profile toggle button
@@ -28,16 +26,16 @@ Page Not Found | Family+
             </div>
 
             <div class="col-md-2 offset-md-6">
-              <form action="{% url 'toggle-profile' user.familyprofile.id %}" method="POST">{% csrf_token %}
-              {% if user.familyprofile.hidden == False %}
-                <button type="submit", name="toggle_hide_on", id="id_toggle_on", value={{ user.familyprofile.id }}, class="btn btn-secondary">
-                  Hide Profile
-                </button>
-              {% else %}
-                <button type="submit", name="toggle_hide_off", id="id_toggle_off", value={{ user.familyprofile.id }}, class="btn btn-primary">
-                  Ready to Connect
-                </button>
-              {% endif %}
+              <form action="{% url 'toggle-profile' user.familyprofile.pk %}" method="POST">{% csrf_token %}
+                {% if profile_hidden %}
+                  <button type="submit", name="profile_id", value="{{ user.familyprofile.id }}" class="btn btn-primary">
+                    Ready to Connect
+                  </button>
+                {% else %}
+                  <button type="submit", name="profile_id", value="{{ user.familyprofile.id }}" class="btn btn-secondary">
+                    Hide Profile
+                  </button>
+                {% endif %}
               </form>
             </div>
           {% endif %}
@@ -45,8 +43,10 @@ Page Not Found | Family+
       </div>
 
       <!-- Display alternative info if the family profile is hidden -->
-      {% if page_user.hidden %}
-        {% include 'family_profile/hidden-profile.html' %}
+      {% if user.familyprofile.id != page_user.id %}
+        {% if view_hidden %}
+          {% include 'results/no-results.html' %}
+        {% endif %}
       {% else %}
         <!-- Display family profile -->
         <div class="card mb-3">

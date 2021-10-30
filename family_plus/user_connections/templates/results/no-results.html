@@ -2,22 +2,27 @@
 
 <!-- Generic No Results page when a results query set is empty. -->
 <!-- This file does not need a body tag. -->
-<center>
-  
-  <!--  -->
-  <div>
-    <a href="" data-toggle="tooltip" title="Illustrator's instagram @swirlycake_">
-      <img src="{% static '/website/images/error_images/error_boy.png' %}" width=300px height=300px>
-    </a>
-  </div>
+<section style="padding:80px">
+  <center>
+    
+    <div>
+      <a href="" data-toggle="tooltip" title="Illustrator's instagram @swirlycake_">
+        <img src="{% static '/website/images/error_images/error_boy.png' %}" width=300px height=300px>
+      </a>
+    </div>
+    
+    <h3>No Results</h3>
 
-  <h3>No Results</h3>
+    Make sure everything is spelled correctly or try different<br>
+    keywords.
 
-  Make sure everything is spelled correctly or try different<br>
-  keywords.<br><br>
-
-  <a href="{% url 'search-page' %}">Go Back</a>
-</center>
+    <!-- Credit: https://stackoverflow.com/questions/524992/django-templates-create-a-back-link
+    A button that goes to the previous page, using js to access history. -->
+    <div class="container" style="margin-top: 30px">
+    <input type=button value="Go Back" class="btn btn-secondary" onClick="javascript:history.go(-1);">
+    </div>
+  </center>
+</section>
 
 <script>
   $(document).ready(function(){
