@@ -120,6 +120,15 @@ class FamilyProfilePageView(DetailView):
         return context
 
 
+class EditProfilePageView(generic.UpdateView):
+    model = FamilyProfile
+    form_class = ProfilePageForm
+    template_name = 'family_profile/edit-family-profile.html'
+
+    def get_success_url(self):
+        return reverse_lazy('family-profile', kwargs={'pk': self.object.pk})
+
+
 def toggle_hide_profile(request, pk):
     """Users can click a button on their family profile to toggle the
     visibility of their profile to other  will toggle the hide_profile status to True.
@@ -142,13 +151,11 @@ def toggle_hide_profile(request, pk):
     return HttpResponseRedirect(reverse('family-profile', args=[str(pk)]))
 
 
-class EditProfilePageView(generic.UpdateView):
-    model = FamilyProfile
-    form_class = ProfilePageForm
-    template_name = 'family_profile/edit-family-profile.html'
-
-    def get_success_url(self):
-        return reverse_lazy('family-profile', kwargs={'pk': self.object.pk})
+def no_profile_view(request, *args, **kwargs):
+    """Return a profile not found view when visiting a user who has not
+    set up a family profile.
+    """
+    return render(request, 'family_profile/no-profile.html')
 
 
 # class FamilyMemberListView(ListView):

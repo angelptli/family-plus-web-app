@@ -38,6 +38,13 @@
                 {% if forloop.counter0 != 0 and forloop.counter0|divisibleby:2 == 0 %}
                   <div class="w-100"></div>
                 {% endif %}
+              {% else %}
+                <!-- Users who haven't set up a family profile will have a default picture
+                and link to a Profile Not Found page. -->
+                <a href="{% url 'profile-not-found' %}">
+                  <img src="{% static 'website/images/default_profile_img/default2.jpg' %}" class="card-img rounded-circle">
+                </a>
+                <h5>Family profile not set up</h5><br>
               {% endif %}
           {% endfor %}
           </div>

@@ -172,3 +172,4 @@ def search_username_view(request, *args, **kwargs):
     context['search_results'] = search_results
 
     return render(request, "results/search-username.html", context)
+

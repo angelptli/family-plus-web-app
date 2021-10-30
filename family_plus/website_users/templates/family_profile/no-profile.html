@@ -1,4 +1,12 @@
+{% extends 'footer_header/base.html' %}
 {% load static %}
+
+{% block title %}
+  Profile Not Set Up | Family+
+{% endblock %}
+
+{% block content %}
+
 <!-- Eventually will only show the family profile pic and name, but that
      requires customizing the family profile first. -->
 <body>
@@ -6,7 +14,7 @@
     <center>
       <div>
         <p>
-          Oops, the {{ page_user.family_name|title }} Family is not ready to connect.<br>
+          Oops, this user has not set up a family profile.<br>
           Come back later to check...
         </p>
         <a href="javascript:history.back()">Go Back</a>
@@ -14,3 +22,6 @@
     </center>
   </section>
 </body>
+
+
+{% endblock %}

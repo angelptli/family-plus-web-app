@@ -24,7 +24,8 @@ from .views import (
     EditProfilePageView,
     CreateProfileView,
     password_success,
-    toggle_hide_profile
+    toggle_hide_profile,
+    no_profile_view,
 )
 
 urlpatterns = [
@@ -38,4 +39,5 @@ urlpatterns = [
     path('create_profile/', CreateProfileView.as_view(), name='create-profile'),
     path('create_profile/', CreateProfileView.as_view(), name='create-profile'),
     path('toggle/<int:pk>', toggle_hide_profile, name='toggle-profile'),
+    path('profile_not_found/', no_profile_view, name="profile-not-found"),
 ]
