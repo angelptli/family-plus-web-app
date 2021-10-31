@@ -19,9 +19,11 @@
         </li>
       </ul>
 
-      <!-- Display family profile picture and family name. Users who haven't set up a
+      <!--
+      Display family profile picture and family name. Users who haven't set up a
       family profile will have a prompt to set up a family profile instead. Users who
-      didn't upload a profile picture will have a default one. -->
+      didn't upload a profile picture will have a default one.
+      -->
       {% if user.is_authenticated %}
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
@@ -32,7 +34,7 @@
               </a>
             {% elif user.familyprofile.id and user.familyprofile.profile_image == "" %}
               <a class="nav-link" href="{% url 'family-profile' user.familyprofile.id %}">
-                <img src="{% static 'website/images/default_profile_img/default1.jpg' %}" class="rounded-circle" alt="" width="45" height="45">
+                <img src="{% static 'website/images/default_profile_img/plain_default2.jpg' %}" class="rounded-circle" alt="" width="45" height="45">
                 Hi {{ user.familyprofile.family_name|title }} Family
               </a>
             {% else %}
@@ -68,10 +70,19 @@
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
       <ul class="navbar-nav me-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="" style="color: rgba(255, 255, 255, 0.9); font-size: 20px;">About</a>
+          <a class="nav-link" href="{% url 'home' %}" style="color: rgba(255, 255, 255, 0.9); font-size: 20px;">
+            Home
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="" style="color: rgba(255, 255, 255, 0.9); font-size: 20px;">
+            About
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" style="color: rgba(255, 255, 255, 0.9); font-size: 20px;">FAQ</a>
+          <a class="nav-link" href="#" style="color: rgba(255, 255, 255, 0.9); font-size: 20px;">
+            FAQ
+          </a>
         </li>
       </ul>
     </div>
