@@ -7,51 +7,68 @@ Search | Family+
 {% block content %}
 
 <body style="background-color: #f0f2f5;">
-  <section>
-    <center>
-      <div class="container">
-        <br><br>
-        <h1>Search for New Connections!</h1>
-        <br>
-
-      </div>
-
-      <h2>More Options...</h2>
-
-      <div>
-        Search by family name
-        <form class="search-bar mt-sm-2 mr-2" method=GET action="{% url 'search-family' %}">
-          <div class="input-group">
-            <input class="form-control me-2" type="text" placeholder="E.g. enter 'pizza' to search 'pizza family'"
-              aria-label="Search" name="familynameq" id="id_familynameq">
-
-            <button type="submit" class="btn btn-outline-secondary"><span class="bi-search"></span></button>
+  {% if user.is_authenticated %}
+    <section style="padding: 50px">
+      <div class="container-fluid">
+        <center>
+          <div class="container-fluid" style="padding: 50px; font-size: 30px;">
+            Search for New Connections
           </div>
-        </form>
-      </div>
+        </center>
 
-      <div>
-        Search by username
-
-        <form class="search-bar mt-sm-2 mr-2" method=GET action="{% url 'search-username' %}">
-          <div class="input-group">
-            <input class="form-control me-2" type="text" placeholder="E.g. 'chip_munk123''" aria-label="Search"
-              aria-label="Search" name="usernameq" id="id_usernameq">
-
-            <button type="submit" class="btn btn-outline-secondary"><span class="bi-search"></span></button>
+        <div class="row">
+          <div class="col-md-6" style="padding-right: 50px; padding-left: 50px;">
+            <form class="search-bar mt-sm-2 mr-2" method=GET action="{% url 'search-family' %}">
+              <div class="input-group">
+                <input class="form-control me-2" type="text" placeholder="Enter a family name"
+                  aria-label="Search" name="familynameq" id="id_familynameq">
+                <button type="submit" class="btn btn-outline-secondary">
+                  <span class="bi-search"></span>
+                </button>
+              </div>
+            </form>
           </div>
-        </form>
-      </div>
 
-    </center>
-  </section>
+          <div class="col-md-6" style="padding-right: 50px; padding-left: 50px;">
+            <form class="search-bar mt-sm-2 mr-2" method=GET action="{% url 'search-username' %}">
+              <div class="input-group">
+                <input class="form-control me-2" type="text" placeholder="Enter a username" aria-label="Search"
+                  aria-label="Search" name="usernameq" id="id_usernameq">
+                <button type="submit" class="btn btn-outline-secondary">
+                  <span class="bi-search"></span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <small class="form-text text-muted" style="padding-right: 50px; padding-left: 50px;">
+              Example: Type 'pizza' to search for the Pizza Family
+            </small>
+          </div>
+          <div class="col-md-6">
+            <small class="form-text text-muted" style="padding-right: 50px; padding-left: 50px;">
+              Example: chip_munk123
+            </small>
+          </div>
+        </div>
+      </div>
+    </section>
+  {% else %}
+    <section>
+      <!-- Require logged in account to see use search page -->
+      <div class="container" style="padding: 290px">
+        You must be logged in to visit this page.
+      </div>
+    </section>
+  {% endif %}
 
   <!-- Credit for javascript magic: https://www.youtube.com/watch?v=YlMxfqcw77s -->
   <script type="text/javascript">
     document.getElementById("id_familynameq").value = "{{ query }}"
     document.getElementById("id_usernameq").value = "{{ query }}"
   </script>
-
 
 </body>
 {% endblock %}

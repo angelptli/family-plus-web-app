@@ -6,30 +6,47 @@
 
 {% block content %}
 <body style="background-color: #f0f2f5;">
+  
   {% if user.is_authenticated %}
     {% if user.id == familyprofile.user.id %}
-      <h1>Edit Family Profile</h1>
-      <br/><br/>
+      <section style="padding: 100px">
+        <h1>Edit Family Profile</h1>
+        <br/><br/>
 
-      <div class="form-group">
-        <form method="POST" enctype="multipart/form-data">
-          {% csrf_token %}
-          {{ form.as_p }}
-          <button class="btn btn-primary">
-            Update
-          </button>
-          <a href="{% url 'family-profile' user.familyprofile.id %}" class="btn btn-secondary">
-            Cancel
-          </a><br/><br/>
-        </form>
-      </div>
-
+        <div class="form-group">
+          <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-primary">
+              Update
+            </button>
+            <a href="{% url 'family-profile' user.familyprofile.id %}" class="btn btn-secondary">
+              Cancel
+            </a><br/><br/>
+          </form>
+        </div>
+      </section>
     {% else %}
-      You are not the correct user to edit this page
+      <section>
+        <center>
+          <!-- Require the correct user to access this view -->
+          <div class="container-fluid" style="padding: 290px">
+            You are not the correct user to edit this page
+          </div>
+        </center>
+      </section>
     {% endif %}
 
   {% else %}
-    You must be logged in to edit settings
+    <section>
+      <center>
+        <!-- Require logged in account to edit own family profile -->
+        <div class="container-fluid" style="padding: 290px">
+          You must be logged in to visit this page.
+        </div>
+      </center>
+    </section>
   {% endif %}
+   
 </body>
 {% endblock %}

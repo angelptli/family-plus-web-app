@@ -1,3 +1,4 @@
+from django.core.exceptions import PermissionDenied
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.views import generic
@@ -5,6 +6,7 @@ from django.views.generic import CreateView, DetailView, ListView, UpdateView
 from django.urls import reverse_lazy, reverse
 # from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import AccountSettingsForm, RegisterForm, PasswordChangingForm
 from .forms import ProfilePageForm
 from .models import FamilyProfile
@@ -28,7 +30,7 @@ class UserRegisterView(generic.CreateView):
     success_url = reverse_lazy('login')
 
 
-class AccountSettingsView(generic.UpdateView):
+class AccountSettingsView(LoginRequiredMixin, generic.UpdateView):
 
     """Create edit profile view for users to edit the info on their profile
     page. The success_url redirects the user to their profile page after a
@@ -43,13 +45,14 @@ class AccountSettingsView(generic.UpdateView):
     form_class = AccountSettingsForm
     template_name = 'registration/account-settings.html'
     success_url = reverse_lazy('home')
+    raise_exception = True  # 403 Forbidden view when not logged in
 
     def get_object(self):
         """Prefill the text boxes with already saved info on the user."""
-        return self.request.user
+        return self.request.user      
 
 
-class PasswordsChangeView(PasswordChangeView):
+class PasswordsChangeView(LoginRequiredMixin, PasswordChangeView):
 
     """Allow user to change password and redirect to password changed
     success page.
@@ -58,6 +61,7 @@ class PasswordsChangeView(PasswordChangeView):
     # form_class = PasswordChangeForm
     form_class = PasswordChangingForm
     success_url = reverse_lazy('password-success')
+    raise_exception = True  # 403 Forbidden view when not logged in
 
 
 def password_success(request):
