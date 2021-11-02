@@ -1,0 +1,20 @@
+/* Navbar shadow */
+.navbar {
+  -webkit-box-shadow: 0 8px 6px -5px #999;
+  -moz-box-shadow: 0 8px 6px -5px #999;
+  box-shadow: 0 8px 6px -5px #999;
+}
+
+/* First sticky navbar */
+.sticky1 {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+}
+
+/* Second sticky navbar underneath */
+.sticky2 {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 100px;
+}
