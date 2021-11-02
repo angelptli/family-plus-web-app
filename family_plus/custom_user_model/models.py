@@ -2,25 +2,25 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 
-class Country(models.Model):
+# class Country(models.Model):
     
-    """Contains the names of countries that users can select."""
+#     """Contains the names of countries that users can select."""
 
-    name = models.CharField(max_length=30)
+#     name = models.CharField(max_length=30)
 
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
 
 
-class City(models.Model):
+# class City(models.Model):
     
-    """Contains the names of countries that users can select."""
+#     """Contains the names of countries that users can select."""
 
-    country = models.ForeignKey(Country, on_delete=models.CASCADE)
-    name = models.CharField(max_length=30)
+#     country = models.ForeignKey(Country, on_delete=models.CASCADE)
+#     name = models.CharField(max_length=30)
 
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
 
 
 # User model, user manager, and function below credits and inspired by
@@ -103,8 +103,8 @@ class CustomUserModel(AbstractBaseUser):
     family_relation_status = models.CharField(max_length=20,
         choices=FAMILY_RELATION_STATUS,
         default="Parent")
-    country = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
-    city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True)
+    # country = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
+    # city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True)
 
     # Apply the user manager to the custom model
     objects = MyUserManager()

@@ -41,29 +41,25 @@ class ConnectionsList(models.Model):
         if other_user in self.connections.all():
             self.connections.remove(other_user)
 
-    # def cut_ties(self, removee):
-    #     """[summary]
+    def disconnect(self, removee):
+        """Initiate the action of disconnecting with another user."""
+        # User removing the removee
+        receiver_connection_list = self
 
-    #     :param removee: [description]
-    #     :type removee: [type]
-    #     """
-    #     # User removing the removee
-    #     connection_remover = self
+        # Remove the removee from the remover's connection list
+        receiver_connection_list.remove_connection(removee)
 
-    #     # Remove the removee from the remover's connection list
-    #     connection_list_remover = remove_connection(removee)
+        # Remove the remover from the removee's connection list
+        connection_list = ConnectionsList.objects.get(user=removee)
+        connection_list.remove_connection(self.user)
 
-    #     # Remove the remover from the removee's connection list
-    #     connection_list = ConnectionsList.objects.get(user=removee)
-    #     connection_list.remove_connection(self.user)
-
-    # def is_mutual_connection(self, connection):
-    #     """Checks if the connection is mutual and both users are
-    #     in each other's connection list.
-    #     """
-    #     if connection in self.connections.all():
-    #         return True
-    #     return False
+    def is_mutual_connection(self, connection):
+        """Checks if the connection is mutual and both users are
+        in each other's connection list.
+        """
+        if connection in self.connections.all():
+            return True
+        return False
 
 
 class ConnectRequest(models.Model):
@@ -95,33 +91,31 @@ class ConnectRequest(models.Model):
         """Display the sender's username to the receiver."""
         return self.sender.username
 
-    def accept_request(self):
+    def accept(self):
         """Accept a connect request and update both sender and receiver
         connection lists.
         """
-        connection_list_receiver = ConnectionsList.objects.get(user=self.receiver)
+        receiver_connection_list = ConnectionsList.objects.get(user=self.receiver)
 
-        if connection_list_receiver:
-            connection_list_receiver.add_connection(self.sender)
-            connection_list_sender = ConnectionsList.objects.get(user=self.sender)
+        if receiver_connection_list:
+            receiver_connection_list.add_connection(self.sender)
+            sender_connection_list = ConnectionsList.objects.get(user=self.sender)
 
-            if connection_list_sender:
-                connection_list_sender.add_connections(self.receiver)
+            if sender_connection_list:
+                sender_connection_list.add_connections(self.receiver)
                 self.is_active = False
                 self.save()
 
-    def decline_request(self):
-        """Decline a connect request.
-        
-        Set is_active to False for a declined connect request.
+    def decline(self):
+        """Decline a connect request by setting is_active to False for a
+        declined connect request.
         """
         self.is_active = False
         self.save()
 
-    def cancel_request(self):
-        """Cancel a connect request.
-        
-        Set is_active to False when a user cancels their connect request.
+    def cancel(self):
+        """Cancel a connect request by setting setting is_active to False
+        when a user cancels their connect request.
         """
         self.is_active = False
         self.save()
