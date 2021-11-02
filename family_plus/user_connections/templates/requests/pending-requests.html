@@ -1,7 +1,7 @@
 {% extends 'footer_header/base.html' %}
 
 {% block title %}
-  Welcome | Family+
+  Requests | Family+
 {% endblock %}
 
 {% block content %}
@@ -10,12 +10,10 @@
   <section style="background-color: #f0f2f5; height: 100vh; padding: 280px;">
     <center>
       <div class="container-fluid">
-        <h4>Welcome Page Creation In Progress...</h4>
+        <h4>Requests Page Creation In Progress...</h4>
       </div>
       <div class="container-fluid" style="padding-top: 30px;">
-        <a href="{% url 'home' %}" class="btn btn-secondary">
-          Home
-        </a>
+        <input type=button value="Go Back" class="btn btn-secondary" onClick="javascript:history.go(-1);">
       </div>
     </center>
   </section>

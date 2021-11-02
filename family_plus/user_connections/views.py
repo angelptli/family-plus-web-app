@@ -173,3 +173,7 @@ def search_username_view(request, *args, **kwargs):
 
     return render(request, "results/search-username.html", context)
 
+
+def pending_requests_view(request, *args, **kwargs):
+    """Pending requests page view."""
+    return render(request, 'requests/pending-requests.html', {})

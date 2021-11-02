@@ -9,3 +9,13 @@ def welcome(request):
 def home(request):
     """Render requests for home page."""
     return render(request, 'home_page/home.html', {})
+
+
+def about_view(request, *args, **kwargs):
+    """Pending requests page view."""
+    return render(request, 'general_info/about.html', {})
+
+
+def faq_view(request, *args, **kwargs):
+    """Pending requests page view."""
+    return render(request, 'general_info/faq.html', {})
