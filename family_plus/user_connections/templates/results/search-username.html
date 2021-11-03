@@ -34,6 +34,32 @@
                       </a>
                     {% endif %}
                     <h4>{{ family.familyprofile.family_name|title }} Family</h4><br>
+
+                    <!-- Display connection statuses, possible actions, and link to family profiles -->
+                    {% if user.familyprofile.user in family.familyprofile.pending_requests.all %}
+                      <button type="button" class="btn btn-warning" disabled>
+                        Request Sent
+                      </button>
+                      <a class="btn btn-secondary" href="{% url 'family-profile' family.familyprofile.id %}">
+                        Visit Family Profile
+                      </a>
+                    {% elif user.familyprofile.user in family.familyprofile.connections.all %}
+                      <button type="button" class="btn btn-success" disabled>
+                        Connection
+                      </button>
+                      <a class="btn btn-secondary" href="{% url 'family-profile' family.familyprofile.id %}">
+                        Visit Family Profile
+                      </a>
+                    {% else %}
+                      <!--
+                      Only provide link to family profile. There is no connect button
+                      displayed here to help prevent spamming connect requests
+                      -->
+                      <a class="btn btn-secondary" href="{% url 'family-profile' family.familyprofile.id %}">
+                        View to Connect
+                      </a>
+                    {% endif %}
+
                   </div>
                   {% if forloop.counter0 != 0 and forloop.counter0|divisibleby:2 == 0 %}
                     <div class="w-100"></div>

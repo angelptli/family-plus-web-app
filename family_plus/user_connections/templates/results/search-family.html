@@ -38,12 +38,31 @@
                   <!-- Display family nickname -->
                   <h4>{{ family.family_name|title }} Family</h4><br>
 
-                  <!-- Display ready to connect -->
-                  {% if family.family_name %}
-
+                  <!-- Display connection statuses, possible actions, and link to family profiles -->
+                  {% if user in family.pending_requests.all %}
+                    <button type="button" class="btn btn-warning" disabled>
+                      Request Sent
+                    </button>
+                    <a class="btn btn-secondary" href="{% url 'family-profile' family.id %}">
+                      Visit Family Profile
+                    </a>
+                  {% elif user in family.connections.all %}
+                    <button type="button" class="btn btn-success" disabled>
+                      Connection
+                    </button>
+                    <a class="btn btn-secondary" href="{% url 'family-profile' family.id %}">
+                      Visit Family Profile
+                    </a>
                   {% else %}
-                    
+                    <!--
+                    Only provide link to family profile. There is no connect button
+                    displayed here to help prevent spamming connect requests
+                    -->
+                    <a class="btn btn-secondary" href="{% url 'family-profile' family.id %}">
+                      View to Connect
+                    </a>
                   {% endif %}
+
                 </div>
                 {% if forloop.counter0 != 0 and forloop.counter0|divisibleby:2 == 0 %}
                   <div class="w-100"></div>

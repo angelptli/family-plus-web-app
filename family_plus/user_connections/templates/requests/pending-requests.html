@@ -19,7 +19,40 @@
           You have {{ total_pending }} pending request.
         {% else %}
           You have {{ total_pending }} pending requests.
-        {% endif %}       
+        {% endif %}
+
+        <!--
+        <div class="container-fluid" style="padding: 20px">
+          <div class="row">
+            <div class="col-md-3 offset-md-1">
+            </div>
+
+            <div class="col-md-2 offset-md-6">
+              <form action="{#% url 'accept-request' page_user.pk %}" method="POST">{% csrf_token %}
+                <button type="submit", name="profile_id_4", value="{{ page_user.id }}" class="btn btn-primary">
+                  Accept Connection
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="container-fluid" style="padding: 20px">
+          <div class="row">
+            <div class="col-md-3 offset-md-1">
+            </div>
+
+            <div class="col-md-2 offset-md-6">
+              <form action="{#% url 'decline-request' page_user.pk %}" method="POST">{% csrf_token %}
+                <button type="submit", name="profile_id_5", value="{{ page_user.id }}" class="btn btn-danger">
+                  Decline
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      -->
 
       </div>
       <div class="container-fluid" style="padding-top: 30px;">

@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http.response import HttpResponseRedirect
 from django.urls import reverse
@@ -133,31 +133,31 @@ def cancel_request(request, pk):
     return HttpResponseRedirect(reverse('family-profile', args=[str(pk)]))
 
 
-# def accept_request(request, pk):
-#     """Add accepted user to the connections list of the accepter user
-#     and remove the accepted user from the pending list.
-#     """
-#     profile_page = get_object_or_404(FamilyProfile, id=request.POST.get('profile_id_4'))
-#     profile_page.pending_requests.remove(request.user)
-#     profile_page.connections.add(request.user)
+def accept_request(request, pk):
+    """Add accepted user to the connections list of the accepter user
+    and remove the accepted user from the pending list.
+    """
+    profile_page = get_object_or_404(FamilyProfile, id=request.POST.get('profile_id_4'))
+    profile_page.pending_requests.remove(request.user)
+    profile_page.connections.add(request.user)
 
-#     return HttpResponseRedirect(reverse('pending-requests', args=[str(pk)]))
-
-
-# def decline_request(request, pk):
-#     """Remove the sender from the receiver's pending list when the
-#     receiver declines the request.
-#     """
-#     profile_page = get_object_or_404(FamilyProfile, id=request.POST.get('profile_id_5'))
-#     profile_page.pending_requests.remove(request.user)
-
-#     return HttpResponseRedirect(reverse('pending-requests', args=[str(pk)]))
+    return HttpResponseRedirect(reverse('pending-requests', args=[str(pk)]))
 
 
-# def delete_connection(request, pk):
-#     """Remove a user from a connections list when user deletes a connection."""
-#     profile_page = get_object_or_404(FamilyProfile, id=request.POST.get('profile_id_6'))
+def decline_request(request, pk):
+    """Remove the sender from the receiver's pending list when the
+    receiver declines the request.
+    """
+    profile_page = get_object_or_404(FamilyProfile, id=request.POST.get('profile_id_5'))
+    profile_page.pending_requests.remove(request.user)
 
-#     request.user.pending_requests.remove(profile_page)
+    return HttpResponseRedirect(reverse('pending-requests', args=[str(pk)]))
 
-#     return HttpResponseRedirect(reverse('family-profile', args=[str(pk)]))
+
+def delete_connection(request, pk):
+    """Remove a user from a connections list when user deletes a connection."""
+    profile_page = get_object_or_404(FamilyProfile, id=request.POST.get('profile_id_6'))
+
+    request.user.pending_requests.remove(profile_page)
+
+    return HttpResponseRedirect(reverse('family-profile', args=[str(pk)]))
