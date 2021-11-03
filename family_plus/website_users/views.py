@@ -125,7 +125,6 @@ class FamilyProfilePageView(DetailView):
         context["is_hidden"] = is_hidden
         context['profile_hidden'] = profile_hidden
         context['view_hidden'] = view_hidden
-        context['total_pending'] = total_pending
 
         return context
 
