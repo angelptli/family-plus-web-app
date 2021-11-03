@@ -30,7 +30,7 @@
                       </a> 
                     {% else %}
                       <a href="{% url 'family-profile' family.familyprofile.id %}">
-                        <img src="{% static 'website/images/default_profile_img/default3.jpg' %}" class="card-img rounded-circle">
+                        <img src="{% static 'website/images/default_profile_img/plain_default3.jpg' %}" class="card-img rounded-circle">
                       </a>
                     {% endif %}
                     <h4>{{ family.familyprofile.family_name|title }} Family</h4><br>
