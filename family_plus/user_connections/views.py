@@ -95,10 +95,14 @@ def search_username_view(request, *args, **kwargs):
 
 
 def pending_requests_view(request, *args, **kwargs):
-    """Display the requests and total number of requests of user that
-    are pending on their response (accept/decline).
+    """Display the user's received requests and the total number of received
+    requests that are pending.
     """
     context = {}
+    
+    received_requests = request.user.familyprofile.pending_requests.all
+    context['received_requests'] = received_requests
+
     # A user's total number of requests they have received and are
     # still pending for their response
     total_pending = request.user.familyprofile.total_pending()
@@ -138,10 +142,11 @@ def accept_request(request, pk):
     and remove the accepted user from the pending list.
     """
     profile_page = get_object_or_404(FamilyProfile, id=request.POST.get('profile_id_4'))
-    profile_page.pending_requests.remove(request.user)
-    profile_page.connections.add(request.user)
 
-    return HttpResponseRedirect(reverse('pending-requests', args=[str(pk)]))
+    request.user.familyprofile.pending_requests.remove(profile_page.user)
+    request.user.familyprofile.connections.add(profile_page.user)
+
+    return HttpResponseRedirect(reverse('pending-requests'))
 
 
 def decline_request(request, pk):
@@ -151,13 +156,14 @@ def decline_request(request, pk):
     profile_page = get_object_or_404(FamilyProfile, id=request.POST.get('profile_id_5'))
     profile_page.pending_requests.remove(request.user)
 
-    return HttpResponseRedirect(reverse('pending-requests', args=[str(pk)]))
+    return HttpResponseRedirect(reverse('pending-requests'))
+
 
 
 def delete_connection(request, pk):
     """Remove a user from a connections list when user deletes a connection."""
+    context = {}
     profile_page = get_object_or_404(FamilyProfile, id=request.POST.get('profile_id_6'))
-
     request.user.pending_requests.remove(profile_page)
 
-    return HttpResponseRedirect(reverse('family-profile', args=[str(pk)]))
+    return render(request, "family_profile/family-profile.html", context)
