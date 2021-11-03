@@ -16,8 +16,8 @@
       {% if user.is_authenticated %}
         <div class="container-fluid" style="padding: 20px">
           <div class="row">
-            <!-- Only show the Edit Profile button and Hide Profile toggle button
-            on user's own family profile. -->
+
+            <!-- Functions available only to the user -->
             {% if user.familyprofile.id == page_user.id %}
               <div class="col-md-3 offset-md-1">
                 <a href=" {% url 'edit-family-profile' user.familyprofile.id %}" class="btn btn-secondary">
@@ -234,6 +234,12 @@
           You must be logged in to visit this page
         </div>
       {% endif %}
+
+        {% if user.is_authenticated and user.familyprofile.id == page_user.id %}
+          <!-- Connections Model Popup Box -->
+          {% include 'family_profile/connections-list.html' %}
+        {% endif %}
+
   </section>
 </body>
 {% endblock %}

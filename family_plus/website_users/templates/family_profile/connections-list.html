@@ -1,0 +1,54 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-lg" data-bs-toggle="modal" data-bs-target="#ConnectionsListModal"
+  style="position: fixed; bottom: 0px; right: 30px; background-color: #1095ad; color: rgba(255, 255, 255, 0.9); font-size: 18px; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;">
+  <i class="bi bi-people"></i>
+  Connections List
+</button>
+
+<!-- ConnectionsList Modal -->
+<div class="modal fade" id="ConnectionsListModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content" style="border: 0">
+      <div class="modal-header" style="background-color: #1095ad;">
+        <div class="modal-title w-100 text-center" id="exampleModalLabel">
+          <div class="container-fluid" style="font-size: 27px; font-weight: 500; color: rgba(255, 255, 255, 0.9);">
+            Connections
+          </div>
+        </div>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" style="opacity: 0.9;">
+        </button>
+      </div>
+      <div class="modal-body" style="height:700px;">
+        List connections and their contact info here
+      </div>
+      <div class="modal-footer">
+        <div style="color: dimgrey;">
+          {% if total_connections == 1 %}
+            1 Connection
+          {% else %}
+            {{ total_connections }} Connections
+          {% endif %}
+        </div>
+        <button class="btn btn-outline-secondary" data-bs-target="#EditConnectionsListModal" data-bs-toggle="modal">Edit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Connections List Modal -->
+<div class="modal fade" id="EditConnectionsListModal" aria-hidden="true" aria-labelledby="EditConnectionsListModalLabel" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title w-100 text-center" id="EditConnectionsListModal">Edit Connections List</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" style="height:700px;">
+        This is where users can delete, block, and report their connections.
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline-secondary" data-bs-target="#ConnectionsListModal" data-bs-toggle="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
