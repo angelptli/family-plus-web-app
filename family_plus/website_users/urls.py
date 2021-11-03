@@ -16,7 +16,7 @@ Including another URLconf
 # from django.contrib.auth import views as auth_views
 # from django.contrib.auth.forms import UserChangeForm
 from django.urls import path
-from user_connections.views import send_request_view
+from user_connections.views import send_request_view, cancel_request
 from .views import (
     AccountSettingsView,
     UserRegisterView,
@@ -41,4 +41,5 @@ urlpatterns = [
     path('toggle/<int:pk>', toggle_hide_profile, name='toggle-profile'),
     path('profile_not_found/', no_profile_view, name='profile-not-found'),
     path('send_request/<int:pk>', send_request_view, name='send-request'),
+    path('cancel_request/<int:pk>', cancel_request, name='cancel-request'),
 ]

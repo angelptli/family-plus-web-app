@@ -12,14 +12,15 @@
       <div class="container-fluid">
         <h4>Requests Page Creation In Progress...</h4>
           
-          <!-- Total number of pending requests waiting for the user's response -->
-          {% if total_pending == 0 %}
-            No pending requests.
-          {% elif total_pending == 1 %}
-            You have {{ total_pending }} pending request.
-          {% else %}
-            You have {{ total_pending }} pending requests.
-          {% endif %}
+        <!-- Total number of pending requests waiting for the user's response -->
+        {% if total_pending == 0 %}
+          No pending requests.
+        {% elif total_pending == 1 %}
+          You have {{ total_pending }} pending request.
+        {% else %}
+          You have {{ total_pending }} pending requests.
+        {% endif %}       
+
       </div>
       <div class="container-fluid" style="padding-top: 30px;">
         <input type=button value="Go Back" class="btn btn-secondary" onClick="javascript:history.go(-1);">

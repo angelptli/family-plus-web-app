@@ -113,6 +113,51 @@ def send_request_view(request, pk):
     """
     profile_page = get_object_or_404(FamilyProfile, id=request.POST.get('profile_id_2'))
     profile_page.pending_requests.add(request.user)
+    request_sent = False
 
+    # If user is already in the other user's pending list, the cancel button
+    # will displayed instead of the connect button
+    if profile_page.pending_requests.filter(id=request.user.id).exists():
+        request_sent = True
 
     return HttpResponseRedirect(reverse('family-profile', args=[str(pk)]))
+
+
+def cancel_request(request, pk):
+    """Remove the sender from the receiver's pending list when the
+    sender cancels the request.
+    """
+    profile_page = get_object_or_404(FamilyProfile, id=request.POST.get('profile_id_3'))
+    profile_page.pending_requests.remove(request.user)
+
+    return HttpResponseRedirect(reverse('family-profile', args=[str(pk)]))
+
+
+# def accept_request(request, pk):
+#     """Add accepted user to the connections list of the accepter user
+#     and remove the accepted user from the pending list.
+#     """
+#     profile_page = get_object_or_404(FamilyProfile, id=request.POST.get('profile_id_4'))
+#     profile_page.pending_requests.remove(request.user)
+#     profile_page.connections.add(request.user)
+
+#     return HttpResponseRedirect(reverse('pending-requests', args=[str(pk)]))
+
+
+# def decline_request(request, pk):
+#     """Remove the sender from the receiver's pending list when the
+#     receiver declines the request.
+#     """
+#     profile_page = get_object_or_404(FamilyProfile, id=request.POST.get('profile_id_5'))
+#     profile_page.pending_requests.remove(request.user)
+
+#     return HttpResponseRedirect(reverse('pending-requests', args=[str(pk)]))
+
+
+# def delete_connection(request, pk):
+#     """Remove a user from a connections list when user deletes a connection."""
+#     profile_page = get_object_or_404(FamilyProfile, id=request.POST.get('profile_id_6'))
+
+#     request.user.pending_requests.remove(profile_page)
+
+#     return HttpResponseRedirect(reverse('family-profile', args=[str(pk)]))

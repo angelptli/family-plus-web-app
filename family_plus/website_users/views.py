@@ -118,13 +118,18 @@ class FamilyProfilePageView(DetailView):
         if FamilyProfile.objects.filter(hidden__username=page_user).exists():
             view_hidden = True
 
-        
+        # Determine whether the user is already on the other user's
+        # pending list
+        request_sent = False
+        if profile_page.pending_requests.filter(id=self.request.user.id).exists():
+            request_sent = True
 
         # Add the variables to the context dictionary
         context["page_user"] = page_user
         context["is_hidden"] = is_hidden
         context['profile_hidden'] = profile_hidden
         context['view_hidden'] = view_hidden
+        context['request_sent'] = request_sent
 
         return context
 
