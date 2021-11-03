@@ -40,3 +40,8 @@ class FamilyProfile(models.Model):
         """Return the status of the profile visibility. 1 for hidden and
         0 for not hidden."""
         return self.hidden.count()
+
+    def total_pending(self):
+        """Keep count of each user's received requests that are still
+        pending for an action response."""
+        return self.pending_requests.count()

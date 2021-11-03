@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http.response import HttpResponseRedirect
 from django.urls import reverse
+from website_users.models import FamilyProfile
 
 # Import filter functions
 from .queryset_filters import (
@@ -94,12 +95,24 @@ def search_username_view(request, *args, **kwargs):
 
 
 def pending_requests_view(request, *args, **kwargs):
-    """Pending requests page view."""
-    return render(request, 'requests/pending-requests.html', {})
+    """Display the requests and total number of requests of user that
+    are pending on their response (accept/decline).
+    """
+    context = {}
+    # A user's total number of requests they have received and are
+    # still pending for their response
+    total_pending = request.user.familyprofile.total_pending()
+    context['total_pending'] = total_pending
+
+    return render(request, 'requests/pending-requests.html', context)
 
 
-# def send_request_view(request, pk):
-#     """Add sender to receiver's pending list when sender sends a request
-#     to connect.
-#     """
-#     return HttpResponseRedirect(reverse('family-profile', args=[str(pk)]))
+def send_request_view(request, pk):
+    """Add sender to receiver's pending list when sender sends a request
+    to connect.
+    """
+    profile_page = get_object_or_404(FamilyProfile, id=request.POST.get('profile_id_2'))
+    profile_page.pending_requests.add(request.user)
+
+
+    return HttpResponseRedirect(reverse('family-profile', args=[str(pk)]))

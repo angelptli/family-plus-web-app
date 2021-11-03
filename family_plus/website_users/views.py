@@ -118,11 +118,14 @@ class FamilyProfilePageView(DetailView):
         if FamilyProfile.objects.filter(hidden__username=page_user).exists():
             view_hidden = True
 
+        
+
         # Add the variables to the context dictionary
         context["page_user"] = page_user
         context["is_hidden"] = is_hidden
         context['profile_hidden'] = profile_hidden
         context['view_hidden'] = view_hidden
+        context['total_pending'] = total_pending
 
         return context
 
