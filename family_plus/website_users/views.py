@@ -1,16 +1,16 @@
-from django.core.exceptions import PermissionDenied
-from django.http.response import HttpResponse, HttpResponseRedirect
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
-from django.views import generic
-from django.views.generic import CreateView, DetailView, ListView, UpdateView
 from django.urls import reverse_lazy, reverse
-# from django.contrib.auth.forms import PasswordChangeForm
+
+# Imports relating to views and forms
+from django.views import generic
+from django.views.generic import CreateView, DetailView
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import AccountSettingsForm, RegisterForm, PasswordChangingForm
 from .forms import ProfilePageForm
 from .models import FamilyProfile
-from django.conf import settings
+from custom_user_model.models import CustomUserModel
 
 
 class UserRegisterView(generic.CreateView):
@@ -89,25 +89,27 @@ class FamilyProfilePageView(DetailView):
     
     """This view displays the family profiles of users."""
 
-    # Credit: https://www.youtube.com/watch?v=dwgIi8dspa4
+    # Inspired by: https://www.youtube.com/watch?v=dwgIi8dspa4
     # Learned how to create a profile page view.
 
     model = FamilyProfile
     template_name = 'family_profile/family-profile.html'
 
     def get_context_data(self, *args, **kwargs):
-        """Add to the context dictionary the family profile id of the
-        profile being visited, the hidden status of the profile number,
-        and a toggler variable `hidden`.
+        """Define the different states of family profiles to determine
+        the different displays for different user connections. 
         """
+        # Add to the context dictionary the family profile id of the
+        # profile being visited
         page_user = get_object_or_404(FamilyProfile, id=self.kwargs['pk'])
         context = super(FamilyProfilePageView, self).get_context_data(*args, **kwargs)
-        
-        # Website statistics of how many families are not ready to connect
+
+        # Status of 1 for hidden family profile, 0 elsewise
         profile_page = get_object_or_404(FamilyProfile, id=self.kwargs['pk'])
         is_hidden = profile_page.profile_hidden()  # 1 for hidden, 0 elsewise
 
-        profile_hidden = False  # toggler
+        # Toggler for hide family profile button
+        profile_hidden = False
         if profile_page.hidden.filter(id=self.request.user.id).exists():
             profile_hidden = True
 
@@ -116,6 +118,7 @@ class FamilyProfilePageView(DetailView):
         if FamilyProfile.objects.filter(hidden__username=page_user).exists():
             view_hidden = True
 
+        # Add the variables to the context dictionary
         context["page_user"] = page_user
         context["is_hidden"] = is_hidden
         context['profile_hidden'] = profile_hidden
@@ -160,18 +163,3 @@ def no_profile_view(request, *args, **kwargs):
     set up a family profile.
     """
     return render(request, 'family_profile/no-profile.html')
-
-
-# class FamilyMemberListView(ListView):
-#     model = settings.AUTH_USER_MODEL
-#     context_object_name = "family_members"
-
-
-# class FamilyMemberCreateView(CreateView):
-#     model = settings.AUTH_USER_MODEL
-#     fields = ('username', 'birthdate', 'country', 'city')
-
-
-# class FamilyMemberUpdateView(UpdateView):
-#     model = settings.AUTH_USER_MODEL
-#     context_object_name = "family_members"

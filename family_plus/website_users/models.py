@@ -5,21 +5,23 @@ from django.urls import reverse
 
 
 class FamilyProfile(models.Model):
-    user           = models.OneToOneField(settings.AUTH_USER_MODEL, null=True,
+    user             = models.OneToOneField(settings.AUTH_USER_MODEL, null=True,
                                           on_delete=models.CASCADE)
-    family_name    = models.TextField(max_length=30, null=False, blank=False)
-    profile_image  = models.ImageField(max_length=255, null=True, blank=True,
+    family_name      = models.TextField(max_length=30, null=False, blank=False)
+    profile_image    = models.ImageField(max_length=255, null=True, blank=True,
                                        upload_to=get_profile_image_filepath)
-    family_bio     = models.TextField(null=True, blank=True)
-    contact_info   = models.TextField(null=True, blank=True)
-    hobbies        = models.TextField(null=True, blank=True)
-    interests      = models.TextField(null=True, blank=True)
-    locations      = models.TextField(null=True, blank=True)
-    schedule       = models.TextField(null=True, blank=True)
-    languages      = models.TextField(null=True, blank=True)
-    family_members = models.TextField(null=True, blank=True)
-    has_setup      = models.BooleanField(default=False)
-    hidden         = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="toggled_profiles")
+    family_bio       = models.TextField(null=True, blank=True)
+    contact_info     = models.TextField(null=True, blank=True)
+    hobbies          = models.TextField(null=True, blank=True)
+    interests        = models.TextField(null=True, blank=True)
+    locations        = models.TextField(null=True, blank=True)
+    schedule         = models.TextField(null=True, blank=True)
+    languages        = models.TextField(null=True, blank=True)
+    family_members   = models.TextField(null=True, blank=True)
+    has_setup        = models.BooleanField(default=False)
+    hidden           = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="toggled_profiles")
+    pending_requests = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="requests_pending")
+    connections      = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="connections")
 
     def __str__(self):
         """Label users by their username."""

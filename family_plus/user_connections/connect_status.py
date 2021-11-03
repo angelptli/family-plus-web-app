@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class ConnectStatus(Enum):
+class ConnectRequestStatus(Enum):
     """Three states for connect status."""
     NO_REQUEST_SENT = -1
     THEM_SENT_TO_YOU = 0
