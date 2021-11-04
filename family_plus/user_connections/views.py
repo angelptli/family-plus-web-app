@@ -117,12 +117,6 @@ def send_request_view(request, pk):
     """
     profile_page = get_object_or_404(FamilyProfile, id=request.POST.get('profile_id_2'))
     profile_page.pending_requests.add(request.user)
-    request_sent = False
-
-    # If user is already in the other user's pending list, the cancel button
-    # will displayed instead of the connect button
-    if profile_page.pending_requests.filter(id=request.user.id).exists():
-        request_sent = True
 
     return HttpResponseRedirect(reverse('family-profile', args=[str(pk)]))
 
@@ -161,14 +155,12 @@ def decline_request(request, pk):
     return HttpResponseRedirect(reverse('pending-requests'))
 
 
-
 def delete_connection(request, pk):
     """Remove users from each other's connections list when one user
     deletes the other user from their list.
     """
-    context = {}
-    profile_page = get_object_or_404(FamilyProfile, id=request.POST.get('profile_id_6'))
+    profile_page = get_object_or_404(FamilyProfile, id=request.POST.get('profile_id_6'))    
     request.user.familyprofile.connections.remove(profile_page.user)
-    profile_page.familyprofile.connectinos.remove(request.user)
+    profile_page.connections.remove(request.user)
 
-    return render(request, "family_profile/family-profile.html", context)
+    return HttpResponseRedirect(reverse('family-profile', args=[str(request.user.familyprofile.id)]))

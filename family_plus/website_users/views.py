@@ -118,9 +118,6 @@ class FamilyProfilePageView(DetailView):
         if FamilyProfile.objects.filter(hidden__username=page_user).exists():
             view_hidden = True
 
-        # Determine whether the user is already on the other user's
-        # pending list
-
         # Add the variables to the context dictionary
         context["page_user"] = page_user
         context["is_hidden"] = is_hidden
