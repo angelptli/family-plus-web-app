@@ -123,8 +123,33 @@
           {% if view_hidden %}
             {% include 'family_profile/hidden-profile.html' %}
           {% else %}
+
+            <!-- Connect button, Cancel Request button, and Connection status -->
+            {% if user in page_user.pending_requests.all %}
+            <div class="col-md-2 offset-md-6">
+              <form action="{% url 'cancel-request' page_user.pk %}" method="POST">{% csrf_token %}
+                <button type="submit", name="profile_id_3", value="{{ page_user.id }}" class="btn btn-outline-danger">
+                  Cancel Request
+                </button>
+              </form>
+            </div>
+          {% elif user in page_user.connections.all %}
+            <button type="button" class="btn btn-success">
+              Connection
+            </button>
+          {% else %}
+            <div class="col-md-2 offset-md-6">
+              <form action="{% url 'send-request' page_user.pk %}" method="POST">{% csrf_token %}
+                <button type="submit", name="profile_id_2", value="{{ page_user.id }}" class="btn btn-primary">
+                  Connect
+                </button>
+              </form>
+            </div>
+          {% endif %}
+          <!-- End of Connect button, Cancel Request button, and Connection status -->
+
             <!-- Display family profile -->
-            <div class="card mb-3">
+            <div class="card mb-3" style="z-index: -1;">
               <div class="row g-0">
                 <div class="col-md-2">
                   <!-- Family profile image -->
@@ -157,7 +182,7 @@
                     {% else %}
 
                       {% if page_user.user.family_name %}
-                        The {{ page_user.user.family_name }} Family has not filled out this info.
+                        The {{ page_user.user.family_name|title }} Family has not filled out this info.
                       {% else %}
                         This family has not filled out this info.
                       {% endif %}
@@ -194,30 +219,6 @@
                     {{ page_user.family_members }}
                     <br><br>
                     </p>
-
-                    <!-- Connect button, Cancel Request button, and Connection status -->
-                    {% if user in page_user.pending_requests.all %}
-                      <div class="col-md-2 offset-md-6">
-                        <form action="{% url 'cancel-request' page_user.pk %}" method="POST">{% csrf_token %}
-                          <button type="submit", name="profile_id_3", value="{{ page_user.id }}" class="btn btn-outline-danger">
-                            Cancel Request
-                          </button>
-                        </form>
-                      </div>
-                    {% elif user in page_user.connections.all %}
-                      <button type="button" class="btn btn-success">
-                        Connection
-                      </button>
-                    {% else %}
-                      <div class="col-md-2 offset-md-6">
-                        <form action="{% url 'send-request' page_user.pk %}" method="POST">{% csrf_token %}
-                          <button type="submit", name="profile_id_2", value="{{ page_user.id }}" class="btn btn-primary">
-                            Connect
-                          </button>
-                        </form>
-                      </div>
-                    {% endif %}
-                    <!-- End of Connect button, Cancel Request button, and Connection status -->
 
                   </div>
                 </div>
