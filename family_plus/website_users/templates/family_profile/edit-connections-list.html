@@ -1,26 +1,14 @@
 {% load static %}
+{% include '' %}
 
-<style>
-  .overflow-auto:hover {
-    background-color: rgba(24, 42, 124, 0.103);
-  }
-</style>
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-lg" data-bs-toggle="modal" data-bs-target="#ConnectionsListModal"
-  style="position: fixed; bottom: 0px; right: 30px; background-color: #1095ad; color: rgba(255, 255, 255, 0.9); font-size: 18px; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;">
-  <i class="bi bi-people"></i>
-  Connections List
-</button>
-
-<!-- ConnectionsList Modal -->
-<div class="modal fade" id="ConnectionsListModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Second Modal for editing user's Connections List -->
+<div class="modal fade" id="EditConnectionsListModal" tabindex="-1" role="dialog" aria-labelledby="EditConnectionsListModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content" style="border: 0; border-radius: 15px;">
       <div class="modal-header" style="background-color: #1095ad;">
-        <div class="modal-title w-100" id="exampleModalLabel">
+        <div class="modal-title w-100" id="EditConnectionsListModalLabel">
           <div class="container-fluid" style="font-size: 27px; font-weight: 500; color: rgba(255, 255, 255, 0.9);">
-            Connections
+            Edit Connections List
           </div>
         </div>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" style="opacity: 0.9;">
@@ -30,23 +18,30 @@
 
         <!-- Display user's total number of connections -->
         <div class="container-fluid" style="height: 60px; text-align: center; vertical-align: middle; line-height: 40px; color: rgb(119, 119, 119); font-weight: 500;">
-          Connections: {{ user.familyprofile.user.connections.all.count }}
+          Click the Connection to Delete
         </div>
 
         <!-- Display card for each connection -->
         {% for connection in user.familyprofile.user.connections.all %}
           <div class="container-fluid" style=" padding-bottom: 5px; padding-right: 5px; padding-left: 20px;">
             <div class="card mb-3 shadow p-2" style="border: 0; border-radius: 25px;">
+              <div class="card-img-overlay" style="border: 0; border-radius: 25px; background-color: rgba(0, 0, 0, 0.76); text-align: center;">
+                <div class="container-fluid" style="color: rgba(255, 255, 255, 0.9); padding: 30px;">
+                  Click confirm to delete this connection
+                </div>
+                <div class="container-fluid" style="padding: 10px;">
+                  <button type="button" class="btn btn-danger">Confirm Delete</button>
+                </div>
+                <div class="container-fluid">
+                  <button type="button" class="btn btn-light">Cancel</button>
+                </div>
+              </div>
               <div class="row g-0">
                 <div class="col-md-4"style=" padding: 10px;">
                   {% if connection.profile_image %}
-                    <a href="{% url 'family-profile' connection.id %}">
-                      <img src="{{ connection.profile_image.url }}" class="img-fluid" style="min-height: 200px; border-radius: 25px;">
-                    </a>
+                    <img src="{{ connection.profile_image.url }}" class="img-fluid" style="min-height: 200px; border-radius: 25px;">
                   {% else %}
-                    <a href="{% url 'family-profile' connection.id %}">
-                      <img src="{% static 'website/images/default_profile_img/plain_default3.jpg' %}" class="img-fluid" style="min-height: 200px; border-radius: 25px;">
-                    </a>
+                    <img src="{% static 'website/images/default_profile_img/plain_default3.jpg' %}" class="img-fluid" style="min-height: 200px; border-radius: 25px;">
                   {% endif %}
                 </div>
                 <div class="col-md-8" style="border: 0; padding-left: 20px; padding-right: 20px; padding-top: 10px;">
@@ -72,17 +67,14 @@
             </div>
           </div>
         {% endfor %}
-
       </div>
+
       <div class="modal-footer" style="background-color: #dddddd;">
-        <!-- Edit button switches to second modal -->
-        <button class="btn btn-outline-secondary" data-bs-target="#EditConnectionsListModal" data-bs-toggle="modal" style="border-color: rgba(7, 19, 71, 0.288); color: rgba(7, 19, 71, 0.555);">
-          Edit
+        <!-- The Back button brings user back to first modal -->
+        <button class="btn btn-outline-secondary" data-bs-target="#ConnectionsListModal" data-bs-toggle="modal" style="border-color: rgba(7, 19, 71, 0.288); color: rgba(7, 19, 71, 0.555);">
+          Back
         </button>
       </div>
     </div>
   </div>
 </div>
-
-<!-- Second Modal for editing user's Connections List -->
-{% include 'family_profile/edit-connections-list.html' %}
