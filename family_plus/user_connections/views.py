@@ -138,13 +138,15 @@ def cancel_request(request, pk):
 
 
 def accept_request(request, pk):
-    """Add accepted user to the connections list of the accepter user
-    and remove the accepted user from the pending list.
+    """Add users to each other's connecions list when one user accepts
+    the other user's connect request and remove the sender from the receiver's
+    pending list.
     """
     profile_page = get_object_or_404(FamilyProfile, id=request.POST.get('profile_id_4'))
 
     request.user.familyprofile.pending_requests.remove(profile_page.user)
     request.user.familyprofile.connections.add(profile_page.user)
+    profile_page.connections.add(request.user)
 
     return HttpResponseRedirect(reverse('pending-requests'))
 
@@ -154,16 +156,19 @@ def decline_request(request, pk):
     receiver declines the request.
     """
     profile_page = get_object_or_404(FamilyProfile, id=request.POST.get('profile_id_5'))
-    profile_page.pending_requests.remove(request.user)
+    request.user.familyprofile.pending_requests.remove(profile_page.user)
 
     return HttpResponseRedirect(reverse('pending-requests'))
 
 
 
 def delete_connection(request, pk):
-    """Remove a user from a connections list when user deletes a connection."""
+    """Remove users from each other's connections list when one user
+    deletes the other user from their list.
+    """
     context = {}
     profile_page = get_object_or_404(FamilyProfile, id=request.POST.get('profile_id_6'))
-    request.user.pending_requests.remove(profile_page)
+    request.user.familyprofile.connections.remove(profile_page.user)
+    profile_page.familyprofile.connectinos.remove(request.user)
 
     return render(request, "family_profile/family-profile.html", context)

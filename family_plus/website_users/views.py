@@ -120,23 +120,12 @@ class FamilyProfilePageView(DetailView):
 
         # Determine whether the user is already on the other user's
         # pending list
-        request_sent = False
-        if profile_page.pending_requests.filter(id=self.request.user.id).exists():
-            request_sent = True
-
-        # Get the total number of connections of the user
-        total_connections = 0
-        user_profile = FamilyProfile.objects.get(id=self.request.user.id)
-
-        total_connections = user_profile.connections.all().count()
 
         # Add the variables to the context dictionary
         context["page_user"] = page_user
         context["is_hidden"] = is_hidden
         context['profile_hidden'] = profile_hidden
         context['view_hidden'] = view_hidden
-        context['request_sent'] = request_sent
-        context['total_connections'] = total_connections
 
         return context
 

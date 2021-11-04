@@ -195,32 +195,29 @@
                     <br><br>
                     </p>
 
-                    <!-- Connect and Cancel Buttons -->
-                    <div class="container-fluid" style="padding: 20px">
-                      <div class="row">
-                        <div class="col-md-3 offset-md-1">
-                          <!-- No Button Here Yet -->
-                        </div>
-                        {% if request_sent %}
-                          <div class="col-md-2 offset-md-6">
-                            <form action="{% url 'cancel-request' page_user.pk %}" method="POST">{% csrf_token %}
-                              <button type="submit", name="profile_id_3", value="{{ page_user.id }}" class="btn btn-warning">
-                                Cancel
-                              </button>
-                            </form>
-                          </div>
-                        {% else %}
-                          <div class="col-md-2 offset-md-6">
-                            <form action="{% url 'send-request' page_user.pk %}" method="POST">{% csrf_token %}
-                              <button type="submit", name="profile_id_2", value="{{ page_user.id }}" class="btn btn-primary">
-                                Connect
-                              </button>
-                            </form>
-                          </div>
-                        {% endif %}
+                    <!-- Connect button, Cancel Request button, and Connection status -->
+                    {% if user in page_user.pending_requests.all %}
+                      <div class="col-md-2 offset-md-6">
+                        <form action="{% url 'cancel-request' page_user.pk %}" method="POST">{% csrf_token %}
+                          <button type="submit", name="profile_id_3", value="{{ page_user.id }}" class="btn btn-outline-danger">
+                            Cancel Request
+                          </button>
+                        </form>
                       </div>
-                    </div>
-                    <!-- End of Connect and Cancel Buttons -->
+                    {% elif user in page_user.connections.all %}
+                      <button type="button" class="btn btn-success">
+                        Connection
+                      </button>
+                    {% else %}
+                      <div class="col-md-2 offset-md-6">
+                        <form action="{% url 'send-request' page_user.pk %}" method="POST">{% csrf_token %}
+                          <button type="submit", name="profile_id_2", value="{{ page_user.id }}" class="btn btn-primary">
+                            Connect
+                          </button>
+                        </form>
+                      </div>
+                    {% endif %}
+                    <!-- End of Connect button, Cancel Request button, and Connection status -->
 
                   </div>
                 </div>
