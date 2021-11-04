@@ -12,7 +12,7 @@
 {% block content %}
 
 <body style="background-color: #f0f2f5;">
-  <section style="padding: 50px">
+  <section style="padding: 50px;">
       {% if user.is_authenticated %}
         <div class="container-fluid" style="padding: 20px">
           <div class="row">
@@ -40,7 +40,7 @@
               </div>
 
               <!-- Display family profile -->
-              <div class="card mb-3">
+              <div class="card mb-3" style="z-index: -1;">
                 <div class="row g-0">
                   <div class="col-md-2">
                     <!-- Family profile image -->
