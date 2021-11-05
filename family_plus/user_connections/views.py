@@ -121,7 +121,7 @@ def send_request_view(request, pk):
     return HttpResponseRedirect(reverse('family-profile', args=[str(pk)]))
 
 
-def cancel_request(request, pk):
+def cancel_request_view(request, pk):
     """Remove the sender from the receiver's pending list when the
     sender cancels the request.
     """
@@ -131,7 +131,7 @@ def cancel_request(request, pk):
     return HttpResponseRedirect(reverse('family-profile', args=[str(pk)]))
 
 
-def accept_request(request, pk):
+def accept_request_view(request, pk):
     """Add users to each other's connecions list when one user accepts
     the other user's connect request and remove the sender from the receiver's
     pending list.
@@ -145,7 +145,7 @@ def accept_request(request, pk):
     return HttpResponseRedirect(reverse('pending-requests'))
 
 
-def decline_request(request, pk):
+def decline_request_view(request, pk):
     """Remove the sender from the receiver's pending list when the
     receiver declines the request.
     """
@@ -155,7 +155,7 @@ def decline_request(request, pk):
     return HttpResponseRedirect(reverse('pending-requests'))
 
 
-def delete_connection(request, pk):
+def delete_connection_view(request, pk):
     """Remove users from each other's connections list when one user
     deletes the other user from their list.
     """

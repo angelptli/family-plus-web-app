@@ -21,7 +21,7 @@ $ pip install pillow
 
 Place your SECRET_KEY and DEBUG values (without the quotation marks and whitespace) in the **.env** file. The **.env** should be placed in the same directory as manage.py. See [.env.example](family_plus/.env.example).
 
-**In the directory that has manage.py, make migrations and mirgrate the
+**In the directory that has manage.py, make migrations and migrate the
 Django models to create the website's SQLite databases:**
 ```
 $ python manage.py makemigrations

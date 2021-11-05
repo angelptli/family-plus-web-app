@@ -1,0 +1,93 @@
+{% load static %}
+
+<!-- Style for navbars -->
+<link rel="stylesheet" type="text/css" href="{% static 'website/css/navbar/navbar.css' %}">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top border-bottom border-1" id="navbar1" style="position: fixed; border-color: rgb(170, 170, 170); font-size: 17px;">
+  <div class="container-fluid" style="width: 95%;">
+    <a class="navbar-brand active" href="{% url 'home' %}" style="font-size: 25px">
+      Family+
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'about' %}">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'faq' %}">FAQ</a>
+        </li>
+      </ul>
+
+      {% if user.is_authenticated %}
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <!-- Search Page Link -->
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'search-page' %}">
+              <i class="bi bi-search" style="vertical-align: top;"></i>
+              Search
+            </a> 
+          </li>
+          <!-- Connection Request Page Link -->
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'pending-requests' %}">
+              <i class="bi bi-people-fill" style="vertical-align: top;"></i>
+              Requests
+            </a>
+          </li>
+          <!-- Notification Bell Dropdown Box -->
+          <li class="nav-item">
+            <a class="nav-link active" href="">
+              <i class="bi bi-bell-fill" style="vertical-align: top;"></i>
+              Notifications
+            </a>
+          </li>
+          <li class="nav-item dropdown dropdown-toggle-split">
+            <a class="nav-link active dropdown-toggle" id="navbarScrollingDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              {% if user.familyprofile.id and user.familyprofile.profile_image %}
+                <img src="{{ user.familyprofile.profile_image.url }}" class="rounded-circle" width="30" height="30" style="vertical-align: top;">
+                {{ user.familyprofile.family_name|title }} Family
+              {% elif user.familyprofile.id and user.familyprofile.profile_image == "" %}
+                <img src="{% static 'website/images/default_profile_img/plain_default2.jpg' %}" class="rounded-circle" width="30" height="30" style="vertical-align: top;">
+                {{ user.familyprofile.family_name|title }} Family
+              {% else %}
+                <img src="{% static 'website/images/default_profile_img/plain_default2.jpg' %}" class="rounded-circle" width="30" height="30" style="vertical-align: top;">
+                (Set Up A Family Nickname)
+              {% endif %}
+            </a>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+
+              <!-- Link to Profile page if profile is already set up
+                   Else link to Profile (Set Up) page. -->
+                {% if user.familyprofile.id %}
+                  <a class="dropdown-item" href="{% url 'family-profile' user.familyprofile.id %}">Family Profile</a>
+                {% else %}
+                  <a class="dropdown-item" href="{% url 'create-profile' %}">Family Profile (Set up)</a>
+                {% endif %}
+
+                <!-- Link to Settings page and logout button shown for all logged in users. -->
+                <a class="dropdown-item" href="{% url 'account-settings' %}">Settings</a>
+                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+            </div>
+          </li>
+        </ul>
+
+      {% else %}
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active active" aria-current="page" href="{% url 'register' %}">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active active" href="{% url 'login' %}">Login</a>
+          </li>
+        </ul>
+      {% endif %}
+    </div>
+  </div>
+</nav>

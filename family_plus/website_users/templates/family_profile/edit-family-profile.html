@@ -1,4 +1,4 @@
-{% extends 'footer_header/base.html' %}
+{% extends 'header_footer/base.html' %}
 
 {% block title %}
   Edit Family Profile | Family+
@@ -9,7 +9,7 @@
   
   {% if user.is_authenticated %}
     {% if user.id == familyprofile.user.id %}
-      <section style="padding: 100px">
+      <section style="padding-top: 70px; min-height: 2000px;">
         <h1>Edit Family Profile</h1>
         <br/><br/>
 

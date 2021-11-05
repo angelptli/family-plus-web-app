@@ -1,4 +1,4 @@
-{% extends 'footer_header/base.html' %}
+{% extends 'header_footer/base.html' %}
 
 <!-- Page title -->
 {% block title %}
@@ -12,7 +12,7 @@
 <!-- Django form -->
 
 <body style="background-color: #f0f2f5;">
-  <section>
+  <section style="padding-top: 70px; min-height: 2000px;">
     {% if user.is_authenticated %}
       <div class="container-fluid" style="padding: 50px">
         <div>

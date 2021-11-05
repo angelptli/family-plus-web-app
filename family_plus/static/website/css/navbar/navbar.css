@@ -1,8 +1,8 @@
-/* Navbar shadow */
-.navbar {
-  -webkit-box-shadow: 0 8px 6px -5px #999;
-  -moz-box-shadow: 0 8px 6px -5px #999;
-  box-shadow: 0 8px 6px -5px #999;
+/* Navbar */
+
+/* Navbar hover color */
+.navbar-light:hover {
+  background-color: #3aa9b8 !important;
 }
 
 /* First sticky navbar */
@@ -13,8 +13,8 @@
 }
 
 /* Second sticky navbar underneath */
-.sticky2 {
+/* .sticky2 {
 	position: -webkit-sticky;
 	position: sticky;
 	top: 100px;
-}
+} */

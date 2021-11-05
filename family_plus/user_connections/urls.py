@@ -19,9 +19,9 @@ from .views import (
     search_family_view,
     search_username_view,
     pending_requests_view,
-    accept_request,
-    decline_request,
-    delete_connection,
+    accept_request_view,
+    decline_request_view,
+    delete_connection_view,
 )
 
 urlpatterns = [
@@ -29,7 +29,7 @@ urlpatterns = [
     path('families/search_results/', search_family_view, name="search-family"),
     path('users/search_results/', search_username_view, name="search-username"),
     path('requests/', pending_requests_view, name="pending-requests"),
-    path('accept_request/<int:pk>', accept_request, name='accept-request'),
-    path('decline_request/<int:pk>', decline_request, name='decline-request'),
-    path('delete_connection/<int:pk>', delete_connection, name='delete-connection'),
+    path('accept_request/<int:pk>', accept_request_view, name='accept-request'),
+    path('decline_request/<int:pk>', decline_request_view, name='decline-request'),
+    path('delete_connection/<int:pk>', delete_connection_view, name='delete-connection'),
 ]
