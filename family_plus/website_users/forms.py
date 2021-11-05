@@ -108,21 +108,12 @@ class ProfilePageForm(forms.ModelForm):
 
     class Meta:
         model = FamilyProfile
-        fields = ('family_name', 'family_bio', 'contact_info', 'hobbies',
-                  'interests', 'locations', 'schedule', 'languages',
-                  'family_members', 'profile_image')
+        fields = ('family_name', 'family_bio', 'contact_info', 'profile_image')
 
         # Apply bootstrap styling (form-control) to the text boxes of
         # these fields
         widgets = {
             'family_name': forms.TextInput(attrs={'class': 'form-control'}),
             'family_bio': forms.Textarea(attrs={'class': 'form-control'}),
-            'contact_info': forms.Textarea(attrs={'class': 'form-control'}),
-            'hobbies': forms.Textarea(attrs={'class': 'form-control'}),
-            'interests': forms.Textarea(attrs={'class': 'form-control'}),
-            'locations': forms.Textarea(attrs={'class': 'form-control'}),
-            'schedule': forms.Textarea(attrs={'class': 'form-control'}),
-            'languages': forms.Textarea(attrs={'class': 'form-control'}),
-            'family_members': forms.Textarea(attrs={'class': 'form-control'}),
-            # 'profile_image': forms.ImageField(attrs={'class': 'form-control'}),
+            'contact_info': forms.TextInput(attrs={'class': 'form-control'}),
         }

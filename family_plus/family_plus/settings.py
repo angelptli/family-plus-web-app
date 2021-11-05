@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'website',
     'website_users',
     'user_connections',
+    'languages',
 
     'django.contrib.admin',
     'django.contrib.auth',

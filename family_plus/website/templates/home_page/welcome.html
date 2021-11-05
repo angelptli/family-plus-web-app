@@ -1,4 +1,5 @@
 {% extends 'footer_header/base.html' %}
+{% load verbose_names %}
 
 {% block title %}
   Welcome | Family+
@@ -16,9 +17,44 @@
         <a href="{% url 'home' %}" class="btn btn-secondary">
           Home
         </a>
+
+        <!-- List of verbose language field names -->
+        <!-- {% for language in lang_vlist %}
+          {{ language }}<br>
+        {% endfor %} -->
+
+        <div class="col-md-2 offset-md-6">
+          <form action="{% url 'welcome' %}" method="POST">{% csrf_token %}
+            <label for="id_selected_languages">
+              Select languages that you know or are interested in
+              <select class="form-control select2 select2-hidden-accessible" data-placeholder="Select languages" multiple="false" name="selected_languages" id="id_selected_languages" style="width: 400px">
+                {% for language in lang_list %}
+                  <option value="{{ language }}">{% get_verbose_field lang_mod language %}</option>
+                {% endfor %}
+              </select>
+            </label>
+          <button class="btn btn-primary">Save Changes</button>
+          </form>
+        </div>
+
+        <script>
+          $(document).ready(function(){
+            $(".form-control").select2({
+              tags: true,
+              closeOnSelect: false
+            })
+          })
+        </script>
+
+        Selected Languages:
+        {% for language in selected_languages %}
+          {{ language }}<br>
+        {% endfor %}
+
       </div>
     </center>
   </section>
 </body>
 
 {% endblock %}
+
