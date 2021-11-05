@@ -58,14 +58,12 @@
                     </h3>
                     <p class="card-text mb-2" style="font-weight: 600; padding-left: 2px;  color: rgb(104, 104, 104);">
                       Contact Info
-                      <div class="overflow-auto" style="max-width: 450px; max-height: 100px; padding-left: 2px; padding-right: 2px; padding-top: 3px; border-radius: 5px;">
-                        <small class="text-muted">
-                          {% if connection.contact_info %}
-                            {{ connection.contact_info }}
-                          {% else %}
-                            The {{ connection.family_name|title }} Family has not filled out their contact info.
-                          {% endif %}
-                        </small>
+                      <div class="overflow-auto" style="max-width: 450px; max-height: 100px; padding-left: 2px; padding-right: 2px; padding-top: 3px; border-radius: 5px; color: grey; font-size: 16px;">
+                        {% if connection.contact_info %}
+                          {{ connection.contact_info }}
+                        {% else %}
+                          The {{ connection.family_name|title }} Family has not filled out their contact info.
+                        {% endif %}
                       </div>
                     </p>
                   </div>
