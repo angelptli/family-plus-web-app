@@ -1,22 +1,13 @@
 {% load static %}
 
-<!-- Show overlay when mouse hovers over a family profile card -->
-<style>
-  .card-img-overlay {
-    transition: .8s ease;
-    opacity: 0;
-  }
-
-  .container-fluid:hover .card-img-overlay {
-    opacity: 1;
-  }
-</style>
+<!-- CSS styling -->
+<link rel="stylesheet" type="text/css" href="{% static 'website/css/connections_list/edit_connections_list.css' %}">
 
 <!-- Second Modal for editing user's Connections List -->
 <div class="modal fade" data-backdrop="true" id="EditConnectionsListModal" tabindex="-1" role="dialog" aria-labelledby="EditConnectionsListModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content" style="border: 0; border-radius: 15px;">
-      <div class="modal-header" style="background-color: #3aa9b8;">
+      <div class="modal-header" id="edit_connections_list">
         <div class="modal-title w-100" id="EditConnectionsListModalLabel">
           <div class="container-fluid" style="font-size: 27px; font-weight: 500; color: rgba(255, 255, 255, 0.9);">
             Edit Connections List
@@ -38,17 +29,17 @@
 
         <!-- Display card for each connection -->
         {% for connection in user.familyprofile.user.connections.all %}
-          <div class="container-fluid" style=" padding-bottom: 5px; padding-right: 5px; padding-left: 20px;">
+          <div class="container-fluid" id="edit_connections" style=" padding-bottom: 5px; padding-right: 5px; padding-left: 20px;">
             <div class="card mb-3 shadow p-2" style="border: 0; border-radius: 25px;">
 
               <!-- Show overlay when card is hovered -->
-              <div class="card-img-overlay" style="border: 0; border-radius: 25px; background-color: rgba(0, 0, 0, 0.822); text-align: center;">
+              <div class="card-img-overlay" id="delete_connection">
                 <div class="container-fluid" style="color: rgba(255, 255, 255, 0.9); padding-top: 45px; padding-right: 50px; padding-left: 50px; padding-bottom: 25px; font-size: 17px;">
                   Click confirm to delete
                 </div>
                 <div class="container-fluid" style="padding-bottom: 10px; color: #e7eaed;">
                   <form action="{% url 'delete-connection' connection.pk %}" method="POST">{% csrf_token %}
-                    <button type="submit" name="profile_id_6" value="{{ connection.id }}" class="btn btn-danger">
+                    <button class="btn" type="submit" id="confirm_delete_connection" name="profile_id_6" value="{{ connection.id }}">
                       Confirm
                     </button>
                   </form>
@@ -91,7 +82,7 @@
 
       <div class="modal-footer" style="background-color: #dddddd;">
         <!-- The Back button brings user back to first modal -->
-        <button class="btn btn-outline-secondary" data-bs-target="#ConnectionsListModal" data-bs-toggle="modal" style="border-color: rgba(7, 19, 71, 0.288); color: rgba(7, 19, 71, 0.555);">
+        <button class="btn btn-outline-secondary" id="back_connections_list_btn" data-bs-target="#ConnectionsListModal" data-bs-toggle="modal">
           Back
         </button>
       </div>

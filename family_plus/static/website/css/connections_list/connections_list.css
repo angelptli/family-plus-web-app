@@ -1,0 +1,47 @@
+/* Connections list modal button in family profile */
+#connections_list_btn {
+  background: #7474BF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+  position: fixed;
+  bottom: 0px;
+  right: 30px;
+  font-size: 17px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+/* Connections list modal button hover */
+#connections_list_btn:hover {
+  filter: brightness(105%);
+}
+
+/* Connections list modal header */
+.modal-header#connections_list {
+  background: #7474BF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+}
+
+/* Contact info hover in modal */
+.overflow-auto#contact_info:hover {
+  background-color: rgba(24, 42, 124, 0.103);
+  filter: brightness(85%);
+}
+
+/* Button labeled 'Edit' that opens second modal */
+#edit_connections_list_btn {
+  border-color: #5b5bb3;
+  color: #5b5bb3d0;
+}
+
+/* Hover effect for button above */
+#edit_connections_list_btn:hover {
+  border-color: #dddddd;
+  color: #fff;
+  background: #7474BF;
+}

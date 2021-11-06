@@ -1,0 +1,56 @@
+/* Edit Connections List Modal */
+
+/* Delete connection overlay */
+.card-img-overlay#delete_connection {
+  background: #141E30;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+  border: 3px solid #eee;
+  transition: 0.5s ease;
+  opacity: 0;
+  border: 0;
+  border-radius: 25px;
+  text-align: center;
+}
+
+/* Delete connection hover */
+.container-fluid#edit_connections:hover .card-img-overlay#delete_connection {
+  opacity: 0.97;
+}
+
+/* Delete connection button */
+.btn#confirm_delete_connection {
+  background: #fc6767;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #fc6767, #fc6767);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #fc6767, #df5555); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+  border: 2px solid #fc4c4c96;
+}
+
+/* Delete connection button hover */
+.btn#confirm_delete_connection:hover {
+  filter: brightness(105%);
+}
+
+
+/* Edit connections list modal header */
+.modal-header#edit_connections_list {
+  background: #7474BF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+}
+
+/* Button labeled 'Back' that switches back to first modal */
+#back_connections_list_btn {
+  border-color: #5b5bb3;
+  color: #5b5bb3d0;
+}
+
+/* Hover effect for button above */
+#back_connections_list_btn:hover {
+  border-color: #dddddd;
+  color: #fff;
+  background: #7474BF;
+}

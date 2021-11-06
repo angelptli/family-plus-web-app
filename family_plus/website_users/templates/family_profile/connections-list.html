@@ -1,16 +1,10 @@
 {% load static %}
 
-<style>
-  .overflow-auto:hover {
-    background-color: rgba(24, 42, 124, 0.103);
-    filter: brightness(85%);
-  }
-
-</style>
+<!-- CSS styling -->
+<link rel="stylesheet" type="text/css" href="{% static 'website/css/connections_list/connections_list.css' %}">
 
 <!-- Button trigger modal -->
-<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#ConnectionsListModal"
-  style="position: fixed; bottom: 0px; right: 30px; font-size: 17px;  background-color: #3aa9b8; color: #ffffff; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;">
+<button type="button" class="btn btn-dark-blue btn-lg" id="connections_list_btn" data-bs-toggle="modal" data-bs-target="#ConnectionsListModal">
   <i class="bi bi-person-lines-fill"></i>
   Connections List
 </button>
@@ -19,7 +13,7 @@
 <div class="modal fade" id="ConnectionsListModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content" style="border: 0; border-radius: 15px;">
-      <div class="modal-header" style="background-color: #3aa9b8;">
+      <div class="modal-header" id="connections_list">
         <div class="modal-title w-100" id="exampleModalLabel">
           <div class="container-fluid" style="font-size: 27px; font-weight: 500; color: #ffffff;">
             Connections
@@ -58,7 +52,7 @@
                     </h3>
                     <p class="card-text mb-2" style="font-weight: 600; padding-left: 2px;  color: rgb(104, 104, 104);">
                       Contact Info
-                      <div class="overflow-auto" style="max-width: 450px; max-height: 100px; padding-left: 2px; padding-right: 2px; padding-top: 3px; border-radius: 5px; color: grey; font-size: 16px;">
+                      <div class="overflow-auto" id="contact_info" style="max-width: 450px; max-height: 100px; padding-left: 2px; padding-right: 2px; padding-top: 3px; border-radius: 5px; color: grey; font-size: 16px;">
                         {% if connection.contact_info %}
                           {{ connection.contact_info }}
                         {% else %}
@@ -76,7 +70,7 @@
       </div>
       <div class="modal-footer" style="background-color: #dddddd;">
         <!-- Edit button switches to second modal -->
-        <button class="btn btn-outline-secondary" data-bs-target="#EditConnectionsListModal" data-bs-toggle="modal" style="border-color: rgba(7, 19, 71, 0.288); color: rgba(7, 19, 71, 0.555);">
+        <button class="btn btn-outline-secondary" id="edit_connections_list_btn" data-bs-target="#EditConnectionsListModal" data-bs-toggle="modal">
           Edit
         </button>
       </div>

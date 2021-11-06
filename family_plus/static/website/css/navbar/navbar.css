@@ -1,20 +1,12 @@
 /* Navbar */
-
-/* Navbar hover color */
-.navbar-light:hover {
-  background-color: #3aa9b8 !important;
+#navbar1 {
+  background: #7474BF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  width: 100%;
+  /* border-bottom: 1px solid rgba(255, 255, 255, 0.397); */
+  position: fixed;
+  font-size: 17px;
 }
 
-/* First sticky navbar */
-.sticky1 {
-	position: -webkit-sticky;
-	position: sticky;
-	top: 0;
-}
 
-/* Second sticky navbar underneath */
-/* .sticky2 {
-	position: -webkit-sticky;
-	position: sticky;
-	top: 100px;
-} */
