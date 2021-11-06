@@ -11,7 +11,6 @@
 
 {% block content %}
 <body>
-  >
   <!-- CSS styling -->
   <link rel="stylesheet" type="text/css" href="{% static 'website/css/family_profile/family_profile.css' %}">
 
@@ -50,17 +49,21 @@
                   </div>
 
                   <!-- Family bio -->
-                  <div class="container-fluid" id="family_bio_container" >
-                    <div class="container-fluid" id="family_bio_title">
-                      Family bio
-                    </div>
-                    <div class="overflow-auto" id="family_bio">
-                      {% if page_user.family_bio %}
-                        {{ page_user.family_bio }}
-                      {% else %}
-                        The {{ page_user.family_name|title }} Family has not filled out their family bio.
-                      {% endif %}
-                    </div>
+                  <div class="container-fluid" id="family_bio_container">
+                    {% if view_hidden %}
+                      {% include 'family_profile/hidden-profile.html' %}
+                    {% else %}
+                      <div class="container-fluid" id="family_bio_title">
+                        Family bio
+                      </div>
+                      <div class="overflow-auto" id="family_bio">
+                        {% if page_user.family_bio %}
+                          {{ page_user.family_bio }}
+                        {% else %}
+                          The {{ page_user.family_name|title }} Family has not filled out their family bio.
+                        {% endif %}
+                      </div>
+                     {% endif %} 
                   </div>
                 </div>
               </div>
@@ -107,35 +110,31 @@
                 <!-- FEATURES ONLY AVAILABLE WHEN VISITING ANOTHER USER -->
                 <!-- Display alternative info if the family profile is hidden -->
                 {% if user.familyprofile.id != page_user.id %}
-                  {% if view_hidden %}
-                    {% include 'family_profile/hidden-profile.html' %}
-                  {% else %}
-                    <!-- Connect button, Cancel Request button, and Connection status -->
-                    <div class="container-fluid" id="profile_visitor_container">
-                      {% if user in page_user.pending_requests.all %}
-                        <form action="{% url 'cancel-request' page_user.pk %}" method="POST">{% csrf_token %}
-                          <button class="btn" type="submit" id="cancel_request_btn" name="profile_id_3" value="{{ page_user.id }}">
-                            <i class="bi bi-person-dash-fill"></i>
-                            Cancel Request
-                          </button>
-                        </form>
-                        <small class="text-muted">Your request has been sent.</small>
-                      {% elif user in page_user.connections.all %}
-                        <button class="btn" type="button" id="connection_btn">
-                          <!-- <i class="bi bi-check"></i> -->
-                          <i class="bi bi-check2"></i>
-                          Connection
+                  <!-- Connect button, Cancel Request button, and Connection status -->
+                  <div class="container-fluid" id="profile_visitor_container">
+                    {% if user in page_user.pending_requests.all %}
+                      <form action="{% url 'cancel-request' page_user.pk %}" method="POST">{% csrf_token %}
+                        <button class="btn" type="submit" id="cancel_request_btn" name="profile_id_3" value="{{ page_user.id }}">
+                          <i class="bi bi-person-dash-fill"></i>
+                          Cancel Request
                         </button>
-                      {% else %}
-                        <form action="{% url 'send-request' page_user.pk %}" method="POST">{% csrf_token %}
-                          <button class="btn" type="submit" id="connect_btn" name="profile_id_2" value="{{ page_user.id }}">
-                            <i class="bi bi-person-plus-fill"></i>
-                            Send Connect Request
-                          </button>
-                        </form>
-                      {% endif %}
-                    </div>
-                  {% endif %}
+                      </form>
+                      <small class="text-muted">Your request has been sent.</small>
+                    {% elif user in page_user.connections.all %}
+                      <button class="btn" type="button" id="connection_btn">
+                        <!-- <i class="bi bi-check"></i> -->
+                        <i class="bi bi-check2"></i>
+                        Connection
+                      </button>
+                    {% else %}
+                      <form action="{% url 'send-request' page_user.pk %}" method="POST">{% csrf_token %}
+                        <button class="btn" type="submit" id="connect_btn" name="profile_id_2" value="{{ page_user.id }}">
+                          <i class="bi bi-person-plus-fill"></i>
+                          Send Connect Request
+                        </button>
+                      </form>
+                    {% endif %}
+                  </div>
                 {% endif %}
                 <!-- END OF FEATURES ONLY AVAILABLE WHEN VISITING ANOTHER USER -->
                   
@@ -143,17 +142,27 @@
                 <div class="container-fluid" id="contact_info_container">
                   <div class="card-text mb-2">
                     <div class="container-fluid" id="contact_info_title">
-                      Contact Info
+                      {% if not view_hidden %}
+                        Contact Info
+                      {% endif %}
                     </div>
                     <div class="overflow-auto" id="contact_info_profile">
-                      {% if user in page_user.connections.all or user.familyprofile.id == page_user.id %}
-                        {% if page_user.contact_info %}
-                          {{ page_user.contact_info }}
+                      {% if not view_hidden %}
+                        {% if user in page_user.connections.all or user.familyprofile.id == page_user.id %}
+                          {% if page_user.contact_info %}
+                            {{ page_user.contact_info }}
+                          {% else %}
+                            The {{ page_user.family_name|title }} Family has not filled out their contact info.
+                          {% endif %}
                         {% else %}
-                          The {{ page_user.family_name|title }} Family has not filled out their contact info.
+                          This information is only shared with the {{ page_user.family_name|title }} Family's connections.
                         {% endif %}
                       {% else %}
-                        This information is only shared with the {{ page_user.family_name|title }} Family's connections.
+                        <center>
+                          <p id="hidden_contact_msg">
+                            Nothing to see here...
+                          </p>
+                        </center>
                       {% endif %}
                     </div>
                   </div>
@@ -169,7 +178,7 @@
 
         <!-- (1 of 2 columns - body of family profile) -->
         <!-- FAMILY MEMBERS SECTION -->
-        <!-- not started yet -->
+        
         <!-- END OF FAMILY MEMBERS SECTION -->
         
         <!-- (2 of 2 columns - body of family profile) -->

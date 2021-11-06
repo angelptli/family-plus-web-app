@@ -1,16 +1,11 @@
 {% load static %}
-<!-- Eventually will only show the family profile pic and name, but that
-     requires customizing the family profile first. -->
-<body>
-  <section style="padding-top: 70px; min-height: 2000px;">
-    <center>
-      <div>
-        <p>
-          Oops, the {{ page_user.family_name|title }} Family is not ready to connect.<br>
-          Come back later to check...
-        </p>
-        <a href="javascript:history.back()">Go Back</a>
-      </div>
-    </center>
-  </section>
-</body>
+
+<!-- CSS styling -->
+<link rel="stylesheet" type="text/css" href="{% static 'website/css/family_profile/family_profile.css' %}">
+
+<center>
+  <div class="container-fluid" id="hidden_profile_msg">
+    Oops, the {{ page_user.family_name|title }} Family is not ready to connect.<br><br>
+  </div>
+  <a href="javascript:history.back()" id="back_btn">Go Back</a>
+</center>
