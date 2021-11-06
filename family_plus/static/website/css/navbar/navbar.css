@@ -1,4 +1,4 @@
-/* Navbar */
+/* Navbar. Gradient coloring: https://bootsnipp.com/snippets/Gl29g */
 #navbar1 {
   background: #7474BF;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
@@ -9,4 +9,22 @@
   font-size: 17px;
 }
 
+/* Sign Up link in navbar */
+.nav-item .nav-link#register_link1 {
+  color: #fff;
+}
 
+/* Login link in navbar */
+.nav-item .nav-link#login_link1 {
+  color: #fff;
+}
+
+/* Navbar profile image */
+#navbar_profile_image {
+  box-shadow: 0 0 0 1px #632d6b1c;
+}
+
+/* All navbar items when hover */
+#navbar_item_hover {
+  filter: brightness(85%);
+}

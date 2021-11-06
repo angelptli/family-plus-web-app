@@ -3,24 +3,24 @@
 <!-- CSS for navbars -->
 <link rel="stylesheet" type="text/css" href="{% static 'website/css/navbar/navbar.css' %}">
 
-<nav class="navbar navbar-expand-lg fixed-top shadow-sm" id="navbar1">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm" id="navbar1">
   <div class="container-fluid" style="width: 95%;">
-    <a class="navbar-brand active" href="{% url 'home' %}" style="font-size: 25px; color: white;">
+    <a class="navbar-brand"  id="navbar_item_hover" href="{% url 'home' %}" style="font-size: 25px; color: white;">
       Family+
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" style="background-color: rgba(80, 40, 133, 0.116);" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'home' %}" style="color: #fff;">Home</a>
+          <a class="nav-link" aria-current="page" href="{% url 'home' %}" style="color: #fff;">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="{% url 'about' %}" style="color: #fff;">About</a>
+          <a class="nav-link" href="{% url 'about' %}" style="color: #fff;">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="{% url 'faq' %}" style="color: #fff;">FAQ</a>
+          <a class="nav-link" href="{% url 'faq' %}" style="color: #fff;">FAQ</a>
         </li>
       </ul>
 
@@ -28,36 +28,36 @@
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <!-- Search Page Link -->
           <li class="nav-item">
-            <a class="nav-link active" href="{% url 'search-page' %}" style="color: #fff;">
+            <a class="nav-link" href="{% url 'search-page' %}" style="color: #fff;">
               <i class="bi bi-search" style="vertical-align: top;"></i>
               Search
             </a> 
           </li>
           <!-- Connection Request Page Link -->
           <li class="nav-item">
-            <a class="nav-link active" href="{% url 'pending-requests' %}" style="color: #fff;">
+            <a class="nav-link" href="{% url 'pending-requests' %}" style="color: #fff;">
               <i class="bi bi-people-fill" style="vertical-align: top;"></i>
               Requests
             </a>
           </li>
           <!-- Notification Bell Dropdown Box -->
           <li class="nav-item">
-            <a class="nav-link active" href="" style="color: #fff;">
+            <a class="nav-link" href="" style="color: #fff;">
               <i class="bi bi-bell-fill" style="vertical-align: top;"></i>
               Notifications
             </a>
           </li>
-          <li class="nav-item dropdown dropdown-toggle-split">
-            <a class="nav-link active dropdown-toggle" id="navbarScrollingDropdown" role="button"
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" role="button"
               data-bs-toggle="dropdown" aria-expanded="false" style="color: #fff;">
               {% if user.familyprofile.id and user.familyprofile.profile_image %}
-                <img src="{{ user.familyprofile.profile_image.url }}" class="rounded-circle" width="30" height="30" style="vertical-align: top;">
+                <img src="{{ user.familyprofile.profile_image.url }}" id="navbar_profile_image" class="rounded-circle" width="30" height="30" style="vertical-align: top;">
                 {{ user.familyprofile.family_name|title }} Family
               {% elif user.familyprofile.id and user.familyprofile.profile_image == "" %}
-                <img src="{% static 'website/images/default_profile_img/plain_default2.jpg' %}" class="rounded-circle" width="30" height="30" style="vertical-align: top;">
+                <img src="{% static 'website/images/default_profile_img/plain_default2.jpg' %}" id="navbar_profile_image" class="rounded-circle" width="30" height="30" style="vertical-align: top;">
                 {{ user.familyprofile.family_name|title }} Family
               {% else %}
-                <img src="{% static 'website/images/default_profile_img/plain_default2.jpg' %}" class="rounded-circle" width="30" height="30" style="vertical-align: top;">
+                <img src="{% static 'website/images/default_profile_img/plain_default2.jpg' %}" id="navbar_profile_image" class="rounded-circle" width="30" height="30" style="vertical-align: top;">
                 (Set Up A Family Nickname)
               {% endif %}
             </a>
@@ -66,14 +66,28 @@
               <!-- Link to Profile page if profile is already set up
                    Else link to Profile (Set Up) page. -->
                 {% if user.familyprofile.id %}
-                  <a class="dropdown-item" href="{% url 'family-profile' user.familyprofile.id %}">Family Profile</a>
+                  <a class="dropdown-item" href="{% url 'family-profile' user.familyprofile.id %}">
+                    <i class="bi bi-person-circle" style="vertical-align: top;"></i>
+                    My Family Profile
+                  </a>
                 {% else %}
-                  <a class="dropdown-item" href="{% url 'create-profile' %}">Family Profile (Set up)</a>
+                  <a class="dropdown-item" href="{% url 'create-profile' %}">
+                    <i class="bi bi-person-circle" style="vertical-align: top;"></i>
+                    My Family Profile (Set up)
+                  </a>
                 {% endif %}
+                <hr class="dropdown-divider" id="visibility_divider">
 
                 <!-- Link to Settings page and logout button shown for all logged in users. -->
-                <a class="dropdown-item" href="{% url 'account-settings' %}">Settings</a>
-                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                <a class="dropdown-item" href="{% url 'account-settings' %}">
+                  <i class="bi bi-gear-fill" style="vertical-align: top;"></i>
+                  Settings
+                </a>
+                <hr class="dropdown-divider" id="visibility_divider">
+                <a class="dropdown-item" href="{% url 'logout' %}">
+                  <i class="bi bi-door-open-fill" style="vertical-align: top;"></i>
+                  Logout
+                </a>
             </div>
           </li>
         </ul>
@@ -81,10 +95,10 @@
       {% else %}
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active active" aria-current="page" href="{% url 'register' %}">Sign Up</a>
+            <a class="nav-link active active" id="register_link1" href="{% url 'register' %}">Sign Up</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active active" href="{% url 'login' %}">Login</a>
+            <a class="nav-link active active" id="login_link1" href="{% url 'login' %}">Login</a>
           </li>
         </ul>
       {% endif %}
