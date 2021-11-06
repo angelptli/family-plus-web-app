@@ -1,0 +1,277 @@
+/* Background (behind family profile) */
+#section_background {
+  /* background: #ffffff;  /* fallback for old browsers */
+  /* background: -webkit-linear-gradient(to right, #0b6f88c2, #7948b9c2);  /* Chrome 10-25, Safari 5.1-6 */
+  /* background: linear-gradient(to right, #0b6f88c2, #7948b9c2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  padding-top: 100px;
+  min-height: 2000px;
+  background-color: #f4f4f4;
+}
+
+/* Header container */
+#header_container {
+  width: 80%;
+  min-width: 470px;
+}
+
+/* Family profile image */
+#family_profile_image {
+  width: 200px;
+  height: 200px;
+  min-width: 200px;
+  min-height: 200px;
+  border-radius:50%;
+  top: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* box-shadow: -15px 5px 1px 4px #123abe83; */
+}
+
+/* Family profile image on hover */
+#family_profile_image:hover {
+  filter: brightness(95%);
+}
+
+/* Image container for family profile image */
+#img_container {
+  min-width: 300;
+  min-height: 350px;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  padding-left: 5px;
+  padding-right: 5px;
+  background: #7474BF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
+
+/* Family name and bio container */
+#name_bio_container {
+  min-width: 200px;
+  min-height: 350px;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 25px 1px #02023bb9;
+}
+
+/* Family name container (inner) */
+#family_name_container {
+  height: 40%;
+  padding-top: 18%;  /* vertical text align */
+  color: rgb(104, 104, 104);
+  padding-left: 15px;
+  padding-right: 15px;
+  filter: brightness(85%);
+}
+
+/* Family name container (inner) on hover */
+#family_name_container:hover {
+  filter: brightness(70%);
+}
+
+/* Family bio container */
+#family_bio_container {
+  height: 60%;
+}
+
+/* Family bio container on hover */
+#family_bio_container:hover {
+  filter: brightness(85%);
+}
+
+/* Family bio title */
+#family_bio_title {
+  font-weight: 600;
+  font-size: 21px;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  color: rgb(104, 104, 104);
+}
+
+/* Family bio */
+.overflow-auto#family_bio {
+  max-height: 100px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 3px;
+  border-radius: 5px;
+  color: rgb(128, 128, 128);
+  font-size: 16px;
+}
+
+/* Family bio in family profile header hover */
+.overflow-auto#family_bio:hover {
+  background-color: rgba(24, 42, 124, 0.103);
+  filter: brightness(85%);
+}
+
+/* Connect status buttons, hide profile toggle button, and contact info container */
+#connect_toggle_contact_container {
+  min-width: 300px;
+  min-height: 350px;
+  border-top-right-radius: 25px;
+}
+
+/* Profile visibilty dropdown button container */
+#visibility_container {
+  max-height: 43%;
+  text-align: center;
+  padding-top: 80px;
+  padding-bottom: 60px;
+}
+
+/* Profile visibility dropdown button */
+#profile_visibility_btn {
+  background: #7474BF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+  bottom: 0px;
+  right: 30px;
+  font-size: 17px;
+  border-radius: 4px;
+}
+
+/* Profile visibility dropdown button on hover */
+#profile_visibility_btn:hover {
+  filter: brightness(105%)
+}
+
+/* Profile visibility dropdown menu */
+/* .dropdown .dropdown-menu { */
+  /* background: #7474BF;  /* fallback for old browsers */
+  /* background: -webkit-linear-gradient(to right, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
+  /* background: linear-gradient(to right, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+/* } */
+
+/* Profile visibility menu divider line */
+#visibility_divider {
+  background-color: #5353a7;
+}
+
+/* Profile visibility menu text color */
+/* #visibility_dropdown_item {
+  color: #fff;
+} */
+
+/* Profile visibility menu item hover color brightness */
+/* .dropdown-menu > li > a:hover {
+  background-image: none;
+  background-color: rgba(255, 255, 255, 0.164);
+  filter: brightness(105%)
+} */
+
+/* Profile visibility menu item hover color brightness */
+/* .dropdown-menu > li > form > button:hover {
+  background-image: none;
+  background-color: rgba(255, 255, 255, 0.164);
+  filter: brightness(105%)
+} */
+
+
+
+/* Contact info container */
+#contact_info_container {
+  height: 57%;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+/* Contact info container on hover */
+#contact_info_container:hover {
+  filter: brightness(85%);
+}
+
+/* Contact info title */
+#contact_info_title {
+  font-weight: 600;
+  font-size: 21px;
+  padding-left: 2px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  color: rgb(104, 104, 104);
+}
+
+/* Contact info in family profile header */
+.overflow-auto#contact_info_profile {
+  max-height: 100px;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 3px;
+  border-radius: 5px;
+  color: grey;
+  font-size: 16px;
+}
+
+/* Contact info in family profile header hover */
+.overflow-auto#contact_info_profile:hover {
+  background-color: rgba(24, 42, 124, 0.103);
+  filter: brightness(85%);
+}
+
+/* Profile visitor button container (Connect, Connection, and Cancel Request Buttons) */
+#profile_visitor_container {
+  max-height: 43%;
+  text-align: center;
+  padding-top: 80px;
+  padding-bottom: 60px;
+
+}
+
+/* Cancel request button */
+#cancel_request_btn {
+  background: #fc4a1a;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #f7b733, #fc4a1a);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #f7b733, #fc4a1a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+  bottom: 0px;
+  right: 30px;
+  font-size: 17px;
+  border-radius: 4px;
+  /* border: 3px solid #eee; */
+}
+
+/* Connection status on hover */
+#cancel_request_btn:hover {
+  filter: brightness(105%)
+}
+
+/* Connection status button */
+#connection_btn {
+  background: #7474BF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+  bottom: 0px;
+  right: 30px;
+  font-size: 17px;
+  border-radius: 4px;
+}
+
+/* Connection status on hover */
+#connection_btn:hover {
+  filter: brightness(105%)
+}
+
+/* Connection status button */
+#connect_btn {
+  background: #56ab2f;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #a8e063, #56ab2f);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #a8e063, #56ab2f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+  bottom: 0px;
+  right: 30px;
+  font-size: 17px;
+  border-radius: 4px;
+  /* border: 3px solid #eee; */
+}
+
+/* Cancel request on hover */
+#connect_btn:hover {
+  filter: brightness(105%)
+}

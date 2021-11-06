@@ -10,233 +10,215 @@
 {% endblock %}
 
 {% block content %}
+<body>
+  >
+  <!-- CSS styling -->
+  <link rel="stylesheet" type="text/css" href="{% static 'website/css/family_profile/family_profile.css' %}">
 
-<body style="background-color: #fff;">
-  <section style="padding-top: 70px; min-height: 2000px;">
-      {% if user.is_authenticated %}
-        <div class="container-fluid" style="padding: 20px">
-          <div class="row">
+  <section id="section_background">
+    {% if user.is_authenticated %}
+      <div class="container-fluid" style="width: 100%">
 
-            <!-- Functions available only to the user -->
-            {% if user.familyprofile.id == page_user.id %}
-              <div class="col-md-3 offset-md-1">
-                <a href=" {% url 'edit-family-profile' user.familyprofile.id %}" class="btn btn-secondary">
-                  Edit Family Profile
-                </a>
+        <!-- FAMILY PROFILE -->
+        <div class="container-fluid" id="header_container">
+          <div class="card mb-3 shadow p-2" style="border: 0; border-top-left-radius: 25px; border-top-right-radius: 25px;">
+
+            <!--
+            TOP HALF OF FAMILY PROFILE:
+            Contains family profile image, family name, family bio, contact info,
+            connect status buttons, edit profile button, and hide profile toggle button.
+            -->
+            <div class="row g-0">
+              <!-- Family profile image (1 of 3 columns)-->
+              <div class="col-sm" id="img_container">
+                {% if page_user.profile_image.url != "" %}
+                  <img src="{{ page_user.profile_image.url }}" class="img-fluid" id="family_profile_image">
+                {% else %}
+                  <img src="{% static 'website/images/default_profile_img/plain_default3.jpg' %}" class="img-fluid" id="family_profile_image">
+                {% endif %}
               </div>
 
-              <div class="col-md-2 offset-md-6">
-                <form action="{% url 'toggle-profile' user.familyprofile.pk %}" method="POST">{% csrf_token %}
-                  {% if profile_hidden %}
-                    <button type="submit", name="profile_id", value="{{ user.familyprofile.id }}" class="btn btn-primary">
-                      Ready to Connect
-                    </button>
-                  {% else %}
-                    <button type="submit", name="profile_id", value="{{ user.familyprofile.id }}" class="btn btn-secondary">
-                      Hide Family Profile
-                    </button>
-                  {% endif %}
-                </form>
-              </div>
+              <!-- (2 of 3 columns) -->
+              <div class="col-sm">
+                <div class="card-body" id="name_bio_container">
 
-              <!-- Display family profile -->
-              <div class="card mb-3" style="z-index: -1;">
-                <div class="row g-0">
-                  <div class="col-md-2">
-                    <!-- Family profile image -->
-                    {% if page_user.profile_image.url != "" %}
-                      <img src="{{ page_user.profile_image.url }}" class="card-img rounded-circle">
-                    {% else %}
-                      <img src="{% static 'website/images/default_profile_img/plain_default3.jpg' %}" class="card-img rounded-circle">
-                    {% endif %}
+                  <!-- Family name -->
+                  <div class="container-fluid" id="family_name_container">
+                    <h2 class="card-title text-truncate">
+                      {{ page_user.family_name|title }} Family
+                    </h2>
                   </div>
-                  <div class="col-md-10">
-                    <div class="card-body">
-                      <br>
-                      <h1 class="card-title">
-                        <!-- Family nickname -->
-                        {% if page_user.family_name %}
-                          {{ page_user.family_name|title }} Family
-                        {% else %}
-                          (Set Up Nickname) Family
-                        {% endif %}
-                      </h1>
-                      <br><br>
-                      <p class="card-text">
-                      <h3>Family bio</h3>
-                      {{ page_user.family_bio }}
-                      <br><br>
 
-                      <h3>Contact Info</h3>
-                      {% if page_user.contact_info %}
-                        {{ page_user.contact_info }}
+                  <!-- Family bio -->
+                  <div class="container-fluid" id="family_bio_container" >
+                    <div class="container-fluid" id="family_bio_title">
+                      Family bio
+                    </div>
+                    <div class="overflow-auto" id="family_bio">
+                      {% if page_user.family_bio %}
+                        {{ page_user.family_bio }}
                       {% else %}
-
-                        {% if page_user.user.family_name %}
-                          The {{ page_user.user.family_name }} Family has not filled out this info.
-                        {% else %}
-                          This family has not filled out this info.
-                        {% endif %}
+                        The {{ page_user.family_name|title }} Family has not filled out their family bio.
                       {% endif %}
-                      <br><br>
-
-                      <!-- !!UNDER RECONSTRUCTION!! Only display these fields if filled out -->
-                      <!-- {% if page_user.hobbies %}
-                        <h3>Hobbies & Activities</h3>
-                        {{ page_user.hobbies }}<br><br>
-                      {% endif %}
-
-                      {% if page_user.interests %}
-                        <h3>Interests</h3>
-                        {{ page_user.interests }}<br><br>
-                      {% endif %}
-
-                      {% if page_user.locations %}
-                        <h3>Locations</h3>
-                        {{ page_user.locations }}<br><br>
-                      {% endif %}
-
-                      {% if page_user.schedule %}
-                        <h3>Availability</h3>
-                        {{ page_user.schedule }}<br><br>
-                      {% endif %}
-
-                      {% if page_user.languages %}
-                        <h3>Languages</h3>
-                        {{ page_user.languages }}<br><br>
-                      {% endif %}
-
-                      <h3>Family Members</h3>
-                      {{ page_user.family_members }}
-                      <br><br> -->
-                      </p>
                     </div>
                   </div>
                 </div>
               </div>
-            {% endif %}
-          </div>
-        </div>
 
-        <!-- Display alternative info if the family profile is hidden -->
-        {% if user.familyprofile.id != page_user.id %}
-          {% if view_hidden %}
-            {% include 'family_profile/hidden-profile.html' %}
-          {% else %}
+              <div class="col-sm" id="connect_toggle_contact_container">
+                <!-- BUTTONS ONLY THE USER CAN SEE THEMSELVES -->
+                <!-- "Visibility eye" -->
+                {% if user.familyprofile.id == page_user.id %}
+                  <div class="dropdown" id="visibility_container">
+                    <button class="btn dropdown-toggle" type="button" id="profile_visibility_btn" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="bi bi-pencil-square"></i>
+                      Visibility
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="profile_visibility_menu">
+                      <li>
+                        <a class="dropdown-item" id="visibility_dropdown_item" href="{% url 'edit-family-profile' user.familyprofile.id %}">
+                          <i class="bi bi-pencil-fill"></i>
+                          Edit Header
+                        </a>
+                      </li>
+                      <li>
+                        <hr class="dropdown-divider" id="visibility_divider">
+                      </li>
+                      <li>
+                        <form action="{% url 'toggle-profile' user.familyprofile.pk %}" method="POST">{% csrf_token %}
+                          {% if profile_hidden %}
+                            <button class="dropdown-item" id="visibility_dropdown_item" type="submit", name="profile_id", value="{{ user.familyprofile.id }}">
+                              <i class="bi bi-eye-fill"></i>
+                              Show Family Profile
+                            </button>
+                          {% else %}
+                            <button class="dropdown-item" id="visibility_dropdown_item" type="submit", name="profile_id", value="{{ user.familyprofile.id }}">
+                              <i class="bi bi-eye-slash-fill"></i>
+                              Hide Family Profile
+                            </button>
+                          {% endif %}
+                        </form>
+                      </li>
+                    </ul>
+                  </div>
+                {% endif %}
+                <!-- END OF BUTTONS ONLY THE USER CAN SEE THEMSELVES -->
 
-            <!-- Connect button, Cancel Request button, and Connection status -->
-            {% if user in page_user.pending_requests.all %}
-            <div class="col-md-2 offset-md-6">
-              <form action="{% url 'cancel-request' page_user.pk %}" method="POST">{% csrf_token %}
-                <button type="submit", name="profile_id_3", value="{{ page_user.id }}" class="btn btn-outline-danger">
-                  Cancel Request
-                </button>
-              </form>
-            </div>
-          {% elif user in page_user.connections.all %}
-            <button type="button" class="btn btn-success">
-              Connection
-            </button>
-          {% else %}
-            <div class="col-md-2 offset-md-6">
-              <form action="{% url 'send-request' page_user.pk %}" method="POST">{% csrf_token %}
-                <button type="submit", name="profile_id_2", value="{{ page_user.id }}" class="btn btn-primary">
-                  Connect
-                </button>
-              </form>
-            </div>
-          {% endif %}
-          <!-- End of Connect button, Cancel Request button, and Connection status -->
-
-            <!-- Display family profile -->
-            <div class="card mb-3" style="z-index: -1;">
-              <div class="row g-0">
-                <div class="col-md-2">
-                  <!-- Family profile image -->
-                  {% if page_user.profile_image.url != "" %}
-                    <img src="{{ page_user.profile_image.url }}" class="card-img rounded-circle">
+                <!-- FEATURES ONLY AVAILABLE WHEN VISITING ANOTHER USER -->
+                <!-- Display alternative info if the family profile is hidden -->
+                {% if user.familyprofile.id != page_user.id %}
+                  {% if view_hidden %}
+                    {% include 'family_profile/hidden-profile.html' %}
                   {% else %}
-                    <img src="{% static 'website/images/default_profile_img/plain_default3.jpg' %}" class="card-img rounded-circle">
+                    <!-- Connect button, Cancel Request button, and Connection status -->
+                    <div class="container-fluid" id="profile_visitor_container">
+                      {% if user in page_user.pending_requests.all %}
+                        <form action="{% url 'cancel-request' page_user.pk %}" method="POST">{% csrf_token %}
+                          <button class="btn" type="submit" id="cancel_request_btn" name="profile_id_3" value="{{ page_user.id }}">
+                            <i class="bi bi-person-dash-fill"></i>
+                            Cancel Request
+                          </button>
+                        </form>
+                        <small class="text-muted">Your request has been sent.</small>
+                      {% elif user in page_user.connections.all %}
+                        <button class="btn" type="button" id="connection_btn">
+                          <!-- <i class="bi bi-check"></i> -->
+                          <i class="bi bi-check2"></i>
+                          Connection
+                        </button>
+                      {% else %}
+                        <form action="{% url 'send-request' page_user.pk %}" method="POST">{% csrf_token %}
+                          <button class="btn" type="submit" id="connect_btn" name="profile_id_2" value="{{ page_user.id }}">
+                            <i class="bi bi-person-plus-fill"></i>
+                            Send Connect Request
+                          </button>
+                        </form>
+                      {% endif %}
+                    </div>
                   {% endif %}
-                </div>
-                <div class="col-md-10">
-                  <div class="card-body">
-                    <br>
-                    <h1 class="card-title">
-                      <!-- Family nickname -->
-                      {% if page_user.family_name %}
-                        {{ page_user.family_name|title }} Family
+                {% endif %}
+                <!-- END OF FEATURES ONLY AVAILABLE WHEN VISITING ANOTHER USER -->
+                  
+                <!-- Contact Info -->
+                <div class="container-fluid" id="contact_info_container">
+                  <div class="card-text mb-2">
+                    <div class="container-fluid" id="contact_info_title">
+                      Contact Info
+                    </div>
+                    <div class="overflow-auto" id="contact_info_profile">
+                      {% if user in page_user.connections.all or user.familyprofile.id == page_user.id %}
+                        {% if page_user.contact_info %}
+                          {{ page_user.contact_info }}
+                        {% else %}
+                          The {{ page_user.family_name|title }} Family has not filled out their contact info.
+                        {% endif %}
                       {% else %}
-                        (Set Up Nickname) Family
+                        This information is only shared with the {{ page_user.family_name|title }} Family's connections.
                       {% endif %}
-                    </h1>
-                    <br><br>
-                    <p class="card-text">
-                    <h3>Family bio</h3>
-                    {{ page_user.family_bio }}
-                    <br><br>
-
-                    <h3>Contact Info</h3>
-                    {% if page_user.contact_info %}
-                      {{ page_user.contact_info }}
-                    {% else %}
-
-                      {% if page_user.user.family_name %}
-                        The {{ page_user.user.family_name|title }} Family has not filled out this info.
-                      {% else %}
-                        This family has not filled out this info.
-                      {% endif %}
-                    {% endif %}
-                    <br><br>
-
-                    <!-- !!UNDER RECONSTRUCTION!! Only display these fields if filled out -->
-                    <!-- {% if page_user.hobbies %}
-                      <h3>Hobbies & Activities</h3>
-                      {{ page_user.hobbies }}<br><br>
-                    {% endif %}
-
-                    {% if page_user.interests %}
-                      <h3>Interests</h3>
-                      {{ page_user.interests }}<br><br>
-                    {% endif %}
-
-                    {% if page_user.locations %}
-                      <h3>Locations</h3>
-                      {{ page_user.locations }}<br><br>
-                    {% endif %}
-
-                    {% if page_user.schedule %}
-                      <h3>Availability</h3>
-                      {{ page_user.schedule }}<br><br>
-                    {% endif %}
-
-                    {% if page_user.languages %}
-                      <h3>Languages</h3>
-                      {{ page_user.languages }}<br><br>
-                    {% endif %}
-
-                    <h3>Family Members</h3>
-                    {{ page_user.family_members }}
-                    <br><br> -->
-                    </p>
-
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          {% endif %}
-        {% endif %}
-      {% else %}
-        <!-- Require logged in account to view family profiles -->
-        <div class="container" style="padding: 290px;">
-          You must be logged in to visit this page
-        </div>
-      {% endif %}
+              <!-- END OF TOP HALF OF FAMILY PROFILE -->
 
-        {% if user.is_authenticated and user.familyprofile.id == page_user.id %}
-          <!-- Connections Model Popup Box -->
-          {% include 'family_profile/connections-list.html' %}
+            </div>
+            <!-- end of 3 head columns -->
+          </div>
+        </div>
+
+
+        <!-- (1 of 2 columns - body of family profile) -->
+        <!-- FAMILY MEMBERS SECTION -->
+        <!-- not started yet -->
+        <!-- END OF FAMILY MEMBERS SECTION -->
+        
+        <!-- (2 of 2 columns - body of family profile) -->
+        <!-- CATEGORY SECTION -->
+        <!-- not started yet -->
+        
+        <!-- {% if page_user.hobbies %}
+          <h3>Hobbies & Activities</h3>
+          {{ page_user.hobbies }}<br><br>
         {% endif %}
+
+        {% if page_user.interests %}
+          <h3>Interests</h3>
+          {{ page_user.interests }}<br><br>
+        {% endif %}
+
+        {% if page_user.locations %}
+          <h3>Locations</h3>
+          {{ page_user.locations }}<br><br>
+        {% endif %}
+
+        {% if page_user.schedule %}
+          <h3>Availability</h3>
+          {{ page_user.schedule }}<br><br>
+        {% endif %}
+
+        {% if page_user.languages %}
+          <h3>Languages</h3>
+          {{ page_user.languages }}<br><br>
+        {% endif %}
+
+        <h3>Family Members</h3>
+        {{ page_user.family_members }}
+        <br><br> -->
+        <!-- END OF CATEGORY SECTION -->
+
+      </div>
+      <!-- END OF FAMILY PROFILE -->
+    {% else %}
+      <!-- Require logged in account to view family profiles -->
+      <div class="container" style="padding: 290px;">
+        You must be logged in to visit this page
+      </div>
+    {% endif %}
+
+    {% if user.is_authenticated and user.familyprofile.id == page_user.id %}
+      <!-- Connections Model Popup Box -->
+      {% include 'family_profile/connections-list.html' %}
+    {% endif %}
 
   </section>
 </body>

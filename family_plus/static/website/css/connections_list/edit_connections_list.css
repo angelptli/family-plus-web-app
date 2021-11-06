@@ -19,7 +19,7 @@
   opacity: 0.97;
 }
 
-/* Delete connection button */
+/* Delete connection button. Gradient coloring: https://bootsnipp.com/snippets/Gl29g */
 .btn#confirm_delete_connection {
   background: #fc6767;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #fc6767, #fc6767);  /* Chrome 10-25, Safari 5.1-6 */
@@ -34,7 +34,7 @@
 }
 
 
-/* Edit connections list modal header */
+/* Edit connections list modal header. Gradient coloring: https://bootsnipp.com/snippets/Gl29g */
 .modal-header#edit_connections_list {
   background: #7474BF;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
