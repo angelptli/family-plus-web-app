@@ -50,7 +50,7 @@
 
                   <!-- Family bio -->
                   <div class="container-fluid" id="family_bio_container">
-                    {% if view_hidden %}
+                    {% if view_hidden and user.familyprofile.id != page_user.id %}
                       {% include 'family_profile/hidden-profile.html' %}
                     {% else %}
                       <div class="container-fluid" id="family_bio_title">
@@ -127,12 +127,14 @@
                         Connection
                       </button>
                     {% else %}
-                      <form action="{% url 'send-request' page_user.pk %}" method="POST">{% csrf_token %}
-                        <button class="btn" type="submit" id="connect_btn" name="profile_id_2" value="{{ page_user.id }}">
-                          <i class="bi bi-person-plus-fill"></i>
-                          Send Connect Request
-                        </button>
-                      </form>
+                      {% if not view_hidden %}
+                        <form action="{% url 'send-request' page_user.pk %}" method="POST">{% csrf_token %}
+                          <button class="btn" type="submit" id="connect_btn" name="profile_id_2" value="{{ page_user.id }}">
+                            <i class="bi bi-person-plus-fill"></i>
+                            Send Connect Request
+                          </button>
+                        </form>
+                      {% endif %}
                     {% endif %}
                   </div>
                 {% endif %}
@@ -142,12 +144,12 @@
                 <div class="container-fluid" id="contact_info_container">
                   <div class="card-text mb-2">
                     <div class="container-fluid" id="contact_info_title">
-                      {% if not view_hidden %}
+                      {% if not view_hidden or user.familyprofile.id == page_user.id %}
                         Contact Info
                       {% endif %}
                     </div>
                     <div class="overflow-auto" id="contact_info_profile">
-                      {% if not view_hidden %}
+                      {% if not view_hidden or user.familyprofile.id == page_user.id %}
                         {% if user in page_user.connections.all or user.familyprofile.id == page_user.id %}
                           {% if page_user.contact_info %}
                             {{ page_user.contact_info }}
