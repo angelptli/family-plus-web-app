@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import FamilyProfile
+from .models import FamilyProfile, FamilyMember
 
 
 class CustomProfileAdmin(UserAdmin):
@@ -12,18 +12,13 @@ class CustomProfileAdmin(UserAdmin):
     list_display = (
         'id',
         'user',
-        'has_setup',
-        'family_name',
-        'profile_image',
-        'family_bio',
-        'contact_info'
+        'family_name'
     )
 
     search_fields = (
         'id',
         'user',
         'family_name',
-        'family_bio',
         'hidden'
     )
 
@@ -36,3 +31,5 @@ class CustomProfileAdmin(UserAdmin):
     fieldsets= ()
 
 admin.site.register(FamilyProfile, CustomProfileAdmin)
+
+admin.site.register(FamilyMember)

@@ -12,12 +12,7 @@ class FamilyProfile(models.Model):
                                        upload_to=get_profile_image_filepath)
     family_bio       = models.TextField(null=True, blank=True)
     contact_info     = models.TextField(null=True, blank=True)
-    hobbies          = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="hobbies")
-    interests        = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="interests")
-    locations        = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="locations")
-    schedule         = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="schedule")
-    languages        = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="languages")
-    family_members   = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="family_members")
+    locations        = models.CharField(max_length=100, null=True, blank=True)
     has_setup        = models.BooleanField(default=False)
     hidden           = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="toggled_profiles")
     pending_requests = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="requests_pending")
@@ -45,3 +40,13 @@ class FamilyProfile(models.Model):
         """Keep count of each user's received requests that are still
         pending for an action response."""
         return self.pending_requests.count()
+
+
+class FamilyMember(models.Model):
+    user       = models.ForeignKey(FamilyProfile, null=False, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=50, null=False)
+    last_name  = models.CharField(max_length=50, null=True)
+    about      = models.CharField(max_length=255, null=True)
+
+    def __str__(self):
+        return 'Family ' + str(self.user.id) + ' | Member ' + str(self.id)

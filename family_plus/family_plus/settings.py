@@ -43,7 +43,10 @@ INSTALLED_APPS = [
     'website',
     'website_users',
     'user_connections',
-    'languages',
+    'language',
+    'availability',
+    'hobby',
+    'age_range',
 
     'django.contrib.admin',
     'django.contrib.auth',
