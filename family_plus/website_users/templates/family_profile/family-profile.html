@@ -23,7 +23,7 @@
           <div class="card mb-3 shadow p-2" style="border: 0; border-top-left-radius: 25px; border-top-right-radius: 25px;">
 
             <!--
-            TOP HALF OF FAMILY PROFILE:
+            TOP HALF OF FAMILY PROFILE (HEADER):
             Contains family profile image, family name, family bio, contact info,
             connect status buttons, edit profile button, and hide profile toggle button.
             -->
@@ -170,52 +170,40 @@
                   </div>
                 </div>
               </div>
-              <!-- END OF TOP HALF OF FAMILY PROFILE -->
+              <!-- END OF TOP HALF OF FAMILY PROFILE (HEADER)-->
 
             </div>
             <!-- end of 3 head columns -->
           </div>
         </div>
 
+        <!--
+        LOWER HALF OF FAMILY PROFILE (BODY):
+        Contains family members section and section containing subsections of
+        hobbies & interests, locations (might not include), schedule (might not include), and languages.
+        -->
+        <!-- CSS styling -->
+        <link rel="stylesheet" type="text/css" href="{% static 'website/css/family_profile/family_members_section.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'website/css/family_profile/category_section.css' %}">
 
-        <!-- (1 of 2 columns - body of family profile) -->
-        <!-- FAMILY MEMBERS SECTION -->
-        
-        <!-- END OF FAMILY MEMBERS SECTION -->
-        
-        <!-- (2 of 2 columns - body of family profile) -->
-        <!-- CATEGORY SECTION -->
-        <!-- not started yet -->
-        
-        <!-- {% if page_user.hobbies %}
-          <h3>Hobbies & Activities</h3>
-          {{ page_user.hobbies }}<br><br>
-        {% endif %}
+        <div class="container-fluid" style="width: 79%;">
+          <div class="row shadow" id="row_body">
 
-        {% if page_user.interests %}
-          <h3>Interests</h3>
-          {{ page_user.interests }}<br><br>
-        {% endif %}
+            <!-- FAMILY MEMBERS SECTION (1 of 2 columns - body of family profile) -->
+            <div class="col-sm-5 p-3" id="family_column">
+              {% include 'family_profile/family-members.html' %}
+            </div>
+            <!-- END OF FAMILY MEMBERS SECTION -->
 
-        {% if page_user.locations %}
-          <h3>Locations</h3>
-          {{ page_user.locations }}<br><br>
-        {% endif %}
+            <!-- CATEGORY SECTION (2 of 2 columns - body of family profile) -->
+            <div class="col-sm-7 p-3" id="category_column">
+              {% include 'family_profile/category-section.html' %}
+            </div>
+            <!-- END OF CATEGORY SECTION -->
 
-        {% if page_user.schedule %}
-          <h3>Availability</h3>
-          {{ page_user.schedule }}<br><br>
-        {% endif %}
-
-        {% if page_user.languages %}
-          <h3>Languages</h3>
-          {{ page_user.languages }}<br><br>
-        {% endif %}
-
-        <h3>Family Members</h3>
-        {{ page_user.family_members }}
-        <br><br> -->
-        <!-- END OF CATEGORY SECTION -->
+          </div>
+        </div>
+        <!-- END OF LOWER HALF OF FAMILY PROFILE (BODY) -->
 
       </div>
       <!-- END OF FAMILY PROFILE -->

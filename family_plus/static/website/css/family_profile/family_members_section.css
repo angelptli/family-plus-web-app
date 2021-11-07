@@ -1,0 +1,64 @@
+/* Row body */
+#row_body {
+  background-color: #fff;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  padding-bottom: 30px;
+  padding: 15px;
+  padding: 15px;
+  min-height: 400px;
+}
+
+/* Column class */
+#family_column {
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+/* Change caret to white color in accordions */
+.accordion-button:not(.collapsed)::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  transform: rotate(-180deg)
+}
+.accordion-button.collapsed::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+/* Change border bottom color for all accordion items */
+#accordion_item {
+  box-shadow: 0 0 1px 1px #28287441;
+}
+
+/* Family member section title tab color. Gradient coloring: https://bootsnipp.com/snippets/Gl29g */
+#family_title_tab {
+  background: #7474BF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+  font-weight: 600;
+  font-size: 21px;
+}
+#family_title_tab_body {
+  color: grey;
+}
+#family_title_tab_body:hover {
+  background-color: rgba(24, 42, 124, 0.103);
+  filter: brightness(85%);
+}
+
+/* Family member section tab color. Gradient coloring: https://bootsnipp.com/snippets/Gl29g */
+#family_tab {
+  background: #7474BF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+  font-weight: 600;
+  font-size: 20px;
+}
+#family_tab_body {
+  color: grey;
+}
+#family_tab_body:hover {
+  background-color: rgba(24, 42, 124, 0.103);
+  filter: brightness(85%);
+}

@@ -36,7 +36,7 @@
 
 /* Image container for family profile image */
 #img_container {
-  min-width: 300;
+  min-width: 300px;
   min-height: 350px;
   display: flex;
   flex-flow: column wrap;
