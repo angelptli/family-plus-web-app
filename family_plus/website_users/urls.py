@@ -18,6 +18,7 @@ Including another URLconf
 from django.urls import path
 from user_connections.views import send_request_view, cancel_request_view
 from .views import (
+    FamilyMemberView,
     AccountSettingsView,
     UserRegisterView,
     PasswordsChangeView,
@@ -42,4 +43,5 @@ urlpatterns = [
     path('profile_not_found/', no_profile_view, name='profile-not-found'),
     path('send_request/<int:pk>', send_request_view, name='send-request'),
     path('cancel_request/<int:pk>', cancel_request_view, name='cancel-request'),
+    path('family_member/log/<int:pk>/', FamilyMemberView.as_view(), name='family-member-log'),
 ]

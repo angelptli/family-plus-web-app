@@ -1,0 +1,115 @@
+/* The card itself */
+#card_content {
+  width: 400px;
+  border-radius: 25px;
+}
+
+/* Upper half */
+#upper_half {
+  padding-top: 10%;
+  color: rgb(104, 104, 104);
+  padding-left: 15px;
+  padding-right: 15px;
+  min-height: 400px;
+  font-size: 15px;
+  background: #7474BF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
+
+#log_title {
+  font-weight: 800;
+  padding-top: 18%;
+  color: rgb(104, 104, 104);
+  padding-bottom: 20px;
+  background-color: #fff;
+}
+
+#sub_title {
+  font-weight: 600;
+  font-size: 21px;
+  padding-left: 25px;
+  padding-top: 0px;
+  padding-bottom: 15px;
+  color: rgb(109, 109, 109);
+  background-color: #fff;
+}
+
+#family_tab_content {
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 3px;
+  color: rgba(110, 110, 110, 0.795);
+  background-color: #fff;
+}
+
+#family_tab_content2 {
+  padding-left: 25-px;
+  padding-right: 25px;
+  color: rgba(110, 110, 110, 0.795);
+  background-color: #fff;
+  padding-bottom: 50px;
+  box-shadow: 0 20px 15px 1px #0f0f552a;
+}
+
+#family_field_name {
+  font-weight: 610;
+}
+
+/* Lower half */
+#lower_half {
+  height: 200px;
+  min-width: 400px;
+  background: #7474BF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  padding: 30px;
+}
+
+#lower_half:hover {
+  filter: brightness(105%);
+}
+
+/* Edit button container */
+#edit_btn_container {
+  padding: 10px;
+}
+
+/* Edit button */
+#edit_btn {
+  background: #4242be96;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #4242be96, #4242be96);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #4242be96, #4242be96); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  filter: brightness(95%);
+  color: #fff;
+  /* border: 1px solid #eee; */
+}
+
+#edit_btn:hover {
+  filter: brightness(85%);
+  background-color: #4242be96;
+  /* background: #7474bf3b; */
+}
+
+/* Delete button container */
+#delete_btn_container {
+  padding: 10px;
+}
+
+/* Delete button */
+#delete_btn {
+  background: #e95555d2;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #e95555d2, #e95555d2);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #e95555d2, #e95555d2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+  /* border: 1px solid #eee; */
+}
+
+/* Delete button on hover */
+#delete_btn:hover {
+  filter: brightness(85%);
+}

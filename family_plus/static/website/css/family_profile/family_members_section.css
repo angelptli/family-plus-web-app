@@ -3,9 +3,10 @@
   background-color: #fff;
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
-  padding-bottom: 30px;
-  padding: 15px;
-  padding: 15px;
+  padding-top: 15px;
+  padding-bottom: 40px;
+  padding-left: 15px;
+  padding-right: 15px;
   min-height: 400px;
 }
 
@@ -40,10 +41,13 @@
 }
 #family_title_tab_body {
   color: grey;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 #family_title_tab_body:hover {
   background-color: rgba(24, 42, 124, 0.103);
   filter: brightness(85%);
+  border-radius: 5px;
 }
 
 /* Family member section tab color. Gradient coloring: https://bootsnipp.com/snippets/Gl29g */
@@ -57,8 +61,32 @@
 }
 #family_tab_body {
   color: grey;
+  padding: 0;
 }
 #family_tab_body:hover {
   background-color: rgba(24, 42, 124, 0.103);
   filter: brightness(85%);
+  border-radius: 5px;
+}
+
+#family_tab_content {
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 3px;
+}
+
+#family_field_name {
+  font-weight: 610;
+}
+
+/* Edit family button */
+#edit_family_btn {
+  color: #748cbf;
+}
+#edit_family_btn:hover {
+  filter: brightness(70%);
+}
+#edit_family_btn_container {
+  padding: 0;
+  text-align: right;
 }

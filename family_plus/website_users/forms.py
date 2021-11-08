@@ -2,7 +2,7 @@ from custom_user_model.models import CustomUserModel
 from django.contrib.auth.forms import PasswordChangeForm, UserChangeForm
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
-from .models import FamilyProfile
+from .models import FamilyMember, FamilyProfile
 import string
 
 
@@ -116,4 +116,50 @@ class ProfilePageForm(forms.ModelForm):
             'family_name': forms.TextInput(attrs={'class': 'form-control'}),
             'family_bio': forms.Textarea(attrs={'class': 'form-control'}),
             'contact_info': forms.TextInput(attrs={'class': 'form-control'}),
+        }
+
+
+class FamilyMemberForm(forms.ModelForm):
+
+    """Customize fields for form that allows each user to add a
+    sub-profile for each family member they add to their family profile.
+    """
+
+    # def __init__(self, *args, **kwargs):
+    #     self.user = kwargs.pop('user', None)
+    #     super(FamilyMemberForm, self).__init__(*args, **kwargs)
+
+    #     self.fields['user'].queryset = CustomUserModel.objects.get(username=self.user.username)
+
+    class Meta:
+        model = FamilyMember
+        fields = ('first_name', 'last_name', 'relation', 'age_range', 'about')
+
+        # Customize widgets
+        widgets = {
+            'first_name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'First name',
+                'style': 'max-width: 300px;'
+            }),
+            'last_name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Last name (optional)',
+                'style': 'max-width: 300px;'
+            }),
+            'relation': forms.Select(attrs={
+                'class': 'form-select',
+                'label': 'Family Relation (optional)',
+                'style': 'max-width: 300px;'
+            }),
+            'age_range': forms.Select(attrs={
+                'class': 'form-select',
+                'label': 'Age range (optional)',
+                'style': 'max-width: 300px;'
+            }),
+            'about': forms.Textarea(attrs={
+                'class': 'form-control',
+                'placeholder': 'About (optional)',
+                'style': 'max-width: 300px;'
+            }),
         }

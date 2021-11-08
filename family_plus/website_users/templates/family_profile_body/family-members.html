@@ -1,0 +1,76 @@
+<!-- Family members section presented in an accordion -->
+
+<div class="accordion accordion-flush" id="family_member_accordion">
+
+  <div class="accordion-item" id="accordion_item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingFamily">
+      <button class="accordion-button" id="family_title_tab" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFamily0" aria-expanded="true" aria-controls="panelsStayOpen-collapseFamily0">
+        Family Members
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseFamily0" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingFamily">
+      <div class="accordion-body">
+        <div id="family_title_tab_body">
+          Welcome to the {{ page_user.family_name|title }} Family's humble adobe
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% for member in family_members %}
+    <div class="accordion-item" id="accordion_item">
+      <h2 class="accordion-header" id="panelsStayOpen-headingFam{{ forloop.counter }}"> 
+        <button class="accordion-button collapsed" id="family_tab" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFam{{ forloop.counter }}" aria-expanded="false" aria-controls="panelsStayOpen-collapseFam{{ forloop.counter }}">
+          Member {{ forloop.counter }}
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseFam{{ forloop.counter }}" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFam{{ forloop.counter }}">
+        <div class="accordion-body">
+          <div class="container-fluid" id="family_tab_body">
+            
+            <!-- First and last name -->
+            <div class="container-fluid" id="family_tab_content">
+              <b id="family_field_name">Name:</b> {{ member.first_name }} 
+              {% if member.last_name %}
+                {{ member.last_name }}
+              {% endif %}
+            </div>
+
+            <!-- Relation -->
+            <div class="container-fluid" id="family_tab_content">
+              {% if member.relation %}
+                <b id="family_field_name">Relation:</b> {{ member.relation }}
+              {% endif %}
+            </div>
+
+            <!-- Age range -->
+            <div class="container-fluid" id="family_tab_content">
+              {% if member.age_range %}
+                <b id="family_field_name">Age Range:</b> {{ member.age_range }}
+              {% endif %}
+            </div>
+
+            <!-- About info -->
+            <div class="container-fluid" id="family_tab_content">
+              {% if member.about %}
+                <b id="family_field_name">About:</b> {{ member.about }}
+              {% endif %}
+            </div> 
+          </div>
+
+          <!-- Edit link -->
+          <div class="container" id="edit_family_btn_container">
+            {% if user.familyprofile.id == page_user.id %}
+              <a href="{% url 'family-member-log' member.pk %}" id="edit_family_btn">
+                <i class="bi bi-pencil"></i>
+                Edit
+              </a>
+            {% endif %}
+          </div>
+
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+  
+</div>

@@ -1,0 +1,105 @@
+{% extends 'header_footer/base.html' %}
+{% load static %}
+
+{% block title %}
+  Family Member Log | Family+
+{% endblock %}
+
+{% block content %}
+
+<!-- CSS styling -->
+<link rel="stylesheet" type="text/css" href="{% static 'website/css/family_profile/family_member_log.css' %}">
+
+<!-- A page for each family member -->
+<body style="background-color: #f0f2f5;">
+  <section id="log_section" style="padding-top: 130px; min-height: 1000px;">
+    
+    <!-- Card of the family member -->
+      <div class="container" id="card_container">
+        <div class="row">
+
+          <div class="col-sm">
+            <!-- First column for holding middle column in the center of the page -->
+          </div>
+
+          <div class="col-sm">
+            <div class="card-sm shadow-lg" id="card_content">
+              <div class="container-fluid" id="upper_half">
+
+                <!-- Title -->
+                <div class="container-fluid" id="log_title">
+                  <h2>
+                    Family Member Log
+                  </h2>
+                </div>
+
+                <!-- Sub Title -->
+                <div class="container-fluid" id="sub_title">
+                  Current Info
+                </div>
+
+
+                <!-- First and last name -->
+                <div class="container-fluid" id="family_tab_content">
+                  <b id="family_field_name">Name:</b> {{ member.first_name }} 
+                  {% if member.last_name %}
+                    {{ member.last_name }}
+                  {% endif %}
+                </div>
+                
+                <!-- Relation -->
+                <div class="container-fluid" id="family_tab_content">
+                  {% if member.relation %}
+                    <b id="family_field_name">Relation:</b> {{ member.relation }}
+                  {% endif %}
+                </div>
+                
+                <!-- Age range -->
+                <div class="container-fluid" id="family_tab_content">
+                  {% if member.age_range %}
+                    <b id="family_field_name">Age Range:</b> {{ member.age_range }}
+                  {% endif %}
+                </div>
+                
+                <!-- About info -->
+                <div class="container-fluid" id="family_tab_content2">
+                  {% if member.about %}
+                    <b id="family_field_name">About:</b> {{ member.about }}
+                  {% endif %}
+                </div>
+              </div>
+    
+              <!-- Content -->
+              <div class="container-fluid" id="lower_half">
+                <center>
+
+                  <!-- Edit button -->
+                  <div class="container-fluid" id="edit_btn_container">
+                    <button class="btn" id="edit_btn">
+                      Edit Member Info
+                    </button>
+                  </div> 
+
+                  <!-- Delete button -->
+                  <div class="container-fluid" id="delete_btn_container">
+                    <button class="btn" id="delete_btn">
+                      Delete Member
+                    </button>
+                  </div>
+
+                </center>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-sm">
+            <!-- Third column for holding middle column in the center of the page -->
+          </div>
+
+        </div>
+      </div>
+  </section>
+</body>
+{% endblock %}
+

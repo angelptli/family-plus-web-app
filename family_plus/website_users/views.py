@@ -4,14 +4,21 @@ from django.urls import reverse_lazy, reverse
 
 # Imports relating to views and forms
 from django.views import generic
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, DetailView, ListView
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import AccountSettingsForm, RegisterForm, PasswordChangingForm
-from .forms import ProfilePageForm
-from .models import FamilyProfile
-from custom_user_model.models import CustomUserModel
 
+# Import models
+from .models import FamilyProfile, FamilyMember
+
+# Import forms
+from .forms import (
+    AccountSettingsForm,
+    RegisterForm,
+    PasswordChangingForm,
+    ProfilePageForm,
+    FamilyMemberForm
+)
 
 class UserRegisterView(generic.CreateView):
 
@@ -99,7 +106,7 @@ class FamilyProfilePageView(DetailView):
         """Define the different states of family profiles to determine
         the different displays for different user connections. 
         """
-        # Add to the context dictionary the family profile id of the
+        # Add to the context dictionary the family profile object of the
         # profile being visited
         page_user = get_object_or_404(FamilyProfile, id=self.kwargs['pk'])
         context = super(FamilyProfilePageView, self).get_context_data(*args, **kwargs)
@@ -117,12 +124,16 @@ class FamilyProfilePageView(DetailView):
         view_hidden = False
         if FamilyProfile.objects.filter(hidden__username=page_user).exists():
             view_hidden = True
+       
+        # Make each user's family member objects available to the template
+        family_members = FamilyMember.objects.filter(user=page_user)
 
         # Add the variables to the context dictionary
         context["page_user"] = page_user
         context["is_hidden"] = is_hidden
         context['profile_hidden'] = profile_hidden
         context['view_hidden'] = view_hidden
+        context['family_members'] = family_members
 
         return context
 
@@ -163,3 +174,30 @@ def no_profile_view(request, *args, **kwargs):
     set up a family profile.
     """
     return render(request, 'family_profile/no-profile.html')
+
+
+class FamilyMemberView(ListView):
+    model = FamilyMember
+    template_name = "family_profile_body/family-member-log.html"
+
+    def get_context_data(self, *args, **kwargs):
+        """Define the different states of family profiles to determine
+        the different displays for different user connections. 
+        """
+        # Add to the context dictionary the family member obj
+        member = get_object_or_404(FamilyMember, id=self.kwargs['pk'])
+        context = super(FamilyMemberView, self).get_context_data(*args, **kwargs)
+
+        # Add the variables to the context dictionary
+        context['member'] = member
+
+        return context
+
+
+# class AddFamilyMember-logView(CreateView):
+#     model = FamilyMember
+#     form_class = FamilyMemberForm
+#     template_name = "family_profile_body/add-family-member.html"
+
+#     def get_success_url(self):
+#         return reverse_lazy('family-profile', kwargs={'pk': self.request.user.familyprofile.id})
