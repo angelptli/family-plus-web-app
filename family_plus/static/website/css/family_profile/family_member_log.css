@@ -70,9 +70,9 @@
   padding: 30px;
 }
 
-#lower_half:hover {
+/* #lower_half:hover {
   filter: brightness(105%);
-}
+} */
 
 /* Edit button container */
 #edit_btn_container {
@@ -92,7 +92,6 @@
 #edit_btn:hover {
   filter: brightness(85%);
   background-color: #4242be96;
-  /* background: #7474bf3b; */
 }
 
 /* Delete button container */
@@ -106,10 +105,20 @@
   background: -webkit-linear-gradient(to right, #e95555d2, #e95555d2);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #e95555d2, #e95555d2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: #fff;
-  /* border: 1px solid #eee; */
 }
 
 /* Delete button on hover */
 #delete_btn:hover {
   filter: brightness(85%);
+}
+
+/* Back link container */
+#back_link_container {
+  width: fit-content;
+  padding: 0;
+}
+#back_link_container:hover {
+  /* background-color: #c9c9da25; */
+  border-radius: 5px;
+  filter: brightness(120%)
 }

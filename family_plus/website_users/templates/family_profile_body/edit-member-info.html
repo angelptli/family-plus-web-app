@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-  Add Family Member | Family+
+  Edit Member Info | Family+
 {% endblock %}
 
 {% block content %}
@@ -25,7 +25,7 @@
             <div class="card-sm shadow" style="background-color: aliceblue;">
               
               <div class="container-fluid" id="form_title">
-                A simple form to add a member to your family...
+                Edit Member Info View
               </div>
 
               <div class="container-fluid">
@@ -65,10 +65,10 @@
                     </div>
 
                     <button class="btn btn-primary">
-                      Add Family Member
+                      Save
                     </button>
 
-                    <a href="{% url 'family-profile' user.familyprofile.id %}" class="btn btn-secondary">
+                    <a class="btn btn-secondary" href="{% url 'family-member-log' member.pk %}">
                       Cancel
                     </a>
                     <br/><br/>

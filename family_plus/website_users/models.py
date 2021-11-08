@@ -6,10 +6,10 @@ from django.urls import reverse
 
 class FamilyProfile(models.Model):
     user             = models.OneToOneField(settings.AUTH_USER_MODEL, null=True,
-                                          on_delete=models.CASCADE)
+                                            on_delete=models.CASCADE)
     family_name      = models.TextField(max_length=30, null=False, blank=False)
     profile_image    = models.ImageField(max_length=255, null=True, blank=True,
-                                       upload_to=get_profile_image_filepath)
+                                         upload_to=get_profile_image_filepath)
     family_bio       = models.TextField(null=True, blank=True)
     contact_info     = models.TextField(null=True, blank=True)
     locations        = models.CharField(max_length=100, null=True, blank=True)
@@ -100,5 +100,10 @@ class FamilyMember(models.Model):
     age_range  = models.CharField(max_length=100, null=True, blank=True, choices=AGE_RANGE)
     about      = models.CharField(max_length=255, null=True, blank=True)
 
-    # def __str__(self):
-    #     return 'Family ' + str(self.user.id) + ' | Member ID ' + str(self.id)
+    def __str__(self):
+        """Return label username | Log ID: #.
+        
+        Log ID is the object's id in the databse and does not represent
+        of the number of family member objects a user adds to the databse.
+        """
+        return str(self.user) + ' | Log ID: ' + str(self.id)

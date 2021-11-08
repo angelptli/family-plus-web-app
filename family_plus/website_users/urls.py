@@ -18,8 +18,10 @@ Including another URLconf
 from django.urls import path
 from user_connections.views import send_request_view, cancel_request_view
 from .views import (
-    AddFamilyMemberView,
     FamilyMemberView,
+    AddFamilyMemberView,
+    EditMemberInfoView,
+    delete_member_view,
     AccountSettingsView,
     UserRegisterView,
     PasswordsChangeView,
@@ -46,4 +48,6 @@ urlpatterns = [
     path('cancel_request/<int:pk>', cancel_request_view, name='cancel-request'),
     path('family_member/log/<int:pk>/', FamilyMemberView.as_view(), name='family-member-log'),
     path('add_family_member/', AddFamilyMemberView.as_view(), name='add-family-member'),
+    path('edit_member_info/log/<int:pk>/', EditMemberInfoView.as_view(), name='edit-member-info'),
+    path('delete_member/log/<int:pk>/', delete_member_view, name='delete-member'),
 ]

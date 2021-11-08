@@ -1,3 +1,5 @@
+from django.db.models.fields import CharField
+from django.forms.fields import ChoiceField
 from custom_user_model.models import CustomUserModel
 from django.contrib.auth.forms import PasswordChangeForm, UserChangeForm
 from django.contrib.auth.forms import UserCreationForm
@@ -124,15 +126,63 @@ class FamilyMemberForm(forms.ModelForm):
     """Customize fields for form that allows each user to add a
     sub-profile for each family member they add to their family profile.
     """
+    
+    def __init__(self, *args, **kwargs):
+        """Filter FamilyProfile objects to get the current user and assign
+        to the user field queryset.
+        """
+        # Credit: https://medium.com/analytics-vidhya/django-how-to-pass-the-user-object-into-form-classes-ee322f02948c
+        # Learned to pass the request object to the form in order to request
+        # the current user for saving to the form as foreign key
+        self.request = kwargs.pop('request')
+        super(FamilyMemberForm, self).__init__(*args, **kwargs)
+        self.fields['user'].queryset = FamilyProfile.objects.filter(user=self.request.user)
+        self.fields['user'].empty_label = None  # Remove empty label
 
-    # def __init__(self, *args, **kwargs):
-    #     self.user = kwargs.pop('user', None)
-    #     super(FamilyMemberForm, self).__init__(*args, **kwargs)
+    class Meta:
+        model = FamilyMember
+        fields = ('user', 'first_name', 'last_name', 'relation', 'age_range', 'about')
 
-    #     self.fields['user'].queryset = CustomUserModel.objects.get(username=self.user.username)
+        # Customize widgets
+        widgets = {
+            'user': forms.Select(attrs={
+                'class': 'form-select',
+                'style': 'max-width: 300px;'
+            }),
+            'first_name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'First name',
+                'style': 'max-width: 300px;'
+            }),
+            'last_name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Last name (optional)',
+                'style': 'max-width: 300px;'
+            }),
+            'relation': forms.Select(attrs={
+                'class': 'form-select',
+                'label': 'Family Relation (optional)',
+                'style': 'max-width: 300px;'
+            }),
+            'age_range': forms.Select(attrs={
+                'class': 'form-select',
+                'label': 'Age range (optional)',
+                'style': 'max-width: 300px;'
+            }),
+            'about': forms.Textarea(attrs={
+                'class': 'form-control',
+                'placeholder': 'About (optional)',
+                'style': 'max-width: 300px;'
+            }),
+        }
 
 
+class EditFamilyMemberForm(forms.ModelForm):
 
+    """Customize fields for form that allows each user to add a
+    sub-profile for each family member they add to their family profile.
+    """
+    
     class Meta:
         model = FamilyMember
         fields = ('first_name', 'last_name', 'relation', 'age_range', 'about')

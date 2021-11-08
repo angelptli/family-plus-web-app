@@ -38,7 +38,6 @@
                   Current Info
                 </div>
 
-
                 <!-- First and last name -->
                 <div class="container-fluid" id="family_tab_content">
                   <b id="family_field_name">Name:</b> {{ member.first_name }} 
@@ -75,18 +74,27 @@
 
                   <!-- Edit button -->
                   <div class="container-fluid" id="edit_btn_container">
-                    <button class="btn" id="edit_btn">
+                    <a class="btn" id="edit_btn" href="{% url 'edit-member-info' member.pk %}">
                       Edit Member Info
-                    </button>
+                    </a>
                   </div> 
 
                   <!-- Delete button -->
                   <div class="container-fluid" id="delete_btn_container">
-                    <button class="btn" id="delete_btn">
-                      Delete Member
-                    </button>
+                    <form action="{% url 'delete-member' member.pk %}" method="POST">{% csrf_token %}
+                      <button class="btn" type="submit" id="delete_btn" name="member_id" value="{{ member.id }}">
+                        Delete Member
+                      </button>
+                    </form>
                   </div>
 
+                  <!-- Go back link -->
+                  <div class="container" id="back_link_container">
+                  <a href="javascript:history.back()" style="color: rgba(255, 255, 255, 0.644);">
+                    Go Back
+                  </a>
+                  
+                </div>
                 </center>
               </div>
 

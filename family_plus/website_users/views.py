@@ -4,20 +4,21 @@ from django.urls import reverse_lazy, reverse
 
 # Imports relating to views and forms
 from django.views import generic
-from django.views.generic import CreateView, DetailView, ListView
+from django.views.generic import CreateView, DetailView, ListView, UpdateView
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Import models
-from .models import FamilyProfile, FamilyMember
+from website_users.models import FamilyProfile, FamilyMember
 
 # Import forms
-from .forms import (
+from website_users.forms import (
     AccountSettingsForm,
     RegisterForm,
     PasswordChangingForm,
     ProfilePageForm,
-    FamilyMemberForm
+    FamilyMemberForm,
+    EditFamilyMemberForm
 )
 
 class UserRegisterView(generic.CreateView):
@@ -77,6 +78,9 @@ def password_success(request):
 
 
 class CreateProfileView(CreateView):
+
+    """Allow user to create a family profile."""
+
     model = FamilyProfile
     form_class = ProfilePageForm
     template_name = "family_profile/create-profile.html"
@@ -139,6 +143,9 @@ class FamilyProfilePageView(DetailView):
 
 
 class EditProfilePageView(generic.UpdateView):
+
+    """Allow user to edit the info stored on their family profile."""
+
     model = FamilyProfile
     form_class = ProfilePageForm
     template_name = 'family_profile/edit-family-profile.html'
@@ -177,6 +184,11 @@ def no_profile_view(request, *args, **kwargs):
 
 
 class FamilyMemberView(ListView):
+
+    """Show an individual view for each family member object where the
+    user can choose to edit data or delete the object.
+    """
+
     model = FamilyMember
     template_name = "family_profile_body/family-member-log.html"
 
@@ -192,9 +204,58 @@ class FamilyMemberView(ListView):
 
 
 class AddFamilyMemberView(CreateView):
+
+    """Users who have set up a family profile can create objects to
+    represent members of their family.
+    """
+
     model = FamilyMember
     form_class = FamilyMemberForm
     template_name = "family_profile_body/add-family-member.html"
 
+    def get_form_kwargs(self):
+        """Pass request object to the form class to request current user's
+        username and prefill their username field.
+        """
+        # Credit: https://medium.com/analytics-vidhya/django-how-to-pass-the-user-object-into-form-classes-ee322f02948c
+        # Learned to pass the request object to the form in order to request
+        # the current user for saving to the form as foreign key
+        kwargs = super(AddFamilyMemberView, self).get_form_kwargs()
+        kwargs['request'] = self.request
+
+        return kwargs
+
     def get_success_url(self):
         return reverse_lazy('family-profile', kwargs={'pk': self.request.user.familyprofile.pk})
+
+
+class EditMemberInfoView(UpdateView):
+
+    """Allow users to edit the info stored on their family member objects."""
+
+    model = FamilyMember
+    form_class = EditFamilyMemberForm
+    template_name = "family_profile_body/edit-member-info.html"
+
+    def get_context_data(self, *args, **kwargs):
+        """Add the family member object to the context dictionary.
+        """
+        member = get_object_or_404(FamilyMember, id=self.kwargs['pk'])
+        context = super(EditMemberInfoView, self).get_context_data(*args, **kwargs)
+
+        context['member'] = member
+
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('family-member-log', kwargs={'pk': self.object.pk})
+
+
+def delete_member_view(request, pk):
+    """Delete the family member object from the database when requested
+    by the user who is clicking the delete button.
+    """
+    if pk:
+        FamilyMember.objects.filter(pk=pk).delete()
+
+    return HttpResponseRedirect(reverse('family-profile', args=[str(request.user.familyprofile.pk)]))
