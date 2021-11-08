@@ -100,5 +100,5 @@ class FamilyMember(models.Model):
     age_range  = models.CharField(max_length=100, null=True, blank=True, choices=AGE_RANGE)
     about      = models.CharField(max_length=255, null=True, blank=True)
 
-    def __str__(self):
-        return 'Family ' + str(self.user.id) + ' | Member ID ' + str(self.id)
+    # def __str__(self):
+    #     return 'Family ' + str(self.user.id) + ' | Member ID ' + str(self.id)

@@ -181,23 +181,20 @@ class FamilyMemberView(ListView):
     template_name = "family_profile_body/family-member-log.html"
 
     def get_context_data(self, *args, **kwargs):
-        """Define the different states of family profiles to determine
-        the different displays for different user connections. 
+        """Add the family member object to the context dictionary.
         """
-        # Add to the context dictionary the family member obj
         member = get_object_or_404(FamilyMember, id=self.kwargs['pk'])
         context = super(FamilyMemberView, self).get_context_data(*args, **kwargs)
 
-        # Add the variables to the context dictionary
         context['member'] = member
 
         return context
 
 
-# class AddFamilyMember-logView(CreateView):
-#     model = FamilyMember
-#     form_class = FamilyMemberForm
-#     template_name = "family_profile_body/add-family-member.html"
+class AddFamilyMemberView(CreateView):
+    model = FamilyMember
+    form_class = FamilyMemberForm
+    template_name = "family_profile_body/add-family-member.html"
 
-#     def get_success_url(self):
-#         return reverse_lazy('family-profile', kwargs={'pk': self.request.user.familyprofile.id})
+    def get_success_url(self):
+        return reverse_lazy('family-profile', kwargs={'pk': self.request.user.familyprofile.pk})

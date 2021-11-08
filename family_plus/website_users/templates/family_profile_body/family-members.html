@@ -72,5 +72,13 @@
       </div>
     </div>
   {% endfor %}
+
+  <!-- Add family member button -->
+  {% if user.familyprofile.id == page_user.id %}
+    <a href="{% url 'add-family-member' %}" id="edit_family_btn">
+      <i class="bi bi-pencil"></i>
+      Add Family Member
+    </a>
+  {% endif %}
   
 </div>
