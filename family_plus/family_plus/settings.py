@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'language',
     'availability',
     'hobby',
-    'age_range',
 
     'django.contrib.admin',
     'django.contrib.auth',

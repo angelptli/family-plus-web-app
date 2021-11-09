@@ -27,6 +27,5 @@ urlpatterns = [
     path('language/', include('language.urls')),
     path('availability/', include('availability.urls')),
     path('hobby/', include('hobby.urls')),
-    path('age_range/', include('age_range.urls'))
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
