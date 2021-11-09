@@ -193,12 +193,17 @@ class FamilyMemberView(ListView):
     template_name = "family_profile_body/family-member-log.html"
 
     def get_context_data(self, *args, **kwargs):
-        """Add the family member object to the context dictionary.
+        """Add the family member object to the context dictionary and
+        a string username to confirm the correct user has permission to
+        edit and the delete family objects.
         """
         member = get_object_or_404(FamilyMember, id=self.kwargs['pk'])
         context = super(FamilyMemberView, self).get_context_data(*args, **kwargs)
-
         context['member'] = member
+
+        # Pass in string username for username comparison and authentication
+        str_user = str(member.user)
+        context['str_user'] = str_user
 
         return context
 
@@ -238,12 +243,17 @@ class EditMemberInfoView(UpdateView):
     template_name = "family_profile_body/edit-member-info.html"
 
     def get_context_data(self, *args, **kwargs):
-        """Add the family member object to the context dictionary.
+        """Add the family member object to the context dictionary and
+        a user object to confirm the correct user has permission to
+        edit the family object.
         """
         member = get_object_or_404(FamilyMember, id=self.kwargs['pk'])
         context = super(EditMemberInfoView, self).get_context_data(*args, **kwargs)
-
         context['member'] = member
+
+        # Pass in string username for username comparison and authentication
+        str_user = str(member.user)
+        context['str_user'] = str_user
 
         return context
 

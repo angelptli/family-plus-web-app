@@ -12,7 +12,7 @@
 
 <body style="background-color: #f0f2f5;">
   <section id="section_background">
-    {% if user.is_authenticated %}
+    {% if user.is_authenticated and str_user == user.username %}
       <div class="container-fluid">
         <div class="row" >
 

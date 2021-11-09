@@ -13,7 +13,7 @@
 <!-- A page for each family member -->
 <body style="background-color: #f0f2f5;">
   <section id="log_section" style="padding-top: 130px; min-height: 1000px;">
-    
+
     <!-- Card of the family member -->
       <div class="container" id="card_container">
         <div class="row">
@@ -72,29 +72,30 @@
               <div class="container-fluid" id="lower_half">
                 <center>
 
-                  <!-- Edit button -->
-                  <div class="container-fluid" id="edit_btn_container">
-                    <a class="btn" id="edit_btn" href="{% url 'edit-member-info' member.pk %}">
-                      Edit Member Info
-                    </a>
-                  </div> 
+                  {% if user.is_authenticated and str_user == user.username %}
+                    <!-- Edit button -->
+                    <div class="container-fluid" id="edit_btn_container">
+                      <a class="btn" id="edit_btn" href="{% url 'edit-member-info' member.pk %}">
+                        Edit Member Info
+                      </a>
+                    </div> 
 
-                  <!-- Delete button -->
-                  <div class="container-fluid" id="delete_btn_container">
-                    <form action="{% url 'delete-member' member.pk %}" method="POST">{% csrf_token %}
-                      <button class="btn" type="submit" id="delete_btn" name="member_id" value="{{ member.id }}">
-                        Delete Member
-                      </button>
-                    </form>
-                  </div>
+                    <!-- Delete button -->
+                    <div class="container-fluid" id="delete_btn_container">
+                      <form action="{% url 'delete-member' member.pk %}" method="POST">{% csrf_token %}
+                        <button class="btn" type="submit" id="delete_btn" name="member_id" value="{{ member.id }}">
+                          Delete Member
+                        </button>
+                      </form>
+                    </div>
+                  {% endif %}
 
-                  <!-- Go back link -->
-                  <div class="container" id="back_link_container">
-                  <a href="javascript:history.back()" style="color: rgba(255, 255, 255, 0.644);">
-                    Go Back
-                  </a>
-                  
-                </div>
+                    <!-- Go back link -->
+                    <div class="container" id="back_link_container">
+                      <a href="{% url 'family-profile' user.familyprofile.pk %}" style="color: rgba(255, 255, 255, 0.644);">
+                        Go Back
+                      </a>
+                    </div>
                 </center>
               </div>
 

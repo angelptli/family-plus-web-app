@@ -3,6 +3,7 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http.response import HttpResponseRedirect
 from django.urls import reverse
 from website_users.models import FamilyProfile
+from django.contrib.auth.decorators import login_required
 
 # Import filter functions
 from .queryset_filters import (
@@ -11,6 +12,7 @@ from .queryset_filters import (
 )
 
 
+@login_required(login_url='/users/login/')
 def search_page_view(request, *args, **kwargs):
     """This view hosts the search boxes of other views, providing a varierty
     of search criteria. Users can search by interest, location, language,
@@ -22,6 +24,7 @@ def search_page_view(request, *args, **kwargs):
     return render(request, "search/search-page.html", context)
 
 
+@login_required(login_url='/users/login/')
 def search_family_view(request, *args, **kwargs):
     """This view is for searching family names specifically."""
 
@@ -60,6 +63,7 @@ def search_family_view(request, *args, **kwargs):
     return render(request, "results/search-family.html", context)
 
 
+@login_required(login_url='/users/login/')
 def search_username_view(request, *args, **kwargs):
     """This view is for searching usernames specifically."""
 
@@ -94,6 +98,7 @@ def search_username_view(request, *args, **kwargs):
     return render(request, "results/search-username.html", context)
 
 
+@login_required(login_url='/users/login/')
 def pending_requests_view(request, *args, **kwargs):
     """Display the user's received requests and the total number of received
     requests that are pending.

@@ -8,21 +8,27 @@
 <body style="background-color: #f0f2f5;">
   <section style="padding-top: 70px; min-height: 2000px;">
     {% if user.is_authenticated %}
-      <h1>Family Profile Set Up</h1>
-      <br/><br/>
 
-      <div class="form-group">
-        <form method="POST" enctype="multipart/form-data">
-          {% csrf_token %}
-          {{ form.media}}
-          {{ form.as_p }}
-          <button class="btn btn-primary">Create Profile Page</button>
-          <a href="{% url 'home' %}" class="btn btn-secondary">
-            Cancel
-          </a>
-          <br/><br/>
-        </form>
-      </div>
+      <!-- Make sure the user hasn't set up a family profile already -->
+      {% if not user.familyprofile.family_name %}
+        <h1>Family Profile Set Up</h1>
+        <br/><br/>
+
+        <div class="form-group">
+          <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.media}}
+            {{ form.as_p }}
+            <button class="btn btn-primary">Create Profile Page</button>
+            <a href="{% url 'home' %}" class="btn btn-secondary">
+              Cancel
+            </a>
+            <br/><br/>
+          </form>
+        </div>
+      {% else %}
+        You have a family profile already set up
+      {% endif %}
 
     {% else%}
       You must be logged in to visit this page
@@ -30,3 +36,12 @@
   </section>
 </body>
 {% endblock %}
+
+<section>
+  <center>
+    <!-- Require the correct user to access this view -->
+    <div class="container-fluid" style="padding: 290px">
+      You are not the correct user to edit this page
+    </div>
+  </center>
+</section>
