@@ -67,7 +67,11 @@ class FamilyMember(models.Model):
         ('Older Adult (90-94 years old)', 'Older Adult (90-94 years old)'),
         ('Older Adult (95-99 years old)', 'Older Adult (95-99 years old)'),
         ('Older Adult (100+ years old)', 'Older Adult (100+ years old)'),
-        ('Older Adult (90-94 years old)', 'Older Adult (90-94 years old)'),
+        ('Baby', 'Baby'),
+        ('Child', 'Child'),
+        ('Adult', 'Adult'),
+        ('Older Adult', 'Older Adult'),
+        ('Senior', 'Senior'),
         ('Choose not to share', 'Choose not to share')
     )
 

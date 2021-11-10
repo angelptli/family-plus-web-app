@@ -1,4 +1,4 @@
-{% extends 'header_footer/base.html' %}
+{% extends 'family_profile_body/family-log-base.html' %}
 {% load static %}
 
 {% block title %}
@@ -11,80 +11,80 @@
 <link rel="stylesheet" type="text/css" href="{% static 'website/css/family_profile/add_family_member.css' %}">
 
 <body style="background-color: #f0f2f5;">
-  <section id="section_background">
+  <section id="section_background_add_family">
     {% if user.is_authenticated %}
+      <div class="container-fluid" id="form_title">
+        A simple way to add more<br>to your family...
+      </div>
+
       <div class="container-fluid">
-        <div class="row" >
+        <center>
+          <div class="card-sm shadow" id="card_itself">
 
-          <div class="col-sm">
-            <!-- FIRST COLUMN HOLDING THE SECOND COLUMN IN THE CENTER -->
-          </div>
-
-          <!-- SECOND COLUMN CARD -->
-          <div class="col-sm">
-            <div class="card-sm shadow" style="background-color: aliceblue;">
-              
-              <div class="container-fluid" id="form_title">
-                A simple form to add a member to your family...
-              </div>
-
-              <div class="container-fluid">
-
-                <div class="form-group">
-                  <form method="POST">
-                    {% csrf_token %}
-
+              <form method="POST">
+                {% csrf_token %}
+                
+                <div class="container-fluid" id="card_content_container">
+                  <div class="row row-cols-2">
+                    
                     <!-- First name -->
-                    <div class="container-fluid">
-                      {{ form.user }}
-                    </div>
-
-                    <!-- First name -->
-                    <div class="container-fluid">
+                    <div class="col" id="first_name">
+                      <label>First Name *</label>
                       {{ form.first_name }}
                     </div>
 
                     <!-- Last name -->
-                    <div class="container-fluid">
+                    <div class="col" id="last_name">
+                      <label>Last Name</label>
                       {{ form.last_name }}
                     </div>
 
-                    <!-- Family relation -->
-                    <div class="container-fluid">
+                    <!-- Relation -->
+                    <div class="col" id="relation">
+                      <label>Family Relation</label>
                       {{ form.relation }}
                     </div>
 
-                    <!-- Age range -->
-                    <div class="container-fluid">
+                    <!-- Age Range -->
+                    <div class="col" id="age_range">
+                      <label>Age Range</label>
                       {{ form.age_range }}
                     </div>
+                  </div>
 
-                    <!-- About info -->
-                    <div class="container-fluid">
-                      {{ form.about }}
-                    </div>
+                  <div class="container-fluid" id="about">
+                    <label>About</label>
+                    {{ form.about }}
+                  </div>
+                  
+                  <div class="container-fluid" id="username">
+                    <center>
+                    <label>Family Profile Owner</label>
+                      {{ form.user }}
+                    </center>
+                  </div>
 
-                    <button class="btn btn-primary">
-                      Add Family Member
-                    </button>
+                  <div class="container-fluid" id="add_member_btn_container">
+                    <center>
+                      <button class="btn" id="add_member_btn">
+                        Add Family Member
+                      </button>
+                  </div>
 
-                    <a href="{% url 'family-profile' user.familyprofile.id %}" class="btn btn-secondary">
-                      Cancel
-                    </a>
-                    <br/><br/>
-                  </form>
+                  <div class="container-fluid" id="return_link_container">
+                    <center>
+                      <a href="{% url 'family-profile' user.familyprofile.id %}" id="return_link">
+                        Return to Profile
+                      </a>
+                    </center>
+                  </div>
+
                 </div>
+              </form>
 
-      
-              </div>
-            </div>
           </div>
+        </center>
 
-          <div class="col-sm">
-            <!-- THIRD COLUMN HOLDING THE SECOND COLUMN IN THE CENTER -->
-          </div>
-
-        </div>
       </div>
     {% else%}
       You must be logged in to visit this page

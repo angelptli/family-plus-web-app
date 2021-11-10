@@ -1,10 +1,11 @@
 /* Background (behind family profile) */
-#section_background {
+#section_background_profile {
   /* background: #ffffff;  /* fallback for old browsers */
   /* background: -webkit-linear-gradient(to right, #0b6f88c2, #7948b9c2);  /* Chrome 10-25, Safari 5.1-6 */
   /* background: linear-gradient(to right, #0b6f88c2, #7948b9c2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   padding-top: 100px;
-  min-height: 2000px;
+  padding-bottom: 100px;
+  min-height: 1000px;
   background-color: #f4f4f4;
 }
 

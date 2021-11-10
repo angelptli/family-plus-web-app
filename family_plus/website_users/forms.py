@@ -20,7 +20,13 @@ class RegisterForm(UserCreationForm):
     
     email = forms.EmailField(widget=forms.EmailInput(attrs={
                              'class': 'form-control',
-                             'placeholder': 'email@example.com'}))
+                             'placeholder': 'Enter email'}))
+
+    username = forms.CharField(max_length=20,
+                                widget=forms.TextInput(attrs={
+                                    'class': 'form-control',
+                                    'placeholder': 'Enter username'
+                                }))
 
     is_adult = forms.BooleanField(label="I confirm that I am 18 years old or over")
     
@@ -64,7 +70,7 @@ class AccountSettingsForm(UserChangeForm):
     settings.
     """
 
-    username = forms.CharField(max_length=100,
+    username = forms.CharField(max_length=20,
                                  widget=forms.TextInput(attrs={
                                      'class': 'form-control'}))
 
@@ -141,38 +147,34 @@ class FamilyMemberForm(forms.ModelForm):
 
     class Meta:
         model = FamilyMember
-        fields = ('user', 'first_name', 'last_name', 'relation', 'age_range', 'about')
+        fields = ('first_name', 'last_name', 'relation', 'age_range', 'about', 'user')
 
         # Customize widgets
         widgets = {
-            'user': forms.Select(attrs={
-                'class': 'form-select',
-                'style': 'max-width: 300px;'
-            }),
             'first_name': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'First name',
-                'style': 'max-width: 300px;'
+                'style': 'border-color: #137ac483;'
             }),
             'last_name': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Last name (optional)',
-                'style': 'max-width: 300px;'
+                'style': 'border-color: #137ac483;'
             }),
             'relation': forms.Select(attrs={
                 'class': 'form-select',
-                'label': 'Family Relation (optional)',
-                'style': 'max-width: 300px;'
+                'style': 'border-color: #137ac483;'
             }),
             'age_range': forms.Select(attrs={
                 'class': 'form-select',
-                'label': 'Age range (optional)',
-                'style': 'max-width: 300px;'
+                'style': 'border-color: #137ac483;'
             }),
             'about': forms.Textarea(attrs={
                 'class': 'form-control',
-                'placeholder': 'About (optional)',
-                'style': 'max-width: 300px;'
+                'rows': '4',
+                'style': 'max-height: 200px; border-width: 1px; border-color: #137ac483;'
+            }),
+            'user': forms.Select(attrs={
+                'class': 'form-select',
+                'style': 'max-height: 200px; width: fit-content; border-color: #137ac483;'
             }),
         }
 
@@ -185,33 +187,33 @@ class EditFamilyMemberForm(forms.ModelForm):
     
     class Meta:
         model = FamilyMember
-        fields = ('first_name', 'last_name', 'relation', 'age_range', 'about')
+        fields = ('first_name', 'last_name', 'relation', 'age_range', 'about', 'user')
 
         # Customize widgets
         widgets = {
             'first_name': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'First name',
-                'style': 'max-width: 300px;'
+                'style': 'border-color: #137ac483;'
             }),
             'last_name': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Last name (optional)',
-                'style': 'max-width: 300px;'
+                'style': 'border-color: #137ac483;'
             }),
             'relation': forms.Select(attrs={
                 'class': 'form-select',
-                'label': 'Family Relation (optional)',
-                'style': 'max-width: 300px;'
+                'style': 'border-color: #137ac483;'
             }),
             'age_range': forms.Select(attrs={
                 'class': 'form-select',
-                'label': 'Age range (optional)',
-                'style': 'max-width: 300px;'
+                'style': 'border-color: #137ac483;'
             }),
             'about': forms.Textarea(attrs={
                 'class': 'form-control',
-                'placeholder': 'About (optional)',
-                'style': 'max-width: 300px;'
+                'rows': '4',
+                'style': 'max-height: 200px; border-width: 1px; border-color: #137ac483;'
+            }),
+            'user': forms.Select(attrs={
+                'class': 'form-select',
+                'style': 'max-height: 200px; width: fit-content; border-color: #137ac483;'
             }),
         }

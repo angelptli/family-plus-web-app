@@ -6,7 +6,7 @@
 
 {% block content %}
 <body style="background-color: #f0f2f5;">
-  <section style="padding-top: 70px; min-height: 2000px;">
+  <section style="padding-top: 70px; min-height: 1000px; padding-bottom: 100px;">
     {% if user.is_authenticated %}
 
       <!-- Make sure the user hasn't set up a family profile already -->
@@ -37,7 +37,7 @@
 </body>
 {% endblock %}
 
-<section>
+<section style="min-height: 1000px; padding-bottom: 100px;">
   <center>
     <!-- Require the correct user to access this view -->
     <div class="container-fluid" style="padding: 290px">

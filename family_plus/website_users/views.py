@@ -7,6 +7,7 @@ from django.views import generic
 from django.views.generic import CreateView, DetailView, ListView, UpdateView
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 # Import models
 from website_users.models import FamilyProfile, FamilyMember
@@ -183,7 +184,7 @@ def no_profile_view(request, *args, **kwargs):
     return render(request, 'family_profile/no-profile.html')
 
 
-class FamilyMemberView(ListView):
+class FamilyMemberView(LoginRequiredMixin, ListView):
 
     """Show an individual view for each family member object where the
     user can choose to edit data or delete the object.
@@ -191,6 +192,8 @@ class FamilyMemberView(ListView):
 
     model = FamilyMember
     template_name = "family_profile_body/family-member-log.html"
+    login_url = '/users/login/'
+    redirect_field_name = 'redirect_to'
 
     def get_context_data(self, *args, **kwargs):
         """Add the family member object to the context dictionary and
@@ -208,7 +211,7 @@ class FamilyMemberView(ListView):
         return context
 
 
-class AddFamilyMemberView(CreateView):
+class AddFamilyMemberView(LoginRequiredMixin, CreateView):
 
     """Users who have set up a family profile can create objects to
     represent members of their family.
@@ -217,6 +220,8 @@ class AddFamilyMemberView(CreateView):
     model = FamilyMember
     form_class = FamilyMemberForm
     template_name = "family_profile_body/add-family-member.html"
+    login_url = '/users/login/'
+    redirect_field_name = 'redirect_to'
 
     def get_form_kwargs(self):
         """Pass request object to the form class to request current user's
@@ -234,13 +239,15 @@ class AddFamilyMemberView(CreateView):
         return reverse_lazy('family-profile', kwargs={'pk': self.request.user.familyprofile.pk})
 
 
-class EditMemberInfoView(UpdateView):
+class EditMemberInfoView(LoginRequiredMixin, UpdateView):
 
     """Allow users to edit the info stored on their family member objects."""
 
     model = FamilyMember
     form_class = EditFamilyMemberForm
     template_name = "family_profile_body/edit-member-info.html"
+    login_url = '/users/login/'
+    redirect_field_name = 'redirect_to'
 
     def get_context_data(self, *args, **kwargs):
         """Add the family member object to the context dictionary and
@@ -261,6 +268,7 @@ class EditMemberInfoView(UpdateView):
         return reverse_lazy('family-member-log', kwargs={'pk': self.object.pk})
 
 
+@login_required(login_url='/users/login/')
 def delete_member_view(request, pk):
     """Delete the family member object from the database when requested
     by the user who is clicking the delete button.
