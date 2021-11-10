@@ -94,6 +94,7 @@ class FamilyMember(models.Model):
         ('Relative', 'Relative'),
         ('Relative-In-Law', 'Relative-In-Law'),
         ('Family Friend', 'Family Friend'),
+        ('Pet', 'Pet'),
         ('Other', 'Other'),
     )
 
