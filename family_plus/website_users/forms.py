@@ -185,6 +185,18 @@ class EditFamilyMemberForm(forms.ModelForm):
     sub-profile for each family member they add to their family profile.
     """
     
+    def __init__(self, *args, **kwargs):
+        """Filter FamilyProfile objects to get the current user and assign
+        to the user field queryset.
+        """
+        # Credit: https://medium.com/analytics-vidhya/django-how-to-pass-the-user-object-into-form-classes-ee322f02948c
+        # Learned to pass the request object to the form in order to request
+        # the current user for saving to the form as foreign key
+        self.request = kwargs.pop('request')
+        super(EditFamilyMemberForm, self).__init__(*args, **kwargs)
+        self.fields['user'].queryset = FamilyProfile.objects.filter(user=self.request.user)
+        self.fields['user'].empty_label = None  # Remove empty label
+
     class Meta:
         model = FamilyMember
         fields = ('first_name', 'last_name', 'relation', 'age_range', 'about', 'user')
