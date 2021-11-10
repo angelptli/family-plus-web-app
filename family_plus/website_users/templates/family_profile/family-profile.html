@@ -209,9 +209,11 @@
       <!-- END OF FAMILY PROFILE -->
     {% else %}
       <!-- Require logged in account to view family profiles -->
-      <div class="container" style="padding: 290px;">
-        You must be logged in to visit this page
-      </div>
+      <center>
+        <div style="padding-top: 300px; font-size: 20px;">
+          You must be logged in to visit this page.
+        </div>
+      </center>
     {% endif %}
 
     {% if user.is_authenticated and user.familyprofile.id == page_user.id %}
