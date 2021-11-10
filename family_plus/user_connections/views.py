@@ -116,6 +116,7 @@ def pending_requests_view(request, *args, **kwargs):
     return render(request, 'requests/pending-requests.html', context)
 
 
+@login_required(login_url='/users/login/')
 def send_request_view(request, pk):
     """Add sender to receiver's pending list when sender sends a request
     to connect.
@@ -126,6 +127,7 @@ def send_request_view(request, pk):
     return HttpResponseRedirect(reverse('family-profile', args=[str(pk)]))
 
 
+@login_required(login_url='/users/login/')
 def cancel_request_view(request, pk):
     """Remove the sender from the receiver's pending list when the
     sender cancels the request.
@@ -136,6 +138,7 @@ def cancel_request_view(request, pk):
     return HttpResponseRedirect(reverse('family-profile', args=[str(pk)]))
 
 
+@login_required(login_url='/users/login/')
 def accept_request_view(request, pk):
     """Add users to each other's connecions list when one user accepts
     the other user's connect request and remove the sender from the receiver's
@@ -150,6 +153,7 @@ def accept_request_view(request, pk):
     return HttpResponseRedirect(reverse('pending-requests'))
 
 
+@login_required(login_url='/users/login/')
 def decline_request_view(request, pk):
     """Remove the sender from the receiver's pending list when the
     receiver declines the request.
@@ -160,6 +164,7 @@ def decline_request_view(request, pk):
     return HttpResponseRedirect(reverse('pending-requests'))
 
 
+@login_required(login_url='/users/login/')
 def delete_connection_view(request, pk):
     """Remove users from each other's connections list when one user
     deletes the other user from their list.

@@ -1,0 +1,9 @@
+/* Go back button in hidden profile mesage */
+#home_link {
+  color: #4e4e9ec0;
+}
+
+/* Go back button in hidden profile mesage on hover */
+#home_link:hover {
+  filter: brightness(50%);
+}

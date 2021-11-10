@@ -73,18 +73,21 @@ class PasswordsChangeView(LoginRequiredMixin, PasswordChangeView):
     raise_exception = True  # 403 Forbidden view when not logged in
 
 
+@login_required(login_url='/users/login/')
 def password_success(request):
     """Allows user to be redirected to a password changed success page."""
     return render(request, 'registration/password-success.html')
 
 
-class CreateProfileView(CreateView):
+class CreateProfileView(LoginRequiredMixin, CreateView):
 
     """Allow user to create a family profile."""
 
     model = FamilyProfile
     form_class = ProfilePageForm
     template_name = "family_profile/create-profile.html"
+    login_url = '/users/login/'
+    redirect_field_name = 'redirect_to'
     
     def form_valid(self, form):
         # Make user info available to the user filling out the form
@@ -97,7 +100,7 @@ class CreateProfileView(CreateView):
         return super().form_valid(form)
 
 
-class FamilyProfilePageView(DetailView):
+class FamilyProfilePageView(LoginRequiredMixin, DetailView):
     
     """This view displays the family profiles of users."""
 
@@ -106,6 +109,8 @@ class FamilyProfilePageView(DetailView):
 
     model = FamilyProfile
     template_name = 'family_profile/family-profile.html'
+    login_url = '/users/login/'
+    redirect_field_name = 'redirect_to'
 
     def get_context_data(self, *args, **kwargs):
         """Define the different states of family profiles to determine
@@ -143,18 +148,21 @@ class FamilyProfilePageView(DetailView):
         return context
 
 
-class EditProfilePageView(generic.UpdateView):
+class EditProfilePageView(LoginRequiredMixin, generic.UpdateView):
 
     """Allow user to edit the info stored on their family profile."""
 
     model = FamilyProfile
     form_class = ProfilePageForm
     template_name = 'family_profile/edit-family-profile.html'
+    login_url = '/users/login/'
+    redirect_field_name = 'redirect_to'
 
     def get_success_url(self):
         return reverse_lazy('family-profile', kwargs={'pk': self.object.pk})
 
 
+@login_required(login_url='/users/login/')
 def toggle_hide_profile(request, pk):
     """Users can click a button on their family profile to toggle the
     visibility of their profile to other  will toggle the hide_profile status to True.
