@@ -278,7 +278,7 @@ class EditMemberInfoView(LoginRequiredMixin, UpdateView):
         """
         # Credit: https://medium.com/analytics-vidhya/django-how-to-pass-the-user-object-into-form-classes-ee322f02948c
         # Learned to pass the request object to the form in order to request
-        # the current user for saving to the form as foreign key
+        # the current user for prefilling the form with the username
         kwargs = super(EditMemberInfoView, self).get_form_kwargs()
         kwargs['request'] = self.request
 
