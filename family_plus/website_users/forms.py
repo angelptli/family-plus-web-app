@@ -112,7 +112,7 @@ class ProfilePageForm(forms.ModelForm):
     family_name = forms.CharField(max_length=15,
                                   widget=forms.TextInput(attrs={
                                       'class': 'form-control',
-                                      'style': 'border-color: #137ac483;'
+                                      'style': 'border-color: #137ac483;',
                                   }))
 
     class Meta:

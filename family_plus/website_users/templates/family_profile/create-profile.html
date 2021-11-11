@@ -1,55 +1,99 @@
-{% extends 'header_footer/base.html' %}
+{% extends 'family_profile_body/pure-links-base.html' %}
+{% load static %}
 
 {% block title %}
-  Create a Family Profile | Family+
+  Set Up Family Profile | Family+
 {% endblock %}
 
 {% block content %}
+<!-- CSS styling -->
+<link rel="stylesheet" type="text/css" href="{% static 'website/css/family_profile/edit_profile_header.css' %}">
+
 <body style="background-color: #f0f2f5;">
-  <section style="padding-top: 70px; min-height: 1000px; padding-bottom: 100px;">
+  <section id="edit_header_section">
+
     {% if user.is_authenticated %}
-
-      <!-- Make sure the user hasn't set up a family profile already -->
       {% if not user.familyprofile.family_name %}
-        <h1>Family Profile Set Up</h1>
-        <br/><br/>
 
-        <div class="form-group">
-          <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.media}}
-            {{ form.as_p }}
-            <button class="btn btn-primary">Create Profile Page</button>
-            <a href="{% url 'home' %}" class="btn btn-secondary">
-              Cancel
-            </a>
-            <br/><br/>
-          </form>
+        <!-- Page title -->
+        <div class="container-fluid" id="edit_header_title">
+          <center>
+            A nickname for a family.<br>The rest for later? Sounds good.
+          </center>
         </div>
+
+        <div class="container" id="form_container">
+          <center>
+            <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+              <div class="card-sm shadow" id="edit_header_card">
+                <div class="row">
+
+                  <!-- Family profile picture -->
+                  <div class="col-sm" id="profile_image_column">
+                    <label>Family Profile Picture</label>
+                    {{ form.profile_image }}
+                  </div>
+
+                  <!-- Family nickname and bio -->
+                  <div class="col-sm shadow" id="name_bio_column">
+                    <center>
+                      <div class="container-fluid" id="name_title">
+                        <label>Family Nickname *</label>
+                          {{ form.family_name }}
+                      </div>
+                    </center>
+                    <div class="container-fluid" id="bio_title">
+                      <label>Family bio</label>
+                      {{ form.family_bio }}
+                    </div>
+                  </div>
+
+                  <!-- Contact info -->
+                  <div class="col-sm" id="contact_info_column">
+                    <label>Contact Info</label>
+                    {{ form.contact_info }}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Save header info button -->
+              <div class="container-fluid" id="save_header_info_container">
+                <center>
+                  <button class="btn" id="save_header_info_btn">
+                    Create Family Profile
+                  </button>
+              </div>
+
+              <!-- Return to profile button -->
+              <div class="container-fluid" id="return_link_container">
+                <center>
+                  <a href="{% url 'home' %}" id="return_link">
+                    Cancel
+                  </a>
+                </center>
+              </div>
+            </form>
+          </center>
+        </div>
+
       {% else %}
         <center>
           <div style="padding-top: 300px; font-size: 20px;">
-            You have a family profile already set up.
+            You must be logged in to visit this page.
           </div>
         </center>
       {% endif %}
 
-    {% else%}
-      <center>
-        <div style="padding-top: 300px; font-size: 20px;">
-          You must be logged in to visit this page.
-        </div>
-      </center>
+    {% else %}
+      <section style="min-height: 1000px; padding-bottom: 100px;">
+        <center>
+          <!-- Require logged in account to edit own family profile -->
+          <div class="container-fluid" style="padding: 290px">
+            You must be logged in to visit this page.
+          </div>
+        </center>
+      </section>
     {% endif %}
   </section>
 </body>
 {% endblock %}
-
-<section style="min-height: 1000px; padding-bottom: 100px;">
-  <center>
-    <!-- Require the correct user to access this view -->
-    <div class="container-fluid" style="padding: 290px">
-      You are not the correct user to edit this page
-    </div>
-  </center>
-</section>
