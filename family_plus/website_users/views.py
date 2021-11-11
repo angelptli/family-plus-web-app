@@ -148,13 +148,13 @@ class FamilyProfilePageView(LoginRequiredMixin, DetailView):
         return context
 
 
-class EditProfilePageView(LoginRequiredMixin, generic.UpdateView):
+class EditProfileHeaderView(LoginRequiredMixin, generic.UpdateView):
 
-    """Allow user to edit the info stored on their family profile."""
+    """Allow user to edit the info stored on their family profile header."""
 
     model = FamilyProfile
     form_class = ProfilePageForm
-    template_name = 'family_profile/edit-family-profile.html'
+    template_name = 'family_profile/edit-profile-header.html'
     login_url = '/users/login/'
     redirect_field_name = 'redirect_to'
 

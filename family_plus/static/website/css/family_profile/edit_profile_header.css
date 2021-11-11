@@ -1,0 +1,100 @@
+/* Section background */
+#edit_header_section {
+  padding-top: 50px;
+  min-height: 1000px;
+  background: #7474BF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+/* Form title */
+#edit_header_title {
+  color: #fff;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 500;
+  padding-bottom: 50px;
+}
+
+/* The card itself */
+#edit_header_card {
+  text-align: left;
+  color: rgb(110, 110, 110);
+  font-weight: 500;
+  background-color: #fff;
+  width: fit-content;
+}
+
+/* Profile image column */
+#profile_image_column {
+  min-height: 350px;
+  width: 300px;
+  padding-top: 150px;
+  padding-left: 60px;
+  padding-right: 50px;
+}
+
+/* Nickname bio column */
+#name_bio_column {
+  min-height: 350px;
+  width: 600px;
+  min-width: 400px;
+  padding-top: 60px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+#name_title {
+  width: fit-content;
+}
+
+#bio_title {
+  padding-top: 30px;
+}
+
+/* Contact info column */
+#contact_info_column {
+  min-height: 400px;
+  width: 300px;
+  padding-right: 50px;
+  padding-top: 130px;
+  padding-left: 50px;
+  padding-right: 60px;
+}
+
+/* Save header info button container */
+#save_header_info_container {
+  padding-bottom: 10px;
+  padding-top: 50px;
+  width: 400px;
+}
+
+/* Save header info button */
+#save_header_info_btn {
+  background: #1066a3;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #1066a3, #1066a3);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #1066a3, #1066a3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.534);
+}
+
+/* Save header info button on hover */
+#save_header_info_btn:hover {
+  filter: brightness(105%);
+}
+
+/* Return link button container */
+#return_link_container {
+  padding-bottom: 30px;
+  width: 400px;
+}
+
+/* Return link button */
+#return_link {
+  color: rgba(255, 255, 255, 0.562);
+}
+
+/* Return link button on hover hover */
+#return_link:hover {
+  color: rgba(255, 255, 255, 0.753);
+}

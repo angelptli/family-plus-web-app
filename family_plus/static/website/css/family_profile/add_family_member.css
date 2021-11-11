@@ -1,6 +1,6 @@
 /* Section background */
 #section_background_add_family {
-  padding-top: 70px;
+  padding-top: 50px;
   min-height: 1000px;
   background: #7474BF;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
@@ -92,18 +92,17 @@
   filter: brightness(92%);
 }
 
-/* Edit member info button container */
+/* Return link button container */
 #return_link_container {
-  /* padding-top: 5px; */
   padding-bottom: 20px;
 }
 
-/* Edit member info button */
+/* Return link button */
 #return_link {
   color: #32329ebd;
 }
 
-/* Edit member info button on hover hover */
+/* Return link button on hover hover */
 #return_link:hover {
   color: #32329e6c;
 }

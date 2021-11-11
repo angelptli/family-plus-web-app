@@ -1,0 +1,102 @@
+{% extends 'family_profile_body/pure-links-base.html' %}
+{% load static %}
+
+{% block title %}
+  Edit Family Profile | Family+
+{% endblock %}
+
+{% block content %}
+<!-- CSS styling -->
+<link rel="stylesheet" type="text/css" href="{% static 'website/css/family_profile/edit_profile_header.css' %}">
+
+<body style="background-color: #f0f2f5;">
+  <section id="edit_header_section">
+
+    {% if user.is_authenticated %}
+      {% if user.id == familyprofile.user.id %}
+
+        <!-- Page title -->
+        <div class="container-fluid" id="edit_header_title">
+          <center>
+            A family header ?<br>It's like a introduction for others...
+          </center>
+        </div>
+
+        <div class="container" id="form_container">
+          <center>
+            <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+              <div class="card-sm shadow" id="edit_header_card">
+                <div class="row">
+
+                  <!-- Family profile picture -->
+                  <div class="col-sm" id="profile_image_column">
+                    <label>Family Profile Picture</label>
+                    {{ form.profile_image }}
+                  </div>
+
+                  <!-- Family nickname and bio -->
+                  <div class="col-sm shadow" id="name_bio_column">
+                    <center>
+                      <div class="container-fluid" id="name_title">
+                        <label>Family Nickname *</label>
+                          {{ form.family_name }}
+                      </div>
+                    </center>
+                    <div class="container-fluid" id="bio_title">
+                      <label>Family bio</label>
+                      {{ form.family_bio }}
+                    </div>
+                  </div>
+
+                  <!-- Contact info -->
+                  <div class="col-sm" id="contact_info_column">
+                    <label>Contact Info</label>
+                    {{ form.contact_info }}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Save header info button -->
+              <div class="container-fluid" id="save_header_info_container">
+                <center>
+                  <button class="btn" id="save_header_info_btn">
+                    Save Header Info
+                  </button>
+              </div>
+
+              <!-- Return to profile button -->
+              <div class="container-fluid" id="return_link_container">
+                <center>
+                  <a href="{% url 'family-profile' user.familyprofile.id %}" id="return_link">
+                    Return to Profile
+                  </a>
+                </center>
+              </div>
+            </form>
+          </center>
+        </div>
+
+      {% else %}
+        <section style="min-height: 1000px; padding-bottom: 100px;">
+          <center>
+            <!-- Require the correct user to access this view -->
+            <div style="padding-top: 350px; font-size: 20px;">
+              Unauthorized access. You are not the correct user.
+            </div>
+          </center>
+        </section>
+      {% endif %}
+
+    {% else %}
+      <section style="min-height: 1000px; padding-bottom: 100px;">
+        <center>
+          <!-- Require logged in account to edit own family profile -->
+          <div class="container-fluid" style="padding: 290px">
+            You must be logged in to visit this page.
+          </div>
+        </center>
+      </section>
+    {% endif %}
+  </section>
+</body>
+{% endblock %}

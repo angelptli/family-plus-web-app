@@ -112,18 +112,25 @@ class ProfilePageForm(forms.ModelForm):
     family_name = forms.CharField(max_length=15,
                                   widget=forms.TextInput(attrs={
                                       'class': 'form-control',
-                                      'placeholder': 'What is a nickname for your family?'}))
+                                      'style': 'border-color: #137ac483;'
+                                  }))
 
     class Meta:
         model = FamilyProfile
         fields = ('family_name', 'family_bio', 'contact_info', 'profile_image')
 
-        # Apply bootstrap styling (form-control) to the text boxes of
-        # these fields
+        # Customize form field widgets
         widgets = {
-            'family_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'family_bio': forms.Textarea(attrs={'class': 'form-control'}),
-            'contact_info': forms.TextInput(attrs={'class': 'form-control'}),
+            'family_bio': forms.Textarea(attrs={
+                'class': 'form-control',
+                'rows': '4',
+                'style': 'max-height: 200px; border-width: 1px; border-color: #137ac483; border-color: #137ac483;'
+            }),
+            'contact_info': forms.Textarea(attrs={
+                'class': 'form-control',
+                'rows': '4',
+                'style': 'max-height: 200px; border-width: 1px; border-color: #137ac483; border-color: #137ac483;'
+            }),
         }
 
 
