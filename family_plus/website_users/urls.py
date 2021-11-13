@@ -17,7 +17,7 @@ Including another URLconf
 # from django.contrib.auth.forms import UserChangeForm
 from django.urls import path
 from user_connections.views import send_request_view, cancel_request_view
-from .views import (
+from website_users.views import (
     FamilyMemberView,
     AddFamilyMemberView,
     EditMemberInfoView,

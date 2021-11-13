@@ -1,10 +1,8 @@
-from django.db.models.fields import CharField
-from django.forms.fields import ChoiceField
 from custom_user_model.models import CustomUserModel
 from django.contrib.auth.forms import PasswordChangeForm, UserChangeForm
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
-from .models import FamilyMember, FamilyProfile
+from website_users.models import FamilyMember, FamilyProfile
 import string
 
 

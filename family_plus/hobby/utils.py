@@ -1,13 +1,12 @@
 def define_hobbies():
     """Return a tuple of 55 hobbies."""
-
     hobby_tuple = (
         ('Amusement parks', 'Amusement parks'),
         ('Arts & crafts', 'Arts & crafts'),
         ('Baking', 'Baking'),
         ('Bicycling', 'Bicycling'),
-        ('Board games', 'Board'),
-        ('Book club', 'Book'),
+        ('Board games', 'Board games'),
+        ('Book club', 'Book club'),
         ('Bowling', 'Bowling'),
         ('Breadmaking', 'Breadmaking'),
         ('Camping', 'Camping'),
@@ -30,11 +29,11 @@ def define_hobbies():
         ('Food', 'Food'),
         ('Houseplant care', 'Houseplant care'),
         ('Languages', 'Languages'),
-        ('Lego building', 'Lego'),
+        ('Lego building', 'Lego building'),
         ('Martial arts', 'Martial arts'),
         ('Math', 'Math'),
         ('Mechanics', 'Mechanics'),
-        ('Media arts', 'Media'),
+        ('Media arts', 'Media arts'),
         ('Meditation', 'Meditation'),
         ('Music', 'Music'),
         ('Musical instruments', 'Musical instruments'),

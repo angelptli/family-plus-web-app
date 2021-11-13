@@ -1,0 +1,150 @@
+/* Section background */
+#section_background_edit_hobby_log {
+  padding-top: 100px;
+  min-height: 1000px;
+  background: #348AC7;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  /* color: rgb(230, 230, 230); */
+}
+
+/* Use in account settings and contact pages */
+/* background: #9fc0d8;
+  background: -webkit-linear-gradient(to right, #9fc0d8, #7474BF);
+  background: linear-gradient(to right, #9fc0d8, #7474BF); */
+
+/* Form title */
+#form_title {
+  color: #fff;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 500;
+  padding-bottom: 20px;
+}
+
+/* Outer content container */
+#outer_content_container {
+  width: 100%;
+  padding: 0;
+}
+
+/* Inner content container */
+#inner_content_container {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  /* padding-left: 50px;
+  padding-right: 50px; */
+  color: rgb(255, 255, 255);
+  font-weight: 500;
+}
+
+/* Multi select */
+.select2 {
+  width: 50% !important;
+  min-width: 400px;
+  max-width: 700px;
+  font-size: 16px !important;
+  font-weight: 450 !important;
+}
+
+.select2-selection {
+  border: 0px solid #dee3e7 !important;
+  border-radius: 50px !important;
+  min-height: 80px !important;
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+  min-width: none !important;
+}
+
+/* Hover highlight choices color. Source: https://www.webdesign101.net/change-highlight-colour-of-select2-option/ */
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  opacity: 0.95;
+}
+
+/* Hobbies container */
+#hobbies {
+  padding-top: 25px;
+  padding-left: 20px;
+  color: #505053;
+}
+
+/* Other container */
+#other {
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 30px;
+}
+
+/* Profile and username container */
+#profile_user_container {
+  padding-top: 80px;
+  padding-bottom: 40px;
+}
+
+/* Profile title container */
+#profile_title {
+  text-align: right;
+  padding-right: 0;
+  color: rgba(255, 255, 255, 0.774);
+  min-width: 200px;
+  font-size: 18px;
+  font-weight: 450 ;
+}
+
+/* Username container */
+#username {
+  text-align: left;
+  padding-left: 50px;
+  min-width: 200px;
+}
+
+/* Username form field */
+#username_form_field {
+  max-height: 200px;
+  width: fit-content;
+  background: rgba(255, 255, 255, 0);
+  /* border-color: rgba(255, 255, 255, 0.568); */
+  border-radius: 25px;
+  /* border-width: 0; */
+  color: rgba(255, 255, 255, 0.774);
+  font-size: 18px;
+  font-weight: 450;
+  background: #d2dadf31;
+  border-color:rgba(255, 255, 255, 0.774);
+}
+
+#username_form_field:hover {
+  background: #d2dadf98;
+}
+
+/* Username label */
+#user_label {
+  padding-top: 7px;
+  text-align: right;
+}
+
+/* Save hobbies button container */
+#save_hobby_btn_container {
+  padding-bottom: 30px;
+}
+
+/* Save hobbies button */
+#save_hobby_btn {
+  /* background: rgba(255, 255, 255, 0); */
+  background: #d2dadf31;
+  border-color:rgba(255, 255, 255, 0.774);
+  /* color: #fff; */
+  color: rgba(255, 255, 255, 0.774);
+  font-size: 18px;
+  font-weight: 450;
+  border-radius: 25px;
+
+}
+
+/* Save hobbies button on hover */
+#save_hobby_btn:hover {
+  background: #d2dadf98;
+}

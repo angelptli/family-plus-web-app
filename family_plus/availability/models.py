@@ -30,10 +30,10 @@ class Availability(models.Model):
         ('Unknown', 'Unknown'),
     )
 
-    user   = models.OneToOneField(FamilyProfile, null=False, on_delete=models.CASCADE)
-    days        = models.CharField(max_length=255, null=True, choices=DAY)
-    time_of_day = models.CharField(max_length=255, null=True, choices=TIME_OF_DAY)
+    user   = models.OneToOneField(FamilyProfile, null=True, on_delete=models.CASCADE)
+    days        = models.CharField(max_length=255, null=True, blank=True, choices=DAY)
+    time_of_day = models.CharField(max_length=255, null=True, blank=True, choices=TIME_OF_DAY)
 
     def __str__(self):
-        """Label as Family # | Member #."""
-        return str(self.user) + 'Availability'
+        """Return user of this object."""
+        return str(self.user)

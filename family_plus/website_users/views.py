@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 
 # Import models
 from website_users.models import FamilyProfile, FamilyMember
+from hobby.models import Hobby
 
 # Import forms
 from website_users.forms import (
@@ -138,12 +139,18 @@ class FamilyProfilePageView(LoginRequiredMixin, DetailView):
         # Make each user's family member objects available to the template
         family_members = FamilyMember.objects.filter(user=page_user)
 
+        # Make each user's category objects available to the template
+        hobby_log = ""
+        if Hobby.objects.filter(user=page_user).exists():
+            hobby_log = Hobby.objects.get(user=page_user)
+
         # Add the variables to the context dictionary
         context["page_user"] = page_user
         context["is_hidden"] = is_hidden
         context['profile_hidden'] = profile_hidden
         context['view_hidden'] = view_hidden
         context['family_members'] = family_members
+        context['hobby_log'] = hobby_log
 
         return context
 

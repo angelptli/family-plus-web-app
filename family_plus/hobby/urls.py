@@ -14,7 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
+from hobby.views import (
+    CreateHobbyLogView,
+    EditHobbyLogView
+)
 
 urlpatterns = [
-
+    path('hobbies/', CreateHobbyLogView.as_view(), name='create-hobby-log'),
+    path('hobbies/<int:pk>/add_edit/', EditHobbyLogView.as_view(), name='edit-hobby-log'),
 ]

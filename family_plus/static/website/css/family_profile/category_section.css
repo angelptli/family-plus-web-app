@@ -34,3 +34,15 @@
   background-color: rgba(24, 42, 124, 0.103);
   filter: brightness(85%);
 }
+
+/* Edit family button */
+#edit_log_link {
+  color: #748cbf;
+}
+#edit_log_link:hover {
+  filter: brightness(70%);
+}
+#edit_log_link_container {
+  padding: 0;
+  text-align: right;
+}

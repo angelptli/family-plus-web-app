@@ -1,0 +1,91 @@
+{% extends 'family_profile_body/pure-links-base.html' %}
+{% load static %}
+
+{% block title %}
+  Add/Edit Hobbies & Interests | Family+
+{% endblock %}
+
+{% block content %}
+
+<!-- CSS styling -->
+<link rel="stylesheet" type="text/css" href="{% static 'website/css/hobby_log/edit_hobby_log.css' %}">
+
+<body style="background-color: #f0f2f5;">
+  <section id="section_background_edit_hobby_log">
+    {% if user.is_authenticated %}
+      <div class="container-fluid" id="form_title">
+        Click the container. Select. Save.
+      </div>
+
+      <div class="container-fluid" id="outer_content_container">
+        <center>
+          <form method="POST">{% csrf_token %}
+            <div class="container-fluid" id="inner_content_container">
+
+              <!-- Hobbies and interests multi-select options -->
+              <div class="col" id="hobbies">
+                {{ form.hobbies }}
+              </div>
+              
+              <div class="container-fluid" id="profile_user_container">
+                <div class="row row-cols-2">
+                  <div class="col">
+                    <!-- Family profile owner -->
+                    <div class="container-fluid" id="profile_title">
+                      <label id="user_label">Family Profile Owner:</label>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="container-fluid" id="username">
+                      {{ form.user }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+                
+              <!-- Save button -->
+              <div class="container-fluid" id="save_hobby_btn_container">
+                <center>
+                  <button class="btn" id="save_hobby_btn">
+                    Save Hobbies & Interests
+                  </button>
+                </center>
+              </div>
+
+            </div>
+          </form>
+        </center>
+      </div>
+
+      <script>
+        // Select2 jQuery multi-select box.
+        // Inspired by: https://www.youtube.com/watch?v=aWaz078Q_GM&t=1s
+        // Website docs: https://select2.org/
+        $(document).ready(function () {
+          $("#hobby_select").select2({
+            tags: true,
+            closeOnSelect: false,
+            placeholder: "Choose your family's hobbies and interests",
+            multiple: true,
+
+            // Return 'no results found' when user enters a choice not included in the choices
+            // Source: https://stackoverflow.com/questions/30471338/how-to-disable-creating-new-tags-with-select2-v4-0
+            createTag: function(params) {
+                return undefined;
+           }
+          })
+        })
+      </script>
+
+    {% else %}
+      <center>
+        <div style="padding-top: 300px; font-size: 20px;">
+          You must be logged in to access this page.
+        </div>
+      </center>
+    {% endif %}
+  </section>
+</body>
+
+{% endblock %}
+

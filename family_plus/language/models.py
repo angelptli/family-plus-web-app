@@ -120,9 +120,9 @@ class Language(models.Model):
         ('Zulu', 'Zulu'),
     )
 
-    user = models.OneToOneField(FamilyProfile, null=False, on_delete=models.CASCADE)
-    languages = models.CharField(max_length=255, null=True, choices=LANGUAGE)
+    user = models.OneToOneField(FamilyProfile, null=True, on_delete=models.CASCADE)
+    languages = models.CharField(max_length=255, null=True, blank=True, choices=LANGUAGE)
 
     def __str__(self):
-        """Label as Family # | Member #."""
-        return 'Family ' + str(self.user)
+        """Return user of language log object."""
+        return str(self.user)
