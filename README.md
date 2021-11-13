@@ -28,9 +28,14 @@ python -m venv virt
 pip install django
 ```
 
-**You'll need to install Python Decouple to handle your keys:**
+**Then install Python Decouple to handle your keys:**
 ```
 pip install python-decouple
+```
+
+**To support multi-selecting and storing, install django-multiselectfield:**
+```
+pip install django-multiselectfield
 ```
 
 **Lastly install the Python Imaging Library for image handling:**
