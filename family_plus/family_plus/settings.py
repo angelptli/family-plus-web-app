@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'language',
     'availability',
     'hobby',
+    'location',
 
     'django.contrib.admin',
     'django.contrib.auth',
