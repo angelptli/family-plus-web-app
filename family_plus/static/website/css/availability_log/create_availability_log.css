@@ -1,5 +1,5 @@
 /* Section background */
-#section_background_edit_hobby_log {
+#section_background_create_availability_log {
   padding-top: 100px;
   min-height: 1000px;
   background: #348AC7;  /* fallback for old browsers */
@@ -26,8 +26,6 @@
 #inner_content_container {
   padding-top: 40px;
   padding-bottom: 40px;
-  /* padding-left: 50px;
-  padding-right: 50px; */
   color: rgb(255, 255, 255);
   font-weight: 500;
 }
@@ -57,18 +55,11 @@
   opacity: 0.95;
 }
 
-/* Hobbies container */
-#hobbies {
+/* Availability days container */
+#days {
   padding-top: 25px;
   padding-left: 20px;
   color: #505053;
-}
-
-/* Other container */
-#other {
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 30px;
 }
 
 /* Profile and username container */
@@ -117,17 +108,14 @@
   text-align: right;
 }
 
-/* Save hobbies button container */
-#save_hobby_btn_container {
+/* Save availability button container */
+#save_availability_btn_container {
   padding-bottom: 30px;
 }
 
-/* Save hobbies button */
-#save_hobby_btn {
-  /* background: #d2dadf31; */
-  background: #654ea3bd;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #eaafc8bd, #654ea3bd);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #eaafc8bd, #654ea3bd); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+/* Save availability button */
+#save_availability_btn {
+  background: #d2dadf31;
   border-color:rgba(255, 255, 255, 0.774);
   color: rgba(255, 255, 255, 0.774);
   font-size: 18px;
@@ -136,10 +124,7 @@
 
 }
 
-/* Save hobbies button on hover */
-#save_hobby_btn:hover {
-  /* background: #d2dadf98; */
-  background: #654ea3;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #eaafc8, #654ea3);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #eaafc8, #654ea3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+/* Save availability button on hover */
+#save_availability_btn:hover {
+  background: #d2dadf98;
 }

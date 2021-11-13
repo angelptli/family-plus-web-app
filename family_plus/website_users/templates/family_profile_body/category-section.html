@@ -44,11 +44,28 @@
     </div>
   </div>
 
-<!-- Locations tab -->
+  <!-- Locations tab -->
+  <div class="accordion-item" id="accordion_item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingCatNum3">
+      <button class="accordion-button collapsed" id="category_tab" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseCatNum3" aria-expanded="false" aria-controls="panelsStayOpen-collapseCatNum3">
+        Locations
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseCatNum3" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingCatNum3">
+      <div class="accordion-body">
+        <div id="category_tab_body">
+          CONTENT
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Languages tab -->
   <div class="accordion-item" id="accordion_item">
     <h2 class="accordion-header" id="panelsStayOpen-headingCatNum1">
       <button class="accordion-button collapsed" id="category_tab" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseCatNum1" aria-expanded="false" aria-controls="panelsStayOpen-collapseCatNum1">
-        Locations
+        Languages
       </button>
     </h2>
     <div id="panelsStayOpen-collapseCatNum1" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingCatNum1">
@@ -96,26 +113,34 @@
     <div id="panelsStayOpen-collapseCatNum2" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingCatNum2">
       <div class="accordion-body">
         <div id="category_tab_body">
-          CONTENT
-          
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- Languages tab -->
-  <div class="accordion-item" id="accordion_item">
-    <h2 class="accordion-header" id="panelsStayOpen-headingCatNum3">
-      <button class="accordion-button collapsed" id="category_tab" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseCatNum3" aria-expanded="false" aria-controls="panelsStayOpen-collapseCatNum3">
-        Languages
-      </button>
-    </h2>
-    <div id="panelsStayOpen-collapseCatNum3" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingCatNum3">
-      <div class="accordion-body">
-        <div id="category_tab_body">
-          CONTENT
+          <!-- Display whole list of chosen available days -->
+          {{ availability_log.days }}
+
+          <!-- Display list items of chosen available days -->
+          <!-- {% for item in availability_log.days %}
+            {{ item }}<br>
+          {% endfor %} -->
           
         </div>
+
+        <!-- Add and Add/Edit available days link -->
+        <div class="container" id="edit_log_link_container">
+          {% if user.familyprofile.id == page_user.id %}
+            {% if not availability_log %}
+              <a href="{% url 'create-availability-log' %}" id="edit_log_link">
+                <i class="bi bi-pencil"></i>
+                Add
+              </a>
+            {% else %}
+              <a href="{% url 'edit-availability-log' availability_log.pk %}" id="edit_log_link">
+                <i class="bi bi-pencil"></i>
+                Add/Edit
+              </a>
+            {% endif %}
+          {% endif %}
+        </div>
+
       </div>
     </div>
   </div>

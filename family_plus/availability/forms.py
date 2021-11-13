@@ -1,25 +1,24 @@
 from django import forms
 from django.forms import widgets
 from website_users.models import FamilyProfile
-from language.models import Language
-from language.utils import define_languages
+from availability.models import Availability
+from availability.utils import define_days
 from multiselectfield import MultiSelectFormField
 
 
-class LanguageForm(forms.ModelForm):
+class AvailabilityForm(forms.ModelForm):
 
-    """Customize fields for Language form that allows each user to have
-    a language log object that stores languages they know and/or are
-    interested in.
+    """Customize fields for Availability form that allows each user to have
+    an availability log object that stores their days of availability.
     """
 
-    languages = MultiSelectFormField(choices=define_languages(),
-                                    widget=forms.SelectMultiple(attrs={
-                                        'class': 'form-select',
-                                        'id': 'language_select',
-                                        'multiple': 'multiple'
-                                    }))
-
+    days = MultiSelectFormField(choices=define_days(),
+                                widget=forms.SelectMultiple(attrs={
+                                    'class': 'form-select',
+                                    'id': 'availability_select',
+                                    'multiple': 'multiple'
+                                }))
+    
     def __init__(self, *args, **kwargs):
         """Filter FamilyProfile objects to get the current user and assign
         to the user field queryset.
@@ -28,13 +27,13 @@ class LanguageForm(forms.ModelForm):
         # Learned to pass the request object to the form in order to request
         # the current user for saving to the form as related object
         self.request = kwargs.pop('request')
-        super(LanguageForm, self).__init__(*args, **kwargs)
+        super(AvailabilityForm, self).__init__(*args, **kwargs)
         self.fields['user'].queryset = FamilyProfile.objects.filter(user=self.request.user)
         self.fields['user'].empty_label = None  # Remove empty label
 
     class Meta:
-        model = Language
-        fields = ('languages', 'user')
+        model = Availability
+        fields = ('days','user')
 
         # Customize widgets
         widgets = {

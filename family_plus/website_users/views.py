@@ -8,11 +8,12 @@ from django.views.generic import CreateView, DetailView, ListView, UpdateView
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
-from language.models import Language
 
 # Import models
 from website_users.models import FamilyProfile, FamilyMember
 from hobby.models import Hobby
+from language.models import Language
+from availability.models import Availability
 
 # Import forms
 from website_users.forms import (
@@ -149,6 +150,10 @@ class FamilyProfilePageView(LoginRequiredMixin, DetailView):
         if Language.objects.filter(user=page_user).exists():
             language_log = Language.objects.get(user=page_user)
 
+        availability_log = ""
+        if Availability.objects.filter(user=page_user).exists():
+            availability_log = Availability.objects.get(user=page_user)
+
         # Add the variables to the context dictionary
         context["page_user"] = page_user
         context["is_hidden"] = is_hidden
@@ -157,6 +162,7 @@ class FamilyProfilePageView(LoginRequiredMixin, DetailView):
         context['family_members'] = family_members
         context['hobby_log'] = hobby_log
         context['language_log'] = language_log
+        context['availability_log'] = availability_log
 
         return context
 
