@@ -1,16 +1,11 @@
 /* Section background */
-#section_background_create_hobby_log {
+#section_background_edit_language_log {
   padding-top: 100px;
   min-height: 1000px;
   background: #348AC7;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-
-/* Use in account settings and contact pages */
-/* background: #9fc0d8;
-  background: -webkit-linear-gradient(to right, #9fc0d8, #7474BF);
-  background: linear-gradient(to right, #9fc0d8, #7474BF); */
 
 /* Form title */
 #form_title {
@@ -31,8 +26,6 @@
 #inner_content_container {
   padding-top: 40px;
   padding-bottom: 40px;
-  /* padding-left: 50px;
-  padding-right: 50px; */
   color: rgb(255, 255, 255);
   font-weight: 500;
 }
@@ -63,17 +56,10 @@
 }
 
 /* Hobbies container */
-#hobbies {
+#languages {
   padding-top: 25px;
   padding-left: 20px;
   color: #505053;
-}
-
-/* Other container */
-#other {
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 30px;
 }
 
 /* Profile and username container */
@@ -122,15 +108,17 @@
   text-align: right;
 }
 
-/* Save hobbies button container */
-#save_hobby_btn_container {
+/* Save languages button container */
+#save_language_btn_container {
   padding-bottom: 30px;
 }
 
-/* Save hobbies button */
-#save_hobby_btn {
+/* Save languages button */
+#save_language_btn {
+  /* background: rgba(255, 255, 255, 0); */
   background: #d2dadf31;
   border-color:rgba(255, 255, 255, 0.774);
+  /* color: #fff; */
   color: rgba(255, 255, 255, 0.774);
   font-size: 18px;
   font-weight: 450;
@@ -138,7 +126,7 @@
 
 }
 
-/* Save hobbies button on hover */
-#save_hobby_btn:hover {
+/* Save languages button on hover */
+#save_language_btn:hover {
   background: #d2dadf98;
 }

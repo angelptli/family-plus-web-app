@@ -8,9 +8,7 @@ from hobby.forms import HobbyForm
 
 class CreateHobbyLogView(LoginRequiredMixin, CreateView):
 
-    """Users who have set up a family profile can create objects to
-    represent members of their family.
-    """
+    """Users can save hobbies and interests from their family profile."""
 
     model = Hobby
     form_class = HobbyForm
@@ -36,7 +34,9 @@ class CreateHobbyLogView(LoginRequiredMixin, CreateView):
 
 class EditHobbyLogView(LoginRequiredMixin, UpdateView):
 
-    """Allow users to edit the info stored on their family member objects."""
+    """Users can save hobbies and interests from their family profile.
+    The edit (update) view is given after the create view.
+    """
 
     model = Hobby
     form_class = HobbyForm
@@ -45,10 +45,7 @@ class EditHobbyLogView(LoginRequiredMixin, UpdateView):
     redirect_field_name = 'redirect_to'
 
     def get_context_data(self, *args, **kwargs):
-        """Add the family member object to the context dictionary and
-        a user object to confirm the correct user has permission to
-        edit the family object.
-        """
+        """Add user's hobby list and username to the context dictionary."""
         hobby_log = get_object_or_404(Hobby, id=self.kwargs['pk'])
         context = super(EditHobbyLogView, self).get_context_data(*args, **kwargs)
         context['hobby_log'] = hobby_log

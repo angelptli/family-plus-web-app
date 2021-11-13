@@ -13,7 +13,7 @@
       <div class="accordion-body">
         <div id="category_tab_body">
 
-          <!-- Display who list of hobbies -->
+          <!-- Display whole list of chosen hobbies/interests -->
           {{ hobby_log.hobbies }}
 
           <!-- Display list items of hobbies -->
@@ -54,9 +54,34 @@
     <div id="panelsStayOpen-collapseCatNum1" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingCatNum1">
       <div class="accordion-body">
         <div id="category_tab_body">
-          CONTENT
+          
+          <!-- Display whole list of chosen languages -->
+          {{ language_log.languages }}
+
+          <!-- Display list items of chosen languages -->
+          <!-- {% for item in language_log.languages %}
+            {{ item }}<br>
+          {% endfor %} -->
           
         </div>
+
+        <!-- Add and Add/Edit languages link -->
+        <div class="container" id="edit_log_link_container">
+          {% if user.familyprofile.id == page_user.id %}
+            {% if not language_log %}
+              <a href="{% url 'create-language-log' %}" id="edit_log_link">
+                <i class="bi bi-pencil"></i>
+                Add
+              </a>
+            {% else %}
+              <a href="{% url 'edit-language-log' language_log.pk %}" id="edit_log_link">
+                <i class="bi bi-pencil"></i>
+                Add/Edit
+              </a>
+            {% endif %}
+          {% endif %}
+        </div>
+
       </div>
     </div>
   </div>

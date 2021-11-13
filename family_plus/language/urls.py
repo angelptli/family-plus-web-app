@@ -14,7 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
+from language.views import (
+    CreateLanguageLogView,
+    EditLanguageLogView
+)
 
 urlpatterns = [
-
+    path('languages/', CreateLanguageLogView.as_view(), name='create-language-log'),
+    path('languages/<int:pk>/add_edit/', EditLanguageLogView.as_view(), name='edit-language-log'),
 ]

@@ -5,14 +5,7 @@
   background: #348AC7;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-  /* color: rgb(230, 230, 230); */
 }
-
-/* Use in account settings and contact pages */
-/* background: #9fc0d8;
-  background: -webkit-linear-gradient(to right, #9fc0d8, #7474BF);
-  background: linear-gradient(to right, #9fc0d8, #7474BF); */
 
 /* Form title */
 #form_title {
@@ -106,9 +99,7 @@
   max-height: 200px;
   width: fit-content;
   background: rgba(255, 255, 255, 0);
-  /* border-color: rgba(255, 255, 255, 0.568); */
   border-radius: 25px;
-  /* border-width: 0; */
   color: rgba(255, 255, 255, 0.774);
   font-size: 18px;
   font-weight: 450;
@@ -133,10 +124,8 @@
 
 /* Save hobbies button */
 #save_hobby_btn {
-  /* background: rgba(255, 255, 255, 0); */
   background: #d2dadf31;
   border-color:rgba(255, 255, 255, 0.774);
-  /* color: #fff; */
   color: rgba(255, 255, 255, 0.774);
   font-size: 18px;
   font-weight: 450;
