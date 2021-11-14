@@ -1,5 +1,5 @@
 /* Section background */
-#section_background_edit_hobby_log {
+#section_background_add_location {
   padding-top: 100px;
   min-height: 1000px;
   background: #348AC7;  /* fallback for old browsers */
@@ -13,7 +13,7 @@
   text-align: center;
   font-size: 25px;
   font-weight: 500;
-  padding-bottom: 20px;
+  padding-bottom: 15px;
 }
 
 /* Outer content container */
@@ -26,49 +26,60 @@
 #inner_content_container {
   padding-top: 40px;
   padding-bottom: 40px;
-  /* padding-left: 50px;
-  padding-right: 50px; */
   color: rgb(255, 255, 255);
   font-weight: 500;
 }
 
-/* Multi select */
-.select2 {
-  width: 50% !important;
-  min-width: 400px;
-  max-width: 700px;
-  font-size: 16px !important;
-  font-weight: 450 !important;
-}
-
-.select2-selection {
-  border: 0px solid #dee3e7 !important;
-  border-radius: 50px !important;
-  min-height: 80px !important;
-  padding-top: 20px !important;
-  padding-bottom: 20px !important;
-  padding-left: 30px !important;
-  padding-right: 30px !important;
-  min-width: none !important;
-}
-
-/* Hover highlight choices color. Source: https://www.webdesign101.net/change-highlight-colour-of-select2-option/ */
-.select2-container--default .select2-results__option--highlighted[aria-selected] {
-  opacity: 0.95;
-}
-
-/* Hobbies container */
-#hobbies {
-  padding-top: 25px;
+/* State container */
+#state {
+  padding-top: 20px;
   padding-left: 20px;
+  padding-bottom: 30px;
   color: #505053;
 }
 
-/* Other container */
-#other {
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 30px;
+/* State form field */
+#state_select {
+  width: 300px;
+  height: 50px;
+  border-radius: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+}
+
+/* State label */
+#state_label {
+  width: 300px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 450;
+}
+
+/* City container */
+#city {
+  padding-top: 25px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  color: #505053;
+}
+
+/* City form field */
+#city_select {
+  width: 300px;
+  height: 50px;
+  border-radius: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+}
+
+/* City label */
+#city_label {
+  width: 300px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 450;
 }
 
 /* Profile and username container */
@@ -84,7 +95,7 @@
   color: rgba(255, 255, 255, 0.774);
   min-width: 200px;
   font-size: 18px;
-  font-weight: 450 ;
+  font-weight: 450;
 }
 
 /* Username container */
@@ -95,19 +106,19 @@
 }
 
 /* Username form field */
-#username_form_field {
+#user_select {
   max-height: 200px;
   width: fit-content;
-  background: rgba(255, 255, 255, 0);
   border-radius: 25px;
-  color: rgba(255, 255, 255, 0.774);
   font-size: 18px;
   font-weight: 450;
+  border-width: 1px;
   background: #d2dadf31;
-  border-color:rgba(255, 255, 255, 0.774);
+  border-color: rgba(139, 128, 128, 0.774);
+  color: rgba(255, 255, 255, 0.774);
 }
 
-#username_form_field:hover {
+#user_select:hover {
   background: #d2dadf98;
 }
 
@@ -117,13 +128,13 @@
   text-align: right;
 }
 
-/* Save hobbies button container */
-#save_hobby_btn_container {
+/* Save location button container */
+#save_location_btn_container {
   padding-bottom: 30px;
 }
 
-/* Save hobbies button */
-#save_hobby_btn {
+/* Save location button */
+#save_location_btn {
   font-size: 18px;
   font-weight: 450;
   border-radius: 25px;
@@ -132,9 +143,9 @@
   border-color:rgba(255, 255, 255, 0.774);
 }
 
-/* Save hobbies button on hover */
-#save_hobby_btn:hover {
-  background: #4e54c8ad;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #8f94fbbb, #4e54c8ad);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #8f94fbbb, #4e54c8ad); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+/* Save location button on hover */
+#save_location_btn:hover {
+  background: #fc4b1ace;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #f7b633cc, #fc4b1ace);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #f7b633cc, #fc4b1ace); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }

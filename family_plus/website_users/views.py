@@ -2,7 +2,7 @@ from django.http.response import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse_lazy, reverse
 
-# Imports relating to views and forms
+# Imports relating to views
 from django.views import generic
 from django.views.generic import CreateView, DetailView, ListView, UpdateView
 from django.contrib.auth.views import PasswordChangeView
@@ -14,6 +14,7 @@ from website_users.models import FamilyProfile, FamilyMember
 from hobby.models import Hobby
 from language.models import Language
 from availability.models import Availability
+from location.models import Location
 
 # Import forms
 from website_users.forms import (
@@ -24,6 +25,7 @@ from website_users.forms import (
     FamilyMemberForm,
     EditFamilyMemberForm
 )
+
 
 class UserRegisterView(generic.CreateView):
 
@@ -154,6 +156,10 @@ class FamilyProfilePageView(LoginRequiredMixin, DetailView):
         if Availability.objects.filter(user=page_user).exists():
             availability_log = Availability.objects.get(user=page_user)
 
+        location_objects = ""
+        if Location.objects.filter(user=page_user).exists():
+            location_objects = Location.objects.filter(user=page_user)
+
         # Add the variables to the context dictionary
         context["page_user"] = page_user
         context["is_hidden"] = is_hidden
@@ -163,6 +169,7 @@ class FamilyProfilePageView(LoginRequiredMixin, DetailView):
         context['hobby_log'] = hobby_log
         context['language_log'] = language_log
         context['availability_log'] = availability_log
+        context['location_objects'] = location_objects
 
         return context
 

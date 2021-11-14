@@ -1,0 +1,79 @@
+{% extends 'family_profile_body/pure-links-base.html' %}
+{% load static %}
+
+{% block title %}
+  Add Location | Family+
+{% endblock %}
+
+{% block content %}
+
+<!-- CSS styling -->
+<link rel="stylesheet" type="text/css" href="{% static 'website/css/location_log/add_location.css' %}">
+
+<body style="background-color: #f0f2f5;">
+  <section id="section_background_add_location">
+    {% if user.is_authenticated %}
+      <div class="container-fluid" id="form_title">
+        A location you are interested in meeting a connection
+      </div>
+
+      <div class="container-fluid" id="outer_content_container">
+        <center>
+          <form method="POST">{% csrf_token %}
+            <div class="container-fluid" id="inner_content_container">
+
+              <!-- Availability days multi-select options -->
+              <div class="col" id="state">
+                <div class="container-fluid" id="state_label">Select a state*</div>
+                {{ form.state }}
+              </div>
+
+              <!-- Availability days multi-select options -->
+              <div class="col" id="city">
+                <div class="container-fluid" id="city_label">Select a city</div>
+                {{ form.city }}
+              </div>
+              
+              <div class="container-fluid" id="profile_user_container">
+                <div class="row row-cols-2">
+                  <div class="col">
+                    <!-- Family profile owner -->
+                    <div class="container-fluid" id="profile_title">
+                      <label id="user_label">Family Profile Owner:</label>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="container-fluid" id="username">
+                      {{ form.user }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+                
+              <!-- Save button -->
+              <div class="container-fluid" id="save_location_btn_container">
+                <center>
+                  <button class="btn" id="save_location_btn">
+                    Save Location
+                  </button>
+                </center>
+              </div>
+
+            </div>
+          </form>
+        </center>
+      </div>
+
+    {% else %}
+      <center>
+        <div style="padding-top: 300px; font-size: 20px;">
+          You must be logged in to access this page.
+        </div>
+      </center>
+    {% endif %}
+  </section>
+</body>
+
+{% endblock %}
+
+

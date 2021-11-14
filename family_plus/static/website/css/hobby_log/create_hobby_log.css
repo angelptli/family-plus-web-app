@@ -31,8 +31,6 @@
 #inner_content_container {
   padding-top: 40px;
   padding-bottom: 40px;
-  /* padding-left: 50px;
-  padding-right: 50px; */
   color: rgb(255, 255, 255);
   font-weight: 500;
 }
@@ -103,11 +101,10 @@
 #username_form_field {
   max-height: 200px;
   width: fit-content;
-  background: rgba(255, 255, 255, 0);
   border-radius: 25px;
-  color: rgba(255, 255, 255, 0.774);
   font-size: 18px;
   font-weight: 450;
+  color: rgba(255, 255, 255, 0.774);
   background: #d2dadf31;
   border-color:rgba(255, 255, 255, 0.774);
 }
@@ -129,22 +126,17 @@
 
 /* Save hobbies button */
 #save_hobby_btn {
-  /* background: #d2dadf31; */
-  background: #654ea3bd;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #eaafc8bd, #654ea3bd);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #eaafc8bd, #654ea3bd); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  border-color:rgba(255, 255, 255, 0.774);
-  color: rgba(255, 255, 255, 0.774);
   font-size: 18px;
   font-weight: 450;
   border-radius: 25px;
-
+  color: rgba(255, 255, 255, 0.774);
+  background: #d2dadf31;
+  border-color:rgba(255, 255, 255, 0.774);
 }
 
 /* Save hobbies button on hover */
 #save_hobby_btn:hover {
-  /* background: #d2dadf98; */
-  background: #654ea3;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #eaafc8, #654ea3);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #eaafc8, #654ea3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #4e54c8ad;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #8f94fbbb, #4e54c8ad);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #8f94fbbb, #4e54c8ad); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }

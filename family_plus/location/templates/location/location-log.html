@@ -1,0 +1,71 @@
+{% extends 'family_profile_body/pure-links-base.html' %}
+{% load static %}
+
+{% block title %}
+  Location Log | Family+
+{% endblock %}
+
+{% block content %}
+
+<!-- CSS styling -->
+<link rel="stylesheet" type="text/css" href="{% static 'website/css/location_log/location_log.css' %}">
+
+<body style="background-color: #f0f2f5;">
+  <section id="section_background_location_log">
+    {% if user.is_authenticated %}
+      <div class="container-fluid" id="form_title">
+        <h2>Location Log</h2>
+      </div>
+
+      <!-- Save button -->
+      <div class="container-fluid" id="add_location_btn_container">
+        <center>
+          <a class="btn border" href="{% url 'add-location' %}" id="add_location_btn">
+            Add New Location
+          </a>
+        </center>
+      </div>
+
+      <div class="container-fluid" id="outer_content_container">
+        <div class="container-fluid" id="inner_content_container">
+          <div class="card" id="location_card">
+            {% for location in location_objects %}
+              <div class="container-fluid" id="location_record">
+                <form action="{% url 'delete-location' location.pk %}" method="POST">{% csrf_token %}
+                  <button class="btn" type="submit" id="delete_location_btn" name="location_id" value="{{ location.id }}">
+                    <i class="bi bi-x"></i> 
+                  </button>
+                  {{ location.state }}
+
+                  {% if location.city %}
+                    , {{ location.city }}
+                  {% endif %}
+                </form>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Return to profile button -->
+        <div class="container-fluid" id="return_link_container">
+          <center>
+            <a href="{% url 'family-profile' user.familyprofile.id %}" id="return_link">
+              Return to Profile
+            </a>
+          </center>
+        </div>
+
+      </div>
+    {% else %}
+      <center>
+        <div style="padding-top: 300px; font-size: 20px;">
+          You must be logged in to access this page.
+        </div>
+      </center>
+    {% endif %}
+  </section>
+</body>
+
+{% endblock %}
+
+

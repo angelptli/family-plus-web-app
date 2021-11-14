@@ -44,7 +44,6 @@ class FamilyProfile(models.Model):
 
 class FamilyMember(models.Model):
     AGE_RANGE = define_age_ranges()
-
     RELATION = define_relations()
 
     user       = models.ForeignKey(FamilyProfile, null=True, on_delete=models.CASCADE, related_name="family_member")

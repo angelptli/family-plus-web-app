@@ -89,7 +89,6 @@
 #username_form_field {
   max-height: 200px;
   width: fit-content;
-  background: rgba(255, 255, 255, 0);
   border-radius: 25px;
   color: rgba(255, 255, 255, 0.774);
   font-size: 18px;
@@ -115,23 +114,17 @@
 
 /* Save availabilitys button */
 #save_availability_btn {
-  /* background: #d2dadf31; */
-  background: #56ab2fbd;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #a8e063b7, #56ab2fbd);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #a8e063b7, #56ab2fbd); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  border-color:rgba(255, 255, 255, 0.774);
-  color: rgba(255, 255, 255, 0.774);
   font-size: 18px;
   font-weight: 450;
   border-radius: 25px;
-
+  color: rgba(255, 255, 255, 0.774);
+  background: #d2dadf31;
+  border-color:rgba(255, 255, 255, 0.774);
 }
 
 /* Save availability dayss button on hover */
 #save_availability_btn:hover {
-  /* background: #d2dadf98; */
-  background: #56ab2f;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #a8e063, #56ab2f);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #a8e063, #56ab2f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  background: #56ab2fbb;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #a8e063bd, #56ab2fbb);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #a8e063bd, #56ab2fbb); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }

@@ -14,12 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-# from location.views import (
-#     CreateAvailabilityLogView,
-#     EditAvailabilityLogView
-# )
+from location.views import (
+    LocationLogView,
+    AddLocationView,
+    delete_location,
+)
 
 urlpatterns = [
-    # path('availability/', CreateAvailabilityLogView.as_view(), name='create-availability-log'),
-    # path('availability/<int:pk>/add_edit/', EditAvailabilityLogView.as_view(), name='edit-availability-log'),
+    path('location/log/<str:user>/', LocationLogView.as_view(), name='location-log'),
+    path('add_location/', AddLocationView.as_view(), name='add-location'),
+    path('delete_location/log/<int:pk>/', delete_location, name='delete-location'),
+
 ]

@@ -1,0 +1,92 @@
+/* Section background */
+#section_background_location_log {
+  padding-top: 70px;
+  min-height: 1000px;
+  background: #348AC7;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+/* Form title */
+#form_title {
+  color: #fff;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 500;
+  padding-bottom: 20px;
+}
+
+/* Add location button */
+#add_location_btn {
+  border-color:rgba(255, 255, 255, 0.774);
+  color: rgba(255, 255, 255, 0.774);
+  font-size: 18px;
+  font-weight: 450;
+  border-radius: 25px;
+}
+
+/* Add location button on hover */
+#add_location_btn:hover {
+  background: #d2dadf31;
+}
+
+/* Outer content container */
+#outer_content_container {
+  width: 100%;
+  padding-top: 30px;
+}
+
+/* Inner content container */
+#inner_content_container {
+  width: 50%;
+  max-width: 500px;
+}
+
+/* Location card */
+#location_card {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 15px;
+  border-color: rgba(255, 255, 255, 0.589);
+  background: rgba(255, 255, 255, 0);
+  border-width: 2px;
+}
+
+/* Location record */
+#location_record {
+  font-size: 18px;
+  color: #fff;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 20px;
+  padding-right: 20px;
+  /* background-color: red; */
+  height: fit-content;
+}
+
+/* Location record on hover */
+#location_record:hover {
+  background: #d2dadf31;
+}
+
+/* Delete button */
+#delete_location_btn {
+  /* background-color: red; */
+  font-size: 25px;
+  padding: 0;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  vertical-align: middle;
+  color: #fff;
+}
+
+#return_link_container {
+  padding: 10px;
+}
+
+#return_link {
+  border-color:rgba(255, 255, 255, 0.774);
+  color: rgba(255, 255, 255, 0.774);
+  font-size: 18px;
+  font-weight: 350;
+}
