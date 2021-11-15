@@ -1,13 +1,17 @@
-from django.shortcuts import get_object_or_404, render, redirect
-from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.shortcuts import get_object_or_404, render
 from django.http.response import HttpResponseRedirect
 from django.urls import reverse
-from availability.models import Availability
 from website_users.models import FamilyProfile
 from django.contrib.auth.decorators import login_required
 
 # Import model choice lists
-from user_connections.utils import get_hobby_list, get_language_list, get_day_list, get_age_range_list, paginate_results
+from user_connections.utils import (
+    get_hobby_list,
+    get_language_list,
+    get_day_list,
+    get_age_range_list,
+    paginate_results
+)
 
 # Import filter functions
 from .queryset_filters import (
@@ -253,32 +257,6 @@ def search_language_view(request, *args, **kwargs):
 
 
 @login_required(login_url='/users/login/')
-def search_age_view(request, *args, **kwargs):
-    """This view is for searching a age specifically."""
-    context = {}
-    query = ""
-
-    if request.GET:
-        # Get value or no value passed in
-        q = "ageq"  # used in general paginator HTML code
-        query = request.GET.get(q, '')
-
-        context['q'] = q
-        context['query'] = str(query)
-
-    search_results = get_age_range_queryset(query)  
-
-    # Paginate with a specified number of results on each page
-    results_per_page = 8
-    page_number = request.GET.get('page', 1)  # default of 1 result
-    search_results = paginate_results(search_results, page_number, results_per_page)
-
-    context['search_results'] = search_results
-
-    return render(request, "results/search-age-range.html", context)
-
-
-@login_required(login_url='/users/login/')
 def search_day_view(request, *args, **kwargs):
     """This view is for searching a day specifically."""
     context = {}
@@ -302,3 +280,29 @@ def search_day_view(request, *args, **kwargs):
     context['search_results'] = search_results
 
     return render(request, "results/search-availability.html", context)
+
+
+@login_required(login_url='/users/login/')
+def search_age_view(request, *args, **kwargs):
+    """This view is for searching a age specifically."""
+    context = {}
+    query = ""
+
+    if request.GET:
+        # Get value or no value passed in
+        q = "ageq"  # used in general paginator HTML code
+        query = request.GET.get(q, '')
+
+        context['q'] = q
+        context['query'] = str(query)
+
+    search_results = get_age_range_queryset(query)  
+
+    # Paginate with a specified number of results on each page
+    results_per_page = 8
+    page_number = request.GET.get('page', 1)  # default of 1 result
+    search_results = paginate_results(search_results, page_number, results_per_page)
+
+    context['search_results'] = search_results
+
+    return render(request, "results/search-age-range.html", context)

@@ -18,9 +18,10 @@ def get_family_queryset(query=None):
                             .filter(family_name__icontains=q) \
                             .order_by('-has_setup')
 
-        queryset = [result for result in search_results]
+        for result in search_results:
+            queryset.append(result)
 
-    return queryset
+    return list(set(queryset))
 
 
 def get_username_queryset(query=None):
@@ -33,23 +34,27 @@ def get_username_queryset(query=None):
                             .filter(username__icontains=q) \
                             .order_by('-familyprofile__has_setup')
 
-        queryset = [result for result in search_results]
+        for result in search_results:
+            queryset.append(result)
 
-    return queryset
+    return list(set(queryset))
+
+
+def get_profiles(results):
+    """Return the family profiles of the category search results."""
+    profiles = []
+    for result in results:
+        search_results = FamilyProfile.objects.get(user__username=result.user)
+        profiles.append(search_results)
+
+    return profiles
 
 
 def get_hobby_queryset(query=None):
     """Filter queryset by chosen hobby and return a list of matching
     family profiles."""
     profiles = []
-    results = Hobby.objects.filter(hobbies__icontains=query)
-    # results = Hobby.objects.filter(hobbies=query)
-
-    for result in results:
-        search_results = FamilyProfile.objects \
-                            .filter(user__username=result.user) \
-                            .exclude(hidden=True)
-        profiles = [result for result in search_results]
+    profiles = get_profiles(Hobby.objects.filter(hobbies__icontains=query))
 
     return profiles
 
@@ -57,30 +62,24 @@ def get_hobby_queryset(query=None):
 def get_location_queryset(query=None):
     """Filter queryset by chosen state and city and return a list of matching
     family profiles."""
+    queries = query.split(" ") 
     profiles = []
-    results = Location.objects.filter(Q(state__icontains=query) | Q(city__icontains=query))
 
-    for result in results:
-        search_results = FamilyProfile.objects \
-                            .filter(user__username=result.user) \
-                            .exclude(hidden=True)
-        profiles = [result for result in search_results]
+    for query in queries:
+        results = Location.objects.filter(Q(state__icontains=query) | Q(city__icontains=query))
 
-    return profiles
+        for result in results:
+            search_results = FamilyProfile.objects.get(user__username=result.user)
+            profiles.append(search_results)
+
+    return list(set(profiles))
 
 
 def get_language_queryset(query=None):
     """Filter queryset by chosen language and return a list of matching
     family profiles."""
     profiles = []
-    results = Language.objects.filter(languages__icontains=query)
-    # results = Language.objects.filter(days=query)
-
-    for result in results:
-        search_results = FamilyProfile.objects \
-                            .filter(user__username=result.user) \
-                            .exclude(hidden=True)
-        profiles = [result for result in search_results]
+    profiles = get_profiles(Language.objects.filter(languages__icontains=query))
 
     return profiles
 
@@ -89,14 +88,7 @@ def get_day_queryset(query=None):
     """Filter queryset by chosen day and return a list of matching
     family profiles."""
     profiles = []
-    results = Availability.objects.filter(days__icontains=query)
-    # results = Availability.objects.filter(days=query)
-
-    for result in results:
-        search_results = FamilyProfile.objects \
-                            .filter(user__username=result.user) \
-                            .exclude(hidden=True)
-        profiles = [result for result in search_results]
+    profiles = get_profiles(Availability.objects.filter(days__icontains=query))
 
     return profiles
 
@@ -105,12 +97,6 @@ def get_age_range_queryset(query=None):
     """Filter queryset by chosen age range and return a list of
     matching family profiles."""
     profiles = []
-    results = FamilyMember.objects.filter(age_range=query)
-
-    for result in results:
-        search_results = FamilyProfile.objects \
-                            .filter(user__username=result.user) \
-                            .exclude(hidden=True)
-        profiles = [result for result in search_results]
+    profiles = get_profiles(FamilyMember.objects.filter(age_range=query))
 
     return profiles
