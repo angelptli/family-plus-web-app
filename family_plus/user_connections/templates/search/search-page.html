@@ -16,6 +16,81 @@ Search | Family+
           </div>
         </center>
 
+        <div class="container-fluid">
+          <div class="row row-cols-2">
+
+            <!-- Search hobby/interest -->
+            <div class="col">
+              <form method=GET action="{% url 'search-hobby' %}">
+                <label for="id_hobbyq" class="form-label">Hobby</label>
+                <select class="form-select me-2" name="hobbyq" id="id_hobbyq">
+                  <option></option>
+                  {% for item in hobby_list %}
+                    <option value="{{ item }}">{{ item }}</option>
+                  {% endfor %}
+                </select>
+                <button type="submit" class="btn btn-outline-secondary"><span class="bi-search"></span></button>
+              </form>
+            </div>
+
+            <!-- Search location -->
+            <div class="col">
+              <form method=GET action="{% url 'search-location' %}">
+                  <label for="id_locationq" class="form-label">State & City</label>
+                  <input class="form-control me-2" name="locationq" id="id_locationq">
+                  <button type="submit" class="btn btn-outline-secondary"><span class="bi-search"></span></button>
+              </form>
+            </div>
+
+            <!-- Search language -->
+            <div class="col">
+              <form method=GET action="{% url 'search-language' %}">
+                <label for="id_languageq" class="form-label">Language</label>
+                <select class="form-select me-2" name="languageq" id="id_languageq">
+                  <option></option>
+                  {% for item in language_list %}
+                    <option value="{{ item }}">{{ item }}</option>
+                  {% endfor %}
+                </select>
+                <button type="submit" class="btn btn-outline-secondary"><span class="bi-search"></span></button>
+              </form>
+            </div>
+
+            <!-- Search available day -->
+            <div class="col">
+              <form method=GET action="{% url 'search-availabilty' %}">
+                <label for="id_dayq" class="form-label">Day</label>
+                <select class="form-select me-2" name="dayq" id="id_dayq">
+                  <option></option>
+                  {% for item in days_list %}
+                    <option value="{{ item }}">{{ item }}</option>
+                  {% endfor %}
+                </select>
+                <button type="submit" class="btn btn-outline-secondary"><span class="bi-search"></span></button>
+              </form>
+            </div>
+
+            <!-- Search age range -->            
+            <div class="col">
+              <form method=GET action="{% url 'search-age-range' %}">
+                <label for="id_ageq" class="form-label">Age Range</label>
+                <select class="form-select me-2" name="ageq" id="id_ageq">
+                  <option></option>
+                  {% for item in age_list %}
+                    <option value="{{ item }}">{{ item }}</option>
+                  {% endfor %}
+                </select>
+                <button type="submit" class="btn btn-outline-secondary"><span class="bi-search"></span></button>
+              </form>
+            </div>
+
+          </div>
+
+        <hr>
+        <center>
+          <h2>Other Options</h2>
+          Search by username or family name
+        </center>
         <div class="row">
           <div class="col-md-6" style="padding-right: 50px; padding-left: 50px;">
             <form class="search-bar mt-sm-2 mr-2" method=GET action="{% url 'search-family' %}">
@@ -70,6 +145,12 @@ Search | Family+
   <script type="text/javascript">
     document.getElementById("id_familynameq").value = "{{ query }}"
     document.getElementById("id_usernameq").value = "{{ query }}"
+    document.getElementById("id_hobbyq").value = "{{ query }}"
+    document.getElementById("id_locationq").value = "{{ query }}"
+    document.getElementById("id_languageq").value = "{{ query }}"
+    document.getElementById("id_ageq").value = "{{ query }}"
+    document.getElementById("id_dayq").value = "{{ query }}"
+
   </script>
 
 </body>
