@@ -1,133 +1,190 @@
 {% extends 'header_footer/base.html' %}
+{% load static %}
 
 {% block title %}
-Search | Family+
+  Search | Family+
 {% endblock %}
 
 {% block content %}
 
 <body style="background-color: #f0f2f5;">
   {% if user.is_authenticated %}
-    <section style="padding-top: 70px; min-height: 1000px; padding-bottom: 100px;">
+  <!-- CSS styling -->
+  <link rel="stylesheet" type="text/css" href="{% static 'website/css/search/search_page.css' %}">
+
+    <section id="section_background_search_page">
       <div class="container-fluid">
         <center>
-          <div class="container-fluid" style="padding: 50px; font-size: 30px;">
-            Search for New Connections
+          <div class="container-fluid" id="page_title">
+            Connect with families that share<br>the same interests
           </div>
         </center>
 
-        <div class="container-fluid">
-          <div class="row row-cols-2">
+        <div class="container-fluid" id="cards_container">
+          <div class="row border-2 border-bottom" id="search_row">
 
             <!-- Search hobby/interest -->
             <div class="col">
               <form method=GET action="{% url 'search-hobby' %}">
-                <label for="id_hobbyq" class="form-label">Hobby</label>
-                <select class="form-select me-2" name="hobbyq" id="id_hobbyq">
-                  <option></option>
-                  {% for item in hobby_list %}
-                    <option value="{{ item }}">{{ item }}</option>
-                  {% endfor %}
-                </select>
-                <button type="submit" class="btn btn-outline-secondary"><span class="bi-search"></span></button>
+                <div class="card shadow-sm text-center mx-auto" id="category_card">
+                  <div class="card-body">
+                    <h5 class="card-title" id="category_card_title">Hobby</h5>
+                    <p class="card-text" id="category_card_text">What is a hobby you want to have in common or want to try out?</p>
+                    <div class="container-fluid" id="hobby_menu_container">
+                      <select class="form-select me-2" name="hobbyq" id="id_hobbyq">
+                        <option></option>
+                        {% for item in hobby_list %}
+                          <option value="{{ item }}">{{ item }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="container-fluid" id="search_btn_container">
+                      <button type="submit" class="btn btn-outline-primary" id="hobby_search_btn">Search</span></button>
+                    </div>
+                  </div>
+                </div>
               </form>
             </div>
 
             <!-- Search location -->
             <div class="col">
               <form method=GET action="{% url 'search-location' %}">
-                  <label for="id_locationq" class="form-label">State & City</label>
-                  <input class="form-control me-2" name="locationq" id="id_locationq">
-                  <button type="submit" class="btn btn-outline-secondary"><span class="bi-search"></span></button>
+                <div class="card shadow-sm text-center mx-auto" id="category_card">
+                  <div class="card-body">
+                    <h5 class="card-title" id="category_card_title">Location</h5>
+                    <p class="card-text" id="category_card_text">What state or city would your family go to meet a connection or visit?</p>
+                    <div class="container-fluid" id="location_input_container">
+                      <input class="form-control me-2" name="locationq" id="id_locationq">
+                    </div>
+                    <div class="container-fluid" id="search_btn_container">
+                      <button type="submit" class="btn btn-outline-primary" id="location_search_btn">Search</span></button>
+                    </div>
+                  </div>
+                </div>
               </form>
             </div>
 
             <!-- Search language -->
             <div class="col">
               <form method=GET action="{% url 'search-language' %}">
-                <label for="id_languageq" class="form-label">Language</label>
-                <select class="form-select me-2" name="languageq" id="id_languageq">
-                  <option></option>
-                  {% for item in language_list %}
-                    <option value="{{ item }}">{{ item }}</option>
-                  {% endfor %}
-                </select>
-                <button type="submit" class="btn btn-outline-secondary"><span class="bi-search"></span></button>
+                <div class="card shadow-sm text-center mx-auto" id="category_card">
+                  <div class="card-body">
+                    <h5 class="card-title" id="category_card_title">Language</h5>
+                    <p class="card-text" id="category_card_text">What is a language you want to have in common or want to learn more of?</p>
+                    <div class="container-fluid" id="language_menu_container">
+                      <select class="form-select me-2" name="languageq" id="id_languageq">
+                        <option></option>
+                        {% for item in language_list %}
+                          <option value="{{ item }}">{{ item }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="container-fluid" id="search_btn_container">
+                      <button type="submit" class="btn btn-outline-primary" id="language_search_btn">Search</span></button>
+                    </div>
+                  </div>
+                </div>
               </form>
             </div>
+          </div>
+        </div>
 
+        <div class="container-fluid" style="height: 25px;">
+        </div>
+
+        <div class="container-fluid" style="width: 44%">
+          <div class="row border-2 border-bottom" id="search_row">
             <!-- Search available day -->
             <div class="col">
               <form method=GET action="{% url 'search-availability' %}">
-                <label for="id_dayq" class="form-label">Day</label>
-                <select class="form-select me-2" name="dayq" id="id_dayq">
-                  <option></option>
-                  {% for item in days_list %}
-                    <option value="{{ item }}">{{ item }}</option>
-                  {% endfor %}
-                </select>
-                <button type="submit" class="btn btn-outline-secondary"><span class="bi-search"></span></button>
+                <div class="card shadow-sm text-center mx-auto" id="category_card">
+                  <div class="card-body">
+                    <h5 class="card-title" id="category_card_title">Schedule</h5>
+                    <p class="card-text" id="category_card_text">Which day of the week would your family meet with a connection?</p>
+                    <div class="container-fluid" id="day_menu_container">
+                      <select class="form-select me-2" name="dayq" id="id_dayq">
+                        <option></option>
+                        {% for item in days_list %}
+                          <option value="{{ item }}">{{ item }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="container-fluid" id="search_btn_container">
+                      <button type="submit" class="btn btn-outline-primary" id="day_search_btn">Search</span></button>
+                    </div>
+                  </div>
+                </div>
               </form>
             </div>
 
-            <!-- Search age range -->            
+            <!-- Search age range -->
             <div class="col">
               <form method=GET action="{% url 'search-age-range' %}">
-                <label for="id_ageq" class="form-label">Age Range</label>
-                <select class="form-select me-2" name="ageq" id="id_ageq">
-                  <option></option>
-                  {% for item in age_list %}
-                    <option value="{{ item }}">{{ item }}</option>
-                  {% endfor %}
-                </select>
-                <button type="submit" class="btn btn-outline-secondary"><span class="bi-search"></span></button>
+                <div class="card shadow-sm text-center mx-auto" id="category_card">
+                  <div class="card-body">
+                    <h5 class="card-title" id="category_card_title">Age Range</h5>
+                    <p class="card-text" id="category_card_text">Which day of the week would your family meet with a connection?</p>
+                    <div class="container-fluid" id="age_range_menu_container">
+                      <select class="form-select me-2" name="ageq" id="id_ageq">
+                        <option></option>
+                        {% for item in age_list %}
+                          <option value="{{ item }}">{{ item }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="container-fluid" id="search_btn_container">
+                      <button type="submit" class="btn btn-outline-primary" id="age_range_search_btn">Search</span></button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <center>
+          <div class="container-fluid" id="sub_title">
+            Look for a specific family or user
+          </div>
+        </center>
+        <div class="container-fluid" style="width: 44%">
+          <div class="row">
+            <div class="col"">
+              <form method=GET action="{% url 'search-family' %}">
+                <div class="card shadow-sm text-center mx-auto" id="category_card">
+                  <div class="card-body">
+                    <h5 class="card-title" id="category_card_title">Family Nickname</h5>
+                    <p class="card-text" id="category_card_text">Example: Type 'pizza' to search for families that contain 'pizza' in their family nickname.</p>
+                    <div class="container-fluid" id="fname_input_container">
+                      <input class="form-control me-2" name="familynameq" id="id_familynameq">
+                    </div>
+                    <div class="container-fluid" id="search_btn_container">
+                      <button type="submit" class="btn btn-outline-primary" id="fname_search_btn">Search</span></button>
+                    </div>
+                  </div>
+                </div>
               </form>
             </div>
 
-          </div>
-
-        <hr>
-        <center>
-          <h2>Other Options</h2>
-          Search by username or family name
-        </center>
-        <div class="row">
-          <div class="col-md-6" style="padding-right: 50px; padding-left: 50px;">
-            <form class="search-bar mt-sm-2 mr-2" method=GET action="{% url 'search-family' %}">
-              <div class="input-group">
-                <input class="form-control me-2" type="text" placeholder="Enter a family name"
-                  aria-label="Search" name="familynameq" id="id_familynameq">
-                <button type="submit" class="btn btn-outline-secondary">
-                  <span class="bi-search"></span>
-                </button>
-              </div>
-            </form>
-          </div>
-
-          <div class="col-md-6" style="padding-right: 50px; padding-left: 50px;">
-            <form class="search-bar mt-sm-2 mr-2" method=GET action="{% url 'search-username' %}">
-              <div class="input-group">
-                <input class="form-control me-2" type="text" placeholder="Enter a username" aria-label="Search"
-                  aria-label="Search" name="usernameq" id="id_usernameq">
-                <button type="submit" class="btn btn-outline-secondary">
-                  <span class="bi-search"></span>
-                </button>
-              </div>
-            </form>
+            <div class="col">
+              <form method=GET action="{% url 'search-username' %}">
+                <div class="card shadow-sm text-center mx-auto" id="category_card">
+                  <div class="card-body">
+                    <h5 class="card-title" id="category_card_title">Username</h5>
+                    <p class="card-text" id="category_card_text">Example: Type 'chip_munk123' to search for a user with a matching username</p>
+                    <div class="container-fluid" id="uname_input_container">
+                      <input class="form-control me-2" name="usernameq" id="id_usernameq">
+                    </div>
+                    <div class="container-fluid" id="search_btn_container">
+                      <button type="submit" class="btn btn-outline-primary" id="uname_search_btn">Search</span></button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-6">
-            <small class="form-text text-muted" style="padding-right: 50px; padding-left: 50px;">
-              Example: Type 'pizza' to search for the Pizza Family
-            </small>
-          </div>
-          <div class="col-md-6">
-            <small class="form-text text-muted" style="padding-right: 50px; padding-left: 50px;">
-              Example: chip_munk123
-            </small>
-          </div>
-        </div>
+
       </div>
     </section>
   {% else %}

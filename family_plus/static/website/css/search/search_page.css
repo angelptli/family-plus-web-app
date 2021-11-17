@@ -1,0 +1,274 @@
+/* Section background */
+#section_background_search_page {
+  padding-top: 40px;
+  padding-bottom: 80px;
+  min-height: 1500px;
+  background: #43c2d8;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #4389d8, #43c2d8);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #4389d8, #43c2d8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  /* light blue: 44d4ee */
+}
+
+/* Use in account settings and contact pages */
+/* background: #9fc0d8;
+  background: -webkit-linear-gradient(to right, #9fc0d8, #7474BF);
+  background: linear-gradient(to right, #9fc0d8, #7474BF); */
+
+/* Card for each category */
+#category_card {
+  min-width: 15rem;
+  max-width: 20rem;
+  border-radius: 0;
+}
+
+/* Container that contains all cards */
+#cards_container {
+  width: 65%;
+}
+
+/* Search page title */
+#page_title {
+  color: #fff;
+  text-align: center;
+  font-size: 27px;
+  font-weight: 500;
+  padding-top: 80px;
+  padding-bottom: 50px;
+}
+
+/* Sub title */
+#sub_title {
+  color: #fff;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 500;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+/* Card title */
+#category_card_title {
+  padding-top: 20px;
+  padding-bottom: 6px;
+  color: #245ea1;
+}
+/* Description for each card */
+#category_card_text {
+  font-size: 17px;
+  color: #7d9ec4;
+  height: 75px;
+}
+
+/* Search page rows */
+#search_row {
+  padding-bottom: 20px;
+  border-color: #b1d3da46 !important;
+}
+
+/* Hobby menu container */
+#hobby_menu_container {
+  padding-bottom: 30px;
+  /* padding-top: 10px; */
+}
+
+/* Hobby dropdown menu */
+#id_hobbyq {
+  border-width: 2px;
+  border-color: #3274be;
+  outline: none;
+}
+
+/* Search button containers */
+#search_btn_container {
+  padding-bottom: 20px;
+}
+
+/* Search hobby button */
+#hobby_search_btn {
+  background: #fff;
+  border-width: 2px;
+  border-color: #3274be;
+  color: #245ea1;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+#hobby_search_btn:hover {
+  border-color: #3268a5;
+  color: #3268a5;
+}
+
+/* Location input box container */
+#location_input_container {
+  padding-bottom: 30px;
+  /* padding-top: 10px; */
+}
+
+/* Location input box*/
+#id_locationq {
+  border-width: 2px;
+  border-color: #3274be;
+  outline: none;
+}
+
+/* Search button */
+#location_search_btn {
+  background: #fff;
+  border-width: 2px;
+  border-color: #3274be;
+  color: #245ea1;  
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+#location_search_btn:hover {
+  border-color: #3268a5;
+  color: #3268a5;
+}
+
+/* Language dropdown menu container */
+#language_menu_container {
+  padding-bottom: 30px;
+  /* padding-top: 10px; */
+}
+
+/* Language dropdown menu*/
+#id_languageq {
+  border-width: 2px;
+  border-color: #3274be;
+  outline: none;
+}
+
+/* Search language button */
+#language_search_btn {
+  background: #fff;
+  border-width: 2px;
+  border-color: #3274be;
+  color: #245ea1;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+#language_search_btn:hover {
+  border-color: #3268a5;
+  color: #3268a5;
+}
+
+/* Day dropdown menu container */
+#day_menu_container {
+  padding-bottom: 30px;
+  /* padding-top: 10px; */
+}
+
+/* Day dropdown menu*/
+#id_dayq {
+  border-width: 2px;
+  border-color: #3274be;
+  outline: none;
+}
+
+/* Search button */
+#day_search_btn {
+  background: #fff;
+  border-width: 2px;
+  border-color: #3274be;
+  color: #245ea1;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+#day_search_btn:hover {
+  border-color: #3268a5;
+  color: #3268a5;
+}
+
+/* Age range dropdown menu container */
+#age_range_menu_container {
+  padding-bottom: 30px;
+  /* padding-top: 10px; */
+}
+
+/* Age range dropdown menu*/
+#id_ageq {
+  border-width: 2px;
+  border-color: #3274be;
+  outline: none;
+}
+
+/* Search button */
+#age_range_search_btn {
+  background: #fff;
+  border-width: 2px;
+  border-color: #3274be;
+  color: #245ea1;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+#age_range_search_btn:hover {
+  border-color: #3268a5;
+  color: #3268a5;
+}
+
+/* Family name input box container */
+#fname_input_container {
+  padding-bottom: 30px;
+  padding-top: 25px;
+}
+
+/* Family name input box*/
+#id_familynameq {
+  border-width: 2px;
+  border-color: #3274be;
+  outline: none;
+}
+
+/* Search button */
+#fname_search_btn {
+  background: #fff;
+  border-width: 2px;
+  border-color: #3274be;
+  color: #245ea1;  
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+#fname_search_btn:hover {
+  border-color: #3268a5;
+  color: #3268a5;
+}
+
+/* User input box container */
+#uname_input_container {
+  padding-bottom: 30px;
+  padding-top: 25px;
+}
+
+/* User input box*/
+#id_usernameq {
+  border-width: 2px;
+  border-color: #3274be;
+  outline: none;
+}
+
+/* Search button */
+#uname_search_btn {
+  background: #fff;
+  border-width: 2px;
+  border-color: #3274be;
+  color: #245ea1;  
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+#uname_search_btn:hover {
+  border-color: #3268a5;
+  color: #3268a5;
+}

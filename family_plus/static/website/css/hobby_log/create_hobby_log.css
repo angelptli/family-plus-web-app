@@ -7,11 +7,6 @@
   background: linear-gradient(to right, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-/* Use in account settings and contact pages */
-/* background: #9fc0d8;
-  background: -webkit-linear-gradient(to right, #9fc0d8, #7474BF);
-  background: linear-gradient(to right, #9fc0d8, #7474BF); */
-
 /* Form title */
 #form_title {
   color: #fff;
