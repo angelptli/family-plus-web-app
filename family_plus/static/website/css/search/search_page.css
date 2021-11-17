@@ -57,6 +57,14 @@
   font-size: 17px;
   color: #7d9ec4;
   height: 75px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#category_card_text:hover {
+  background-color: #245ea127;
+  color: #2e71bd;
+  border-radius: 5px;
 }
 
 /* Search page rows */
@@ -97,6 +105,7 @@
 #hobby_search_btn:hover {
   border-color: #3268a5;
   color: #3268a5;
+  background-color: #245ea127;
 }
 
 /* Location input box container */
@@ -126,6 +135,7 @@
 #location_search_btn:hover {
   border-color: #3268a5;
   color: #3268a5;
+  background-color: #245ea127;
 }
 
 /* Language dropdown menu container */
@@ -155,6 +165,7 @@
 #language_search_btn:hover {
   border-color: #3268a5;
   color: #3268a5;
+  background-color: #245ea127;
 }
 
 /* Day dropdown menu container */
@@ -184,6 +195,7 @@
 #day_search_btn:hover {
   border-color: #3268a5;
   color: #3268a5;
+  background-color: #245ea127;
 }
 
 /* Age range dropdown menu container */
@@ -213,6 +225,7 @@
 #age_range_search_btn:hover {
   border-color: #3268a5;
   color: #3268a5;
+  background-color: #245ea127;
 }
 
 /* Family name input box container */
@@ -242,6 +255,7 @@
 #fname_search_btn:hover {
   border-color: #3268a5;
   color: #3268a5;
+  background-color: #245ea127;
 }
 
 /* User input box container */
@@ -271,4 +285,5 @@
 #uname_search_btn:hover {
   border-color: #3268a5;
   color: #3268a5;
+  background-color: #245ea127;
 }
