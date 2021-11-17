@@ -7,79 +7,158 @@
 
 {% block content %}
 <body style="background-color: #f0f2f5;">
-  <section style="padding-top: 70px; min-height: 1000px; padding-bottom: 100px;">
-    <center>
-      <div class="container" class="mx-auto">
-        <br><h1>Results</h1>
-        <h4>You searched for "{{ query }}"</h4>
 
-        <!-- If text was entered in the search box display the results-->
-        {% if search_results and query %}
-          <a href="{% url 'search-page' %}">Search again</a><br>
+  <!-- CSS styling -->
+  <link rel="stylesheet" type="text/css" href="{% static 'website/css/search/search_hobby.css' %}">
 
-          <!-- The resulting family profiles. Results only include those that have
-          set up at least a family nickname. -->
-          <div class="row">
-            {% for family in search_results %}
-              <div class="col">
+  <section id="section_background_hobby_results">
+    <div class="container-fluid" id="outside_container">
 
-                <!-- Display family profile image -->
-                {% if family.profile_image %}
-                  <a href="{% url 'family-profile' family.id %}">
-                    <img src="{{ family.profile_image.url }}" class="card-img rounded-circle"> 
-                  </a>
-                {% else %}
-                  <a href="{% url 'family-profile' family.id %}">
-                    <img src="{% static 'website/images/default_profile_img/plain_default3.jpg' %}" class="card-img rounded-circle">
-                  </a>
-                {% endif %}
+      <center>
+        <div class="container-fluid" id="results_page_title">
+          Search Results
+        </div>
+        <div class="container-fluid" id="search_query">
+          You searched for "{{ query }}"
+        </div>
+      </center>
 
-                <!-- Display family nickname -->
-                <h4>{{ family.family_name|title }} Family</h4><br>
-                {{ family.availabilty.days }}
-
-                <!-- Display connection statuses, possible actions, and link to family profiles -->
-                {% if user in family.pending_requests.all %}
-                  <button type="button" class="btn btn-warning" disabled>
-                    Request Sent
-                  </button>
-                  <a class="btn btn-secondary" href="{% url 'family-profile' family.id %}">
-                    Visit Family Profile
-                  </a>
-                {% elif user in family.connections.all %}
-                  <button type="button" class="btn btn-success" disabled>
-                    Connection
-                  </button>
-                  <a class="btn btn-secondary" href="{% url 'family-profile' family.id %}">
-                    Visit Family Profile
-                  </a>
-                {% else %}
-                  <!--
-                  Only provide link to family profile. There is no connect button
-                  displayed here to help prevent spamming connect requests
-                  -->
-                  <a class="btn btn-secondary" href="{% url 'family-profile' family.id %}">
-                    View to Connect
-                  </a>
-                {% endif %}
-
-              </div>
-              {% if forloop.counter0 != 0 and forloop.counter0|divisibleby:2 == 0 %}
-                <div class="w-100"></div>
-              {% endif %}
-          {% endfor %}
-          </div>
-        {% else %}
-          {% include 'results/no-results.html' %}
-        {% endif %}
-      </div>
-
-      <!-- Pagination -->
+      <!-- If text was entered in the search box display the results-->
       {% if search_results and query %}
-        {% include 'pagination/general_paginator.html' %}
-      {% endif %}
+        <center>
+          <div class="container-fluid">
+            <a href="{% url 'search-page' %}" id="search_again_link">
+              Search again
+            </a>
+          </div>
+        </center>
 
-    </center>
+        <!--
+        The resulting family profiles. Results only include those that have
+        set up at least a family nickname.
+        -->
+        <div class="container-fluid" id="outer_results_container">
+          <div class="container-fluid" id="inner_results_container">
+            <div class="row row-cols-1 row-cols-sm-2">
+              {% for family in search_results %}
+                <center>
+                  <div class="col" style="min-width: fit-content;">
+
+                    <div class="card shadow" id="result_card">
+                      <div class="container-fluid" id="outer_card_container">
+                        <div class="row">
+                          <!-- Display family profile image -->
+                          <div class="col" style="min-width: 180px; max-width: 180px; padding-top: 10px;">
+                            <div class="container-fluid" id="card_img_container">
+                              {% if family.profile_image %}
+                                <a href="{% url 'family-profile' family.id %}">
+                                  <img src="{{ family.profile_image.url }}" class="img-fluid shadow" id="profile_img"> 
+                                </a>
+                              {% else %}
+                                <a href="{% url 'family-profile' family.id %}">
+                                  <img src="{% static 'website/images/default_profile_img/plain_default3.jpg' %}" class="img-fluid shadow" id="profile_img">
+                                </a>
+                              {% endif %}
+                            </div>
+                          </div>
+
+                          <div class="col">
+                            <div class="container-fluid" id="card_content_container">
+                              <!--
+                              Nav tabs menu
+                              Inspired by: https://stackoverflow.com/questions/48386330/bootstrap-control-multiple-tab-panels-with-single-tab-nav
+                              -->
+                              <div class="container-fluid" id="nav_container">
+                                <!-- Tabs -->
+                                <ul class="nav nav-tabs" id="tab{{ forloop.counter }}" role="tablist" style="font-size: 14px;">
+                                    <li class="nav-item">
+                                      <button class="nav-link active" id="first-tab" data-bs-target="#first_tab{{ forloop.counter }}" data-bs-toggle="tab" role="tab" aria-controls="first" aria-selected="true">
+                                        General
+                                      </button>
+                                    </li>
+                                    <li class="nav-item">
+                                      <button class="nav-link" id="second-tab" data-bs-target="#second_tab{{ forloop.counter }}" data-bs-toggle="tab" role="tab" aria-controls="second" aria-selected="false">
+                                        Bio
+                                      </button>
+                                    </li>
+                                    <li class="nav-item">
+                                      <button class="nav-link" id="third-tab" data-bs-target="#third_tab{{ forloop.counter }}" data-bs-toggle="tab" role="tab" aria-controls="third" aria-selected="false">
+                                        Members
+                                      </button>
+                                    </li>
+                                </ul>
+                                <!-- Content -->
+                                <div class="tab-content" id="ueberTabA">
+                                    <!-- Tab 1 -->
+                                    <div class="tab-pane active overflow-auto" id="first_tab{{ forloop.counter }}" role="tabpanel" aria-labelledby="first-tab" style="height: 100%;">
+                                      <!-- Display family nickname -->
+                                      <div class="container-fluid text-truncate" id="fname_title" data-toggle="tooltip" title="{{ family.family_name|title }} Family">
+                                        {{ family.family_name|title }} Family
+                                      </div>
+                                      Stuff in tab 1<br>
+                                      <!-- Display connection statuses, possible actions, and link to family profiles -->
+                                      {% if user in family.pending_requests.all %}
+                                        <button class="btn btn-warning btn-sm" disabled>
+                                          Request Sent
+                                        </button>
+                                        <a href="{% url 'family-profile' family.id %}">
+                                          Visit Family Profile
+                                        </a>
+                                      {% elif user in family.connections.all %}
+                                        <a href="{% url 'family-profile' family.id %}">
+                                          Visit Family Profile
+                                        </a><br>
+                                        <button class="btn btn-success btn-sm" disabled>
+                                          <i class="bi bi-check2"></i>
+                                          Connection
+                                        </button>
+                                      {% else %}
+                                        <!--
+                                        Only provide link to family profile. There is no connect button
+                                        displayed here to help prevent spamming connect requests
+                                        -->
+                                        <a href="{% url 'family-profile' family.id %}">
+                                          View to Connect
+                                        </a>
+                                      {% endif %}
+                                    </div>
+
+                                    <!-- Tab 2 -->
+                                    <div class="tab-pane overflow-auto" id="second_tab{{ forloop.counter }}" role="tabpanel" aria-labelledby="second-tab" style="height: 100px;">
+                                      Stuff in tab 2
+                                    </div>
+
+                                    <!-- Tab 3 -->
+                                    <div class="tab-pane overflow-auto" id="third_tab{{ forloop.counter }}" role="tabpanel" aria-labelledby="third-tab" style="height: 100px;">
+                                      Stuff in tab 3
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Row divider -->
+                  <div class="w-100" style="height: 50px;"></div>
+                </center>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      {% else %}
+        {% include 'results/no-results.html' %}
+      {% endif %}
+    </div>
+    
+
+    <!-- Pagination -->
+    {% if search_results and query %}
+      {% include 'pagination/general_paginator.html' %}
+    {% endif %}
+
   </section>
 </body>
 {% endblock %}
