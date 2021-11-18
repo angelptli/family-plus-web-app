@@ -182,27 +182,29 @@
         Contains family members section and section containing subsections of
         hobbies & interests, locations (might not include), schedule (might not include), and languages.
         -->
-        <!-- CSS styling -->
-        <link rel="stylesheet" type="text/css" href="{% static 'website/css/family_profile/family_members_section.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'website/css/family_profile/category_section.css' %}">
+        {% if not view_hidden or user.familyprofile.id == page_user.id %}
+          <!-- CSS styling -->
+          <link rel="stylesheet" type="text/css" href="{% static 'website/css/family_profile/family_members_section.css' %}">
+          <link rel="stylesheet" type="text/css" href="{% static 'website/css/family_profile/category_section.css' %}">
 
-        <div class="container-fluid" style="width: 79%;">
-          <div class="row shadow" id="row_body">
+          <div class="container-fluid" style="width: 79%;">
+            <div class="row shadow" id="row_body">
 
-            <!-- FAMILY MEMBERS SECTION (1 of 2 columns - body of family profile) -->
-            <div class="col-sm-5 p-3" id="family_column">
-              {% include 'family_profile_body/family-members.html' %}
+              <!-- FAMILY MEMBERS SECTION (1 of 2 columns - body of family profile) -->
+              <div class="col-sm-5 p-3" id="family_column">
+                {% include 'family_profile_body/family-members.html' %}
+              </div>
+              <!-- END OF FAMILY MEMBERS SECTION -->
+
+              <!-- CATEGORY SECTION (2 of 2 columns - body of family profile) -->
+              <div class="col-sm-7 p-3" id="category_column">
+                {% include 'family_profile_body/category-section.html' %}
+              </div>
+              <!-- END OF CATEGORY SECTION -->
+
             </div>
-            <!-- END OF FAMILY MEMBERS SECTION -->
-
-            <!-- CATEGORY SECTION (2 of 2 columns - body of family profile) -->
-            <div class="col-sm-7 p-3" id="category_column">
-              {% include 'family_profile_body/category-section.html' %}
-            </div>
-            <!-- END OF CATEGORY SECTION -->
-
           </div>
-        </div>
+        {% endif %}
         <!-- END OF LOWER HALF OF FAMILY PROFILE (BODY) -->
 
       </div>

@@ -27,6 +27,10 @@ def get_age_range_list():
 
 def paginate_results(search_results, page_number, results_per_page):
     """Paginate search results."""
+
+    # Credit: https://www.youtube.com/watch?v=YlMxfqcw77s
+    # Learned how to paginate filtered objects
+    
     search_results = search_results
     paginator = Paginator(search_results, results_per_page)
     

@@ -1,0 +1,40 @@
+/* Category title */
+#category_title {
+  font-weight: 600;
+  font-size: 21px;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  color: rgb(104, 104, 104);
+}
+
+/* Family bio title */
+#family_bio_title {
+  font-weight: 600;
+  font-size: 21px;
+  padding-left: 15px;
+  padding-top: 0px !important;
+  padding-bottom: 5px;
+  color: rgb(104, 104, 104);
+}
+
+/* Hobby tags */
+#hobby_tags {
+  color: rgb(128, 128, 128);
+  border-radius: 50px;
+  border-width: 5px !important;
+  font-weight: 600;
+}
+
+/* Hobby tags on hover */
+#hobby_tags:hover {
+  background: #4e54c8;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #8f94fb, #4e54c8);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #8f94fb, #4e54c8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+}
+
+#hobby_tags:focus {
+  outline: none;
+  box-shadow: none;
+}

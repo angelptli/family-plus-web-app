@@ -11,8 +11,8 @@ class FamilyProfile(models.Model):
     family_name      = models.TextField(max_length=30, null=False, blank=False)
     profile_image    = models.ImageField(max_length=255, null=True, blank=True,
                                          upload_to=get_profile_image_filepath)
-    family_bio       = models.TextField(null=True, blank=True)
-    contact_info     = models.TextField(null=True, blank=True)
+    family_bio       = models.TextField(max_length=1000, null=True, blank=True)
+    contact_info     = models.TextField(max_length=255, null=True, blank=True)
     has_setup        = models.BooleanField(default=False)
     hidden           = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="toggled_profiles")
     pending_requests = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="requests_pending")
