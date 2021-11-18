@@ -7,83 +7,104 @@
 
 {% block content %}
 <body style="background-color: #f0f2f5;">
-  <section style="padding-top: 70px; min-height: 1000px; padding-bottom: 100px;">
-    <center>
-      <div class="container" class="mx-auto">
-        <br><h1>Results</h1>
-        <h4>You searched for "{{ query }}"</h4>
 
-        <!-- If text was entered in the search box display the results-->
-        {% if search_results and query %}
-          <a href="{% url 'search-page' %}">Search again</a><br>
-          
-          <!-- The resulting family profiles. Results only include those that have
-          set up at least a family nickname. -->
-          <div class="row">
-            {% for family in search_results %}
-              {% if family.familyprofile.family_name != "" %}
-                <div class="col">
-                  {% if family.familyprofile.profile_image %}
-                    <a href="{% url 'family-profile' family.familyprofile.id %}">
-                      <img src="{{ family.familyprofile.profile_image.url }}" class="card-img rounded-circle"> 
-                    </a> 
-                  {% else %}
-                    <a href="{% url 'family-profile' family.familyprofile.id %}">
-                      <img src="{% static 'website/images/default_profile_img/plain_default3.jpg' %}" class="card-img rounded-circle">
-                    </a>
-                  {% endif %}
-                  <h4>{{ family.familyprofile.family_name|title }} Family</h4><br>
+  <!-- CSS styling -->
+  <link rel="stylesheet" type="text/css" href="{% static 'website/css/search/search_username.css' %}">
 
-                  <!-- Display connection statuses, possible actions, and link to family profiles -->
-                  {% if user.familyprofile.user in family.familyprofile.pending_requests.all %}
-                    <button type="button" class="btn btn-warning" disabled>
-                      Request Sent
-                    </button>
-                    <a class="btn btn-secondary" href="{% url 'family-profile' family.familyprofile.id %}">
-                      Visit Family Profile
-                    </a>
-                  {% elif user.familyprofile.user in family.familyprofile.connections.all %}
-                    <button type="button" class="btn btn-success" disabled>
-                      Connection
-                    </button>
-                    <a class="btn btn-secondary" href="{% url 'family-profile' family.familyprofile.id %}">
-                      Visit Family Profile
-                    </a>
-                  {% else %}
-                    <!--
-                    Only provide link to family profile. There is no connect button
-                    displayed here to help prevent spamming connect requests
-                    -->
-                    <a class="btn btn-secondary" href="{% url 'family-profile' family.familyprofile.id %}">
-                      View to Connect
-                    </a>
-                  {% endif %}
+  <section id="section_background_username_results">
+    <div class="container-fluid" id="outside_container">
 
-                </div>
-                {% if forloop.counter0 != 0 and forloop.counter0|divisibleby:2 == 0 %}
-                  <div class="w-100"></div>
-                {% endif %}
-              {% else %}
-                <!-- Users who haven't set up a family profile will have a default picture
-                and link to a Profile Not Found page. -->
-                <a href="{% url 'profile-not-found' %}">
-                  <img src="{% static 'website/images/default_profile_img/plain_default3.jpg' %}" class="card-img rounded-circle">
-                </a>
-                <h5>Family profile not set up</h5><br>
-              {% endif %}
-          {% endfor %}
-          </div>
-        {% else %}
-          {% include 'results/no-results.html' %}
-        {% endif %}
-      </div>
+      <center>
+        <div class="container-fluid" id="results_page_title">
+          Search Results
+        </div>
+        <div class="container-fluid" id="search_query">
+          You searched for "{{ query }}"
+        </div>
+      </center>
 
-      <!-- Pagination -->
+      <!-- If text was entered in the search box display the results-->
       {% if search_results and query %}
-        {% include 'pagination/general_paginator.html' %}
-      {% endif %}
+        <center>
+          <div class="container-fluid">
+            <a href="{% url 'search-page' %}" id="search_again_link">
+              Search again
+            </a>
+          </div>
+        </center>
 
-    </center>
+        <!--
+        The resulting family profiles. Results only include those that have
+        set up at least a family nickname.
+        -->
+        <div class="container" id="results_container">
+          <div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-3 justify-content-center">
+            {% for family in search_results %}
+
+              <div class="col" style="max-width: fit-content !important;">
+                <div class="p-3">
+                  <center>
+                    <div class="card" id="result_card">
+                      <!-- Display family profile image -->
+                      <div class="container-fluid border shadow" id="img_container">
+                        {% if family.familyprofile.profile_image %}
+                          <button type="button" class="btn" id="result_modal_btn" data-bs-toggle="modal" data-bs-target="#resultModal{{ forloop.counter }}">
+                            <img src="{{ family.familyprofile.profile_image.url }}" class="img-fluid shadow" id="profile_img"> 
+                          </button>
+                          {% include 'results_modals/username-results-modal.html' %}
+                        {% else %}
+                          <button type="button" class="btn" id="result_modal_btn" data-bs-toggle="modal" data-bs-target="#resultModal{{ forloop.counter }}">
+                            <img src="{% static 'website/images/default_profile_img/plain_default3.jpg' %}" class="img-fluid shadow" id="profile_img">
+                          </button>
+                          {% include 'results_modals/username-results-modal.html' %}
+                        {% endif %}
+
+                        <!-- Card overlay shows connection status: Connection, Pending -->
+                        
+                        {% if user.familyprofile.user in family.familyprofile.pending_requests.all %}
+                        <div class="card-img-overlay" id="status_overlay" data-bs-toggle="tooltip" data-bs-placement="left" title="Request Sent">
+                          <div id="request_sent_status">
+                            <svg xmlns="http://www.w3.org/2000/svg" style="width: 24px; height: 24px;" fill="currentColor" class="bi bi-send-check" viewBox="0 0 16 16">
+                              <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855a.75.75 0 0 0-.124 1.329l4.995 3.178 1.531 2.406a.5.5 0 0 0 .844-.536L6.637 10.07l7.494-7.494-1.895 4.738a.5.5 0 1 0 .928.372l2.8-7Zm-2.54 1.183L5.93 9.363 1.591 6.602l11.833-4.733Z"/>
+                              <path d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-1.993-1.679a.5.5 0 0 0-.686.172l-1.17 1.95-.547-.547a.5.5 0 0 0-.708.708l.774.773a.75.75 0 0 0 1.174-.144l1.335-2.226a.5.5 0 0 0-.172-.686Z"/>
+                            </svg>
+                          </div>
+                        </div>
+                        {% elif user.familyprofile.user in family.familyprofile.connections.all %}
+                        <div class="card-img-overlay" id="status_overlay" data-bs-toggle="tooltip" data-bs-placement="left" title="Connection">
+                          <div id="connection_status">
+                            <i class="bi bi-check2-circle"></i>
+                          </div>
+                        </div>
+                        {% endif %}
+
+                        <!-- Display family nickname -->
+                        <div class="container-fluid text-truncate" id="fname_title" data-toggle="tooltip" title="{{ family.familyprofile.family_name|title }} Family">
+                          {% if family.familyprofile.family_name %}
+                            {{ family.familyprofile.family_name|title }} Family
+                          {% else %}
+                            Profile Not Set Up
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                  </center>
+                </div>
+              </div>
+              
+            {% endfor %}
+          </div>
+        </div>
+      {% else %}
+        {% include 'results/no-results.html' %}
+      {% endif %}
+    </div>
+
+    <!-- Pagination -->
+    {% if search_results and query %}
+      {% include 'pagination/results_paginator.html' %}
+    {% endif %}
+
   </section>
 </body>
 {% endblock %}
