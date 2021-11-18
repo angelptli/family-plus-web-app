@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, render
 from django.http.response import HttpResponseRedirect
 from django.urls import reverse
 from website_users.models import FamilyProfile
+from location.models import Location
 from django.contrib.auth.decorators import login_required
 
 # Import model choice lists
@@ -227,6 +228,9 @@ def search_location_view(request, *args, **kwargs):
 
     context['search_results'] = search_results
 
+    location_objs = Location.objects.all()
+    context['location_objs'] = location_objs
+    
     return render(request, "results/search-location.html", context)
 
 
