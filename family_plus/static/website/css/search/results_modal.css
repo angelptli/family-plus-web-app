@@ -101,3 +101,24 @@
   outline: none;
   box-shadow: none;
 }
+
+/* Age range tags */
+#age_range_tags {
+  color: rgb(128, 128, 128);
+  border-radius: 50px;
+  border-width: 5px !important;
+  font-weight: 600;
+}
+
+/* Age range tags on hover */
+#age_range_tags:hover {
+  background: #7474BF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+}
+
+#age_range_tags:focus {
+  outline: none;
+  box-shadow: none;
+}

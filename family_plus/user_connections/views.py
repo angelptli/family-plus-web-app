@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 from django.http.response import HttpResponseRedirect
 from django.urls import reverse
-from website_users.models import FamilyProfile
+from website_users.models import FamilyProfile, FamilyMember
 from location.models import Location
 from django.contrib.auth.decorators import login_required
 
@@ -228,6 +228,7 @@ def search_location_view(request, *args, **kwargs):
 
     context['search_results'] = search_results
 
+    # Send location model objects to template
     location_objs = Location.objects.all()
     context['location_objs'] = location_objs
     
@@ -308,5 +309,9 @@ def search_age_view(request, *args, **kwargs):
     search_results = paginate_results(search_results, page_number, results_per_page)
 
     context['search_results'] = search_results
+
+    # Send familymember model objects to template
+    member_objs = FamilyMember.objects.all()
+    context['member_objs'] = member_objs
 
     return render(request, "results/search-age-range.html", context)

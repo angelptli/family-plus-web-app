@@ -1,0 +1,111 @@
+/* Section background of search results page */
+#section_background_age_range_results {
+  padding-top: 40px;
+  padding-bottom: 100px;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  min-height: 1000px;
+  background: #7474BF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+/* Results page title */
+#results_page_title {
+  color: #fff;
+  font-size: 30px;
+  font-weight: 500;
+  padding-top: 80px;
+}
+
+/* Search query */
+#search_query {
+  /* color: #fff; */
+  color: rgba(255, 255, 255, 0.644);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* Search again link */
+#search_again_link {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.644);
+}
+
+/* Outer result container */
+#outside_container {
+  width: 100%;
+}
+
+#results_container {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  min-height: 400px;
+}
+
+/* Result card */
+#result_card {
+ background-color: #f0f2f500;
+ border-width: 0px;
+}
+
+#img_container {
+  width: 220px;
+  height: 220px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  padding-left: 0;
+  padding-right: 0;
+  border-radius: 15px;
+  border-width: 2px !important;
+  border-color: rgba(255, 255, 255, 0.644) !important;
+}
+
+/* Family profile image */
+#profile_img {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+}
+
+/* Connection status overlay */
+#status_overlay {
+  border-radius: 15px;
+  margin: 2px;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  height: fit-content;
+  margin-left: 160px;
+}
+
+#request_sent_status {
+  text-align: right;
+  font-size: 30px;
+  font-weight: 600;
+  color: #ffffff98;
+}
+
+#connection_status {
+  text-align: right;
+  font-size: 30px;
+  font-weight: 600;
+  color: #ffffff98;
+}
+
+/* Family nickname */
+#fname_title {
+  color: rgba(255, 255, 255, 0.644);
+  font-size: 20px;
+  font-weight: 500;
+  padding: 0 !important;
+}
+
+/* Result modal button */
+#result_modal_btn {
+  border-radius: 50%;
+}
+
+#result_modal_btn:focus {
+  outline: none;
+  box-shadow: none;
+}

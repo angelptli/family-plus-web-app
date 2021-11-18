@@ -1,0 +1,54 @@
+{% load static %}
+
+<!-- CSS styling -->
+<link rel="stylesheet" type="text/css" href="{% static 'website/css/search/results_modal.css' %}">
+
+<!-- Results Modal -->
+<div class="modal fade" id="resultModal{{ forloop.counter }}" tabindex="-1" aria-labelledby="resultModalLabel{{ forloop.counter }}" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header" style="padding-top: 20px; padding-bottom: 20px;">
+        <h5 class="modal-title w-100 text-center" id="resultModalLabel{{ forloop.counter }}" style="color: rgb(78, 78, 78); font-weight: 600; font-size: 21px;">
+          {{ family.family_name|title }} Family
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" style="text-align: left; padding-bottom: 20px; max-height: 500px;">
+
+        {% if family.hidden.count == 0 %}
+          <!-- Category items listed -->
+          <div class="container-fluid" id="category_title">
+            Age Ranges In Our Family
+          </div>
+          <div class="container-fluid id="category_content">
+            {% for item in member_objs %}
+              {% if family.user|slugify == item.user|slugify %}
+                <button class="btn border" id="age_range_tags">
+                  {{ item.age_range }}
+                </button>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <hr>
+          <!-- Family bio -->
+          <div class="container-fluid" id="family_bio_title">
+            About Us
+          </div>
+          <div class="container-fluid id="family_bio">
+            {% if family.family_bio %}
+              {{ family.family_bio }}
+            {% else %}
+              The {{ family.family_name|title }} Family has not filled out their family bio...
+            {% endif %}
+          </div>
+        {% else %}
+          Oops, the Purple Yam Family is not ready to connect.
+        {% endif %}
+
+      </div>
+      <div class="modal-footer justify-content-center">
+        <a href="{% url 'family-profile' family.id %}" type="button" class="btn btn-outline-dark">View Profile</a>
+      </div>
+    </div>
+  </div>
+</div>
