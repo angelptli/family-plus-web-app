@@ -1,0 +1,60 @@
+body{
+    margin: 0;
+    padding: 0;
+  
+}
+.center{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 650px;
+  background: white;
+  border-radius: 10px;  
+}
+.center h1{
+  text-align: center;
+  padding: 0 0 20px 0;
+  border-bottom: 2px solid silver;
+  font-size: 30px;
+  color: #414141;
+}
+.center form{
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+form .txt_field{
+  position: relative;
+  border-bottom: 2px solid #414141;
+  margin: 20px 0;
+}
+.txt_field input{
+  width: 100%;
+  padding: 0 5px;
+  height: 20px;
+  font-size: 16;
+  border: none;
+  background: none;
+  outline: none;
+  border-bottom: 2px solid #aaaaaa;
+}
+
+.signup_link{
+  margin: 30px 0;
+  text-align: center;
+  font-size: 16px;
+  color: #414141;
+}
+.signup_link a{
+  color: #2691d9;
+  text-decoration: none;
+}
+.signup_link a:hover{
+  text-decoration: underline;
+}
+
+.myCheckbox {
+  text-align : right;
+  border: 1px solid red; /* for illustration only */
+  width:125px; /* for illustration only */
+}
