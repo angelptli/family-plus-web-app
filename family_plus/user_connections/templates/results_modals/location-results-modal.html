@@ -15,34 +15,38 @@
       </div>
       <div class="modal-body" style="text-align: left; padding-bottom: 20px; max-height: 500px;">
 
-        <!-- Category items listed -->
-        <div class="container-fluid" id="category_title">
-          Locations We Can Travel To
-        </div>
-        <div class="container-fluid id="category_content">
-          {% for item in location_objs %}
-            {% if family.user|slugify == item.user|slugify %}
-              <button class="btn border" id="location_tags">
-                {{ item.state }}
-                {% if item.city %}
-                  , {{ item.city }}
-                {% endif %}
-              </button>
+        {% if family.hidden.count == 0 %}
+          <!-- Category items listed -->
+          <div class="container-fluid" id="category_title">
+            Locations We Can Travel To
+          </div>
+          <div class="container-fluid id="category_content">
+            {% for item in location_objs %}
+              {% if family.user|slugify == item.user|slugify %}
+                <button class="btn border" id="location_tags">
+                  {{ item.state }}
+                  {% if item.city %}
+                    , {{ item.city }}
+                  {% endif %}
+                </button>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <hr>
+          <!-- Family bio -->
+          <div class="container-fluid" id="family_bio_title">
+            About Us
+          </div>
+          <div class="container-fluid id="family_bio">
+            {% if family.family_bio %}
+              {{ family.family_bio }}
+            {% else %}
+              The {{ family.family_name|title }} Family has not filled out their family bio...
             {% endif %}
-          {% endfor %}
-        </div>
-        <hr>
-        <!-- Family bio -->
-        <div class="container-fluid" id="family_bio_title">
-          About Us
-        </div>
-        <div class="container-fluid id="family_bio">
-          {% if family.family_bio %}
-            {{ family.family_bio }}
-          {% else %}
-            The {{ family.family_name|title }} Family has not filled out their family bio...
-          {% endif %}
-        </div>
+          </div>
+        {% else %}
+          Oops, the {{ family.familyprofile.family_name|title }} Family is not ready to connect.
+        {% endif %}
 
       </div>
       <div class="modal-footer justify-content-center">

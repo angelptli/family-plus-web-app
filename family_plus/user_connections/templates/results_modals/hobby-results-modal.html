@@ -15,29 +15,33 @@
       </div>
       <div class="modal-body" style="text-align: left; padding-bottom: 20px; max-height: 500px;">
 
-        <!-- Category items listed -->
-        <div class="container-fluid" id="category_title">
-          Hobbies We Are Interested In
-        </div>
-        <div class="container-fluid id="category_content">
-          {% for item in family.hobby.hobbies %}
-            <button class="btn border" id="hobby_tags">
-              {{ item }}
-            </button>
-          {% endfor %}
-        </div>
-        <hr>
-        <!-- Family bio -->
-        <div class="container-fluid" id="family_bio_title">
-          About Us
-        </div>
-        <div class="container-fluid id="family_bio">
-          {% if family.family_bio %}
-            {{ family.family_bio }}
-          {% else %}
-            The {{ family.family_name|title }} Family has not filled out their family bio...
-          {% endif %}
-        </div>
+        {% if family.hidden.count == 0 %}
+          <!-- Category items listed -->
+          <div class="container-fluid" id="category_title">
+            Hobbies We Are Interested In
+          </div>
+          <div class="container-fluid id="category_content">
+            {% for item in family.hobby.hobbies %}
+              <button class="btn border" id="hobby_tags">
+                {{ item }}
+              </button>
+            {% endfor %}
+          </div>
+          <hr>
+          <!-- Family bio -->
+          <div class="container-fluid" id="family_bio_title">
+            About Us
+          </div>
+          <div class="container-fluid id="family_bio">
+            {% if family.family_bio %}
+              {{ family.family_bio }}
+            {% else %}
+              The {{ family.family_name|title }} Family has not filled out their family bio...
+            {% endif %}
+          </div>
+        {% else %}
+          Oops, the {{ family.familyprofile.family_name|title }} Family is not ready to connect.
+        {% endif %}
 
       </div>
       <div class="modal-footer justify-content-center">

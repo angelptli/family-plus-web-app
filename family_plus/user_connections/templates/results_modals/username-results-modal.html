@@ -28,7 +28,11 @@
             {% endif %}
           </div>
         {% else %}
-          Oops, the {{ family.familyprofile.family_name|title }} Family is not ready to connect.
+          {% if family.familyprofile.family_name %}
+            Oops, the {{ family.familyprofile.family_name|title }} Family is not ready to connect.
+          {% else %}
+            This user has not set up their family profile.
+          {% endif %}
         {% endif %}
 
       </div>
