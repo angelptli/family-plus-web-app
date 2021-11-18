@@ -17,11 +17,11 @@
 
         <!-- Category items listed -->
         <div class="container-fluid" id="category_title">
-          Languages We Know or Want To Learn
+          Days We Are Normally Free On
         </div>
         <div class="container-fluid id="category_content">
-          {% for item in family.language.languages %}
-            <button class="btn border" id="language_tags">
+          {% for item in family.availability.days %}
+            <button class="btn border" id="availability_tags">
               {{ item }}
             </button>
           {% endfor %}
