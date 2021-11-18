@@ -15,22 +15,8 @@
       </div>
       <div class="modal-body" style="text-align: left; padding-bottom: 20px; max-height: 500px;">
 
+        <!-- Family bio -->
         {% if family.hidden.count == 0 %}
-          <!-- Category items listed -->
-          <div class="container-fluid" id="category_title">
-            Age Ranges In Our Family
-          </div>
-          <div class="container-fluid id="category_content">
-            {% for item in member_objs %}
-              {% if family.user|slugify == item.user|slugify %}
-                <button class="btn border" id="age_range_tags">
-                  {{ item.age_range }}
-                </button>
-              {% endif %}
-            {% endfor %}
-          </div>
-          <hr>
-          <!-- Family bio -->
           <div class="container-fluid" id="family_bio_title">
             About Us
           </div>
