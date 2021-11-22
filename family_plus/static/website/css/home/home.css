@@ -1,0 +1,136 @@
+/* Section background when logged in*/
+#logged_in_home_bg {
+  padding-top: 60px;
+  background-image: url('/static/website/images/backgrounds/family_tablet2.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: 0% 0%;
+}
+
+/* Search button */
+#search_btn {
+  background-color: rgba(81, 79, 223, 0.719);
+  width: 300px;
+  height: 120px;
+  border-radius: 0px;
+  padding-top: 45px;
+  font-size: 20px;
+  color: #fff;
+  border-color: rgb(255, 255, 255);
+  border-width: 3px;
+}
+#search_btn:hover {
+  background-color: rgb(81, 79, 223);
+}
+#search_btn_container {
+  padding-top: 225px;
+  padding-bottom: 45px;
+}
+
+/* Family profile button */
+#profile_btn {
+  background-color: rgb(81, 79, 223, 0.719);
+  width: 300px;
+  height: 120px;
+  border-radius: 0px;
+  padding-top: 45px;
+  font-size: 20px;
+  color: #fff;
+  border-color: #fff;
+  border-width: 3px;
+}
+#profile_btn:hover {
+  background-color: rgb(81, 79, 223);
+}
+#profile_btn_container {
+  padding-bottom: 45px;
+}
+
+/* Logout button */
+#logout_btn {
+  background-color: rgb(81, 79, 223, 0.719);
+  width: 300px;
+  height: 120px;
+  border-radius: 0px;
+  padding-top: 45px;
+  font-size: 20px;
+  color: #fff;
+  border-color: #fff;
+  border-width: 3px;
+}
+#logout_btn:hover {
+  background-color: rgb(81, 79, 223);
+}
+#logout_btn_container {
+  padding-bottom: 225px;
+}
+
+/* Create family profile button */
+#create_profile_btn {
+  background-color: rgb(81, 79, 223, 0.719);
+  width: 300px;
+  height: 120px;
+  border-radius: 0px;
+  padding-top: 45px;
+  font-size: 20px;
+  color: #fff;
+  border-color: #fff;
+  border-width: 3px;
+}
+#create_profile_btn:hover {
+  background-color: rgb(81, 79, 223);
+}
+#create_profile_btn_container {
+  padding-top: 225px;
+  padding-bottom: 45px;
+}
+
+/* Section background when logged out */
+#logged_out_home_bg {
+  padding-top: 60px;
+  background-image: url('/static/website/images/backgrounds/family_tablet4.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: 0% 0%;
+  opacity: 0.95;
+  filter: brightness(105%);
+}
+
+/* Login button */
+#login_btn {
+  background-color: rgba(123, 121, 253, 0.534);
+  width: 300px;
+  height: 120px;
+  border-radius: 0px;
+  padding-top: 45px;
+  font-size: 20px;
+  color: #fff;
+  border-color: #fff;
+  border-width: 3px;
+}
+#login_btn:hover {
+  background-color: rgb(104, 89, 240);
+}
+#login_btn_container {
+  padding-top: 250px;
+  padding-bottom: 45px;
+}
+
+/* Sign Up button */
+#register_btn {
+  background-color: rgb(123, 121, 253, 0.534);
+  width: 300px;
+  height: 120px;
+  border-radius: 0px;
+  padding-top: 45px;
+  font-size: 20px;
+  color: #fff;
+  border-color: #fff;
+  border-width: 3px;
+}
+#register_btn:hover {
+  background-color: rgb(104, 89, 240);
+}
+#register_btn_container {
+  padding-bottom: 360px;
+}
