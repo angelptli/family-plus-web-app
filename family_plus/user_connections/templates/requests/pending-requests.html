@@ -7,59 +7,70 @@
 
 {% block content %}
 
-<body>
-  <section style="padding-top: 70px; min-height: 1000px; padding-bottom: 100px;">
-    <div class="container-fluid">
-      <h4 style="text-align: center;">Requests Page Creation In Progress...</h4>
-        
-      <!-- Total number of pending requests waiting for the user's response -->
-      {% if total_pending == 0 %}
-        No pending requests.
-      {% elif total_pending == 1 %}
-        You have {{ total_pending }} pending request.
-      {% else %}
-        You have {{ total_pending }} pending requests.
-      {% endif %}
+<!-- CSS styling -->
+<link rel="stylesheet" type="text/css" href="{% static 'website/css/pending_requests/pending_requests.css' %}">
 
-      {% for sender in received_requests %}
-        <div class="card">
-          <div class="row" style="height: 200px">
-            <div class="col-md-3 container-fluid">
-              <div class="card-img">
-                {% if sender.familyprofile.profile_image %}
-                  <img src="{{ sender.familyprofile.profile_image.url }}" class="card-img" style="height: 200px">
-                {% else %}
-                  <img src="{% static 'website/images/default_profile_img/plain_default3.jpg' %}" class="card-img" style="height: 200px">
-                {% endif %}
-              </div>
-            </div>
-          
-            <div class="col-md-8 container-fluid">
-              <div class="card-body">
-                <div class="card-body">
-                  <h4>{{ sender.familyprofile.family_name|title }} Family</h4>
-                  <form action="{% url 'accept-request' sender.familyprofile.pk %}" method="POST">{% csrf_token %}
-                    <button type="submit", name="profile_id_4", value="{{ sender.familyprofile.id }}" class="btn btn-primary">
-                      Accept Connection
-                    </button>
-                  </form>
-                  <form action="{% url 'decline-request' sender.familyprofile.pk %}" method="POST">{% csrf_token %}
-                    <button type="submit", name="profile_id_5", value="{{ sender.familyprofile.id }}" class="btn btn-danger">
-                      Decline
-                    </button>
-                  </form>
-                  <a class="btn btn-secondary" href="{% url 'family-profile' sender.familyprofile.id %}">
-                    Visit Family Profile
-                  </a>
+<body style="background-color: #f0f2f5;">
+  <section id="section_background_pending_requests">
+
+    <!-- Total number of pending requests waiting for the user's response -->
+    <center>
+      <div class="container-fluid" id="pending_requests_page_title">
+        {% if total_pending == 0 %}
+          No pending requests
+        {% elif total_pending == 1 %}
+          You have {{ total_pending }} pending request
+        {% else %}
+          You have {{ total_pending }} pending requests
+        {% endif %}
+      </div>
+    </center>
+
+    <div class="container" id="pending_requests_container">
+      <div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-3 justify-content-center">
+        {% for sender in received_requests %}
+
+          <div class="col" style="max-width: fit-content !important;">
+            <div class="p-3">
+              <center>
+                <div class="card" id="pending_requests_card">
+                  <!-- Display family profile image -->
+                  <div class="container-fluid border shadow" id="img_container">
+                    {% if sender.familyprofile.profile_image %}
+                      <button type="button" class="btn" id="pending_requests_modal_btn" data-bs-toggle="modal" data-bs-target="#resultModal{{ forloop.counter }}">
+                        <img src="{{ sender.familyprofile.profile_image.url }}" class="img-fluid shadow" id="profile_img"> 
+                      </button>
+                      {% include 'requests/pending-requests-modal.html' %}
+                    {% else %}
+                      <button type="button" class="btn" id="result_modal_btn" data-bs-toggle="modal" data-bs-target="#resultModal{{ forloop.counter }}">
+                        <img src="{% static 'website/images/default_profile_img/plain_default3.jpg' %}" class="img-fluid shadow" id="profile_img">
+                      </button>
+                      {% include 'requests/pending-requests-modal.html' %}
+                    {% endif %}
+
+                    <!-- Display family nickname -->
+                    <div class="container-fluid text-truncate" id="fname_title" data-toggle="tooltip" title="{{ sender.familyprofile.family_name|title }} Family">
+                      {% if sender.familyprofile.family_name %}
+                        {{ sender.familyprofile.family_name|title }} Family
+                      {% else %}
+                        Profile Not Set Up
+                      {% endif %}
+                    </div>
+                  </div>
                 </div>
-                </div>
-              </div>
+              </center>
             </div>
           </div>
-        </div>
-        <div class="container-fluid" style="height: 20px;"></div>
-      {% endfor %}
+          
+        {% endfor %}
+      </div>
     </div>
+
+    <!-- Pagination -->
+    {% if search_results and query %}
+      {% include 'pagination/results_paginator.html' %}
+    {% endif %}
+
   </section>
 </body>
 

@@ -1,0 +1,72 @@
+/* Section background of pending requests page */
+#section_background_pending_requests {
+  padding-top: 40px;
+  padding-bottom: 100px;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  min-height: 1000px;
+}
+
+/* Pending requests page title */
+#pending_requests_page_title {
+  color: rgb(59, 59, 59);
+  font-size: 30px;
+  font-weight: 500;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+/* Outer pending requests container */
+#outside_container {
+  width: 100%;
+}
+
+/* Pending requests container */
+#pending_requests_container {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  min-height: 400px;
+}
+
+/* Pending requests card */
+#pending_requests_card {
+ background-color: #f0f2f500;
+ border-width: 0px;
+}
+
+/* Family profile image */
+#img_container {
+  width: 220px;
+  height: 220px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  padding-left: 0;
+  padding-right: 0;
+  border-radius: 15px;
+  border-width: 2px !important;
+  border-color: rgba(66, 66, 66, 0.644) !important;
+}
+
+/* Family profile image */
+#profile_img {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+}
+
+/* Family nickname */
+#fname_title {
+  color: rgba(66, 66, 66, 0.644);
+  font-size: 20px;
+  font-weight: 500;
+  padding: 0 !important;
+}
+
+/* Pending requests modal button */
+#pending_requests_modal_btn {
+  border-radius: 50%;
+}
+#pending_requests_modal_btn:focus {
+  outline: none;
+  box-shadow: none;
+}

@@ -1,0 +1,19 @@
+/* Category title */
+#category_title {
+  font-weight: 600;
+  font-size: 21px;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  color: rgb(104, 104, 104);
+}
+
+/* Family bio title */
+#family_bio_title {
+  font-weight: 600;
+  font-size: 21px;
+  padding-left: 15px;
+  padding-top: 0px !important;
+  padding-bottom: 5px;
+  color: rgb(104, 104, 104);
+}
