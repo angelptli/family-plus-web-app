@@ -17,6 +17,11 @@
           <!-- Logged in users will see a nav center in the home page -->
           <section id="logged_in_home_bg">
             <center>
+              <!-- Home page title -->
+              <div class="container-fluid" id="home_title">
+                <i class="bi bi-house-fill"></i> Family+
+              </div>
+
               <div class="container-fluid" id="nav_center_container">
                 {% if user.familyprofile.id %}
                   <!-- Search link button -->
@@ -67,6 +72,11 @@
           <!-- Page visitors that are not logged in will see login and sign up links -->
           <section id="logged_out_home_bg">
             <center>
+              <!-- Home page title -->
+              <div class="container-fluid" id="home_title">
+                <i class="bi bi-house-fill"></i> Family+
+              </div>
+              
               <div class="container-fluid" id="nav_center_container">
                 <!-- Login button -->
                 <div class="container-fluid" id="login_btn_container">
