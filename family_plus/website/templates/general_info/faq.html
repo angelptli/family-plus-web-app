@@ -1,4 +1,5 @@
 {% extends 'header_footer/base.html' %}
+{% load static %}
 
 {% block title %}
   FAQ | Family+
@@ -6,16 +7,47 @@
 
 {% block content %}
 
+<!-- CSS styling -->
+<link rel="stylesheet" type="text/css" href="{% static 'website/css/faq/faq.css' %}">
+
+
 <body>
-  <section style="padding-top: 70px; min-height: 1000px; padding-bottom: 100px;">
+  <section id="section_background_faq">
     <center>
-      <div class="container-fluid">
-        <h4>FAQ Page Creation In Progress...</h4>
-      </div>
-      <div class="container-fluid" style="padding-top: 30px;">
-        <input type=button value="Go Back" class="btn btn-secondary" onClick="javascript:history.go(-1);">
+      <div class="container-fluid" id="faq_title">
+        FAQ
       </div>
     </center>
+
+    <!-- Questions and answers -->
+    <div class="container-fluid" id="faq_content_container">
+      <b>What information should I add to my family profile?</b><br>
+      When customizing your family profile, share information that you and your family are
+      comfortable with sharing. As a family-friendly website, we prioritize the feeling of safety
+      for every family.<br><br>
+
+      <b>How do we chat with a connection?</b><br>
+      Our purpose is to quicken the process of finding new connections. We do not have
+      a chat system and instead provide a Contact Info section where you can express
+      your preferred methods of communication.<br><br>
+
+      <b>Is filling out the Contact Info section required?</b><br>
+      Setting up a family profile requires only a family nickname. Any other section on the
+      family profile is optional for you to fill out. Note that the Contact Info section is
+      only viewable to your connections.<br><br>
+
+      <b>When is it oversharing?</b><br>
+      Before sharing any personal information, understand that your information will be viewable
+      to other families on the website. Only share what you would share when meeting someone the
+      first time.<br><br>
+
+      <b>How do I limit what others can see on my family profile?</b><br>
+      You can hide your family profile by selecting the 'Hide Family Profile' option in the
+      Visibility menu. This menu is available on the right side of your family profile header.
+      Note that when you are hidden, others cannot send you a connect request, nor can you send
+      a request to another family.<br><br>
+
+    </div>
   </section>
 </body>
 
