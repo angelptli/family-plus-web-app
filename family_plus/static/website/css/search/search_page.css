@@ -9,11 +9,6 @@
   /* light blue: 44d4ee */
 }
 
-/* Use in account settings and contact pages */
-/* background: #9fc0d8;
-  background: -webkit-linear-gradient(to right, #9fc0d8, #7474BF);
-  background: linear-gradient(to right, #9fc0d8, #7474BF); */
-
 /* Card for each category */
 #category_card {
   min-width: 15rem;
