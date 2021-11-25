@@ -127,19 +127,27 @@
                         Connection
                       </button>
                     {% else %}
-                      {% if not view_hidden and user.familyprofile.hidden.count == 0 %}
-                        <form action="{% url 'send-request' page_user.pk %}" method="POST">{% csrf_token %}
-                          <button class="btn" type="submit" id="connect_btn" name="profile_id_2" value="{{ page_user.id }}">
-                            <i class="bi bi-person-plus-fill"></i>
-                            Send Connect Request
-                          </button>
-                        </form>
-                      {% elif user.familyprofile.hidden.count == 1 %}
+                      {% if not user.familyprofile.id %}
                         <button class="btn" id="connect_btn" disabled>
                           <i class="bi bi-person-plus-fill"></i>
                           Send Connect Request
                         </button><br>
-                        <small class="text-muted">You cannot send a request in hidden mode.</small>
+                        <small class="text-muted">Set up a family profile to send requests.</small>
+                      {% else %}
+                        {% if not view_hidden and user.familyprofile.hidden.count == 0 %}
+                          <form action="{% url 'send-request' page_user.pk %}" method="POST">{% csrf_token %}
+                            <button class="btn" type="submit" id="connect_btn" name="profile_id_2" value="{{ page_user.id }}">
+                              <i class="bi bi-person-plus-fill"></i>
+                              Send Connect Request
+                            </button>
+                          </form>
+                        {% elif user.familyprofile.hidden.count == 1 %}
+                          <button class="btn" id="connect_btn" disabled>
+                            <i class="bi bi-person-plus-fill"></i>
+                            Send Connect Request
+                          </button><br>
+                          <small class="text-muted">You cannot send a request in hidden mode.</small>
+                        {% endif %}
                       {% endif %}
                     {% endif %}
                   </div>
