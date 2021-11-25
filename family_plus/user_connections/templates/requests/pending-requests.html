@@ -37,7 +37,7 @@
                       </button>
                       {% include 'requests/pending-requests-modal.html' %}
                     {% else %}
-                      <button type="button" class="btn" id="result_modal_btn" data-bs-toggle="modal" data-bs-target="#resultModal{{ forloop.counter }}">
+                      <button type="button" class="btn" id="pending_requests_modal_btn" data-bs-toggle="modal" data-bs-target="#resultModal{{ forloop.counter }}">
                         <img src="{% static 'website/images/default_profile_img/plain_default3.jpg' %}" class="img-fluid shadow border border-light border-2" id="profile_img">
                       </button>
                       {% include 'requests/pending-requests-modal.html' %}
@@ -62,9 +62,9 @@
     </div>
 
     <!-- Pagination -->
-    {% if search_results and query %}
+    <!-- {% if search_results and query %}
       {% include 'pagination/results_paginator.html' %}
-    {% endif %}
+    {% endif %} -->
 
   </section>
 </body>
