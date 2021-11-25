@@ -17,3 +17,15 @@
   padding-bottom: 5px;
   color: rgb(104, 104, 104);
 }
+
+/* Accept button */
+#accept_btn {
+  width: 150px !important;
+  height: 40px !important;
+}
+
+/* Decline button */
+#decline_btn {
+  width: 150px !important;
+  height: 40px !important;
+}

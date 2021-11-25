@@ -16,14 +16,9 @@
     <!-- Total number of pending requests waiting for the user's response -->
     <center>
       <div class="container-fluid" id="pending_requests_page_title">
-        {% if total_pending == 0 %}
-          No pending requests
-        {% elif total_pending == 1 %}
-          You have {{ total_pending }} pending request
-        {% else %}
-          You have {{ total_pending }} pending requests
-        {% endif %}
+        Requests
       </div>
+      Total Pending: {{ total_pending }}
     </center>
 
     <div class="container" id="pending_requests_container">
@@ -38,12 +33,12 @@
                   <div class="container-fluid border shadow" id="img_container">
                     {% if sender.familyprofile.profile_image %}
                       <button type="button" class="btn" id="pending_requests_modal_btn" data-bs-toggle="modal" data-bs-target="#resultModal{{ forloop.counter }}">
-                        <img src="{{ sender.familyprofile.profile_image.url }}" class="img-fluid shadow" id="profile_img"> 
+                        <img src="{{ sender.familyprofile.profile_image.url }}" class="img-fluid shadow border border-light border-2" id="profile_img"> 
                       </button>
                       {% include 'requests/pending-requests-modal.html' %}
                     {% else %}
                       <button type="button" class="btn" id="result_modal_btn" data-bs-toggle="modal" data-bs-target="#resultModal{{ forloop.counter }}">
-                        <img src="{% static 'website/images/default_profile_img/plain_default3.jpg' %}" class="img-fluid shadow" id="profile_img">
+                        <img src="{% static 'website/images/default_profile_img/plain_default3.jpg' %}" class="img-fluid shadow border border-light border-2" id="profile_img">
                       </button>
                       {% include 'requests/pending-requests-modal.html' %}
                     {% endif %}

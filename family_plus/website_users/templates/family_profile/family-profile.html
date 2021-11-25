@@ -120,6 +120,12 @@
                         </button>
                       </form>
                       <small class="text-muted">Your request has been sent.</small>
+                    {% elif page_user.user in user.familyprofile.pending_requests.all %}
+                        <button class="btn" type="submit" id="cancel_request_btn" disabled>
+                          <i class="bi bi-person-dash-fill"></i>
+                          Cancel Request
+                        </button><br>
+                      <small class="text-muted">You have received a request from this family.</small>
                     {% elif user in page_user.connections.all %}
                       <button class="btn" type="button" id="connection_btn">
                         <!-- <i class="bi bi-check"></i> -->

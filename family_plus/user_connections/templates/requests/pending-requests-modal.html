@@ -9,44 +9,50 @@
     <div class="modal-content">
       <div class="modal-header" style="padding-top: 20px; padding-bottom: 20px;">
         <h5 class="modal-title w-100 text-center" id="resultModalLabel{{ forloop.counter }}" style="color: rgb(78, 78, 78); font-weight: 600; font-size: 21px;">
-          {{ sender.family_name|title }} Family
+          {{ sender.familyprofile.family_name|title }} Family
         </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body" style="text-align: left; padding-bottom: 20px; max-height: 500px;">
 
         <!-- Family bio -->
-        {% if sender.hidden.count == 0 %}
+        {% if sender.familyprofile.hidden.count == 0 %}
           <div class="container-fluid" id="family_bio_title">
             About Us
           </div>
           <div class="container-fluid id="family_bio">
-            {% if sender.family_bio %}
-              {{ sender.family_bio }}
+            {% if sender.familyprofile.family_bio %}
+              {{ sender.familyprofile.family_bio }}
             {% else %}
-              The {{ sender.family_name|title }} Family has not filled out their family bio...
+              The {{ sender.familyprofile.family_name|title }} Family has not filled out their family bio...
             {% endif %}
           </div>
         {% else %}
-          Oops, the {{ sender.family_name|title }} Family is not ready to connect.
+          Oops, the {{ sender.familyprofile.family_name|title }} Family is not ready to connect.
         {% endif %}
 
+
+      </div>
+      <div class="modal-footer justify-content-center">
+        <a href="{% url 'family-profile' sender.familyprofile.id %}" type="button" class="btn btn-outline-dark">View Profile</a>
+        <div class="container-fluid" style="height: 3px;">
+        </div>
         <div class="container-fluid">
           <form action="{% url 'accept-request' sender.familyprofile.pk %}" method="POST">{% csrf_token %}
-            <button type="submit" name="profile_id_4" value="{{ sender.familyprofile.id }}" class="btn btn-primary">
-              Accept Connection
+            <button type="submit" name="profile_id_4" id="accept_btn" value="{{ sender.familyprofile.id }}" class="btn btn-outline-primary">
+              Accept
             </button>
           </form>
+          <div class="container-fluid" style="height: 20px;">
+          </div>
           <form action="{% url 'decline-request' sender.familyprofile.pk %}" method="POST">{% csrf_token %}
-            <button type="submit" name="profile_id_5" value="{{ sender.familyprofile.id }}" class="btn btn-danger">
+            <button type="submit" name="profile_id_5" id="decline_btn" value="{{ sender.familyprofile.id }}" class="btn btn-outline-danger">
               Decline
             </button>
           </form>
         </div>
-
-      </div>
-      <div class="modal-footer justify-content-center">
-        <a href="{% url 'family-profile' sender.id %}" type="button" class="btn btn-outline-dark">View Profile</a>
+        <div class="container-fluid" style="height: 2px;">
+        </div>
       </div>
     </div>
   </div>
