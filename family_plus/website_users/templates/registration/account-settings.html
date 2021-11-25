@@ -1,4 +1,5 @@
 {% extends 'header_footer/base.html' %}
+{% load static %}
 
 <!-- Page title -->
 {% block title %}
@@ -7,29 +8,57 @@
 
 {% block content %}
 
-
-
 <!-- Django form -->
 
-<body style="background-color: #f0f2f5;">
-  <section style="padding-top: 70px; min-height: 1000px; padding-bottom: 100px;">
+<!-- CSS styling -->
+<link rel="stylesheet" type="text/css" href="{% static 'website/css/registration/account_settings.css' %}">
+
+<body style="background-color: #f4f4f4;">
+  <section id="section_background_account_settings">
     {% if user.is_authenticated %}
-      <div class="container-fluid" style="padding: 50px">
-        <div>
-        <h1>Account Settings</h1>
-        </div>
-        <div class="form-group">
-          <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button class="btn btn-primary">
-              Save
-            </button>
-            <a href="{% url 'home' %}" class="btn btn-secondary">
-              Cancel
-            </a>
-            <br><br>
-          </form>
+      <div class="container-fluid" id="empty_div">
+      </div>
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col" style="max-width: fit-content; padding-left: 0 !important;">
+            <div class="container-fluid shadow" id="settings_menu">
+
+              <!-- Change username button is default and disabled by default -->
+              <div class="container-fluid" id="change_username_btn_container">
+                <a class="btn btn-secondary border-0" id="change_username_btn" disabled>
+                  Change Username
+                </a>
+              </div>
+              
+              <!-- Change password button is clickable -->
+              <div class="container-fluid" id="change_password_btn_container">
+                <a class="btn btn-secondary border-0" id="change_password_btn" href="/users/password/">
+                  Change Password
+                </a>
+              </div>
+              
+              <!-- Return home button -->
+              <div class="container-fluid" id="home_btn_container">
+                <a href="{% url 'home' %}" id="home_btn" class="btn btn-secondary border-0">
+                  Return Home
+                </a>
+              </div>
+              
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="container-fluid" id="item_title">
+              Change Username
+            </div>
+            <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+              {{ form.username }}
+              <button class="btn btn-primary">
+                Save
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     {% else %}
