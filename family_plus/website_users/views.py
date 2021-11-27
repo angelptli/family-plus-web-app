@@ -84,7 +84,7 @@ class PasswordsChangeView(LoginRequiredMixin, PasswordChangeView):
     
     def form_valid(self, form):
         form.save()
-        messages.success(self.request, "Your username has been changed successfully")
+        messages.success(self.request, "Your password has been changed successfully")
         return super().form_valid(form)
 
     def form_invalid(self, form):

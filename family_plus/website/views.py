@@ -6,7 +6,10 @@ def welcome(request, *args, **kwargs):
     """Render requests for the welcome page."""
     context = {}
     
-    return render(request, 'home_page/welcome.html', context)
+    if request.user.is_authenticated:
+        return render(request, 'home_page/home.html', context)
+    else:
+        return render(request, 'home_page/welcome.html', context)
 
 
 def home(request):

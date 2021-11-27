@@ -1,17 +1,13 @@
 {% extends 'header_footer/base.html' %}
+{% load static %}
 
 {% block title %}
   Login | Family+
 {% endblock %}
 
-
-
-
 {% block content %}
 
-
-{% load static %}
-
+<!-- CSS styling -->
 <link rel="stylesheet" type="text/css" href="{% static 'registration/style_login.css' %}">
 
 <div class="card bg-dark text-black">
@@ -19,6 +15,7 @@
   <div class="card-img-overlay">
 
 <body>
+  {% if not user.is_authenticated %}
   <section>
     <br>
     <br>
@@ -51,7 +48,21 @@
     </div>
     
     </div>
+    
   </section>
+  {% else %}
+    <!-- Display message and Home button if already logged in -->
+    <section style="padding-top: 300px;">
+      <center>
+        <div class="container-fluid border border-dark border-2 shadow" style="padding-top: 50px; font-size: 25px; padding-bottom: 50px; max-width: 500px; border-radius: 25px;">
+          You have logged in as: <b>{{ user.username }}</b><br><br>
+          <a class="btn btn-outline-dark" href="{% url 'home' %}" id="home_link">
+            Home
+          </a>
+        </div>
+      </center>
+    </section>
+  {% endif %}
 </body>
 
 </div>
