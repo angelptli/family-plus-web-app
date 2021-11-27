@@ -27,16 +27,27 @@
   padding-left: 15px;
   border-radius: 0px;
   text-align: left;
-  background-color: rgb(255, 255, 255);
-  color:rgb(59, 59, 59);
-}
-#change_username_btn:hover {
   background-color: rgba(224, 224, 224, 0.705);
+  color:rgb(59, 59, 59);
 }
 #change_username_btn_container {
   padding-top: 30px;
-  /* padding-left: 0 !important;
-  padding-right: 0 !important; */
+}
+
+/* Change username button when Change Password seleceted */
+#change_username_btn2 {
+  width: 100%;
+  height: 40px;
+  padding-left: 15px;
+  border-radius: 0px;
+  text-align: left;
+  background-color: rgb(255, 255, 255);
+  color:rgb(59, 59, 59);
+  outline: none;
+  box-shadow: none;
+}
+#change_username_btn2:hover {
+  background-color: rgb(224, 224, 224, 0.705);
 }
 
 /* Change password button */
@@ -48,14 +59,25 @@
   text-align: left;
   background-color: rgb(255, 255, 255);
   color:rgb(59, 59, 59);
+  outline: none;
+  box-shadow: none;
 }
 #change_password_btn:hover {
   background-color: rgb(224, 224, 224, 0.705);
 }
 #change_password_btn_container {
-/* padding-top: 10px;
-padding-bottom: 10px; */
-  /* padding: 0 !important; */
+  padding-top: 10px;
+}
+
+/* Change password button when currently on Change Password page */
+#change_password_btn2 {
+  width: 100%;
+  height: 40px;
+  padding-left: 15px;
+  border-radius: 0px;
+  text-align: left;
+  background-color: rgba(224, 224, 224, 0.705);
+  color:rgb(59, 59, 59);
 }
 
 /* Home button */
@@ -67,16 +89,87 @@ padding-bottom: 10px; */
   text-align: left;
   background-color: rgb(255, 255, 255);
   color:rgb(59, 59, 59);
+  outline: none;
+  box-shadow: none;
 }
 #home_btn:hover {
   background-color: rgb(224, 224, 224, 0.705);
+}
+#home_btn_container {
+  padding-top: 10px;
 }
 
 /* Menu item title */
 #item_title {
   color: rgb(59, 59, 59);
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 500;
-  padding-top: 30px;
+  padding-top: 20px;
+  padding-left: 30px;
 }
 
+/* Username container */
+#username_container {
+  padding-top: 30px;
+  padding-left: 30px;
+}
+/* Username input box */
+#username_input {
+  max-width: 300px;
+  border-color: rgba(83, 83, 83, 0.452);
+  border-width: 1.5px;
+  outline: none;
+  box-shadow: none;
+}
+
+/* Save button container */
+#save_btn_container {
+  padding-top: 25px;
+  padding-left: 0px;
+}
+#save_btn_container:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Password container */
+#password_container {
+  padding-top: 30px;
+  padding-left: 30px;
+}
+/* Password input box */
+#current_password_input {
+  max-width: 300px;
+  border-color: rgba(83, 83, 83, 0.452);
+  border-width: 1.5px;
+  outline: none;
+  box-shadow: none;
+}
+
+/* New password1 container */
+#new_password1_container {
+  padding-top: 30px;
+  padding-left: 0px;
+}
+/* New password1 input box */
+#new_password1_input {
+  max-width: 300px;
+  border-color: rgba(83, 83, 83, 0.452);
+  border-width: 1.5px;
+  outline: none;
+  box-shadow: none;
+}
+
+/* New password2 container */
+#new_password2_container {
+  padding-top: 15px;
+  padding-left: 0px;
+}
+/* New password2 input box */
+#new_password2_input {
+  max-width: 300px;
+  border-color: rgba(83, 83, 83, 0.452);
+  border-width: 1.5px;
+  outline: none;
+  box-shadow: none;
+}

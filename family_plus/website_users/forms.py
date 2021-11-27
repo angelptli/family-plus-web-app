@@ -70,14 +70,15 @@ class AccountSettingsForm(UserChangeForm):
 
     username = forms.CharField(max_length=20,
                                  widget=forms.TextInput(attrs={
-                                     'class': 'form-control'}))
+                                     'class': 'form-control',
+                                     'id': 'username_input'}))
 
     class Meta:
 
         """Specify the fields to include in the register form."""
 
         model = CustomUserModel
-        fields = ('username', 'password')
+        fields = ('username',)
         
 
 class PasswordChangingForm(PasswordChangeForm):
@@ -86,17 +87,20 @@ class PasswordChangingForm(PasswordChangeForm):
     
     old_password = forms.CharField(widget=forms.PasswordInput(attrs={
                                    'class': 'form-control',
-                                   'type': 'password'}))
+                                   'type': 'password',
+                                   'id': 'current_password_input'}))
 
     new_password1 = forms.CharField(max_length=100,
                                     widget=forms.PasswordInput(attrs={
                                         'class': 'form-control',
-                                        'type': 'password'}))
+                                        'type': 'password',
+                                        'id': 'new_password1_input'}))
 
     new_password2 = forms.CharField(max_length=100,
                                     widget=forms.PasswordInput(attrs={
                                         'class': 'form-control',
-                                        'type': 'password'}))
+                                        'type': 'password',
+                                        'id': 'new_password2_input'}))
 
     class Meta:
         model = CustomUserModel

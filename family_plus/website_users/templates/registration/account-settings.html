@@ -8,8 +8,6 @@
 
 {% block content %}
 
-<!-- Django form -->
-
 <!-- CSS styling -->
 <link rel="stylesheet" type="text/css" href="{% static 'website/css/registration/account_settings.css' %}">
 
@@ -21,7 +19,7 @@
 
       <div class="container-fluid">
         <div class="row">
-          <div class="col" style="max-width: fit-content; padding-left: 0 !important;">
+          <div class="col" style="max-width: 300px; padding-left: 0 !important;">
             <div class="container-fluid shadow" id="settings_menu">
 
               <!-- Change username button is default and disabled by default -->
@@ -49,15 +47,33 @@
           </div>
 
           <div class="col">
+
+            <!-- Success message -->
+            {% if messages %}
+              {% for message in messages %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  {{ message }}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              {% endfor %}
+            {% endif %}
+
             <div class="container-fluid" id="item_title">
               Change Username
             </div>
-            <form method="POST" enctype="multipart/form-data">{% csrf_token %}
-              {{ form.username }}
-              <button class="btn btn-primary">
-                Save
-              </button>
-            </form>
+            <div class="container-fluid" id="username_container">
+              <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+                {{ form.username }}
+                <div class="container-fluid" style="padding-left: 5px;">
+                  <small class="text-muted">Characters allowed: a-z A-Z 0-9 _</small>
+                </div>
+                <div class="container-fluid" id="save_btn_container">
+                  <button class="btn btn-secondary">
+                    Save
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>

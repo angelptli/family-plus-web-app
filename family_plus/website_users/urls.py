@@ -28,7 +28,6 @@ from website_users.views import (
     FamilyProfilePageView,
     EditProfileHeaderView,
     CreateProfileView,
-    password_success,
     toggle_hide_profile,
     no_profile_view,
 )
@@ -38,7 +37,6 @@ urlpatterns = [
     path('account_settings/', AccountSettingsView.as_view(), name='account-settings'),
     # path('password/', auth_views.PasswordChangeView.as_view(template_name='registration/change-password.html')),
     path('password/', PasswordsChangeView.as_view(template_name='registration/change-password.html')),
-    path('password_success/', password_success, name='password-success'),
     path('<int:pk>/family_profile/', FamilyProfilePageView.as_view(), name='family-profile'),
     path('<int:pk>/edit_family_profile/', EditProfileHeaderView.as_view(), name='edit-family-profile'),
     path('create_profile/', CreateProfileView.as_view(), name='create-profile'),

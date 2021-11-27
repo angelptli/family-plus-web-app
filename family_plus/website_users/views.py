@@ -8,6 +8,7 @@ from django.views.generic import CreateView, DetailView, ListView, UpdateView
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 # Import models
 from website_users.models import FamilyProfile, FamilyMember
@@ -58,12 +59,17 @@ class AccountSettingsView(LoginRequiredMixin, generic.UpdateView):
     
     form_class = AccountSettingsForm
     template_name = 'registration/account-settings.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('account-settings')
     raise_exception = True  # 403 Forbidden view when not logged in
 
     def get_object(self):
         """Prefill the text boxes with already saved info on the user."""
         return self.request.user      
+
+    def form_valid(self, form):
+        form.save()
+        messages.success(self.request, "Your username has been changed successfully")
+        return render(self.request, 'registration/account-settings.html', self.get_context_data())
 
 
 class PasswordsChangeView(LoginRequiredMixin, PasswordChangeView):
@@ -72,16 +78,18 @@ class PasswordsChangeView(LoginRequiredMixin, PasswordChangeView):
     success page.
     """
 
-    # form_class = PasswordChangeForm
     form_class = PasswordChangingForm
-    success_url = reverse_lazy('password-success')
     raise_exception = True  # 403 Forbidden view when not logged in
+    success_url = '/users/password/'
+    
+    def form_valid(self, form):
+        form.save()
+        messages.success(self.request, "Your username has been changed successfully")
+        return super().form_valid(form)
 
-
-@login_required(login_url='/users/login/')
-def password_success(request):
-    """Allows user to be redirected to a password changed success page."""
-    return render(request, 'registration/password-success.html')
+    def form_invalid(self, form):
+        messages.warning(self.request, "Please try again. An entered field contained invalid input.")
+        return super().form_invalid(form)
 
 
 class CreateProfileView(LoginRequiredMixin, CreateView):
