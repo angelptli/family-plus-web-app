@@ -44,6 +44,10 @@ class UserRegisterView(generic.CreateView):
     template_name = 'registration/register.html'
     success_url = reverse_lazy('login')
 
+    def form_invalid(self, form):
+        messages.warning(self.request, "Please try again, make sure all fields contain valid input")
+        return super().form_invalid(form)
+
 
 class AccountSettingsView(LoginRequiredMixin, generic.UpdateView):
 

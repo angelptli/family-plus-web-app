@@ -18,15 +18,24 @@ class RegisterForm(UserCreationForm):
     
     email = forms.EmailField(widget=forms.EmailInput(attrs={
                              'class': 'form-control',
-                             'placeholder': 'Enter email'}))
+                             'id': 'email_input'}))
 
     username = forms.CharField(max_length=20,
                                 widget=forms.TextInput(attrs={
                                     'class': 'form-control',
-                                    'placeholder': 'Enter username'
-                                }))
+                                    'id': 'username_input'}))
 
-    is_adult = forms.BooleanField(label="I confirm that I am 18 years old or over")
+    password1 = forms.CharField(max_length=100,
+                                widget=forms.PasswordInput(attrs={
+                                    'class': 'form-control',
+                                    'type': 'password',
+                                    'id': 'password1_input'}))
+
+    password2 = forms.CharField(max_length=100,
+                                widget=forms.PasswordInput(attrs={
+                                    'class': 'form-control',
+                                    'type': 'password',
+                                    'id': 'password2_input'}))
     
     class Meta:
 
@@ -35,6 +44,20 @@ class RegisterForm(UserCreationForm):
         model = CustomUserModel
         fields = ('email', 'username', 'password1', 'password2',
                   'family_relation_status', 'is_adult')
+
+        widgets = {
+            'family_relation_status': forms.Select(attrs={
+                'class': 'form-select',
+                'id': 'family_relation_status_select',
+                'style': 'max-height: 200px; width: fit-content; border-color: #137ac483;'
+            }),
+            'is_adult': forms.CheckboxInput(attrs={
+                'class': 'form-check-input',
+                'type': 'checkbox',
+                'id': 'is_adult_check_box',
+                'required': 'required'
+            }),
+        }
 
     def clean(self):
         """Validate username input and return cleaned data."""
@@ -69,9 +92,9 @@ class AccountSettingsForm(UserChangeForm):
     """
 
     username = forms.CharField(max_length=20,
-                                 widget=forms.TextInput(attrs={
-                                     'class': 'form-control',
-                                     'id': 'username_input'}))
+                                widget=forms.TextInput(attrs={
+                                    'class': 'form-control',
+                                    'id': 'username_input'}))
 
     class Meta:
 

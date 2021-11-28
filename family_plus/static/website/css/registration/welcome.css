@@ -6,7 +6,7 @@
 
 /* Welcome content container. Image by rawpixel.com. */
 #welcome_container {
-  padding-top: 90px;
+  padding-top: 100px;
   background-image: url('/static/website/images/backgrounds/family_feast.png');
   background-size: 100% 100%;
   background-repeat: no-repeat;

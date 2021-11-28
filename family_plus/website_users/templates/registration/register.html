@@ -1,49 +1,141 @@
-{% extends 'header_footer/base.html' %}
+{% extends 'registration/pure-links-base.html' %}
+{% load static %}
 
 {% block title %}
-  Join Now! | Family+
+  Sign Up | Family+
 {% endblock %}
 
 {% block content %}
 
-{% load static %}
+<!-- CSS styling -->
+<link rel="stylesheet" type="text/css" href="{% static 'website/css/registration/sign_up.css' %}">
 
-<link rel="stylesheet" type="text/css" href="{% static 'registration/style_register.css' %}">
+<body>
+  <!-- Show sign up form if not logged in -->
+  {% if not user.is_authenticated %}
+    <section id="section_background_sign_up1">
 
-<div class="card bg-dark text-black">
-  <img class="card-img" src="{% static '../media/images/Signup/bg_SignUp_01.jpg' %}" alt="Card image">
-  <div class="card-img-overlay">
-
-
-  <body>
-    <section style="padding-top: 70px; min-height: 1000px; padding-bottom: 100px;">
-      <br>
-      <div class="center">
-      <br>
-      <br>
-  
-      <!-- Django form -->
-      <div class="col txt_field">
-      <div class="form-group">
-        <form method="POST" enctype="multipart/form-data">
-          {% csrf_token %}
-          {{ form.as_p }}
-          <div class="col text-center">
-          <button class="btn btn-primary">Sign Up</button>
-          <a href="{% url 'welcome' %}" class="btn btn-secondary">Cancel</a>
-
-          <div class="signup_link">
-            Already have an account? <a href="{% url 'login' %}">Sign in</a>
-          </div>
+      <!-- Display invalid input message if exist -->
+        <div class="card-img-overlay" style="height: fit-content; padding-left: 30px; padding-right: 30px; padding-top: 20px;">
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            {% endfor %}
+          {% endif %}
         </div>
-        </form>
-      </div>
-    </div>
-    </div>
-    </section>
-  </body>
 
-</div>
-</div>
+      <div class="container-fluid" id="form_title">
+        Sign Up
+      </div>
+
+      <div class="container-fluid">
+        <center>
+          <div class="card-sm shadow" id="card_itself">
+
+            <form method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+                    
+              <div class="container-fluid" id="card_content_container">
+                <div class="row">
+                  <div class="col" id="column">
+                    <div class="container-fluid" id="email_container">
+                      <label style="text-align: left !important;">Email</label>
+                      {{ form.email }}
+                      <div class="container-fluid" id="small_text_container">
+                        <small class="text-muted">Note: You cannot change this field later</small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col" id="column">
+                    <div class="container-fluid" id="username_container">
+                      <div id="label"><label>Username</label></div>
+                      {{ form.username }}
+                      <div class="container-fluid" id="small_text_container">
+                        <small class="text-muted">Characters allowed: a-z A-Z 0-9 _</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col" id="column">
+                    <div class="container-fluid" id="password1_container">
+                      <label>Password</label>
+                      {{ form.password1 }}
+                    </div>
+                  </div>
+
+                  <div class="col" id="column">
+                    <div class="container-fluid" id="password2_container">
+                      <label>Confirm Password</label>
+                      {{ form.password2 }}
+                    </div>
+                  </div>
+
+                  <div class="container-fluid" id="password_rules">
+                    <small>
+                      <ul>
+                        <li>Your password can't be too similar to your other personal information.</li>
+                        <li>Your password must contain at least 8 characters.</li>
+                        <li>Your password can't be a commonly used password.</li>
+                        <li>Your password can't be entirely numeric.</li>
+                      </ul>
+                    </small>
+                  </div>
+
+                </div>
+
+                <center>
+                  <div class="container-fluid" id="family_relation_status_container">
+                    Who are you in your family? {{ form.family_relation_status }}
+                  </div>
+                  <div class="container-fluid" id="is_adult_check_box_container">
+                    I confirm that I am 18 years old or over {{ form.is_adult }}
+                  </div>             
+
+                  <div class="container-fluid" id="btn_container">
+                    <center>
+                      <button class="btn" id="sign_up_btn">
+                        Sign Up
+                      </button>
+                      <a href="{% url 'welcome' %}" class="btn btn-secondary">Cancel</a>
+                    </center>
+                  </div>
+
+                  <div class="container-fluid" id="login_link_container">
+                    Already have an account?
+                    <a href="{% url 'login' %}" id="login_link">
+                      Log in
+                    </a>
+                  </div>
+                </center>
+
+              </div>
+            </form>
+
+          </div>
+        </center>
+
+      </div>
+    </section>
+  {% else%}
+    <!-- Display message and Home button if already logged in -->
+    <section id="section_background_sign_up2">
+      <center>
+        <div class="container-fluid border border-dark shadow" style="padding-top: 50px; font-size: 25px; padding-bottom: 50px; max-width: 500px; border-radius: 25px;">
+          You have logged in as: <b>{{ user.username }}</b><br><br>
+          <a class="btn btn-outline-dark" href="{% url 'home' %}" id="home_link">
+            Home
+          </a>
+        </div>
+      </center>
+    </section>
+  {% endif %}
+  
+</body>
 
 {% endblock %}

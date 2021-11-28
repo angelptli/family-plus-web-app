@@ -1,0 +1,186 @@
+/* Section background */
+#section_background_sign_up1 {
+  padding-top: 30px;
+  padding-bottom: 380px;
+  min-height: 100vh;
+  background-image: url('/static/website/images/backgrounds/grass_field_family.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: 0% 0%;
+  opacity: 0.9;
+}
+/* Section background for logged in users */
+#section_background_sign_up2 {
+  padding-top: 300px;
+  min-height: 1000px;
+  background-image: url('/static/website/images/backgrounds/grass_field_family.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: 0% 0%;
+}
+
+/* Form title */
+#form_title {
+  color: rgb(49, 49, 49);
+  text-align: center;
+  font-size: 32px;
+  font-weight: 500;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+/* The card itself */
+#card_itself {
+  max-width: 700px;
+  background-color: #fff;
+  text-align: left;
+  border-radius: 0px;
+}
+
+/* Card content container */
+#card_content_container {
+  padding-top: 40px;
+  padding-bottom: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
+  color: rgb(110, 110, 110);
+}
+
+/* Email container */
+#email_container {
+  padding-top: 30px;
+  padding-left: 30px;
+}
+/* Email input box */
+#email_input {
+  max-width: 400px;
+  border-color: rgba(83, 83, 83, 0.452);
+  border-width: 1.5px;
+  outline: none;
+  box-shadow: none;
+}
+
+/* Username container */
+#username_container {
+  padding-top: 30px;
+  padding-left: 30px;
+}
+/* Username input box */
+#username_input {
+  max-width: 400px;
+  border-color: rgba(83, 83, 83, 0.452);
+  border-width: 1.5px;
+  outline: none;
+  box-shadow: none;
+}
+
+/* Password 1 container */
+#password1_container {
+  padding-top: 30px;
+  padding-left: 30px;
+}
+/* Password 1 input box */
+#password1_input {
+  max-width: 400px;
+  border-color: rgba(83, 83, 83, 0.452);
+  border-width: 1.5px;
+  outline: none;
+  box-shadow: none;
+}
+
+/* Password 1 container */
+#password1_container {
+  padding-top: 30px;
+  padding-left: 30px;
+}
+/* Password 1 input box */
+#password1_input {
+  max-width: 400px;
+  border-color: rgba(83, 83, 83, 0.452);
+  border-width: 1.5px;
+  outline: none;
+  box-shadow: none;
+}
+
+/* Password 2 container */
+#password2_container {
+  padding-top: 30px;
+  padding-left: 30px;
+}
+/* Password 2 input box */
+#password2_input {
+  max-width: 400px;
+  border-color: rgba(83, 83, 83, 0.452);
+  border-width: 1.5px;
+  outline: none;
+  box-shadow: none;
+}
+
+/* Family relation status select menu container */
+#family_relation_status_container {
+  padding-top: 30px;
+  padding-left: 30px;
+}
+#family_relation_status_select {
+  border-color: rgba(83, 83, 83, 0.452) !important;
+  border-width: 1.5px;
+  outline: none;
+  box-shadow: none;
+}
+
+/* is_adult check box container */
+#is_adult_check_box_container {
+  padding-top: 30px;
+  padding-left: 30px;
+}
+#is_adult_check_box {
+  border-color: rgba(83, 83, 83, 0.452);
+  border-width: 1.5px;
+  outline: none;
+  box-shadow: none;
+}
+
+/* Button container */
+#btn_container {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+/* Add member button */
+#sign_up_btn {
+  background: #348AC7;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #348AC7, #348AC7);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #348AC7, #348AC7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+}
+
+/* Add member button on hover */
+#sign_up_btn:hover {
+  filter: brightness(92%);
+}
+
+/* Small text container */
+#small_text_container {
+  padding: 0;
+}
+
+/* Row columns */
+#column {
+  padding: 0;
+}
+
+#password_rules {
+  /* width: 500px; */
+  padding-top: 30px;
+  /* background-color: red; */
+}
+
+/* Buttons container */
+#btn_container {
+  padding-top: 50px;
+}
+
+/* Login link container */
+#login_link_container {
+  padding-top: 10px;
+}
