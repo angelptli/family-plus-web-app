@@ -16,16 +16,16 @@
     <section id="section_background_sign_up1">
 
       <!-- Display invalid input message if exist -->
-        <div class="card-img-overlay" style="height: fit-content; padding-left: 30px; padding-right: 30px; padding-top: 20px;">
-          {% if messages %}
-            {% for message in messages %}
-              <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %} alert-dismissible fade show" role="alert">
-                {{ message }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>
-            {% endfor %}
-          {% endif %}
-        </div>
+      <div class="card-img-overlay" style="height: fit-content; padding-left: 30px; padding-right: 30px; padding-top: 20px;">
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %} alert-dismissible fade show" role="alert">
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
 
       <div class="container-fluid" id="form_title">
         Sign Up

@@ -1,9 +1,100 @@
-/* Go back button in hidden profile mesage */
-#home_link {
-  color: #4e4e9ec0;
+/* Section background for login page */
+#section_background_login {
+  padding-top: 30px;
+  padding-bottom: 380px;
+  min-height: 100vh;
+  height: 1100px;
+  background-image: url('/static/website/images/backgrounds/friends_sunset.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: 0% 0%;
+  opacity: 0.9;
 }
 
-/* Go back button in hidden profile mesage on hover */
-#home_link:hover {
-  filter: brightness(50%);
+/* Form title */
+#form_title {
+  color: rgb(49, 49, 49);
+  text-align: center;
+  font-size: 35px;
+  font-weight: 500;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+/* Form card */
+#form_card {
+  max-width: 400px;
+  padding-left: 65px;
+  padding-right: 65px;
+  padding-top: 50px;
+  padding-bottom: 40px;
+  border-radius: 0;
+  color: rgb(110, 110, 110);
+}
+
+/* Email container */
+#email_container {
+  padding-top: 30px;
+  text-align: left;
+  max-width: 350px;
+}
+/* Email input box */
+#email_input {
+  max-width: 350px;
+  border-color: rgba(83, 83, 83, 0.452);
+  border-width: 1.5px;
+  outline: none;
+  box-shadow: none;
+}
+
+/* Password container */
+#password_container {
+  padding-top: 30px;
+  text-align: left;
+  max-width: 350px;
+}
+/* Password input box */
+#password_input {
+  max-width: 350px;
+  border-color: rgba(83, 83, 83, 0.452);
+  border-width: 1.5px;
+  outline: none;
+  box-shadow: none;
+}
+
+/* Log in button container */
+#log_in_btn_container {
+  padding-top: 30px;
+}
+#log_in_btn {
+  background: #348AC7;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #348AC7, #348AC7);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #348AC7, #348AC7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+}
+#log_in_btn:hover {
+  filter: brightness(92%);
+}
+
+/* Sign up link container */
+#sign_up_link_container {
+  padding-top: 20px;
+}
+
+.form-group input{
+  width: 100%;
+  padding-left: 12px;
+  padding-right: 12px;
+  height: 39px;
+  border-radius: 4px;
+  border: 1.5px solid rgba(83, 83, 83, 0.452);
+  text-align: left !important;
+  outline: none;
+  box-shadow: none;
+}
+
+.form-group label{
+  width: 100%;
+  text-align: left !important;
+  padding-top: 14px;
 }
