@@ -4,24 +4,22 @@
   Login | Family+
 {% endblock %}
 
-
-
-
 {% block content %}
-
 
 {% load static %}
 
+<!-- css file -->
 <link rel="stylesheet" type="text/css" href="{% static 'registration/style_login.css' %}">
-
-<div class="card bg-dark text-black">
-  <img class="card-img" src="{% static '../media/images/Login/bg_evening.jpg' %}" alt="Card image">
-  <div class="card-img-overlay">
 
 <body>
   <section>
-    <br>
-    <br>
+  <div class="card bg-dark text-black">
+  <br>
+  <br>
+  <!-- background image file -->
+  <img class="card-img" src="{% static '/images/Login/bg_evening.jpg' %}" alt="Evening">
+  <div class="card-img-overlay">
+
     <div class="center">
       <br>
       <h1> Log in </h1>
@@ -31,7 +29,7 @@
     <div class="col txt_field">
     
     <div class="form-group">
-     
+      
       <form method="POST">
         
         {% csrf_token %}
@@ -41,10 +39,14 @@
           <button class="btn btn-primary">
             Login
           </button>
-        </div>
+        
+        <br>
+        <br>
         <div class="signup_link">
           No account? <a href="{% url 'register' %}">Create one</a>
         </div>
+      </div>
+      <br>
       </div>
       </form>
     </div>
@@ -53,7 +55,7 @@
     </div>
   </section>
 </body>
-
+</div>
 </div>
 </div>
 

@@ -1,22 +1,127 @@
 {% extends 'header_footer/base.html' %}
 
 {% block title %}
-  FAQ | Family+
+  Login | Family+
 {% endblock %}
 
 {% block content %}
 
+{% load static %}
+
+<!-- css file -->
+<link rel="stylesheet" type="text/css" href="{% static 'registration/style_faq.css' %}">
+<!-- javascripts file -->
+<script src="{% static 'registration/main.js' %}" defer></script> 
+
+<div class="card bg-dark text-black bg-opacity-10">
+
 <body>
   <section style="padding-top: 70px; min-height: 1000px; padding-bottom: 100px;">
-    <center>
-      <div class="container-fluid">
-        <h4>FAQ Page Creation In Progress...</h4>
+    <br>
+    <div class="center">
+    <br>
+
+<!-- Logo image file -->
+<img class="displayed" style="width: 25rem;" src="{% static '/images/FAQ/FamilyPlus_Logo.jpg' %}" alt="Family+ Logo">
+
+<h1>FAQ</h1>
+
+  <div class="faq">
+
+    <div class="faq-item">
+      <div class="question">
+        <h4>What is Family+?</h4>
       </div>
-      <div class="container-fluid" style="padding-top: 30px;">
-        <input type=button value="Go Back" class="btn btn-secondary" onClick="javascript:history.go(-1);">
+      <div class="answer">
+        <div class="answer-content">
+          A place where families connected
+          and get together for social activities!
+        </div>
       </div>
-    </center>
-  </section>
+    </div>
+
+
+    <div class="faq-item">
+      <div class="question">
+        <h4>Why Family+ is created?</h4>
+      </div>
+      <div class="answer">
+        <div class="answer-content">
+          We want to connect you to other families who share the same interests and who want to meet you!
+        </div>
+      </div>
+    </div>
+
+
+    <div class="faq-item">
+      <div class="question">
+        <h4>What is the age requirement for joining Family+?</h4>
+      </div>
+      <div class="answer">
+        <div class="answer-content">
+          You must be over 18 years old to join Family+.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question">
+        <h4>How do I join Family+?</h4>
+      </div>
+      <div class="answer">
+        <div class="answer-content">
+          Just click on sign up button to join.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question">
+        <h4>How much does it costs to join Family+?</h4>
+      </div>
+      <div class="answer">
+        <div class="answer-content">
+          It is free to join!
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question">
+        <h4>Who might we meet on Family+?</h4>
+      </div>
+      <div class="answer">
+        <div class="answer-content">
+          Families who Enjoy similar activities and interests. No matter if they are your next door neighbor or live around the world. 
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question">
+        <h4>Can I add my family members to my account?</h4>
+      </div>
+      <div class="answer">
+        <div class="answer-content">
+          Absolutely. You can add your family members to your profile.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question">
+        <h4>What if I decide that I no longer want to connect with particular family?</h4>
+      </div>
+      <div class="answer">
+        <div class="answer-content">
+          No problem. You can block or remove connection to previously connected families. 
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</div>
 </body>
 
 {% endblock %}

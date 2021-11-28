@@ -1,102 +1,51 @@
-
-.main-header, .main-footer{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.main-header{
-    height: 50px;
-}
-.main-footer{
-    height: 50px;
-    background-color: rgb(68, 124, 196);
-    font-weight: bold;
-}
-
-.footer-nav{
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-}
-
-.social-link img{
-    width: 1em;
-    margin-right: .25rem;
-}
-
-.main-nav ul, .footer-nav ul{
-    display: flex;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    
-}
-
-.main-nav a, .footer-nav a{
-    text-decoration: none;
-    padding: 3rem;
-    
-    color: rgb(255, 255, 255);
-}
-
-.main-nav a:hover, .footer-nav a:hover{
-    color: rgb(143, 89, 89);
-}
-
-.main-footer .container{
-    display:flex;
-    justify-content: space-between;
-}
-
-.main-section{
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-grow: 1;
+body{
+  margin: 0;
+  padding: 0;
+  background-color: rgb(210, 210, 218);
 }
 
 .icon-section {
-    display:flex;
-    justify-content:space-evenly;
-    align-items: center;
+  display:flex;
+  justify-content:space-evenly;
+  align-items: center;
 }
 
 .icon {
-    display:flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    margin: .5rem;
-    padding: .75;
-    width: 100;
-    height: 100;
-    margin-bottom: 2rem;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: .5rem;
+  padding: .75;
+  width: 100;
+  height: 100;
+  margin-bottom: 2rem;
 }
 
 .icon img{
-    width: 250px;
+  width: 250px;
 }
 
 .container{
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    flex-grow: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  flex-grow: 1;
 }
 
 .title{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: bold;
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    margin-top: 0;
-    
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  margin-top: 0;
+  
 }
 
 .subtitle{
-    font-weight: normal;
-    font-size: 2em;
-    font-style: italic;
-    margin-bottom: 0;
-    margin-top: 0;
+  font-weight: normal;
+  font-size: 2em;
+  font-style: italic;
+  margin-bottom: 0;
+  margin-top: 0;
 }

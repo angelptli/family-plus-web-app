@@ -1,22 +1,82 @@
 {% extends 'header_footer/base.html' %}
 
 {% block title %}
-  About | Family+
+  Login | Family+
 {% endblock %}
 
 {% block content %}
 
+{% load static %}
+
+<!-- css file -->
+<link rel="stylesheet" type="text/css" href="{% static 'registration/style_about.css' %}">
+
+<div class="bg-dark text-black bg-opacity-10">
+
 <body>
   <section style="padding-top: 70px; min-height: 1000px; padding-bottom: 100px;">
-    <center>
-      <div class="container-fluid">
-        <h4>About Page Creation In Progress...</h4>
+    <br>
+    <div class="center">
+    <br>
+
+<!-- Logo image file -->
+<img class="displayed" style="width: 25rem;" src="{% static '/images/FAQ/FamilyPlus_Logo.jpg' %}" alt="Family+ Logo">
+<h1>About</h1>
+
+<div class="about-section1">
+<h4>Family+ is a website that help families connect to one another through common interestes and activities.</h4>
+<h4>This project is a part of Fall 2021 CS 195-Software Development Practicum class at City College of San Francisco.</h4>
+<br>
+</div>
+  
+<div class="about-section2">
+
+  <h2 style="text-align:center">Our Team</h2>
+  <br>
+
+<section>
+
+  <div class="row">
+    <div class="column">
+      <div class="card">
+
+        <div class="container">
+          <h3>Samati Boonchitsitsak</h3>
+          <p class="title"></p>
+          
+          <h5>See more projects from Samati on  <a href="https://github.com/SamatiB/">github</a></h5>
+
+        <a href="mailto:sboonchi@ccsf.edu" class="btn btn-primary" button type="button">Contact</button></a>
+        <br>
+        <br>
+        </div>
       </div>
-      <div class="container-fluid" style="padding-top: 30px;">
-        <input type=button value="Go Back" class="btn btn-secondary" onClick="javascript:history.go(-1);">
+    </div>
+  
+    <div class="column">
+      <div class="card">
+        <div class="container">
+          <h3>Angel Li</h3>
+          <p class="title"></p>
+
+          <h5>See more projects from Angel on  <a href="https://github.com/angelptli/">github</a></h5>
+
+          <a href="mailto:sboonchi@ccsf.edu" class="btn btn-primary" button type="button">Contact</button></a>
+        <br>
+        <br>
+        </div>
       </div>
-    </center>
-  </section>
+    </div>
+
+  </div>
+
+  </div>
+</section>
+
+
+</div>
+</section>
+</div>
 </body>
 
 {% endblock %}

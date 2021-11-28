@@ -1,0 +1,38 @@
+{% extends 'header_footer/base.html' %}
+
+{% block title %}
+  LogOut | Family+
+{% endblock %}
+
+{% block content %}
+
+{% load static %}
+
+<!-- css file -->
+<link rel="stylesheet" type="text/css" href="{% static 'registration/style_logout.css' %}">
+<!-- background image file -->
+<img src="{% static '/images/LogOut/LogOut_Page_BG.jpg' %}" class="img-fluid" alt="GoodBye Walk">
+
+</head>
+
+<body>
+
+    <section>
+        <div class="center">
+            <h1> You've successfully signed out!</h1>
+    
+        <!-- Django form -->
+
+        <div class="form-group">
+ 
+            <div class="text-center">
+            <a href="{% url 'login' %}" class="btn btn-primary">Sign in</a>
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+
+</body>
+
+{% endblock %}
