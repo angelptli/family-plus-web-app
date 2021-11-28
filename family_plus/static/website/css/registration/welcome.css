@@ -1,0 +1,241 @@
+/* Section background when logged in*/
+#section_background_welcome {
+  margin-top: 12px;
+  background-color: #f4f4f4;
+}
+
+/* Welcome content container. Image by rawpixel.com. */
+#welcome_container {
+  padding-top: 90px;
+  background-image: url('/static/website/images/backgrounds/family_feast.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: 0% 0%;
+  height: fit-content;
+  padding-bottom: 60px;
+}
+
+/* Home page title */
+#welcome_title {
+  font-size: 38px;
+  font-weight: 600;
+  color: #fff;
+  background-color: rgba(0, 4, 29, 0.274);
+  width: 70%;
+  padding-top: 60px;
+  padding-bottom: 20px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+/* Welcome description underneath welcome time */
+#welcome_desc {
+  color: #fff;
+  font-weight: 600;
+  font-size: 25px;
+  padding-bottom: 45px;
+  width: 70%;
+  background-color: rgba(0, 4, 29, 0.274);
+}
+
+/* Menu container */
+#nav_center_container {
+  width: 70%;
+  background-color: rgba(0, 4, 29, 0.274);
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  height: fit-content;
+}
+
+/* Sign Up button */
+#register_btn {
+  background-color: rgb(104, 89, 240);
+  width: 300px;
+  height: 120px;
+  border-radius: 0px;
+  padding-top: 45px;
+  font-size: 20px;
+  color: #fff;
+  border-color: #fff;
+  border-width: 4px;
+}
+#register_btn:hover {
+  background-color: rgba(123, 121, 253, 0);
+}
+#register_btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+#register_btn_container {
+  padding-bottom: 45px;
+}
+
+/* Login button */
+#login_btn {
+  background-color: rgb(104, 89, 240);
+  width: 300px;
+  height: 120px;
+  border-radius: 0px;
+  padding-top: 45px;
+  font-size: 20px;
+  color: #fff;
+  border-color: #fff;
+  border-width: 4px;
+}
+#login_btn:hover {
+  background-color: rgba(123, 121, 253, 0);
+}
+#login_btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+#login_btn_container {
+  padding-bottom: 45px;
+}
+
+/* Home button */
+#home_btn {
+  background-color: rgb(104, 89, 240);
+  width: 300px;
+  height: 120px;
+  border-radius: 0px;
+  padding-top: 45px;
+  font-size: 20px;
+  color: #fff;
+  border-color: #fff;
+  border-width: 4px;
+}
+#home_btn:hover {
+  background-color: rgba(123, 121, 253, 0);
+}
+#home_btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+#home_btn_container {
+  padding-bottom: 130px;
+}
+
+/* Example image 1 in first description */
+#example_image1 {
+  max-width: 550px;
+  max-height: 350px;
+  border-radius: 10px;
+  opacity: 0.92;
+}
+
+/* Example image 2 in second description */
+#example_image2 {
+  max-width: 508px;
+  max-height: 350px;
+  border-radius: 10px;
+  filter: brightness(98%);
+}
+
+/* Example image 3 in third description */
+#example_image3 {
+  max-width: 550px;
+  max-height: 350px;
+  border-radius: 10px;
+  filter: brightness(98%);
+}
+
+/* Image column 1 */
+#image_col1 {
+  padding-right: 20px;
+  padding-left: 20px;
+  /* background-color: red; */
+}
+
+/* Image column 2 */
+#image_col2 {
+  padding-right: 20px;
+  padding-left: 20px;
+  /* background-color: red; */
+}
+
+/* Image column 3 */
+#image_col3 {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+/* Description title */
+#desc_title {
+  color: rgb(77, 77, 77);
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+/* First description container */
+#desc1_container {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  width: 70%;
+  border-radius: 15px;
+  background-color: #fff;
+}
+
+/* Second description container */
+#desc2_container {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  width: 70%;
+  border-radius: 15px;
+  background-color: #fff;
+}
+
+/* Third description container */
+#desc3_container {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  width: 70%;
+  border-radius: 15px;
+  background-color: #fff;
+}
+
+/* Card container for images */
+#image_card {
+  width: fit-content;
+  padding: 10px;
+  border-radius: 10px;
+  border-color: rgba(30, 27, 71, 0.192);
+}
+
+/* Description paragraph containers */
+#desc_paragraph1 {
+  color:grey;
+  font-size: 20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 50px;
+  padding-right: 50px;
+  /* background-color: blue; */
+}
+#desc_paragraph2 {
+  color:grey;
+  font-size: 20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 50px;
+  padding-right: 50px;
+  /* background-color: blue; */
+}
+#desc_paragraph3 {
+  color:grey;
+  font-size: 20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 50px;
+  padding-right: 50px;
+  /* background-color: blue; */
+}
+
+/* Empty containers to add padding in between items */
+#empty_container {
+  height: 30px;
+}
+
+#bottom_container {
+  height: 50px;
+}
