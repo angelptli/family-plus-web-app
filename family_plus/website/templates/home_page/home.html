@@ -13,88 +13,88 @@
 
 <body style="background-color: #f0f2f5;">
   
-        {% if user.is_authenticated %}
-          <!-- Logged in users will see a nav center in the home page -->
-          <section id="logged_in_home_bg">
-            <center>
-              <!-- Home page title -->
-              <div class="container-fluid" id="home_title">
-                <i class="bi bi-house-fill"></i> Family+
-              </div>
+  {% if user.is_authenticated %}
+    <!-- Logged in users will see a nav center in the home page -->
+    <section id="logged_in_home_bg">
+      <center>
+        <!-- Home page title -->
+        <div class="container-fluid" id="home_title">
+          <i class="bi bi-house-fill"></i> Family+
+        </div>
 
-              <div class="container-fluid" id="nav_center_container">
-                {% if user.familyprofile.id %}
-                  <!-- Search link button -->
-                  <div class="container-fluid" id="search_btn_container">
-                    <a class="btn" id="search_btn" href="{% url 'search-page' %}">
-                      <i class="bi bi-search" style="vertical-align: top;"></i>
-                      Search
-                    </a>
-                  </div>
+        <div class="container-fluid" id="nav_center_container">
+          {% if user.familyprofile.id %}
+            <!-- Search link button -->
+            <div class="container-fluid" id="search_btn_container">
+              <a class="btn" id="search_btn" href="{% url 'search-page' %}">
+                <i class="bi bi-search" style="vertical-align: top;"></i>
+                Search
+              </a>
+            </div>
 
-                  <!-- Family profile link button -->
-                  <div class="container-fluid" id="profile_btn_container">
-                    <a class="btn" id="profile_btn" href="{% url 'family-profile' user.familyprofile.id %}">
-                      <i class="bi bi-person-circle" style="vertical-align: top;"></i>
-                      My Family Profile
-                    </a>
-                  </div>
+            <!-- Family profile link button -->
+            <div class="container-fluid" id="profile_btn_container">
+              <a class="btn" id="profile_btn" href="{% url 'family-profile' user.familyprofile.id %}">
+                <i class="bi bi-person-circle" style="vertical-align: top;"></i>
+                My Family Profile
+              </a>
+            </div>
 
-                  <!-- Logout link button -->
-                  <div class="container-fluid" id="logout_btn_container">
-                    <a class="btn" id="logout_btn" href="{% url 'logout' %}">
-                      <i class="bi bi-door-open-fill" style="vertical-align: top;"></i>
-                      Logout
-                    </a>
-                  </div>
-                {% else %}
-                  <!-- Set up family profile button -->
-                  <div class="container-fluid" id="create_profile_btn_container">
-                    <a class="btn" id="create_profile_btn" href="{% url 'create-profile' %}">
-                      <i class="bi bi-person-circle" style="vertical-align: top;"></i>
-                      My Family Profile (Set up)
-                    </a>
-                  </div>
+            <!-- Logout link button -->
+            <div class="container-fluid" id="logout_btn_container">
+              <a class="btn" id="logout_btn" href="{% url 'logout' %}">
+                <i class="bi bi-door-open-fill" style="vertical-align: top;"></i>
+                Logout
+              </a>
+            </div>
+          {% else %}
+            <!-- Set up family profile button -->
+            <div class="container-fluid" id="create_profile_btn_container">
+              <a class="btn" id="create_profile_btn" href="{% url 'create-profile' %}">
+                <i class="bi bi-person-circle" style="vertical-align: top;"></i>
+                My Family Profile (Set up)
+              </a>
+            </div>
 
-                  <!-- Logout link button -->
-                  <div class="container-fluid" id="logout_btn_container">
-                    <a class="btn" id="logout_btn" href="{% url 'logout' %}">
-                      <i class="bi bi-door-open-fill" style="vertical-align: top;"></i>
-                      Logout
-                    </a>
-                  </div>
-                {% endif %}
-              </div>    
-            </center>
-          </section>
+            <!-- Logout link button -->
+            <div class="container-fluid" id="logout_btn_container">
+              <a class="btn" id="logout_btn" href="{% url 'logout' %}">
+                <i class="bi bi-door-open-fill" style="vertical-align: top;"></i>
+                Logout
+              </a>
+            </div>
+          {% endif %}
+        </div>    
+      </center>
+    </section>
+  
+  {% else %}
+    <!-- Page visitors that are not logged in will see login and sign up links -->
+    <section id="logged_out_home_bg">
+      <center>
+        <!-- Home page title -->
+        <div class="container-fluid" id="home_title">
+          <i class="bi bi-house-fill"></i> Family+
+        </div>
         
-        {% else %}
-          <!-- Page visitors that are not logged in will see login and sign up links -->
-          <section id="logged_out_home_bg">
-            <center>
-              <!-- Home page title -->
-              <div class="container-fluid" id="home_title">
-                <i class="bi bi-house-fill"></i> Family+
-              </div>
-              
-              <div class="container-fluid" id="nav_center_container">
-                <!-- Login button -->
-                <div class="container-fluid" id="login_btn_container">
-                  <a class="btn" id="login_btn" href="{% url 'login' %}">
-                    Login
-                  </a>
-                </div>
+        <div class="container-fluid" id="nav_center_container">
+          <!-- Login button -->
+          <div class="container-fluid" id="login_btn_container">
+            <a class="btn" id="login_btn" href="{% url 'login' %}">
+              Login
+            </a>
+          </div>
 
-                <!-- Sign Up button -->
-                <div class="container-fluid" id="register_btn_container">
-                  <a class="btn" id="register_btn" href="{% url 'register' %}">
-                    Sign Up
-                  </a>
-                </div>
-              </div>    
-            </center>
-          </section>
-        {% endif %}
+          <!-- Sign Up button -->
+          <div class="container-fluid" id="register_btn_container">
+            <a class="btn" id="register_btn" href="{% url 'register' %}">
+              Sign Up
+            </a>
+          </div>
+        </div>    
+      </center>
+    </section>
+  {% endif %}
       
 </body>
 
