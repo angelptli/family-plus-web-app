@@ -9,7 +9,9 @@ from website_users.models import FamilyProfile
 class UserConnectionsTests(TestCase):
 
     """Create users and a family profile for each. Then test that each user
-    has been created and a profile picture upload was optional.
+    has been created and a profile picture upload was optional. And test that
+    another user's contact info is displayed only when two users are in
+    each other's connections lists.
     """
 
     def setUp(self):
@@ -38,6 +40,9 @@ class UserConnectionsTests(TestCase):
         FamilyProfile.objects.create(user=self.user2,
                                      family_name='Example 4000')
 
+        self.familyprofile1 = FamilyProfile.objects.get(user=self.user1)
+        self.familyprofile2 = FamilyProfile.objects.get(user=self.user2)
+
     def test_connection_added(self):
         """Make user1 and user2 connections and confirm that they are in
         each other's connections lists. 
@@ -54,3 +59,29 @@ class UserConnectionsTests(TestCase):
         connection2 = familyprofile2.connections.all()[0]
         self.assertEquals(familyprofile2.user, connection1)
         self.assertEquals(familyprofile1.user, connection2)
+
+    def test_contact_info_visibility(self):
+        """Check that another user's contact info becomes visible after
+        becoming a connection.
+        """
+        # Add contact info to user1's family profile
+        contact_info_user1 = 'Contact us via phone call at 1-555-5555'
+        self.familyprofile1.contact_info = contact_info_user1
+        self.familyprofile1.save()
+
+        # Log into User 2's account
+        login = self.client.login(email='example4000@mail.com',
+                                  password='alpaca4567')
+
+        # Visit User 1's family profile and confirm that there is no
+        # contact info displayed
+        response = self.client.get(reverse('family-profile', kwargs={'pk': self.familyprofile1.pk}))
+        self.assertNotContains(response, contact_info_user1)
+
+        # Add the users to each other's connection lists
+        self.familyprofile1.connections.add(self.familyprofile2.user)
+        self.familyprofile2.connections.add(self.familyprofile1.user)
+        
+        # Refresh page to see User 1's contact info displayed
+        response = self.client.get(reverse('family-profile', kwargs={'pk': self.familyprofile1.pk}))
+        self.assertContains(response, contact_info_user1)
