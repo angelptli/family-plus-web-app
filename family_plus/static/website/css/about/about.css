@@ -1,31 +1,127 @@
-/* Section background */
-#section_background_about {
-  margin-top: 60px;
-  padding-bottom: 100px;
-  background-image: url('/static/website/images/backgrounds/family_feast.png');
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  background-position: 0% 0%;
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* center section position */
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1200px;
+  background: rgb(255, 255, 255);
+  border-radius: 10px;  
+}
+
+/* center section h1 */
+.center h1{
+    text-align: center;
+    padding: 0 0 20px 0;
+    font-size: 40px;
+    color: #414141;
+    margin: 1rem 0;
+}
+
+/* body style */
+body{
+  margin: 0;
+  padding: 0;
+  color: rgb(0, 53, 100);
+  background: rgb(223, 224, 231);
   height: 100vh;
+
 }
 
-/* About title */
-#about_title {
-  font-size: 35px;
-  font-weight: 600;
+/* h1 style*/
+h1{
+  text-align: center;
+  margin: 2rem 0;
+  font-size: 2em;
+}
+
+/* h2 style*/
+h2{
+  text-align: center;
+  margin: 1rem 0;
+  font-size: 1.85em;
+}
+
+/* h3 style*/
+h3{
+  text-align: center;
+  margin: 1rem 0;
+  font-size: 1.25em;
+}
+
+/* h4 style*/
+h4{
+  text-align: center;
+  margin: 1rem 0;
+  font-size: 1.1em;
+}
+
+/* h5 style*/
+h5{
+  text-align: left;
+  margin: 1rem 0;
+  font-size: 1em;
+}
+
+/* h6 style*/
+h6{
+  text-align:justify;
+  padding-left: 80px;
+  padding-right: 80px;
+  font-size: 1.25em;
+}
+
+/* displayed */
+.displayed {
+  display: block;
+  margin-left: auto;
+  margin-right: auto 
+  
+}
+/* column */
+.column {
+  float: left;
+  width: 50%;
+  margin-bottom: 25px;
+  padding: 0 10px;
+  
+}
+
+/* about-section1 */
+.about-section1 {
+  padding: 10px;
+  text-align: center;
+  background-color: #ffffff;
+  color: rgb(17, 17, 17);
+}
+
+/* about-section2 */
+.about-section2 {
+  padding: 10px;
+  text-align: center;
+  background-color: #ced7f0;
+  color: rgb(0, 0, 0);
+}
+/* container */
+.container {
+  padding: 0 50px;
+  align-content: center;
+  
+}
+/* contact button */
+#contact_btn {
+  background: #348AC7;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #348AC7, #348AC7);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #348AC7, #348AC7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: #fff;
-  padding-top: 40px;
-  padding-bottom: 50px;
 }
 
-/* About content container */
-#about_content_container {
-  width: 80%;
-  background-color: #f4f4f4;
-  font-size: 20px;
-  color: rgb(70, 70, 70);
-  padding-left: 50px;
-  padding-right: 50px;
-  padding-top: 50px;
-  padding-bottom: 30px;
+/* contact button hover */
+#contact_btn:hover {
+  filter: brightness(92%);
 }
