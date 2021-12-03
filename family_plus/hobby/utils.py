@@ -51,7 +51,7 @@ def define_hobbies():
         ('Road trips', 'Road'),
         ('Science', 'Science'),
         ('Sports', 'Sports'),
-        ('Video games', 'Video'),
+        ('Video games', 'Video games'),
         ('Volunteering', 'Volunteering'),
         ('Watching Movies', 'Watching Movies'),
         ('Watching Shows', 'Watching Shows'),

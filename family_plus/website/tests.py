@@ -1,20 +1,22 @@
 from django.test import TestCase, SimpleTestCase
 from django.urls import reverse
 
-
 from custom_user_model.models import CustomUserModel
-from website import views
 
 
 class WelcomePageTests(SimpleTestCase):
 
     """Test for the correct status code, content, and templates used in
     the welcome page.
+
+    Inspired by: https://learndjango.com/tutorials/django-testing-tutorial
+    Learned how to write basic unit tests.
     """
 
     def test_welcome_page_status_code(self):
         """Test that the welcome page exists and returns a HTTP 200 OK
-        success status responses code to indicate the request has succeeded."""
+        success status responses code to indicate the request has succeeded.
+        """
         response = self.client.get('/')
         self.assertEquals(response.status_code, 200)
 
@@ -50,7 +52,11 @@ class WelcomePageTests(SimpleTestCase):
 class HomePageTests(SimpleTestCase):
 
     """Test for the correct status code, content, and templates used in
-    the home page."""
+    the home page.
+
+    Inspired by: https://learndjango.com/tutorials/django-testing-tutorial
+    Learned how to write basic unit tests.
+    """
 
     def test_home_page_status_code(self):
         """Test that the welcome page exists and returns a HTTP 200 OK
@@ -85,7 +91,9 @@ class HomePageTests(SimpleTestCase):
 
 class AuthenticationTests(TestCase):
 
-    """Create a user and test that authentication log in works."""
+    """Test that users authentication and redirection logged in versions of
+    pages.
+    """
 
     def setUp(self):
         """Create two user objects and then create a family profile for each."""
@@ -104,3 +112,33 @@ class AuthenticationTests(TestCase):
         logged_in = self.client.login(email='example3000@mail.com',
                                       password='alpaca4567')
         self.assertTrue(logged_in)
+
+    def test_logged_in_redirect(self):
+        """Confirm that a user is brought to the home page instead of the
+        welcome page when logged in.
+        """
+        # Go to home page and confirm it is the version for logged out users
+        response = self.client.get(reverse('welcome'))
+        self.assertContains(response, 'Login')
+        self.assertContains(response, 'Sign Up')
+
+        # Go to welcome page and confirm it is the correct page
+        response = self.client.get(reverse('welcome'))
+        self.assertContains(response, 'Welcome to Family+')
+
+        # Go to login page and confirm it is the correct page
+        response = self.client.get(reverse('login'))
+        self.assertContains(response, 'Email:')
+        self.assertContains(response, 'Password:')
+
+        # Log in and confirm user is logged in
+        logged_in = self.client.login(email='example3000@mail.com',
+                                      password='alpaca4567')
+        self.assertTrue(logged_in)
+
+        # Go to welcome page and confirm a home page redirection by checking
+        # for strings only located in the home page for logged in users
+        response = self.client.get(reverse('welcome'))
+        self.assertContains(response, 'Search')
+        self.assertContains(response, 'My Family Profile')
+        self.assertContains(response, 'Logout')

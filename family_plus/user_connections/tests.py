@@ -1,17 +1,26 @@
-from django.test import TestCase, Client
+from django.test import TestCase
 from django.urls import reverse
-
 
 from custom_user_model.models import CustomUserModel
 from website_users.models import FamilyProfile
+from hobby.models import Hobby
+from user_connections.utils import (
+    get_hobby_list,
+    get_language_list,
+    get_day_list,
+    get_age_range_list
+)
 
 
 class UserConnectionsTests(TestCase):
 
-    """Create users and a family profile for each. Then test that each user
-    has been created and a profile picture upload was optional. And test that
-    another user's contact info is displayed only when two users are in
-    each other's connections lists.
+    """Test user connections, statuses, and searching functions.
+    
+    Test that...
+    - users are added to each others connections lists successfully
+    - contact info is visible between connections but not non-connections
+    - the correct search choices are displayed on the search page
+    - the search results page shows the correct search results
     """
 
     def setUp(self):
@@ -70,8 +79,7 @@ class UserConnectionsTests(TestCase):
         self.familyprofile1.save()
 
         # Log into User 2's account
-        login = self.client.login(email='example4000@mail.com',
-                                  password='alpaca4567')
+        self.client.login(email='example4000@mail.com', password='alpaca4567')
 
         # Visit User 1's family profile and confirm that there is no
         # contact info displayed
@@ -85,3 +93,78 @@ class UserConnectionsTests(TestCase):
         # Refresh page to see User 1's contact info displayed
         response = self.client.get(reverse('family-profile', kwargs={'pk': self.familyprofile1.pk}))
         self.assertContains(response, contact_info_user1)
+
+    def test_search_choices(self):
+        """Test that the search menus in the search page contain the correct
+        choices used in the Hobby, Location, Language, and Availability models.
+        """
+        # Log in to User 1's account and go to the search page
+        self.client.login(email='example3000@mail.com', password='alpaca4567')
+        response = self.client.get(reverse('search-page'))
+        self.assertEquals(response.status_code, 200)
+
+        # Check that each word in the hobby list is present on the page
+        for choice in get_hobby_list():
+            for word in choice:
+                self.assertContains(response, word)
+
+        # Check that each word in the language list is present on the page
+        for choice in get_language_list():
+            for word in choice:
+                self.assertContains(response, word)
+
+        # Check that each word in the day list is present on the page
+        for choice in get_day_list():
+            for word in choice:
+                self.assertContains(response, word)
+
+        # Check that each word in the age range list is present on the page
+        for choice in get_age_range_list():
+            for word in choice:
+                self.assertContains(response, word)
+
+    def test_search_results(self):
+        """Check that searching a category in the search page redirects to
+        the correct results page and contains the correct search results.
+        """
+        # Create 5 user objects that are only accessible in this function
+        # and add an hobby object for each
+        for i in range(3, 8):
+            username = 'example' + str(i) + 'xxx'
+            email = username + '@mail.com'
+
+            CustomUserModel.objects.create(email=email,
+                                            username=username,
+                                            password='alpaca4567',
+                                            is_adult=True)
+
+            user = CustomUserModel.objects.get(id=i)
+            user.set_password('alpaca4567')
+            user.save()
+
+            family_name = 'Example ' + str(i) + 'xxx'
+            FamilyProfile.objects.create(user=user,
+                                        family_name=family_name)
+
+            Hobby.objects.create(user=user.familyprofile, hobbies=['Baking'])
+
+        # Log in to the first user's account made in this function
+        self.client.login(email='example3xxx@mail.com', password='alpaca4567')
+
+        # Visit search page
+        response = self.client.get(reverse('search-page'))
+        self.assertEquals(response.status_code, 200)
+
+        # Search the 'Baking' hobby and confirm it takes us to the search
+        # results page for hobbies
+        response = self.client.post(reverse('search-hobby'), data={'value':'Baking'})
+        self.assertTemplateUsed('results/search-hobby.html')
+        self.assertEquals(response.status_code, 200)
+
+        # Check that the users made in this function have their family
+        # nicknames displayed
+        for i in range(3, 8):
+            self.assertContains(response, 'Example')
+            self.assertContains(response, str(i))
+            self.assertContains(response, 'xxx')
+            self.assertContains(response, 'Family')
