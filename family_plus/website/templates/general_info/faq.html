@@ -1,53 +1,133 @@
 {% extends 'header_footer/base.html' %}
-{% load static %}
 
 {% block title %}
-  FAQ | Family+
+  Login | Family+
 {% endblock %}
 
 {% block content %}
 
-<!-- CSS styling -->
+{% load static %}
+
+
+<!-- css styling -->
 <link rel="stylesheet" type="text/css" href="{% static 'website/css/faq/faq.css' %}">
 
+<!-- javascripts file -->
+<script src="{% static 'website/css/faq/main.js' %}" defer></script> 
+
 <body>
-  <section id="section_background_faq">
-    <center>
-      <div class="container-fluid" id="faq_title">
-        FAQ
+
+  <!-- background -->
+  <div class="card"><img src="{% static '/website/images/backgrounds/dinner.jpg' %}" alt="dinner table">
+
+  <br>
+  <section class="center">
+  <br>
+
+
+<h1>FAQ</h1>
+
+  <div class="faq">
+
+    <div class="faq-item">
+      <div class="question">
+        <h4>What information should I add to my family profile?</h4>
       </div>
-    </center>
-
-    <!-- Questions and answers -->
-    <div class="container-fluid" id="faq_content_container">
-      <b>What information should I add to my family profile?</b><br>
-      When customizing your family profile, share information that you and your family are
+      <div class="answer">
+        <div class="answer-content">
+          When customizing your family profile, share information that you and your family are
       comfortable with sharing. As a family-friendly website, we prioritize the feeling of safety
-      for every family.<br><br>
+      for every family.
+        </div>
+      </div>
+    </div>
 
-      <b>How do we chat with a connection?</b><br>
-      Our purpose is to quicken the process of finding new connections. We do not have
+
+    <div class="faq-item">
+      <div class="question">
+        <h4>How do we chat with a connection?</h4>
+      </div>
+      <div class="answer">
+        <div class="answer-content">
+          Our purpose is to quicken the process of finding new connections. We do not have
       a chat system and instead provide a Contact Info section where you can express
-      your preferred methods of communication.<br><br>
+      your preferred methods of communication.
+        </div>
+      </div>
+    </div>
 
-      <b>Is filling out the Contact Info section required?</b><br>
-      Setting up a family profile requires only a family nickname. Any other section on the
+
+    <div class="faq-item">
+      <div class="question">
+        <h4>Is filling out the Contact Info section required?</h4>
+      </div>
+      <div class="answer">
+        <div class="answer-content">
+          Setting up a family profile requires only a family nickname. Any other section on the
       family profile is optional for you to fill out. Note that the Contact Info section is
-      only viewable to your connections.<br><br>
+      only viewable to your connections.
+        </div>
+      </div>
+    </div>
 
-      <b>When is it oversharing?</b><br>
-      Before sharing any personal information, understand that your information will be viewable
+    <div class="faq-item">
+      <div class="question">
+        <h4>When is it oversharing?</h4>
+      </div>
+      <div class="answer">
+        <div class="answer-content">
+          Before sharing any personal information, understand that your information will be viewable
       to other families on the website. Only share what you would share when meeting someone the
-      first time.<br><br>
+      first time.
+        </div>
+      </div>
+    </div>
 
-      <b>How do I limit what others can see on my family profile?</b><br>
-      You can hide your family profile by selecting the 'Hide Family Profile' option in the
+    <div class="faq-item">
+      <div class="question">
+        <h4>How do I limit what others can see on my family profile?</h4>
+      </div>
+      <div class="answer">
+        <div class="answer-content">
+          You can hide your family profile by selecting the 'Hide Family Profile' option in the
       Visibility menu. This menu is available on the right side of your family profile header.
       Note that when you are hidden, others cannot send you a connect request, nor can you send
-      a request to another family.<br><br>
-
+      a request to another family.
+        </div>
+      </div>
     </div>
-  </section>
+
+    
+
+    <div class="faq-item">
+      <div class="question">
+        <h4>Are there any age requirement for joining Family+?</h4>
+      </div>
+      <div class="answer">
+        <div class="answer-content">
+          You must be over 18 years old to join.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question">
+        <h4>How much does it costs to join?</h4>
+      </div>
+      <div class="answer">
+        <div class="answer-content">
+          It is free to join!
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+  </div>
+</section>
+</div>
 </body>
 
 {% endblock %}

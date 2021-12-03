@@ -1,31 +1,120 @@
-/* Section background */
-#section_background_faq {
-  margin-top: 60px;
-  padding-bottom: 100px;
-  background-image: url('/static/website/images/backgrounds/family_feast.png');
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  background-position: 0% 0%;
-  height: 100vh;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-/* FAQ title */
-#faq_title {
-  font-size: 35px;
-  font-weight: 600;
-  color: #fff;
-  padding-top: 40px;
-  padding-bottom: 50px;
+/* center section position */
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1200px;
+  background: rgb(255, 255, 255);
+  border-radius: 10px;  
 }
 
-/* FAQ content container */
-#faq_content_container {
-  width: 80%;
-  background-color: #f4f4f4;
-  font-size: 20px;
-  color: rgb(70, 70, 70);
-  padding-left: 50px;
-  padding-right: 50px;
-  padding-top: 50px;
-  padding-bottom: 30px;
+/* center section h1 */
+.center h1{
+    text-align: center;
+    padding: 0 0 20px 0;
+    font-size: 40px;
+    color: #414141;
+    margin: 1rem 0;
+}
+
+/* body style */
+body{
+  margin: 0;
+  padding: 0;
+  color: rgb(0, 53, 100);
+  background-repeat:no-repeat;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 1500px;
+
+}
+
+/* h1 style */
+h1{
+  text-align: center;
+  margin: 2rem 0;
+  font-size: 2em;
+}
+
+/* h4 style */
+h4{
+  text-align: center;
+  margin: rem 0;
+  font-size: 1.5em;
+}
+
+/* displayed */
+.displayed {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* faq */
+.faq {
+  width: 90%;
+  max-width: 1000px;
+  margin: 2rem auto;
+}
+
+/* faq-item */
+.faq-item {
+  background-color: rgb(231, 231, 231);
+  color: black;
+  margin: 1rem 0;
+  border-radius: 1rem;
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0,.5);
+}
+
+/* question style */
+.question{
+  padding:0.5rem 2rem 0.5rem 1 rem;
+  min-height: 3rem;
+  line-height: 1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  left: 1.5rem;
+
+}
+
+/* question + */
+.question::after {
+  content:"+";
+  font-size: 2rem;
+  position: absolute;
+  right: 3rem;
+  
+}
+
+/* question - */
+.question.active::after {
+  content:"-";
+  font-size: 2.5rem;
+
+}
+
+/* answer */
+.answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: transform 0.8s;
+
+}
+
+/* answer content */
+.answer-content {
+  padding: 1rem;
+  line-height: 1.5rem;
+  border-top: 1px solid;
+  font-size: 1.2rem;
+
 }

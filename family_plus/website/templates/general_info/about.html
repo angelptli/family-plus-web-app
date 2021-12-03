@@ -1,26 +1,30 @@
 {% extends 'header_footer/base.html' %}
-{% load static %}
 
 {% block title %}
-  About | Family+
+  Login | Family+
 {% endblock %}
 
 {% block content %}
 
-<!-- CSS styling -->
+{% load static %}
+
+<!-- css styling -->
 <link rel="stylesheet" type="text/css" href="{% static 'website/css/about/about.css' %}">
 
 <body>
-  <section id="section_background_about">
-    <center>
-      <div class="container-fluid" id="about_title">
-        About
-      </div>
-    </center>
 
-    <!-- About info -->
-    <div class="container-fluid" id="about_content_container">
-      <b>Family+</b> provides a family-friendly service that allows you and your family to find new connections and
+  <!-- background -->
+  <div class="card"><img src="{% static '/website/images/backgrounds/family_feast2.jpg' %}" alt="Family Feast">
+    
+    <br>
+    <div class="center">
+    <br>
+
+<h1>About</h1>
+
+<div class="about-section1">
+<h6>
+  <b>Family+</b> provides a family-friendly service that allows you and your family to find new connections and
       connect with other families. The process is simple. Set up a family profile and choose a family nickname,
       then you're set to use the search page. You can pick any of our categories to search, see info on your results,
       and visit the profiles of families where you can choose to send a connect request.<br><br>
@@ -34,8 +38,65 @@
       and growing their family. With Family+, your son, daughter, niece, nephew, cousin, family friend, or yourself
       can make new friends and have more people in their life that they can call family.<br><br>
 
+</h6>
+
+</div>
+
+<div class="about-section2">
+  <br>
+  <h2 style="text-align:center">Our Team</h2>
+  <br>
+
+<section>
+
+  <div class="row">
+    <div class="column">
+      <div class="card">
+
+        <div class="container">
+          <h3>Samati Boonchitsitsak</h3>
+          <p class="title"></p>
+          
+          <h5>See more projects from Samati on  <a href="https://github.com/SamatiB/" target="_blank">github</a></h5>
+
+        <a href="mailto:sboonchi@ccsf.edu" class="btn btn-primary" id="contact_btn" button type="button">Contact</button></a>
+        
+        <br>
+        <br>
+        </div>
+      </div>
     </div>
-  </section>
+  
+    <div class="column">
+      <div class="card">
+        <div class="container">
+          <h3>Angel Li</h3>
+          <p class="title"></p>
+
+          <h5>See more projects from Angel on  <a href="https://github.com/angelptli/" target="_blank">github</a></h5>
+
+          <a href="mailto:ali95@mail.ccsf.edu" class="btn btn-primary" id="contact_btn" button type="button">Contact</button></a>
+        <br>
+        <br>
+
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <h4>This project is a part of Fall 2021 CS 195-Software Development Practicum class at City College of San Francisco.</h4>
+    <br>
+    <br>
+
+  </div>
+
+  </div>
+</section>
+
+
+</div>
+</section>
+</div>
 </body>
 
 {% endblock %}
