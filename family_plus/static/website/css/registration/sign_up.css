@@ -1,9 +1,6 @@
 /* Section background */
 #section_background_sign_up1 {
-  padding-top: 30px;
-  padding-bottom: 380px;
-  min-height: 100vh;
-  background-image: url('/static/website/images/backgrounds/grass_field_family.png');
+  min-height: 1000px;
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: 0% 0%;
@@ -11,9 +8,7 @@
 }
 /* Section background for logged in users */
 #section_background_sign_up2 {
-  padding-top: 300px;
   min-height: 1000px;
-  background-image: url('/static/website/images/backgrounds/grass_field_family.png');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: 0% 0%;
