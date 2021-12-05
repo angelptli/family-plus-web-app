@@ -1,15 +1,24 @@
 /* Section background for login page */
 #section_background_login {
   padding-top: 30px;
-  padding-bottom: 380px;
   min-height: 100vh;
-  height: 1100px;
-  background-image: url('/static/website/images/backgrounds/friends_sunset.png');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: 0% 0%;
   opacity: 0.9;
 }
+
+/* Section background for login page */
+#section_background_login2 {
+  padding-top: 30px;
+  padding-bottom: 380px;
+  min-height: 100vh;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: 0% 0%;
+  opacity: 0.9;
+}
+
 
 /* Form title */
 #form_title {

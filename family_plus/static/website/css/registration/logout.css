@@ -1,0 +1,37 @@
+/* body section */
+body{
+  margin: 0;
+  padding: 0;
+  background: #1f1f1f;
+}
+
+/* center section */
+.center{
+position: absolute;
+top: 60%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 450px;
+border-radius: 10px;
+}
+
+/* center h1 */
+.center h1{
+  text-align: center;
+  padding: 0 0 20px 0;
+  font-size: 30px;
+  color: #414141;
+}
+
+/* button */
+#button_btn {
+  background: #348AC7;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #348AC7, #348AC7);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #348AC7, #348AC7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+}
+
+/* button hover */
+#button_btn:hover {
+  filter: brightness(92%);
+}

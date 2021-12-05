@@ -1,5 +1,4 @@
-{% extends 'registration/pure-links-base.html' %}
-{% load static %}
+{% extends 'header_footer/base.html' %}
 
 {% block title %}
   Login | Family+
@@ -7,13 +6,22 @@
 
 {% block content %}
 
-<!-- CSS styling -->
-<link rel="stylesheet" type="text/css" href="{% static 'website/css/registration/login.css' %}">
+{% load static %}
+
+<!-- css file -->
+<link rel="stylesheet" type="text/css" <link rel="stylesheet" type="text/css" href="{% static 'website/css/registration/login.css' %}">
+
 
 <body>
+
   {% if not user.is_authenticated %}
-  <section id="section_background_login">
+  
+  <section class="card bg-black text-black" id="section_background_login">
+
+    <!-- background image file -->
+    <img class="card-img" src="{% static '/website/images/backgrounds/friends_sunset.png' %}" class="img-fluid" alt="Friends at sunset">
     
+    <div class="card-img-overlay">
     <div class="container-fluid" id="form_title">
       Login
     </div>
@@ -44,12 +52,22 @@
     </div>
     
     </div>
-    
+
+  </div>
+  </div>
   </section>
   {% else %}
     <!-- Display message and Home button if already logged in -->
-    <section style="padding-top: 300px;" id="section_background_login">
+    <section class="card bg-black text-black" id="section_background_login">
+
+    <!-- background image file -->
+    <img class="card-img" src="{% static '/website/images/backgrounds/friends_sunset.png' %}" class="img-fluid" alt="Friends at sunset">
+    
+    <div class="card-img-overlay">
+
       <center>
+        <div style="padding-top: 300px" > </div>
+
         <div class="container-fluid border border-dark shadow" style="padding-top: 50px; font-size: 25px; padding-bottom: 50px; max-width: 500px; border-radius: 25px;">
           You have logged in as: <b>{{ user.username }}</b><br><br>
           <a class="btn btn-outline-dark" href="{% url 'home' %}" id="home_link">
@@ -57,10 +75,13 @@
           </a>
         </div>
       </center>
+      
+      </div>
     </section>
   {% endif %}
 </body>
 
+</div>
 </div>
 </div>
 

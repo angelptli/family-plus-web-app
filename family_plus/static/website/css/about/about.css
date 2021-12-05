@@ -6,12 +6,13 @@
 /* center section position */
 .center {
   position: absolute;
-  top: 50%;
+  top: 52%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 1200px;
   background: rgb(255, 255, 255);
-  border-radius: 10px;  
+  border-radius: 10px;
+   
 }
 
 /* center section h1 */
@@ -83,12 +84,13 @@ h6{
   margin-right: auto 
   
 }
+
 /* column */
 .column {
   float: left;
   width: 50%;
   margin-bottom: 25px;
-  padding: 0 10px;
+  padding: 0 25px;
   
 }
 
@@ -98,6 +100,8 @@ h6{
   text-align: center;
   background-color: #ffffff;
   color: rgb(17, 17, 17);
+  
+  border-radius: 10px; 
 }
 
 /* about-section2 */
@@ -106,13 +110,25 @@ h6{
   text-align: center;
   background-color: #ced7f0;
   color: rgb(0, 0, 0);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px; 
 }
 /* container */
 .container {
   padding: 0 50px;
   align-content: center;
-  
+  background-color: #f0f0f0;
+  align-content:space-around;
 }
+
+/* profile circle */
+.profile {
+  object-fit: cover;
+  border-radius: 50%;
+
+}
+
+
 /* contact button */
 #contact_btn {
   background: #348AC7;  /* fallback for old browsers */
