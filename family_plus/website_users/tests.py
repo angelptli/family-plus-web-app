@@ -355,3 +355,13 @@ class RegistrationTests(TestCase):
         response = self.client.get(reverse('login'))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Email:')
+
+    def test_non_logged_in_user_privileges(self):
+        """Check that the search page and add family member pages are not
+        accessible to non-logged-in users.
+        """
+        response = self.client.get(reverse('search-page'))
+        self.assertEquals(response.status_code, 302)
+
+        response = self.client.get(reverse('add-family-member'))
+        self.assertEquals(response.status_code, 302)

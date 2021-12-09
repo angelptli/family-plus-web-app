@@ -1,5 +1,5 @@
 from django.test import TestCase
-
+from django.urls import reverse
 from custom_user_model.models import CustomUserModel
 
 
@@ -36,3 +36,15 @@ class UserTests(TestCase):
         expected_object_name1 = f'{self.user1.username}'
         expected_object_name2 = f'{self.user2.username}'
         self.assertNotEquals(expected_object_name1, expected_object_name2)
+
+    def test_unique_email(self):
+        """Confirm that each email must be unique in the user model."""
+        self.client.post(reverse('register'), data={
+            'email': 'example3000@mail.com',
+            'username': 'example3111',
+            'password': 'alpaca4567',
+            'is_adult': True
+        })
+
+        response = CustomUserModel.objects.all().count()
+        self.assertEquals(response, 2)
