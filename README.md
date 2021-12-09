@@ -59,9 +59,9 @@ cd family-plus-web-app
 ```
 git checkout --track origin/<branch-name>
 ```
-**Example: Fetch and checkout the develop branch, which is maintained:**
+**Example: Fetch and checkout the main branch:**
 ```
-git checkout --track origin/develop
+git checkout --track origin/main
 ```
 <hr>
 
