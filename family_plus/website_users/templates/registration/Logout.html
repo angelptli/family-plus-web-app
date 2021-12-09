@@ -1,4 +1,5 @@
 {% extends 'header_footer/base.html' %}
+{% load static %}
 
 {% block title %}
   Logout | Family+
@@ -6,41 +7,24 @@
 
 {% block content %}
 
-{% load static %}
-
-<!-- css file -->
+<!-- CSS file -->
 <link rel="stylesheet" type="text/css" href="{% static 'website/css/registration/logout.css' %}">
-
-<!-- background image file -->
-<img src="{% static '/website/images/backgrounds/logout_bg.jpg' %}" class="img-fluid" alt="Family Walk into sunset">
-
 
 <body>
 
-    <section>
-        <div class="center">
-            <br>
-            <br>
-            <h1> You've successfully signed out!</h1>
-    
-        <!-- Django form -->
-
-        <div class="form-group">
- 
-            <div class="text-center">
-            <a href="{% url 'login' %}" class="btn btn-primary" id="button_btn" button type="button">Sign in</a>
-            </div>
-            
-            <br>
-
-            <div class="text-center">
-                <a href="{% url 'home' %}" class="btn btn-primary" id="button_btn" button type="button">Home</a>
-            </div>
-
+  <section id="section_background_logout">
+    <div class="container-fluid" id="outside_container">
+      <div class="container-fluid border border-dark shadow" id="message_container">
+        You've successfully logged out!
+      
+        <div class="container-fluid" id="buttons_container">
+          <a href="{% url 'login' %}" class="btn btn-outline-dark" id="button_btn" type="button">Login</a>
+          <div style="height: 10px;"></div>
+          <a href="{% url 'home' %}" class="btn btn-outline-dark" id="button_btn" type="button">Home</a>
         </div>
-        </div>
-        </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
 </body>
 

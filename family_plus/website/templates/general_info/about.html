@@ -12,106 +12,99 @@ About | Family+
 <link rel="stylesheet" type="text/css" href="{% static 'website/css/about/about.css' %}">
 
 <body>
-  <!-- background -->
-  <div class="card"><img src="{% static '/website/images/backgrounds/family_feast2.jpg' %}" style=object-fit:cover
-      alt="Family Feast">
+  <section id="section_background_about_page">
+    <br>
+    <div class="container-fluid" id="outside_container">
 
-    <section class="card-img-overlay">
-      <br>
-      <div class="position">
+      <div class="about-section1">
 
-        <div class="about-section1">
+        <h1>About</h1>
 
-          <h1>About</h1>
+          <b>Family+</b> provides a family-friendly service that allows you and your family to find new connections
+          and connect with other families. The process is simple. Set up a family profile and choose a family nickname,
+          then you're set to use the search page. You can pick any of our categories to search, see info on your
+          results, and visit the profiles of families where you can choose to send a connect request.<br><br>
 
-          <h6>
-            <b>Family+</b> provides a family-friendly service that allows you and your family to find new connections
-            and
-            connect with other families. The process is simple. Set up a family profile and choose a family nickname,
-            then you're set to use the search page. You can pick any of our categories to search, see info on your
-            results,
-            and visit the profiles of families where you can choose to send a connect request.<br><br>
+          You can find others who share the same interests and also can explore new ones. Currently, you can search
+          a selection of hobbies, locations in the USA, languages, days of the week for schedule availability,
+          and a list of age ranges.<br><br>
 
-            You can find others who share the same interests and also can explore new ones. Currently, you can search
-            a selection of hobbies, locations in the USA, languages, days of the week for schedule availability,
-            and a list of age ranges.<br><br>
+          <b>Who can join?</b>
+          You can be a parent, guardian, relative, family friend, or whoever. We welcome anyone interested in
+          connecting and growing their family. With Family+, your son, daughter, niece, nephew, cousin, family friend, or
+          yourself can make new friends and have more people in their life that they can call family.<br><br>
 
-            <b>Who can join?</b>
-            You can be a parent, guardian, relative, family friend, or whoever. We welcome anyone interested in
-            connecting
-            and growing their family. With Family+, your son, daughter, niece, nephew, cousin, family friend, or
-            yourself
-            can make new friends and have more people in their life that they can call family.<br><br>
-
-          </h6>
-        </div>
+      </div>
 
 
-        <div class="about-section2">
-          <br>
-          <h2 style="text-align:center">Our Team</h2>
-          <br>
+      <div class="about-section2">
+        <br>
+        <h2 style="text-align:center">Our Team</h2>
+        <br>
 
-          <div class="row">
-            <div class="column">
-              <div class="card">
-                <div class="container">
-                  <br>
-                  <img src="{% static '/website/images/headshots/profile_samati_sq.jpg' %}" alt="Samati"
-                    style="width:30%" class="profile">
-                  <h3>Samati Boonchitsitsak</h3>
-                  <p class="title"></p>
+        <div class="row">
+          <div class="col">
+            <div class="card shadow">
+              <div class="container">
+                <br>
+                <img src="{% static '/website/images/headshots/profile_samati_sq.jpg' %}" alt="Samati" id="profile_pic1">
+                <br><br>
+                <h3>Samati Boonchitsitsak</h3>
+                <p class="title"></p>
 
-                  <h5>See more projects from Samati on <a href="https://github.com/SamatiB/" target="_blank">github</a>
-                  </h5>
+                <h5>See more projects from Samati on <a href="https://github.com/SamatiB/" target="_blank">GitHub</a>
+                </h5>
 
-                  <a href="mailto:sboonchi@ccsf.edu" class="btn btn-primary" id="contact_btn" button
-                    type="button">Contact</button></a>
-
-                  <br>
-                  <br>
+                <div class="container-fluid" style="padding-top: 20px;">
+                  <a href="mailto:sboonchi@ccsf.edu" class="btn" id="contact_btn" button type="button">
+                    Contact
+                  </a>
                 </div>
+
+                <br>
+                <br>
               </div>
             </div>
-
-            <div class="column">
-              <div class="card">
-                <div class="container">
-                  <br>
-                  <img src="{% static '/website/images//headshots/profile_angel_sq.jpg' %}" alt="Angel"
-                    style="width:30%" class="profile">
-                  <h3>Angel Li</h3>
-                  <p class="title"></p>
-
-                  <h5>See more projects from Angel on <a href="https://github.com/angelptli/" target="_blank">github</a>
-                  </h5>
-
-                  <a href="mailto:ali95@mail.ccsf.edu" class="btn btn-primary" id="contact_btn" button
-                    type="button">Contact</button></a>
-                  <br>
-                  <br>
-
-                </div>
-              </div>
-            </div>
-
-            <br>
-            <h4>This project is a part of Fall 2021 CS 195-Software Development Practicum class at City College of San
-              Francisco.</h4>
-            <br>
-            <br>
-
           </div>
-    </section>
 
-  </div>
-  </div>
+          <div class="col">
+            <div class="card shadow">
+              <div class="container">
+                <br>
+                <img src="{% static '/website/images/headshots/profile_angel_sq2.jpg' %}" alt="Angel" id="profile_pic2">
+                <br><br>
+                <h3>Angel Li</h3>
+                <p class="title"></p>
+                <center>
+                  <h5>See more projects from Angel on <a href="https://github.com/angelptli/" target="_blank">GitHub</a>
+                  </h5>
+                </center>
 
+                <div class="container-fluid" style="padding-top: 20px;">
+                  <a href="mailto:ali95@mail.ccsf.edu" class="btn" id="contact_btn" button type="button">
+                    Contact
+                  </a>
+                </div>
 
-  </div>
+                <br>
+                <br>
 
+              </div>
+            </div>
+          </div>
+
+          <br>
+          <h4>
+            This project is part of the Fall 2021 CS 195 Software Development Practicum curriculum at City College of San
+            Francisco.
+          </h4>
+          <br>
+          <br>
+
+        </div>
+      </div>
+    </div>
   </section>
-  </div>
 </body>
 
 {% endblock %}

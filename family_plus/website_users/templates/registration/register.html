@@ -13,11 +13,7 @@
 <body>
   <!-- Show sign up form if not logged in -->
   {% if not user.is_authenticated %}
-  <section class="card bg-black text-black" id="section_background_sign_up1">
-
-    <!-- background image file -->
-    <img class="card-img" src="{% static '/website/images/backgrounds/grass_field_family.jpg' %}" class="img-fluid" alt="Family Walk in grass">
-    <div class="card-img-overlay">
+    <section id="section_background_sign_up1">
 
       <!-- Display invalid input message if exist -->
       <div class="card-img-overlay" style="height: fit-content; padding-left: 30px; padding-right: 30px; padding-top: 20px;">
@@ -125,18 +121,10 @@
         </center>
 
       </div>
-    </div>
     </section>
   {% else%}
     <!-- Display message and Home button if already logged in -->
-    <section class="card bg-black text-black" id="section_background_sign_up2">
-
-    <!-- background image file -->
-    <img class="card-img" src="{% static '/website/images/backgrounds/grass_field_family.jpg' %}" class="img-fluid" alt="Family Walk in grass">
-    <div class="card-img-overlay">
-
-    <div style="padding-top: 300px" > </div>
-      
+    <section id="section_background_sign_up2">
       <center>
         <div class="container-fluid border border-dark shadow" style="padding-top: 50px; font-size: 25px; padding-bottom: 50px; max-width: 500px; border-radius: 25px;">
           You have logged in as: <b>{{ user.username }}</b><br><br>
@@ -145,7 +133,6 @@
           </a>
         </div>
       </center>
-    </div>
     </section>
   {% endif %}
   

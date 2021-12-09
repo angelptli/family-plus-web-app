@@ -1,18 +1,21 @@
+#section_background_about_page {
+  margin-top: 60px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-image: url('/static/website/images/backgrounds/family_feast.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
+}
+
+#outside_container {
+  width: 80%;
+}
+
 * {
   margin: 0;
   padding: 0;
-}
-
-/* section position */
-.position {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -60%);
-  width: 1200px;
-  background: rgb(78, 78, 78);
-  border-radius: 10px; 
-
 }
 
 /* center section h1 */
@@ -28,24 +31,25 @@
 body{
   margin: 0;
   padding: 0;
-  color: rgb(0, 53, 100);
-  background: rgb(32, 32, 32);
+  background-color: #f4f4f4;
   height: 100vh;
-
 }
 
 /* h1 style*/
 h1{
   text-align: center;
   margin: 2rem 0;
-  font-size: 2em;
+  font-size: 35px;
+  font-weight: 600 !important;
 }
 
 /* h2 style*/
 h2{
   text-align: center;
   margin: 1rem 0;
-  font-size: 1.85em;
+  font-size: 2em;
+  font-weight: 600 !important;
+  color: rgb(70, 70, 70);
 }
 
 /* h3 style*/
@@ -60,11 +64,15 @@ h4{
   text-align: center;
   margin: 1rem 0;
   font-size: 1.1em;
+  color: rgb(58, 58, 58);
+  opacity: 0.9;
+  padding-top: 10px;
+  padding-bottom: 20px;
 }
 
 /* h5 style*/
 h5{
-  text-align: left;
+  /* text-align: left; */
   margin: 1rem 0;
   font-size: 1em;
 }
@@ -81,42 +89,38 @@ h6{
 .displayed {
   display: block;
   margin-left: auto;
-  margin-right: auto 
-  
+  margin-right: auto;
 }
 
 /* column */
-.column {
+.col {
   float: left;
-  width: 50%;
   margin-bottom: 25px;
   padding: 0 25px;
-  
 }
 
 /* about-section1 */
 .about-section1 {
-  padding: 10px;
-  text-align: center;
-  background-color: #ffffff;
-  color: rgb(17, 17, 17);
-  
-  border-radius: 10px; 
+  background-color: #f4f4f4;
+  font-size: 20px;
+  color: rgb(70, 70, 70);
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 20px;
+  padding-bottom: 30px;
 }
 
 /* about-section2 */
 .about-section2 {
-  padding: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
   text-align: center;
   background-color: #ced7f0;
   color: rgb(0, 0, 0);
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px; 
 }
 /* container */
 .container {
   align-content: center;
-  background-color: #f0f0f0;
   align-content:space-around;
 }
 
@@ -127,8 +131,8 @@ h6{
 
 /* Add shadows card */
 .card{
-
-  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
+  padding-top: 30px;
+  border-radius: 5px;
 }
 
 /* Add card 2 */
@@ -136,14 +140,33 @@ h6{
   object-fit:fill;
 }
 
-/* profile circle */
-.profile {
+/* Samati's profile pic */
+#profile_pic1 {
   object-fit: cover;
   box-shadow: 0 6px 8px 0 rgba(59, 42, 42, 0.5);
-  outline: 2px solid rgb(179, 179, 179);
-
+  outline: 2px solid rgba(255, 255, 255, 0.808);
+  width: 180px;
+  height: 180px;
+  border-radius: 5px;
+}
+#profile_pic1:hover {
+  box-shadow: 0 6px 8px 3px rgba(59, 42, 42, 0.5);
 }
 
+/* Angel's profile pic */
+#profile_pic2 {
+  object-fit: cover;
+  box-shadow: 0 6px 8px 0 rgba(59, 42, 42, 0.5);
+  outline: 2px solid rgba(255, 255, 255, 0.808);
+  width: 180px;
+  height: 180px;
+  border-radius: 5px;
+  opacity: 0.95;
+  filter: brightness(130%);
+}
+#profile_pic2:hover {
+  box-shadow: 0 6px 8px 3px rgba(59, 42, 42, 0.5);
+}
 
 /* contact button */
 #contact_btn {
@@ -151,6 +174,7 @@ h6{
   background: -webkit-linear-gradient(to right, #348AC7, #348AC7);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #348AC7, #348AC7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: #fff;
+  border-width: 0;
 }
 
 /* contact button hover */

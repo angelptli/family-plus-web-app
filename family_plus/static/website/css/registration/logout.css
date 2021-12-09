@@ -1,37 +1,40 @@
-/* body section */
-body{
-  margin: 0;
-  padding: 0;
-  background: #1f1f1f;
+/* Logout page background image */
+#section_background_logout {
+  margin-top: 60px;
+  padding-top: 130px;
+  /* padding-bottom: 350px; */
+  min-height: 100vh;
+  background-image: url('/static/website/images/backgrounds/logout_bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* opacity: 0.9; */
 }
 
-/* center section */
-.center{
-position: absolute;
-top: 60%;
-left: 50%;
-transform: translate(-50%, -50%);
-width: 450px;
-border-radius: 10px;
+/* Outside container */
+#outside_container {
+  width: 100%;
+  padding-top: 120px;
 }
 
-/* center h1 */
-.center h1{
+/* Message container */
+#message_container {
   text-align: center;
-  padding: 0 0 20px 0;
-  font-size: 30px;
-  color: #414141;
+  padding-top: 50px;
+  font-size: 25px;
+  padding-bottom: 50px;
+  max-width: 500px;
+  border-radius: 25px;
+}
+
+/* Buttons container */
+#buttons_container {
+  width: 100%;
+  padding-top: 30px;
 }
 
 /* button */
 #button_btn {
-  background: #348AC7;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #348AC7, #348AC7);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #348AC7, #348AC7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  color: #fff;
-}
-
-/* button hover */
-#button_btn:hover {
-  filter: brightness(92%);
+  width: 70px;
+  height: 40px;
 }
