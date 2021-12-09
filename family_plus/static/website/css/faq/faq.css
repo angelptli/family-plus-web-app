@@ -1,72 +1,50 @@
-* {
-  margin: 0;
-  padding: 0;
+/* FAQ background image */
+#section_background_faq {
+  margin-top: 60px;
+  padding-top: 100px;
+  padding-bottom: 200px;
+  background-image: url('/static/website/images/backgrounds/dinner.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
+  filter: brightness(95%);
 }
 
-/* position */
-.position {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 1200px;
-  background: rgb(255, 255, 255);
-  border-radius: 10px;  
-}
-
-/* position h1 */
-.position h1{
-    text-align: center;
-    padding: 0 0 30px 0;
-    font-size: 40px;
-    color: #414141;
-    margin: 1rem 0;
-}
-
-
-/* body style */
-body{
-  margin: 0;
-  padding: 0;
-  color: rgb(0, 53, 100);
-  background-repeat:no-repeat;
-  overflow-x: hidden;
-  overflow-y: auto;
-  max-height: 1500px;
-
-}
-
-/* card */
-.card{
-  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
+/* FAQ container */
+#faq_container {
+  width: 100%;
 }
 
 /* h1 style */
 h1{
   text-align: center;
   margin: 2rem 0;
-  font-size: 2em;
+  font-size: 38px;
+  font-weight: 600 !important;
+  padding-bottom: 10px;
+  color: rgb(70, 70, 70);
 }
 
 /* h4 style */
 h4{
-  text-align: center;
-  margin: rem 0;
+  text-align: left;
+  /* margin: rem 0; */
   font-size: 1.5em;
-}
-
-/* displayed */
-.displayed {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  padding-right: 100px;
 }
 
 /* faq */
 .faq {
-  width: 90%;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 2rem auto;
+  padding-top: 20px;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom: 70px;
+  background: #ffffff;
 }
 
 /* faq-item */
@@ -113,14 +91,13 @@ h4{
   max-height: 0;
   overflow: hidden;
   transition: transform 0.8s;
-
 }
 
 /* answer content */
 .answer-content {
   padding: 1rem;
   line-height: 1.5rem;
-  border-top: 1px solid;
+  border-top: 1.5px solid;
+  border-top-color: rgb(192, 192, 192);
   font-size: 1.2rem;
-
 }
