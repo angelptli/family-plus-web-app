@@ -126,6 +126,9 @@ class PasswordChangingForm(PasswordChangeForm):
                                         'id': 'new_password2_input'}))
 
     class Meta:
+
+        """Specify the fields to include in the register form."""
+
         model = CustomUserModel
         fields = ('old_password', 'new_password1', 'new_password2')
 
@@ -141,6 +144,9 @@ class ProfilePageForm(forms.ModelForm):
                                   }))
 
     class Meta:
+
+        """Specify the fields to include in the register form."""
+
         model = FamilyProfile
         fields = ('family_name', 'family_bio', 'contact_info', 'profile_image')
 
@@ -178,6 +184,9 @@ class FamilyMemberForm(forms.ModelForm):
         self.fields['user'].empty_label = None  # Remove empty label
 
     class Meta:
+
+        """Specify the fields to include in the register form."""
+
         model = FamilyMember
         fields = ('first_name', 'last_name', 'relation', 'age_range', 'about', 'user')
 
@@ -230,6 +239,9 @@ class EditFamilyMemberForm(forms.ModelForm):
         self.fields['user'].empty_label = None  # Remove empty label
 
     class Meta:
+
+        """Specify the fields to include in the register form."""
+        
         model = FamilyMember
         fields = ('first_name', 'last_name', 'relation', 'age_range', 'about', 'user')
 

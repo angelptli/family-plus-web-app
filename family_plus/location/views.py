@@ -61,6 +61,9 @@ class AddLocationView(LoginRequiredMixin, CreateView):
         return kwargs
 
     def get_success_url(self):
+        """After a user creates a location object, the user will be returned
+        to the location log and will see a list of their location objects.
+        """
         return reverse_lazy('location-log', kwargs={'user': self.request.user})
 
 @login_required(login_url='/users/login/')

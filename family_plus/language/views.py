@@ -31,6 +31,9 @@ class CreateLanguageLogView(LoginRequiredMixin, CreateView):
         return kwargs
 
     def get_success_url(self):
+        """After a user successfully creates a language object, the user will
+        be returned to their family profile.
+        """
         return reverse_lazy('family-profile', kwargs={'pk': self.request.user.familyprofile.pk})
 
 
@@ -71,4 +74,7 @@ class EditLanguageLogView(LoginRequiredMixin, UpdateView):
         return kwargs
 
     def get_success_url(self):
+        """After a user successfully updates a language object, the user will
+        be returned to their family profile.
+        """
         return reverse_lazy('family-profile', kwargs={'pk': self.request.user.familyprofile.pk})

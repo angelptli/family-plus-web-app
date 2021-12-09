@@ -29,6 +29,9 @@ class CreateHobbyLogView(LoginRequiredMixin, CreateView):
         return kwargs
 
     def get_success_url(self):
+        """After a user successfully creates a hobby object, the user will
+        be returned to their family profile.
+        """
         return reverse_lazy('family-profile', kwargs={'pk': self.request.user.familyprofile.pk})
 
 
@@ -69,4 +72,7 @@ class EditHobbyLogView(LoginRequiredMixin, UpdateView):
         return kwargs
 
     def get_success_url(self):
+        """After a user successfully updates a hobby object, the user will
+        be returned to their family profile.
+        """
         return reverse_lazy('family-profile', kwargs={'pk': self.request.user.familyprofile.pk})

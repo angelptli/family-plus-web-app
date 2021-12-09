@@ -32,6 +32,9 @@ class HobbyForm(forms.ModelForm):
         self.fields['user'].empty_label = None  # Remove empty label
 
     class Meta:
+
+        """Specify the fields to include in the register form."""
+
         model = Hobby
         fields = ('hobbies', 'other', 'user')
 

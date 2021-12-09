@@ -45,6 +45,9 @@ class UserRegisterView(generic.CreateView):
     success_url = reverse_lazy('login')
 
     def form_invalid(self, form):
+        """Custom warning message that shows up when invalid input has
+        been entered into the registration form.
+        """
         messages.warning(self.request, "Please try again, make sure all fields contain valid input")
         return super().form_invalid(form)
 
@@ -71,6 +74,9 @@ class AccountSettingsView(LoginRequiredMixin, generic.UpdateView):
         return self.request.user      
 
     def form_valid(self, form):
+        """Custom success message that shows up when a user has successfully
+        changed their username and have submitted valid input to the form.
+        """
         form.save()
         messages.success(self.request, "Your username has been changed successfully")
         return render(self.request, 'registration/account-settings.html', self.get_context_data())
@@ -87,11 +93,17 @@ class PasswordsChangeView(LoginRequiredMixin, PasswordChangeView):
     success_url = '/users/password/'
     
     def form_valid(self, form):
+        """Custom success message that shows up when a user has successfully
+        changed their password and have submitted valid input to the form.
+        """
         form.save()
         messages.success(self.request, "Your password has been changed successfully")
         return super().form_valid(form)
 
     def form_invalid(self, form):
+        """Custom warning message that shows up when invalid input has
+        been entered into the change password form.
+        """
         messages.warning(self.request, "Please try again. An entered field contained invalid input.")
         return super().form_invalid(form)
 
@@ -107,8 +119,7 @@ class CreateProfileView(LoginRequiredMixin, CreateView):
     redirect_field_name = 'redirect_to'
     
     def form_valid(self, form):
-        # Make user info available to the user filling out the form
-        # so that saving the form will save to the correct user
+        """Prefill user object in create profile form."""
         form.instance.user = self.request.user
 
         # Change family profile set up status to true
@@ -197,6 +208,9 @@ class EditProfileHeaderView(LoginRequiredMixin, generic.UpdateView):
     redirect_field_name = 'redirect_to'
 
     def get_success_url(self):
+        """After a user successfully edits their profile header, they will
+        be returned to their family profile page.
+        """
         return reverse_lazy('family-profile', kwargs={'pk': self.object.pk})
 
 
@@ -282,6 +296,9 @@ class AddFamilyMemberView(LoginRequiredMixin, CreateView):
         return kwargs
 
     def get_success_url(self):
+        """After a user successfully adds a family member to their profile,
+        the user will be returned to their family profile page.
+        """
         return reverse_lazy('family-profile', kwargs={'pk': self.request.user.familyprofile.pk})
 
 
@@ -323,6 +340,9 @@ class EditMemberInfoView(LoginRequiredMixin, UpdateView):
         return kwargs
 
     def get_success_url(self):
+        """After a user successfully edits a family member log, the user will
+        be returned to the corresponding family member log.
+        """
         return reverse_lazy('family-member-log', kwargs={'pk': self.object.pk})
 
 

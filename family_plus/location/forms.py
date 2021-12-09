@@ -22,6 +22,9 @@ class AddLocationForm(forms.ModelForm):
         self.fields['user'].empty_label = None  # Remove empty label
 
     class Meta:
+
+        """Specify the fields to include in the register form."""
+
         model = Location
         fields = ('state', 'city', 'user')
 

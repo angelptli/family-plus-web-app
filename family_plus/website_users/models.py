@@ -6,6 +6,9 @@ from website_users.utils import define_age_ranges, define_relations
 
 
 class FamilyProfile(models.Model):
+
+    """The FamilyProfile model stores data on family profiles."""
+
     user             = models.OneToOneField(settings.AUTH_USER_MODEL, null=True,
                                             on_delete=models.CASCADE)
     family_name      = models.TextField(max_length=30, null=False, blank=False)
@@ -23,6 +26,7 @@ class FamilyProfile(models.Model):
         return self.user.username
 
     def get_absolute_url(self):
+        """Specify absolute url."""
         return reverse('home')
 
     def has_family_profile(self):
@@ -43,6 +47,12 @@ class FamilyProfile(models.Model):
 
 
 class FamilyMember(models.Model):
+
+    """The FamilyMember models stores data on family members.
+    
+    A user must have a family profile to add family members to their profile.
+    """
+
     AGE_RANGE = define_age_ranges()
     RELATION = define_relations()
 
