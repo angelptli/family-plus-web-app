@@ -1,4 +1,4 @@
-<h1 align="center">Family+ Web App</h1>
+<h1 align="center" name="page-top">Family+ Web App</h1>
 
 <h2 align="center">Project Purpose</h2>
 
@@ -109,4 +109,6 @@ python manage.py runserver
     Note: full installation guide at <a href="./clone_guide.md">clone_guide.md</a>.
 </p>
 
-[Back to Top](#family-web-app)
+<p align="center">
+    <a href="#page-top">Back To Top</a>
+</p>
