@@ -49,18 +49,16 @@ git checkout --track origin/main
 ```
 <hr>
 
-## Running the Django Server:
+### Run Django Server:
 
-In the root directory that has manage.py, place your SECRET_KEY and DEBUG values 
-(without the quotation marks and whitespace) in an **.env** file. 
-See [.env.example](family_plus/.env.example).
+In the root directory that has manage.py, place your SECRET_KEY and DEBUG values in an **.env** file. Make sure they are without quotation marks and whitespace. See [.env.example](family_plus/.env.example).
 
-**You can generate a SECRET KEY in the terminal using this command:**
+**To generate a SECRET KEY in the terminal use this command:**
 ```
 python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
 ```
 
-**Make migrations and migrate the Django models to create the website's SQLite database:**
+**Make migrations and migrate the Django models to create the SQLite database:**
 ```
 python manage.py makemigrations
 ```
@@ -68,10 +66,11 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-**Now you can locally run the Django server:**
+**Enable running Django server locally**
 ```
 python manage.py runserver
 ```
 
-On a web browser, the website should run when you enter localhost:8000. You'll
-be at the website's welcome page.
+On a web browser, enter localhost:8000 and you'll be at the Family+ welcome page.
+
+[Back to Top](#family-web-app)
